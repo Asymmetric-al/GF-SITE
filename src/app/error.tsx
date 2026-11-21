@@ -9,45 +9,52 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import type { CaughtRouteValue } from "@/lib/error-digest";
+import { extractErrorDigest } from "@/lib/error-digest";
 
 interface ErrorPageProps {
-  readonly error: Error & { digest?: string };
-  readonly reset: () => void;
+  readonly error: CaughtRouteValue;
+  readonly retry: () => void;
 }
 
-const ErrorPage = ({ error, reset }: ErrorPageProps) => (
-  <main
-    className="mx-auto flex w-full max-w-2xl flex-1 items-center px-6 py-16"
-    id="main-content"
-  >
-    <Card className="w-full">
-      <CardHeader>
-        <p className="text-muted-foreground text-sm font-medium">
-          Application Error
-        </p>
-        <CardTitle>
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Something went wrong
-          </h1>
-        </CardTitle>
-        <CardDescription>
-          An unexpected error interrupted rendering of this route.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {error.digest !== undefined && error.digest !== "" ? (
-          <p className="text-muted-foreground font-mono text-xs">
-            Reference: {error.digest}
+const ErrorPage = ({ error, retry }: ErrorPageProps) => {
+  const digest = extractErrorDigest(error);
+
+  return (
+    <main
+      className="mx-auto flex w-full max-w-2xl flex-1 items-center px-6 py-16 focus:outline-none"
+      id="main-content"
+      tabIndex={-1}
+    >
+      <Card className="w-full">
+        <CardHeader>
+          <p className="text-muted-foreground text-sm font-medium">
+            Application Error
           </p>
-        ) : null}
-      </CardContent>
-      <CardFooter>
-        <Button onClick={reset} type="button">
-          Try again
-        </Button>
-      </CardFooter>
-    </Card>
-  </main>
-);
+          <CardTitle>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Something went wrong
+            </h1>
+          </CardTitle>
+          <CardDescription>
+            An unexpected error interrupted rendering of this route.
+          </CardDescription>
+        </CardHeader>
+        {digest === undefined ? null : (
+          <CardContent>
+            <p className="text-muted-foreground font-mono text-xs">
+              Reference: {digest}
+            </p>
+          </CardContent>
+        )}
+        <CardFooter>
+          <Button onClick={retry} type="button">
+            Try again
+          </Button>
+        </CardFooter>
+      </Card>
+    </main>
+  );
+};
 
 export default ErrorPage;

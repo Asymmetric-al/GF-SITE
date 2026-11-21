@@ -27,7 +27,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   - **Vercel UI SDK (`@ui-sdk/core` + `@ui-sdk/react`)** owns **all stateful interactive primitives** (single interaction engine). Never stack Base UI/shadcn and UI SDK interaction behaviors onto the same control.
   - Before writing interactive UI, load the `ui-sdk` skill (`.agents/skills/ui-sdk/SKILL.md`) and read `node_modules/@ui-sdk/react/docs/llms.txt` (plus `core.md` and `rendering.md` when authoring custom primitives). Keep `@layer ui-sdk;` at line 1 of `src/app/globals.css`.
 - **Rich text:** Latest **Tiptap (`3.35.0`)** packages (`@tiptap/core`, `@tiptap/pm`, `@tiptap/react`, `@tiptap/starter-kit`, `@tiptap/static-renderer`) are installed for any frontend rich-text needs. Keep styling bound to semantic tokens in `src/app/globals.css` and keep Core Payload CMS Lexical contracts cleanly separated.
-- **Linting and formatting:** Ultracite `8.3.1` with Oxlint `1.94.0` (`tsrs` type-aware backend + `anti-slop` + `@shadcn/lint` + scoped `@interfere/landmines/testing` + scoped `vitest` + `playwright`) and Oxfmt `0.79.0`. Do not add ESLint, Prettier, or `oxlint-tsgolint`.
+- **Linting and formatting:** Ultracite `8.3.1` with Oxlint `1.94.0` (`tsrs` type-aware backend + `anti-slop` + `@shadcn/lint` + `oxlint-plugin-react-doctor` via Ultracite `js-plugins` & `next/js-plugins` + scoped `@interfere/landmines/testing` + scoped `vitest` + `playwright`) and Oxfmt `0.79.0`. Do not add ESLint, Prettier, or `oxlint-tsgolint`.
 - **Editorial hygiene:** Plain, direct, source-backed language; no em dashes in public copy; no fabricated statistics, quotes, or claims.
 
 ## Task Routing (Skill, Tool, and Verification)
@@ -49,11 +49,11 @@ Use task-specific routing. Choose **one lead skill** per task and invoke seconda
 | Unit and component testing | `vitest`, `vite` (`antfu/skills`), local `vitest.config.mts`, Testing Library | `bun run test:run`, `bun run test:coverage` (preserve honest `src/**` denominator; never test async RSCs only in jsdom). |
 | E2E, accessibility, visual regression | Playwright Test (`playwright.config.ts`), `@axe-core/playwright`, `playwright-cli`, Playwright test agents (`specs/`, `.claude/agents/`, `.codex/agents/`) | `bun run test:smoke`, `bun run test:a11y`, `bun run test:seo`, `bun run test:e2e`, reviewed `bun run test:visual` baseline diffs. |
 | Browser debugging and dev loop | `playwright-cli` by default; `next-dev-loop` + `agent-browser` + `/_next/mcp` (`next-devtools`) during `next dev`; Chrome DevTools skills (`debug-optimize-lcp`, `a11y-debugging`, etc.) for traces/memory/a11y | Live console/network/trace evidence against the actual running app. |
-| Code quality and hygiene | `ultracite`, `configure-knip`, `code-simplifier`; on-demand `@shadscan/cli` and `react-doctor` | `bun run check`, `bunx --no-install ultracite doctor`, `bun run typecheck`, `bun run knip`. |
+| Code quality and hygiene | `ultracite`, `configure-knip`, `code-simplifier`; on-demand `@shadscan/cli` and interactive `react-doctor` | `bun run check`, `bun run check:foundation`, `bunx --no-install ultracite doctor`, `bun run typecheck`, `bun run knip`. |
 | Payload CMS / future migration | `payload`, `cms-migration`, [docs/core-integration.md](./docs/core-integration.md) | Guidance only until Core integration is selected; never add Payload runtime or DB clients to `GF-SITE`. |
 | Planning, reviews, PRs, coordination | Tstack (`full-send`, `full-stop`, `council`, `sol-loop`, `file-pr`, `takeover`, `babysit-pr`, `modernize`, `leaving-pr-comments`) + `gh` CLI | Use only when requested; discover real providers via `orchestrator_capabilities`; never merge/push/comment without authorization. |
 | Vercel deployment and platform | `vercel-cli`, `deployments-cicd`, `env-vars`, `domains`, `cdn-caching`, `routing-middleware`, `client-side-security`, `verification`, `vercel-firewall`, `vercel-functions`, `vercel-storage` | Preview verification, `vercel` CLI read checks; Vercel MCP requires separate OAuth. |
-| Specialist assets and services | `svgo`, `fonttools`, `ffmpeg`/`ffprobe`, `leonardo-colors`, `remotion-best-practices`, `resend`/`react-email`, `firecrawl`, `supabase`, `stripe-best-practices`, `Nia` | Artifact check on real files (e.g., `svgo`, `ffprobe`) or read-only service check; never add unused runtime SDKs. |
+| Specialist assets and services | `svgo`, `fonttools`, `ffmpeg`/`ffprobe`, `leonardo-colors`, `remotion-best-practices`, `resend`/`react-email`, `firecrawl`, `supabase`, `stripe-best-practices` | Artifact check on real files (e.g., `svgo`, `ffprobe`) or read-only service check; never add unused runtime SDKs. |
 
 ## AI Capability Truthfulness
 
@@ -68,7 +68,8 @@ This guide governs AI-assisted development tooling; it does **not** authorize ad
 ## Key Commands
 
 - `bun run dev` — start Next.js dev server (Turbopack + `/_next/mcp`) on Node.js 24
-- `bun run check` / `bun run fix` — Ultracite lint (`oxlint` + `tsrs` + `@shadcn/lint` + `anti-slop`) and format (`oxfmt`)
+- `bun run check` / `bun run fix` — Ultracite lint (`oxlint` + `tsrs` + `@shadcn/lint` + `anti-slop` + `react-doctor`) and format (`oxfmt`)
+- `bun run check:foundation` — repository invariants check (zero Radix, zero `oxlint-tsgolint`, zero removed skills, `.agents`/`.claude` skill parity, manifest sync, CSS layer & Next.js managed markers)
 - `bun run typecheck` — Next.js route typegen + full-project `tsc --noEmit` (TypeScript 7.1 beta)
 - `bun run knip` — unused files, exports, and dependencies audit
 - `bun run test:run` / `bun run test:coverage` — bounded Vitest unit/component tests and V8 coverage

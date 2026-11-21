@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
@@ -23,6 +24,7 @@ interface HookArgs {
 }
 
 interface AntigravityHookPayload {
+  readonly error?: string;
   readonly toolCall?: {
     readonly args?: HookArgs;
   };
@@ -43,6 +45,10 @@ const isAntigravityHookPayload = (
   value: unknown
 ): value is AntigravityHookPayload => {
   if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  if (!isOptionalString("error" in value ? value.error : undefined)) {
     return false;
   }
 
@@ -80,6 +86,10 @@ const extractEditedPath = (raw: string): string | null => {
     return null;
   }
 
+  if (parsed.error !== undefined && parsed.error.length > 0) {
+    return null;
+  }
+
   const args = parsed.toolCall?.args;
 
   const candidate =
@@ -114,19 +124,55 @@ const main = async (): Promise<void> => {
 
     const insideRepo =
       relativeTarget !== "" &&
-      !relativeTarget.startsWith("..") &&
+      relativeTarget !== ".." &&
+      !relativeTarget.startsWith(`..${path.sep}`) &&
       !path.isAbsolute(relativeTarget);
 
     if (
       insideRepo &&
+      fs.existsSync(resolvedTarget) &&
       SUPPORTED_EXTENSIONS.has(path.extname(resolvedTarget).toLowerCase())
     ) {
       const binName = process.platform === "win32" ? "bunx.exe" : "bunx";
 
-      spawnSync(binName, ["--no-install", "ultracite", "fix", relativeTarget], {
-        cwd: repoRoot,
-        stdio: "ignore",
-      });
+      const result = spawnSync(
+        binName,
+        ["--no-install", "ultracite", "fix", relativeTarget],
+        {
+          cwd: repoRoot,
+          encoding: "utf-8",
+        }
+      );
+
+      if (result.error !== undefined) {
+        process.stderr.write(
+          `ultracite post-edit hook failed: ${result.error.message}\n`
+        );
+        process.stdout.write("{}\n");
+        process.exit(1);
+      }
+
+      if (result.signal !== null) {
+        process.stderr.write(
+          `ultracite post-edit hook terminated by signal ${result.signal}\n`
+        );
+        process.stdout.write("{}\n");
+        process.exit(1);
+      }
+
+      if (result.status !== 0) {
+        const diagnostics = [result.stdout, result.stderr]
+          .filter((segment) => segment.trim().length > 0)
+          .join("\n")
+          .trim();
+
+        if (diagnostics.length > 0) {
+          process.stderr.write(`${diagnostics}\n`);
+        }
+
+        process.stdout.write("{}\n");
+        process.exit(result.status ?? 1);
+      }
     }
   }
 

@@ -37,13 +37,12 @@ This document describes the automated testing, accessibility, visual regression,
   - Uses Vite 8's native `resolve.tsconfigPaths: true` (no `vite-tsconfig-paths` plugin required).
   - Explicit imports (`globals: false`), `clearMocks: true`, `restoreMocks: true`.
   - Split into two projects:
-    - `server` (`src/**/*.test.ts`, `environment: "node"`): maps `"server-only"` to `node_modules/server-only/empty.js` so pure server modules (`src/lib/content/reader.ts`, `src/lib/site.ts`, `src/app/robots.ts`) execute directly without module mocking.
+    - `server` (`src/**/*.test.ts`, `scripts/**/*.test.ts`, `environment: "node"`): maps `"server-only"` to `node_modules/server-only/empty.js` so pure server modules (`src/lib/content/reader.ts`, `src/lib/site.ts`, `src/app/robots.ts`, `src/app/page.ts`) and repository invariant helpers (`scripts/foundation-invariants.ts`) execute directly without module mocking.
     - `dom` (`src/**/*.test.tsx`, `environment: "jsdom"`): loads `vitest.setup.ts` (`@testing-library/jest-dom/vitest`, explicit `afterEach(cleanup)`, and a minimal `Element.prototype.getAnimations` polyfill required by `@ui-sdk/core` motion presence under jsdom 31).
-  - Excludes `tests/**`, `**/e2e/**`, and `**/*.browser.test.*`.
+  - Excludes `tests/**`, `**/e2e/**`, `**/*.browser.test.*`, `.agents/**`, `.claude/**`, `.codex/**`, and `.cursor/**`.
 - **Next.js Server Component boundary:** Async React Server Components are **not** unit-tested in jsdom. Route rendering, metadata streaming, hydration, and full server/client integration are verified against the real production Next.js server in Playwright.
-- **Coverage scope and measured baseline (`bun run test:coverage`):**
-  - `coverage.include` explicitly tracks all `src/**/*.{ts,tsx}` (excluding only `*.test.{ts,tsx}` and `*.d.ts`) so unimported Server Components stay honestly visible in the denominator.
-  - Baseline recorded on 2026-11-21 (5 test files, 12 tests): **68.49% statements, 59.45% branches, 76.00% functions, 68.05% lines** (100% coverage on `src/lib/site.ts`, `src/lib/content/reader.ts`, `src/lib/content/local-content.ts`, `src/components/foundation-tabs.tsx`, `src/app/error.tsx`, and `src/components/ui/button.tsx`). Threshold gates will be introduced only after feature routes and components mature.
+- **Coverage scope (`bun run test:coverage`):**
+  - `coverage.include` explicitly tracks all `src/**/*.{ts,tsx}` (excluding only `*.test.{ts,tsx}` and `*.d.ts`) so unimported Server Components stay honestly visible in the denominator. Threshold gates will be introduced once feature routes and components mature.
 - **Optional upgrades (not yet needed):** Vitest Browser Mode (`@vitest/browser-playwright`) and MSW 3 (`msw/http`) are documented for future browser-fidelity component tests or shared HTTP fixtures when needed.
 
 ---
@@ -51,11 +50,11 @@ This document describes the automated testing, accessibility, visual regression,
 ## 3. End-to-End, Accessibility, and Visual Regression (Playwright + axe-core)
 
 - **Packages:** `@playwright/test@1.65.1`, `@axe-core/playwright@4.14.0`.
-- **Production test server:** `playwright.config.ts` starts the actual built app via `bun run start -- --hostname 127.0.0.1 --port 3147` (`PLAYWRIGHT_PORT` / `E2E_BASE_URL` / `E2E_START_COMMAND` configurable) with `reuseExistingServer: false` so tests never attach accidentally to an unrelated dev server. Build first (`bun run build`) before running Playwright.
+- **Production test server:** `playwright.config.ts` starts the built app via `bun run start -- --hostname 127.0.0.1 --port 3147` (`PLAYWRIGHT_PORT` / `E2E_START_COMMAND` configurable) with `reuseExistingServer: false`. When `E2E_BASE_URL` is set without `E2E_START_COMMAND`, Playwright skips launching a local `webServer` so it can test external preview deployments directly. Build first (`bun run build`) before running local Playwright suites.
 - **Suite organization (`tests/`):**
   - `tests/smoke.spec.ts` — Core route rendering, console/page error checks, UI SDK tab interaction, mobile overflow, 404 navigation.
-  - `tests/seo.spec.ts` (`@seo`) — Metadata, OpenGraph/Twitter tags, `noindex`/`nofollow`, canonical absence while `NEXT_PUBLIC_SITE_URL` is unset, `/robots.txt`, single `<h1>`, image dimensions, and 404 semantics.
-  - `tests/accessibility.spec.ts` (`@a11y`) — WCAG 2.1 A/AA `@axe-core/playwright` scans across all 3 UI SDK tab states and custom 404 route, skip-link keyboard focus, `prefers-reduced-motion: reduce`, and `320px` narrow-viewport overflow.
+  - `tests/seo.spec.ts` (`@seo`) — Metadata, OpenGraph/Twitter tags, `noindex`/`nofollow`, `X-Robots-Tag`, baseline HTTP security headers (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, no `X-Powered-By`), canonical absence while `NEXT_PUBLIC_SITE_URL` is unset, `/robots.txt`, single `<h1>`, image dimensions, and 404 semantics.
+  - `tests/accessibility.spec.ts` (`@a11y`) — WCAG 2.1 A/AA `@axe-core/playwright` scans across all 3 UI SDK tab states and custom 404 route, keyboard skip-link activation into `#main-content`, `prefers-reduced-motion: reduce`, and `320px` narrow-viewport overflow.
   - `tests/visual.spec.ts` (`@visual`) — Deterministic Desktop Chromium (`1280x900`, `reducedMotion: "reduce"`, `animations: "disabled"`, fonts awaited) full-page visual regression baseline.
   - `tests/seed.spec.ts` — Seed baseline for Playwright test agents (`planner`, `generator`, `healer`) configured under `specs/`, `.claude/agents/`, and `.codex/agents/`.
 - **Visual baseline policy:**
@@ -71,7 +70,7 @@ This document describes the automated testing, accessibility, visual regression,
 ### Lighthouse CI (`bun run perf:lhci`)
 
 - **Runner:** `scripts/run-lhci.ts` resolves Chrome (`CHROME_PATH` or standard OS paths) and executes `bunx --no-install lhci autorun --config=./lighthouserc.<profile>.json` against a dedicated loopback production server on port `3200`.
-- **Initial diagnostic assertions:** Configured at `warn` level with explicit `aggregationMethod: "median"` (LCP <= 2500ms, CLS <= 0.1, TBT <= 200ms, Performance/Accessibility/Best Practices >= 0.90). Assertions will move to strict regression budgets once real page templates and assets exist.
+- **Initial assertions:** Deterministic accessibility (`>= 0.90`) and CLS (`<= 0.1`) assertions are enforced at `error` level (`aggregationMethod: "median"`); noisy simulated-CPU timing metrics (LCP <= 2500ms, TBT <= 200ms, Performance/Best Practices >= 0.90) start at `warn` level until real page templates and CI runner baselines exist.
 - **Measured Baseline (2026-11-21, Lighthouse `13.6.0`, LHCI `0.16.1`, Chrome `158.0.8127.36`, Windows 11 local workstation, Next.js `16.4.6` production build, route `/`):**
 
 | Profile | Runs | Performance (Med) | A11y (Med) | Best Practices (Med) | SEO (Med) | LCP (Med) | FCP (Med) | TBT (Med) | CLS (Med) | Transfer |
@@ -112,11 +111,13 @@ This document describes the automated testing, accessibility, visual regression,
 
 - **Normal PR / Push (`.github/workflows/ci.yml`):**
   1. `bun install --frozen-lockfile`
-  2. `bun run check` (Ultracite: Oxlint + `tsrs` + `@shadcn/lint` + `anti-slop` + Oxfmt)
-  3. `bun run knip`
-  4. `bun run test:run` (Vitest unit & component suite)
-  5. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
-  6. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
+  2. `bun run check` (Ultracite: Oxlint + `tsrs` + `@shadcn/lint` + `anti-slop` + `oxlint-plugin-react-doctor` + Oxfmt)
+  3. `bun run check:foundation` (zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, manifest sync)
+  4. `bun run knip`
+  5. Offline Lychee Markdown link check (`lycheeverse/lychee-action@v2`) and `gitleaks` (`8.30.1`) secret scan
+  6. `bun run test:run` (Vitest unit & component suite)
+  7. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
+  8. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
 - **Scheduled / Manual Deep Audit (`.github/workflows/nightly-audit.yml`):**
   - Full 4-project Playwright cross-engine matrix (`chromium`, `firefox`, `webkit`, `mobile-webkit`, excluding Windows-specific visual snapshots on Linux runners).
   - Isolated Lighthouse CI mobile & desktop job uploading private `artifacts/lighthouse/` reports.

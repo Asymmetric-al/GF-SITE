@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-11-21T16:30:00+07:00",
   "repository": "https://github.com/Asymmetric-al/GF-SITE",
-  "workspace": "C:\\Users\\Conrad\\Documents\\GitHub\\GF-SITE",
+  "workspace": ".",
   "statusVocabulary": [
     "Installed and verified",
     "Installed, on demand",
@@ -13,8 +13,8 @@
     "Blocked"
   ],
   "summary": {
-    "totalEntries": 204,
-    "projectSkills": 123,
+    "totalEntries": 203,
+    "projectSkills": 122,
     "nonSkillEntries": 81
   },
   "items": [
@@ -1333,24 +1333,6 @@
       "restoreOrUpdate": "bunx skills@1.9.0 add vercel/next.js --skill next-partial-prefetching-optimizer -a claude-code -a cursor -a codex -a antigravity --copy -y"
     },
     {
-      "id": "skill:Nia",
-      "type": "skill",
-      "purpose": "Index and search code repositories, documentation, research papers, HuggingFace datasets, local folders, Slack workspaces, Google Drive, X (Twitter), and packages with Nia AI. Includes auth bootstrapping, Oracle autonomo",
-      "officialSource": "nozomio-labs/nia-skill",
-      "testedVersionOrCommit": "b253a81f257d219f9842d864f9991be287bfc66f",
-      "owningWorkspaceOrHost": "GF-SITE (repository-local)",
-      "activeAgentTargets": ["codex", "cursor", "antigravity", "claude-code"],
-      "installedPathOrEndpoint": ".agents/skills/nia/SKILL.md & .claude/skills/nia/SKILL.md",
-      "requiredEnvNames": [],
-      "configOwner": "skills-lock.json",
-      "state": "Installed, on demand",
-      "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "Verified SKILL.md frontmatter (Nia) and dual-directory placement (.agents/skills & .claude/skills)",
-      "result": "pass",
-      "remainingBlocker": null,
-      "restoreOrUpdate": "bunx skills@1.9.0 add nozomio-labs/nia-skill --skill Nia -a claude-code -a cursor -a codex -a antigravity --copy -y"
-    },
-    {
       "id": "skill:onboarding",
       "type": "skill",
       "purpose": "When the user wants better onboarding and activation, or asks why new users don't stick or what the first session should do: first-run experience, aha moments, checklists, empty states, time to value. For the signup flow",
@@ -2307,9 +2289,9 @@
     {
       "id": "pkg:ultracite-oxlint-tsrs",
       "type": "quality-toolchain",
-      "purpose": "Ultracite + Oxlint (tsrs type-aware backend, anti-slop, @shadcn/lint, scoped @interfere/landmines/testing) + Oxfmt + single post-edit hooks",
-      "officialSource": "haydenbleasel/ultracite + shadcn-ui/lint + interfere-inc/landmines",
-      "testedVersionOrCommit": "ultracite@8.3.1, oxlint@1.94.0, oxfmt@0.79.0, tsrs@7.1.0-beta.tsrs4, @shadcn/lint@0.2.5, @interfere/landmines@0.1.1",
+      "purpose": "Ultracite + Oxlint (tsrs type-aware backend, anti-slop, @shadcn/lint, oxlint-plugin-react-doctor via Ultracite js-plugins & next/js-plugins, scoped @interfere/landmines/testing) + Oxfmt + single post-edit hooks",
+      "officialSource": "haydenbleasel/ultracite + shadcn-ui/lint + millionco/react-doctor + interfere-inc/landmines",
+      "testedVersionOrCommit": "ultracite@8.3.1, oxlint@1.94.0, oxfmt@0.79.0, tsrs@7.1.0-beta.tsrs4, @shadcn/lint@0.2.5, oxlint-plugin-react-doctor@0.9.23, @interfere/landmines@0.1.1",
       "owningWorkspaceOrHost": "GF-SITE",
       "activeAgentTargets": ["claude-code", "codex", "cursor", "antigravity"],
       "installedPathOrEndpoint": "oxlint.config.ts, oxfmt.config.ts, .claude/settings.json, .codex/hooks.json, .cursor/hooks.json, .agents/hooks.json",
@@ -2317,8 +2299,8 @@
       "configOwner": "oxlint.config.ts",
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "bunx --no-install ultracite doctor && bun run check && multi-file/delete-only hook tests",
-      "result": "pass (10/10 doctor checks, 0 errors across 690 rules, 0 oxlint-tsgolint, hooks verified)",
+      "harmlessCheckPerformed": "bunx --no-install ultracite doctor && bun run check && bun run check:foundation && multi-file/delete-only hook tests",
+      "result": "pass (doctor clean, 0 errors across Ultracite + anti-slop + @shadcn/lint + react-doctor + landmines, 0 oxlint-tsgolint, hooks verified)",
       "remainingBlocker": null,
       "restoreOrUpdate": "bun install --frozen-lockfile"
     },
@@ -2335,8 +2317,8 @@
       "configOwner": "vitest.config.mts",
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "bun run test:run && bun run test:coverage",
-      "result": "pass (5 files, 12 tests, 68.49% statement coverage across src/**)",
+      "harmlessCheckPerformed": "bun run test:run",
+      "result": "pass (8 test files across src/** and scripts/**, covering site/canonical/OG, robots, reader, error/global-error, FoundationTabs, and nested Radix lockfile guards)",
       "remainingBlocker": null,
       "restoreOrUpdate": "bun install --frozen-lockfile"
     },
@@ -2353,8 +2335,8 @@
       "configOwner": "playwright.config.ts",
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "bun run test:e2e against built production app on 127.0.0.1:3147",
-      "result": "pass (61 passed, 3 expected non-chromium visual skips, 0 failed across 4 projects)",
+      "harmlessCheckPerformed": "bun run test:e2e && bun run test:visual against built production app on 127.0.0.1:3147",
+      "result": "pass (56 cross-engine tests across 4 projects + reviewed win32 Desktop Chromium visual baseline)",
       "remainingBlocker": null,
       "restoreOrUpdate": "bun install --frozen-lockfile && bunx --no-install playwright install chromium firefox webkit"
     },
@@ -2454,7 +2436,7 @@
       "harmlessCheckPerformed": "stdio initialize + tools/list via bunx --no-install shadcn mcp",
       "result": "pass (7 tools returned)",
       "remainingBlocker": null,
-      "restoreOrUpdate": "npx -y shadcn@4.23.0 mcp"
+      "restoreOrUpdate": "bunx --no-install shadcn mcp (via scripts/shadcn-mcp.ts in Antigravity plugin)"
     },
     {
       "id": "mcp:reactbits-pro",
@@ -2561,7 +2543,7 @@
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "HTTP initialize probe to https://mcp.vercel.com",
       "result": "HTTP 401 No authorization provided (expected prior to provider OAuth)",
-      "remainingBlocker": "Complete OAuth sign-in in active provider session when Vercel MCP is needed; vercel CLI is already authenticated as conrad-4371",
+      "remainingBlocker": "Complete OAuth sign-in in active provider session when Vercel MCP is needed; vercel CLI is authenticated separately",
       "restoreOrUpdate": "https://mcp.vercel.com"
     },
     {
@@ -2722,7 +2704,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "bunx --no-install shadcn info --json + read-only search/view",
-      "result": "Direct view @shadcnblocks/hero1 HTTP 200 on base-maia (0 Radix; no /registry search index; license dated expiry 2026-12-03 07:00 timezone unspecified)",
+      "result": "Direct view @shadcnblocks/hero1 HTTP 200 on base-maia (0 Radix; no /registry search index)",
       "remainingBlocker": null,
       "restoreOrUpdate": "Preserved in components.json"
     },
@@ -3010,7 +2992,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated as cobmojo (repo, workflow, read:org, gist)",
+      "result": "Authenticated with repo, workflow, read:org, and gist scopes",
       "remainingBlocker": null,
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3028,7 +3010,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated as conrad-4371 (project not yet linked to Vercel)",
+      "result": "Authenticated via CLI (project not yet linked to Vercel)",
       "remainingBlocker": "Confirm target Vercel team/project before linking",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3046,7 +3028,7 @@
       "state": "Installed, on demand",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated to Asymmetric.al org (expires 2026-11-28, auto-refresh enabled)",
+      "result": "Authenticated via CLI with auto-refresh enabled",
       "remainingBlocker": "No Sentry SDK installed in GF-SITE yet",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3064,7 +3046,7 @@
       "state": "Installed, on demand",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "resend whoami confirmed authenticated full_access via secure storage (no emails sent)",
+      "result": "resend whoami confirmed authenticated via secure storage (no emails sent)",
       "remainingBlocker": "No verified sending domain or active email feature in GF-SITE yet",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3136,8 +3118,8 @@
       "state": "Blocked",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "npx --yes react-doctor@latest --no-telemetry hung waiting on TTY in non-interactive Windows PowerShell",
-      "remainingBlocker": "Run interactively in a TTY terminal when React diagnostics are needed",
+      "result": "Standalone CLI hung waiting on TTY in non-interactive Windows PowerShell; static React/Next Doctor rules are enforced directly via oxlint-plugin-react-doctor@0.9.23 in bun run check",
+      "remainingBlocker": "Run CLI interactively in a TTY terminal if score summary is desired; static rules already run in bun run check",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
     {
@@ -3154,26 +3136,8 @@
       "state": "Configured, authentication pending",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Installed on PATH; saved OAuth profile dvgyndcnu expired 2026-10-30; CLOUDINARY_API_KEY alone lacks cloud name/secret",
+      "result": "Installed on PATH; saved OAuth profile expired; CLOUDINARY_API_KEY alone lacks cloud name/secret",
       "remainingBlocker": "Run cld login to refresh OAuth session when Cloudinary is needed",
-      "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
-    },
-    {
-      "id": "cli:nia",
-      "type": "host-cli",
-      "purpose": "Host CLI tool (nia)",
-      "officialSource": "nozomio-labs/nia",
-      "testedVersionOrCommit": "0.5.2",
-      "owningWorkspaceOrHost": "Windows 11 host PATH",
-      "activeAgentTargets": ["claude-code", "codex", "cursor", "antigravity"],
-      "installedPathOrEndpoint": "Host PATH",
-      "requiredEnvNames": ["NIA_API_KEY"],
-      "configOwner": "Host OS package manager / core-agent-tools",
-      "state": "Blocked",
-      "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Installed on PATH; env key set but nia auth status reported Could not fetch plan info (API key may be invalid)",
-      "remainingBlocker": "Replace/refresh NIA_API_KEY or run nia auth login",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
     {
@@ -3232,6 +3196,24 @@
       "result": "Binary on PATH; no PostHog credentials supplied and not configured in GF-SITE",
       "remainingBlocker": "Run posthog-cli login if PostHog is selected for GF-SITE",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
+    },
+    {
+      "id": "alt:nia",
+      "type": "docs-search",
+      "purpose": "Removed per explicit user directive (2026-11-21): Nia tools are no longer used; Context7 and shipped package docs cover library/framework documentation",
+      "officialSource": "nozomio-labs/nia-skill + nia CLI/MCP",
+      "testedVersionOrCommit": "N/A",
+      "owningWorkspaceOrHost": "GF-SITE / Host",
+      "activeAgentTargets": [],
+      "installedPathOrEndpoint": "Removed from GF-SITE",
+      "requiredEnvNames": [],
+      "configOwner": "docs/agent-toolkit.md",
+      "state": "Evaluated alternative, intentionally not installed",
+      "lastValidationTime": "2026-11-21T16:30:00+07:00",
+      "harmlessCheckPerformed": "Evaluated against GF-SITE stack, architecture constraints, and supplied credentials",
+      "result": "Removed per explicit user directive (2026-11-21): Nia tools are no longer used; Context7 and shipped package docs cover library/framework documentation",
+      "remainingBlocker": null,
+      "restoreOrUpdate": "Follow docs/agent-toolkit.md or docs/testing.md when capability is selected"
     },
     {
       "id": "alt:payload-runtime-mcp",

@@ -7,7 +7,7 @@ This is the sanitized repository guide for the AI agent toolkit configured in `G
 | Layer | Location | Owner / Restoration Mechanism |
 | --- | --- | --- |
 | Canonical agent instructions | [AGENTS.md](../AGENTS.md), [CLAUDE.md](../CLAUDE.md), [DESIGN.md](../DESIGN.md) | Git-tracked in `GF-SITE` |
-| Project-scoped skills (123 total) | `.agents/skills/` (Codex, Cursor, Antigravity) and `.claude/skills/` (Claude Code); `.cursor/skills/impeccable` | Managed via [skills-lock.json](../skills-lock.json) (`skills@1.9.0`) plus tracked specialist skills (`playwright-cli`, `impeccable`, `ui-ux-pro-max`, `react-bits-pro`, `shadcnuikit`, `reui`, and 7 Chrome DevTools skills) |
+| Project-scoped skills (122 total) | `.agents/skills/` (Codex, Cursor, Antigravity) and `.claude/skills/` (Claude Code); `.cursor/skills/impeccable` | Managed via [skills-lock.json](../skills-lock.json) (`skills@1.9.0`) plus tracked specialist skills (`playwright-cli`, `impeccable`, `ui-ux-pro-max`, `react-bits-pro`, `shadcnuikit`, `reui`, and 7 Chrome DevTools skills); parity verified by `bun run check:foundation` |
 | Generated specialist subagent specs | `.claude/agents/`, `.codex/agents/`, `.cursor/agents/`, `specs/` | Generated via `playwright init-agents` (`claude`, `codex`) and `impeccable install --no-hooks` |
 | Project-scoped MCP configurations | `.mcp.json` (Claude), `.cursor/mcp.json` (Cursor), `.codex/config.toml` (Codex), `.agents/plugins/{next-devtools,gf-site-ui-registries}/mcp_config.json` (Antigravity) | Git-tracked; credentials referenced strictly via env vars (`scripts/shadcn-studio-mcp.ts` maps `SHADCN_STUDIO_EMAIL` / `SHADCN_STUDIO_LICENSE_KEY` to child `EMAIL` / `API_KEY` without logging or argv exposure) |
 | Single edit-time hook path per provider | `.claude/settings.json`, `.codex/hooks.json`, `.cursor/hooks.json` (`bunx --no-install ultracite fix --hook`); `.agents/hooks.json` (`bun ../scripts/antigravity-post-edit-hook.ts`) | Git-tracked; runs changed-files-only Ultracite fixes without recursive loops |
@@ -28,7 +28,7 @@ All project skills are copied into `.agents/skills/` (discovered by Codex, Curso
 - **Testing, browser automation, and diagnostics (11 skills):** `vitest`, `vite` (`antfu/skills`), `playwright-cli`, `agent-browser`, and 7 Chrome DevTools skills (`chrome-devtools`, `chrome-devtools-cli`, `a11y-debugging`, `cookie-debugging`, `debug-optimize-lcp`, `memory-leak-debugging`, `troubleshooting`).
 - **Component catalog integration (3 skills):** `react-bits-pro` (v3.3 from `@reactbits-starter/skill`), `shadcnuikit` (general integration skill; 8 paid design packs kept unactivated), `reui` (`v68f0e6fa91`, 16 files extracted cleanly without modifying `~/.codex/config.toml`).
 - **Theo Browne's Tstack (9 skills):** `full-send`, `full-stop`, `council`, `sol-loop`, `file-pr`, `takeover`, `babysit-pr`, `modernize`, `leaving-pr-comments` (retaining `scripts/pr-wait` and references).
-- **Additional official service and maintenance skills (21 skills):** Resend (`resend`, `resend-cli`, `react-email`, `email-best-practices`, `agent-email-inbox`), Firecrawl (`firecrawl`, `firecrawl-map`, `firecrawl-crawl`, `firecrawl-scrape`, `firecrawl-search`, `firecrawl-parse`, `firecrawl-download`), Supabase (`supabase`, `supabase-postgres-best-practices`), Stripe (`stripe-best-practices`, `stripe-docs`), Remotion (`remotion-best-practices`), Knip (`configure-knip`), Nia (`Nia`), Sentry (`code-simplifier`, `agents-md`). _(Total: 28 + 22 + 29 + 11 + 3 + 9 + 21 = 123 project-scoped skills.)_
+- **Additional official service and maintenance skills (20 skills):** Resend (`resend`, `resend-cli`, `react-email`, `email-best-practices`, `agent-email-inbox`), Firecrawl (`firecrawl`, `firecrawl-map`, `firecrawl-crawl`, `firecrawl-scrape`, `firecrawl-search`, `firecrawl-parse`, `firecrawl-download`), Supabase (`supabase`, `supabase-postgres-best-practices`), Stripe (`stripe-best-practices`, `stripe-docs`), Remotion (`remotion-best-practices`), Knip (`configure-knip`), Sentry (`code-simplifier`, `agents-md`). _(`Nia` was explicitly removed because it is no longer used. Total: 28 + 22 + 29 + 11 + 3 + 9 + 20 = 122 project-scoped skills.)_
 
 ---
 
@@ -38,7 +38,7 @@ To avoid duplicate MCP registrations across T3 Code providers:
 
 - **Project-scoped MCPs in `GF-SITE`:**
   - `next-devtools` (`bunx next-devtools-mcp@0.4.0`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/next-devtools/`).
-  - `shadcn` (`npx -y shadcn@4.23.0 mcp`, workspace cwd = `GF-SITE`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/gf-site-ui-registries/` as `gf-site-shadcn`).
+  - `shadcn` (`bunx --no-install shadcn mcp`, workspace cwd = `GF-SITE`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/gf-site-ui-registries/` via `scripts/shadcn-mcp.ts` as `gf-site-shadcn`).
   - `reactbits-pro` (`https://mcp.reactbits.dev/mcp`, Bearer `REACTBITS_LICENSE_KEY`) — Claude, Cursor, Codex, Antigravity plugin.
   - `shadcnuikit` (`https://shadcnuikit.com/api/mcp`, Bearer `SHADCNUIKIT_API_KEY`) — Claude, Cursor, Codex, Antigravity plugin.
   - `reui` (`https://mcp.reui.io`, OAuth / separate `REUI_MCP_TOKEN`) — Claude, Cursor, Codex, Antigravity plugin.
@@ -46,7 +46,7 @@ To avoid duplicate MCP registrations across T3 Code providers:
   - `shadcn-space` (`https://mcp.shadcnspace.com/mcp`, free tier) — Claude, Cursor, Codex (Antigravity already loads global `shadcn-space`).
   - `playwright-test` (`bunx --no-install playwright run-test-mcp-server`) — Claude (`.mcp.json`, used by Playwright test agents).
   - `vercel` (`https://mcp.vercel.com`, OAuth) — Codex (`.codex/config.toml`; Cursor and Codex global configs also register it).
-- **Host / global provider MCPs already present outside `GF-SITE` (not duplicated):** Antigravity global T3 config already provides `motion`, `playwright`, `chrome-devtools`, `shadcn-space`, and `shadcn-studio`. Claude and Codex user configs already provide `github`, `context7`, `sentry`, `stripe`, `cloudinary-assets`, `inngest-cloud`, and `nia` (note: global `core_*` servers belong to `Asymmetric-al/core` and must not be used for `GF-SITE` registry lookups).
+- **Host / global provider MCPs already present outside `GF-SITE` (not duplicated):** Antigravity global T3 config already provides `motion`, `playwright`, `chrome-devtools`, `shadcn-space`, and `shadcn-studio`. Claude and Codex user configs already provide `github`, `context7`, `sentry`, `stripe`, `cloudinary-assets`, and `inngest-cloud` (note: global `core_*` servers belong to `Asymmetric-al/core` and must not be used for `GF-SITE` registry lookups).
 
 ---
 
@@ -54,34 +54,34 @@ To avoid duplicate MCP registrations across T3 Code providers:
 
 Never commit credential values into Git, `components.json`, `.mcp.json`, or logs. Load required values in the host's private user environment before starting or restarting T3 Code provider sessions.
 
-| Env Var Name | Role | Current Host State |
+| Env Var Name | Role | Expected Setup State |
 | --- | --- | --- |
-| `REACTBITS_LICENSE_KEY` | `@reactbits-starter`, `@reactbits-pro` registries and `reactbits-pro` HTTP MCP | Set in Windows User env; **verified Pro entitlement** |
-| `REUI_LICENSE_KEY` | `@reui` shadcn registry only (**not** ReUI MCP OAuth) | Set in Windows User env; **verified registry search/view** |
-| `REUI_MCP_TOKEN` _(optional)_ | Dedicated ReUI MCP PAT (alternative to OAuth sign-in) | Not supplied; ReUI MCP requires OAuth sign-in |
-| `SHADCNBLOCKS_API_KEY` | `@shadcnblocks` registry (`sk_live_` prefix is Shadcnblocks, **not** Stripe; dated license expiry `2026-12-03 07:00`, timezone unspecified) | Set in Windows User env; **verified item view (`base-maia`)** |
-| `SHADCNUIKIT_API_KEY` | `@shadcnuikit` registry and `shadcnuikit` HTTP MCP (vendor docs alias: `REGISTRY_TOKEN`) | Set in Windows User env; **verified registry + MCP** |
-| `SHADCN_STUDIO_EMAIL`, `SHADCN_STUDIO_LICENSE_KEY` | `@ss-*` registries and scoped child `EMAIL`/`API_KEY` via `scripts/shadcn-studio-mcp.ts` | Set in Windows User env; **verified registry + stdio MCP** |
-| `EFFERD_REGISTRY_TOKEN` | `@efferd` registry (free + licensed items) | Set in Windows User env; **verified registry search/view** |
-| `SHADCN_SPACE_EMAIL`, `SHADCN_SPACE_LICENSE_KEY` | Future Shadcn Space Pro tier | Not supplied; free catalog verified without auth |
-| `CONTEXT7_API_KEY` | Context7 HTTP MCP and `ctx7` CLI | Set in Windows User env; **verified HTTP MCP** |
-| `VERCEL_TOKEN` | Vercel CLI/API (`vercel whoami` authenticated; separate from `https://mcp.vercel.com` OAuth) | Set in Windows User env; CLI authenticated as `conrad-4371` |
-| `RESEND_API_KEY` | Resend CLI & HTTP MCP (`https://mcp.resend.com/mcp`) | Set in Windows User env & secure storage; **verified CLI + MCP** |
-| `CLOUDINARY_API_KEY` | Incomplete alone for key-based admin API (missing cloud name/secret); `cld` OAuth token expired (`2026-10-30`) | Set in Windows User env; re-run `cld login` when Cloudinary is needed |
-| `SUPABASE_ACCESS_TOKEN`, `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `INNGEST_SIGNING_KEY`, `INNGEST_EVENT_KEY` | Conditional service credentials (default Supabase PAT only; Stripe test-mode; Inngest app keys are **not** Cloud MCP auth) | Stored privately in Windows User env, **inactive** in `GF-SITE` |
-| `PAGESPEED_API_KEY`, `CRUX_API_KEY`, `GSC_*`, `AHREFS_API_KEY`, `WEBPAGETEST_API_KEY`, `AXE_API_KEY` | Optional external SEO/perf/a11y services | Not supplied |
+| `REACTBITS_LICENSE_KEY` | `@reactbits-starter`, `@reactbits-pro` registries and `reactbits-pro` HTTP MCP | Set in developer's private environment; verified Pro entitlement |
+| `REUI_LICENSE_KEY` | `@reui` shadcn registry only (**not** ReUI MCP OAuth) | Set in developer's private environment; verified registry search/view |
+| `REUI_MCP_TOKEN` _(optional)_ | Dedicated ReUI MCP PAT (alternative to OAuth sign-in) | Optional; ReUI MCP uses OAuth sign-in otherwise |
+| `SHADCNBLOCKS_API_KEY` | `@shadcnblocks` registry (`sk_live_` prefix is Shadcnblocks, **not** Stripe) | Set in developer's private environment; verified direct item view (`base-maia`) |
+| `SHADCNUIKIT_API_KEY` | `@shadcnuikit` registry and `shadcnuikit` HTTP MCP (vendor docs alias: `REGISTRY_TOKEN`) | Set in developer's private environment; verified registry + MCP |
+| `SHADCN_STUDIO_EMAIL`, `SHADCN_STUDIO_LICENSE_KEY` | `@ss-*` registries and isolated child `EMAIL`/`API_KEY` via `scripts/shadcn-studio-mcp.ts` | Set in developer's private environment; verified registry + isolated stdio MCP |
+| `EFFERD_REGISTRY_TOKEN` | `@efferd` registry (free + licensed items) | Set in developer's private environment; verified registry search/view |
+| `SHADCN_SPACE_EMAIL`, `SHADCN_SPACE_LICENSE_KEY` | Future Shadcn Space Pro tier | Optional; free catalog verified without auth |
+| `CONTEXT7_API_KEY` | Context7 HTTP MCP and `ctx7` CLI | Set in developer's private environment; verified HTTP MCP |
+| `VERCEL_TOKEN` | Vercel CLI/API (separate from `https://mcp.vercel.com` OAuth) | Set in developer's private environment when deploying/inspecting via CLI |
+| `RESEND_API_KEY` | Resend CLI & HTTP MCP (`https://mcp.resend.com/mcp`) | Set in developer's private environment; optional until email features exist |
+| `CLOUDINARY_API_KEY` | Incomplete alone for key-based admin API (requires cloud name/secret or `cld login` OAuth) | Optional; run `cld login` when Cloudinary is needed |
+| `SUPABASE_ACCESS_TOKEN`, `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `INNGEST_SIGNING_KEY`, `INNGEST_EVENT_KEY` | Conditional service credentials (inactive in frontend-only `GF-SITE`; Inngest app keys are **not** Cloud MCP auth) | Optional; unused in `GF-SITE` runtime |
+| `PAGESPEED_API_KEY`, `CRUX_API_KEY`, `GSC_*`, `AHREFS_API_KEY`, `WEBPAGETEST_API_KEY`, `AXE_API_KEY` | Optional external SEO/perf/a11y services | Not configured |
 
 ---
 
 ## 5. Global Skill Shadow Audit
 
-The host machine has personal global skills outside `GF-SITE`. No unrelated personal skills were deleted. Be aware of exact-name overlaps when diagnosing provider skill precedence (T3 Claude guidance notes active user/config directories can shadow project `.claude/skills` on name collisions):
+Developer workstations may also carry personal global skills outside `GF-SITE`. Do not delete unrelated personal skills; keep exact-name precedence in mind when diagnosing provider skill resolution (Claude user/config directories can shadow project `.claude/skills` on name collisions):
 
-- `C:\Users\Conrad\.claude\skills`: **0 overlaps** with `GF-SITE`.
-- T3 Antigravity `config\skills`: **0 exact-name overlaps** (global `emil-design-engineering` coexists under a distinct name from project `emil-design-eng`).
-- `C:\Users\Conrad\.codex\skills`: **1 overlap** (`vitest`).
-- `C:\Users\Conrad\.cursor\skills`: **8 overlaps** (`animate`, `animation-performance`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `pick-ui-library`, `prototype`, `review-animations`).
-- `C:\Users\Conrad\.agents\skills`: **16 overlaps** (`agent-browser`, `emil-design-eng`, `frontend-design`, `remotion-best-practices`, `resend`, `resend-cli`, `shadcn`, `stripe-best-practices`, `supabase`, `supabase-postgres-best-practices`, `ui-ux-pro-max`, `ultracite`, `vercel-composition-patterns`, `vercel-react-best-practices`, `vercel-react-view-transitions`, `web-design-guidelines`).
+- `~/.claude/skills`: `0` overlaps with `GF-SITE`.
+- T3 Antigravity user `config/skills`: `0` exact-name overlaps (`emil-design-engineering` coexists under a distinct name from project `emil-design-eng`).
+- `~/.codex/skills`: `1` overlap (`vitest`).
+- `~/.cursor/skills`: `8` overlaps (`animate`, `animation-performance`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `pick-ui-library`, `prototype`, `review-animations`).
+- `~/.agents/skills`: `16` overlaps (`agent-browser`, `emil-design-eng`, `frontend-design`, `remotion-best-practices`, `resend`, `resend-cli`, `shadcn`, `stripe-best-practices`, `supabase`, `supabase-postgres-best-practices`, `ui-ux-pro-max`, `ultracite`, `vercel-composition-patterns`, `vercel-react-best-practices`, `vercel-react-view-transitions`, `web-design-guidelines`).
 
 ---
 
@@ -101,6 +101,7 @@ bunx skills@1.9.0 check
 # 4. Sync Vale styles and verify local quality/test gates
 vale sync
 bun run check
+bun run check:foundation
 bun run knip
 bun run typecheck
 bun run test:run

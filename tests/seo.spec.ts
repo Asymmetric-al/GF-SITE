@@ -8,6 +8,15 @@ test.describe("Technical SEO route checks @seo", () => {
 
     expect(response?.status()).toBe(200);
 
+    const headers = response?.headers() ?? {};
+
+    expect(headers["x-content-type-options"]).toBe("nosniff");
+    expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+    expect(headers["x-frame-options"]).toBe("DENY");
+    expect(headers["permissions-policy"]).toContain("camera=()");
+    expect(headers["x-robots-tag"]).toBe("noindex, nofollow");
+    expect(headers["x-powered-by"]).toBeUndefined();
+
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page).toHaveTitle("Global Fellowship (Development Scaffold)");
 

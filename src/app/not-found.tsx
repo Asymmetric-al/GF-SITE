@@ -12,8 +12,9 @@ import {
 
 const NotFound = () => (
   <main
-    className="mx-auto flex w-full max-w-2xl flex-1 items-center px-6 py-16"
+    className="mx-auto flex w-full max-w-2xl flex-1 items-center px-6 py-16 focus:outline-none"
     id="main-content"
+    tabIndex={-1}
   >
     <Card className="w-full">
       <CardHeader>

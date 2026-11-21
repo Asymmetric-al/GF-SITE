@@ -1,23 +1,23 @@
 {
   "mcpServers": {
     "gf-site-shadcn": {
-      "command": "npx",
-      "args": ["-y", "shadcn@4.23.0", "mcp"]
+      "command": "bun",
+      "args": ["../../../scripts/shadcn-mcp.ts"]
     },
     "reactbits-pro": {
-      "serverUrl": "https://mcp.reactbits.dev/mcp",
+      "url": "https://mcp.reactbits.dev/mcp",
       "headers": {
         "Authorization": "Bearer ${REACTBITS_LICENSE_KEY}"
       }
     },
     "shadcnuikit": {
-      "serverUrl": "https://shadcnuikit.com/api/mcp",
+      "url": "https://shadcnuikit.com/api/mcp",
       "headers": {
         "Authorization": "Bearer ${SHADCNUIKIT_API_KEY}"
       }
     },
     "reui": {
-      "serverUrl": "https://mcp.reui.io"
+      "url": "https://mcp.reui.io"
     }
   }
 }

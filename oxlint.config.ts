@@ -1,20 +1,33 @@
 import { defineConfig } from "oxlint";
 import antiSlop from "ultracite/oxlint/anti-slop";
 import core from "ultracite/oxlint/core";
+import { jsPluginSettings, selectJsPlugins } from "ultracite/oxlint/js-plugins";
 import next from "ultracite/oxlint/next";
+import nextJsPlugins from "ultracite/oxlint/next/js-plugins";
 import playwright from "ultracite/oxlint/playwright";
 import react from "ultracite/oxlint/react";
 import shadcn from "ultracite/oxlint/shadcn";
 import vitest from "ultracite/oxlint/vitest";
 
+const reactDoctor = selectJsPlugins(["react-doctor"]);
+
 const vitestScopedOverrides = (vitest.overrides ?? []).map((override) => ({
   ...override,
-  files: ["src/**/*.test.{ts,tsx}"],
+  files: ["src/**/*.test.{ts,tsx}", "scripts/**/*.test.ts"],
 }));
 
 export default defineConfig({
   env: core.env,
-  extends: [core, react, next, playwright, antiSlop, shadcn],
+  extends: [
+    core,
+    react,
+    next,
+    playwright,
+    antiSlop,
+    shadcn,
+    reactDoctor,
+    nextJsPlugins,
+  ],
   ignorePatterns: [
     ...core.ignorePatterns,
     // Upstream agent skill and generated agent definitions
@@ -36,6 +49,7 @@ export default defineConfig({
   // Re-declared on root config so dependency analyzers (Knip) detect JS plugins
   jsPlugins: [
     ...(shadcn.jsPlugins ?? []),
+    ...(reactDoctor.jsPlugins ?? []),
     {
       name: "landmines-testing",
       specifier: "@interfere/landmines/testing",
@@ -51,22 +65,19 @@ export default defineConfig({
       files: ["src/components/ui/**/*.tsx"],
       rules: {
         "func-style": "off",
-      },
-    },
-    {
-      // Explicit property-scoped CSS transition (`transition-[background-color,color,box-shadow]`)
-      // on the Vercel UI SDK tab wrapper avoids `transition-all` while keeping
-      // raw colors, inline styles, unknown classes, and restyling enforced.
-      files: ["src/components/foundation-tabs.tsx"],
-      rules: {
-        "shadcn/no-arbitrary-values": "off",
+        "react-doctor/no-transition-all": "off",
+        "react-doctor/only-export-components": "off",
       },
     },
     {
       // High-signal anti-flake testing rules from @interfere/landmines/testing
       // scoped to test suites without overriding `.spec.ts` filenames, prose
       // comments, or explicit return-type conventions.
-      files: ["src/**/*.test.{ts,tsx}", "tests/**/*.spec.ts"],
+      files: [
+        "src/**/*.test.{ts,tsx}",
+        "scripts/**/*.test.ts",
+        "tests/**/*.spec.ts",
+      ],
       rules: {
         "landmines-testing/no-fixed-sleep": "error",
         "landmines-testing/no-flake-masking": "error",
@@ -77,6 +88,18 @@ export default defineConfig({
     },
   ],
   rules: {
+    "no-restricted-imports": [
+      "error",
+      {
+        patterns: [
+          {
+            group: ["radix-ui", "radix-ui/*", "@radix-ui/*"],
+            message:
+              "Radix packages are forbidden in GF-SITE. Use @base-ui/react (static/display) or @ui-sdk/react (interactive).",
+          },
+        ],
+      },
+    ],
     // Allow Card and CardContent containers to control internal layout/spacing
     // on the theme spacing scale while keeping colors, typography, and borders locked.
     "shadcn/no-restyle": [
@@ -93,6 +116,7 @@ export default defineConfig({
     ],
   },
   settings: {
+    ...jsPluginSettings,
     shadcn: {
       note: "See DESIGN.md for design system boundaries and approved exceptions.",
       ui: "@/components/ui",

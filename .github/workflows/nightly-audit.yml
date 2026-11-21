@@ -32,8 +32,25 @@ jobs:
         with:
           bun-version: "1.4.3"
 
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
       - name: Install dependencies (frozen lockfile)
         run: bun install --frozen-lockfile
+
+      - name: Cache Next.js build output
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('bun.lock') }}-${{ hashFiles('src/**', 'next.config.ts', 'tsconfig.json') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('bun.lock') }}-
+            nextjs-${{ runner.os }}-
 
       - name: Build production bundle
         run: bun run build
@@ -73,8 +90,25 @@ jobs:
         with:
           bun-version: "1.4.3"
 
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
       - name: Install dependencies (frozen lockfile)
         run: bun install --frozen-lockfile
+
+      - name: Cache Next.js build output
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('bun.lock') }}-${{ hashFiles('src/**', 'next.config.ts', 'tsconfig.json') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('bun.lock') }}-
+            nextjs-${{ runner.os }}-
 
       - name: Build production bundle
         run: bun run build
@@ -102,5 +136,5 @@ jobs:
       - name: Run offline Lychee link check
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --config lychee.toml README.md AGENTS.md DESIGN.md docs/**/*.md
+          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md
           fail: true

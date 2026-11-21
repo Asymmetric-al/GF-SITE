@@ -6,8 +6,8 @@ test.describe("Visual regression baseline @visual", () => {
     page,
   }) => {
     test.skip(
-      browserName !== "chromium",
-      "Visual baseline is tracked deterministically against Desktop Chromium."
+      browserName !== "chromium" || process.platform !== "win32",
+      "Visual baseline is tracked deterministically against Desktop Chromium on Windows (win32) until Linux baselines are added."
     );
 
     await page.setViewportSize({ height: 900, width: 1280 });

@@ -7,7 +7,7 @@ import type { StarterPageContent } from "./types";
  */
 export const LOCAL_STARTER_PAGE: StarterPageContent = {
   slug: "/",
-  statusLabel: "Development Foundation — Provisional Scaffold",
+  statusLabel: "Development Foundation: Provisional Scaffold",
   title: "Global Fellowship Website Foundation",
   summary:
     "Frontend application workspace prepared for Global Fellowship website development. Content on this screen is local development data; editorial management and publication will integrate with Core's Payload CMS v4 boundary in a later phase.",
