@@ -1,4 +1,3 @@
-import { AxeBuilder } from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("Starter foundation smoke checks", () => {
@@ -127,18 +126,6 @@ test.describe("Starter foundation smoke checks", () => {
     );
 
     expect(hasOverflow).toBe(false);
-  });
-
-  test("passes automated WCAG 2.1 A/AA accessibility audit on starter route", async ({
-    page,
-  }) => {
-    await page.goto("/");
-
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-      .analyze();
-
-    expect(results.violations).toEqual([]);
   });
 
   test("renders custom 404 page with navigation back to starter route", async ({

@@ -1,6 +1,6 @@
 export type PillarId = "content-boundary" | "frontend" | "ui-system";
 
-export interface ContentMedia {
+interface ContentMedia {
   readonly url: string;
   readonly alt: string;
   readonly width: number;

@@ -16,7 +16,7 @@ This repository is intentionally frontend-only and runs independently without `A
 | Interactive Primitives | `@ui-sdk/core` / `@ui-sdk/react` | `0.1.0-beta.13` |
 | Rich Text | `@tiptap/core`, `@tiptap/pm`, `@tiptap/react`, `@tiptap/starter-kit`, `@tiptap/static-renderer` | `3.35.0` |
 | React Compiler | `babel-plugin-react-compiler` | `1.0.0` |
-| Linting & Formatting | `ultracite` / `oxlint` / `oxfmt` + `@shadcn/lint` + `@interfere/landmines` | `8.3.1` / `1.94.0` / `0.79.0` / `0.2.5` / `0.1.1` |
+| Linting & Formatting | `ultracite` / `oxlint` / `oxfmt` + `@shadcn/lint` + `oxlint-plugin-react-doctor` + `@interfere/landmines` | `8.3.1` / `1.94.0` / `0.79.0` / `0.2.5` / `0.9.23` / `0.1.1` |
 | Type-Aware Lint Backend | `tsrs` (`tsrs-lint` via Oxlint — no `oxlint-tsgolint`) | `7.1.0-beta.tsrs4` |
 | Unit & Component Testing | `vitest` / `vite` / `@vitejs/plugin-react` / `@testing-library/react` / `jsdom` | `5.1.1` / `8.3.8` / `6.3.0` / `16.3.3` / `31.0.1` |
 | Browser, A11y & SEO Checks | `@playwright/test` / `@axe-core/playwright` | `1.65.1` / `4.14.0` |
@@ -46,7 +46,8 @@ Open [http://localhost:3000](http://localhost:3000). No external services, Core 
 | `bun run start` | Start the built production server on Node.js |
 | `bun run typegen` | Generate Next.js route types in `.next/types` |
 | `bun run typecheck` | Run `next typegen && tsc --noEmit` across the full `tsconfig.json` |
-| `bun run check` | Run Ultracite checks (`oxlint` with `tsrs`, `anti-slop`, `@shadcn/lint`, `@interfere/landmines/testing` + `oxfmt --check`) |
+| `bun run check` | Run Ultracite checks (`oxlint` with `tsrs`, `anti-slop`, `@shadcn/lint`, `oxlint-plugin-react-doctor`, `@interfere/landmines/testing` + `oxfmt --check`) |
+| `bun run check:foundation` | Verify zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, and manifest integrity |
 | `bun run fix` | Apply safe Ultracite auto-fixes and Oxfmt formatting |
 | `bun run knip` | Detect unused files, exports, and dependencies |
 | `bun run test` / `bun run test:run` | Run Vitest unit and component tests (watch mode / bounded run) |

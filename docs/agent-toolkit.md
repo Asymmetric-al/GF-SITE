@@ -7,7 +7,7 @@ This is the sanitized repository guide for the AI agent toolkit configured in `G
 | Layer | Location | Owner / Restoration Mechanism |
 | --- | --- | --- |
 | Canonical agent instructions | [AGENTS.md](../AGENTS.md), [CLAUDE.md](../CLAUDE.md), [DESIGN.md](../DESIGN.md) | Git-tracked in `GF-SITE` |
-| Project-scoped skills (123 total) | `.agents/skills/` (Codex, Cursor, Antigravity) and `.claude/skills/` (Claude Code); `.cursor/skills/impeccable` | Managed via [skills-lock.json](../skills-lock.json) (`skills@1.9.0`) plus tracked specialist skills (`playwright-cli`, `impeccable`, `ui-ux-pro-max`, `react-bits-pro`, `shadcnuikit`, `reui`, and 7 Chrome DevTools skills) |
+| Project-scoped skills (122 total) | `.agents/skills/` (Codex, Cursor, Antigravity) and `.claude/skills/` (Claude Code); `.cursor/skills/impeccable` | Managed via [skills-lock.json](../skills-lock.json) (`skills@1.9.0`) plus tracked specialist skills (`playwright-cli`, `impeccable`, `ui-ux-pro-max`, `react-bits-pro`, `shadcnuikit`, `reui`, and 7 Chrome DevTools skills); parity verified by `bun run check:foundation` |
 | Generated specialist subagent specs | `.claude/agents/`, `.codex/agents/`, `.cursor/agents/`, `specs/` | Generated via `playwright init-agents` (`claude`, `codex`) and `impeccable install --no-hooks` |
 | Project-scoped MCP configurations | `.mcp.json` (Claude), `.cursor/mcp.json` (Cursor), `.codex/config.toml` (Codex), `.agents/plugins/{next-devtools,gf-site-ui-registries}/mcp_config.json` (Antigravity) | Git-tracked; credentials referenced strictly via env vars (`scripts/shadcn-studio-mcp.ts` maps `SHADCN_STUDIO_EMAIL` / `SHADCN_STUDIO_LICENSE_KEY` to child `EMAIL` / `API_KEY` without logging or argv exposure) |
 | Single edit-time hook path per provider | `.claude/settings.json`, `.codex/hooks.json`, `.cursor/hooks.json` (`bunx --no-install ultracite fix --hook`); `.agents/hooks.json` (`bun ../scripts/antigravity-post-edit-hook.ts`) | Git-tracked; runs changed-files-only Ultracite fixes without recursive loops |
@@ -28,7 +28,7 @@ All project skills are copied into `.agents/skills/` (discovered by Codex, Curso
 - **Testing, browser automation, and diagnostics (11 skills):** `vitest`, `vite` (`antfu/skills`), `playwright-cli`, `agent-browser`, and 7 Chrome DevTools skills (`chrome-devtools`, `chrome-devtools-cli`, `a11y-debugging`, `cookie-debugging`, `debug-optimize-lcp`, `memory-leak-debugging`, `troubleshooting`).
 - **Component catalog integration (3 skills):** `react-bits-pro` (v3.3 from `@reactbits-starter/skill`), `shadcnuikit` (general integration skill; 8 paid design packs kept unactivated), `reui` (`v68f0e6fa91`, 16 files extracted cleanly without modifying `~/.codex/config.toml`).
 - **Theo Browne's Tstack (9 skills):** `full-send`, `full-stop`, `council`, `sol-loop`, `file-pr`, `takeover`, `babysit-pr`, `modernize`, `leaving-pr-comments` (retaining `scripts/pr-wait` and references).
-- **Additional official service and maintenance skills (21 skills):** Resend (`resend`, `resend-cli`, `react-email`, `email-best-practices`, `agent-email-inbox`), Firecrawl (`firecrawl`, `firecrawl-map`, `firecrawl-crawl`, `firecrawl-scrape`, `firecrawl-search`, `firecrawl-parse`, `firecrawl-download`), Supabase (`supabase`, `supabase-postgres-best-practices`), Stripe (`stripe-best-practices`, `stripe-docs`), Remotion (`remotion-best-practices`), Knip (`configure-knip`), Nia (`Nia`), Sentry (`code-simplifier`, `agents-md`). _(Total: 28 + 22 + 29 + 11 + 3 + 9 + 21 = 123 project-scoped skills.)_
+- **Additional official service and maintenance skills (20 skills):** Resend (`resend`, `resend-cli`, `react-email`, `email-best-practices`, `agent-email-inbox`), Firecrawl (`firecrawl`, `firecrawl-map`, `firecrawl-crawl`, `firecrawl-scrape`, `firecrawl-search`, `firecrawl-parse`, `firecrawl-download`), Supabase (`supabase`, `supabase-postgres-best-practices`), Stripe (`stripe-best-practices`, `stripe-docs`), Remotion (`remotion-best-practices`), Knip (`configure-knip`), Sentry (`code-simplifier`, `agents-md`). _(`Nia` was explicitly removed because it is no longer used. Total: 28 + 22 + 29 + 11 + 3 + 9 + 20 = 122 project-scoped skills.)_
 
 ---
 
@@ -46,7 +46,7 @@ To avoid duplicate MCP registrations across T3 Code providers:
   - `shadcn-space` (`https://mcp.shadcnspace.com/mcp`, free tier) — Claude, Cursor, Codex (Antigravity already loads global `shadcn-space`).
   - `playwright-test` (`bunx --no-install playwright run-test-mcp-server`) — Claude (`.mcp.json`, used by Playwright test agents).
   - `vercel` (`https://mcp.vercel.com`, OAuth) — Codex (`.codex/config.toml`; Cursor and Codex global configs also register it).
-- **Host / global provider MCPs already present outside `GF-SITE` (not duplicated):** Antigravity global T3 config already provides `motion`, `playwright`, `chrome-devtools`, `shadcn-space`, and `shadcn-studio`. Claude and Codex user configs already provide `github`, `context7`, `sentry`, `stripe`, `cloudinary-assets`, `inngest-cloud`, and `nia` (note: global `core_*` servers belong to `Asymmetric-al/core` and must not be used for `GF-SITE` registry lookups).
+- **Host / global provider MCPs already present outside `GF-SITE` (not duplicated):** Antigravity global T3 config already provides `motion`, `playwright`, `chrome-devtools`, `shadcn-space`, and `shadcn-studio`. Claude and Codex user configs already provide `github`, `context7`, `sentry`, `stripe`, `cloudinary-assets`, and `inngest-cloud` (note: global `core_*` servers belong to `Asymmetric-al/core` and must not be used for `GF-SITE` registry lookups).
 
 ---
 
@@ -101,6 +101,7 @@ bunx skills@1.9.0 check
 # 4. Sync Vale styles and verify local quality/test gates
 vale sync
 bun run check
+bun run check:foundation
 bun run knip
 bun run typecheck
 bun run test:run

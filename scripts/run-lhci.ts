@@ -9,6 +9,25 @@ if (profile !== "mobile" && profile !== "desktop") {
   process.exit(1);
 }
 
+const getChromeCandidates = (): readonly string[] => {
+  if (process.platform === "win32") {
+    return [
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    ];
+  }
+
+  if (process.platform === "darwin") {
+    return ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"];
+  }
+
+  return [
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+  ];
+};
+
 const resolveChromePath = (): string | undefined => {
   const configured = process.env.CHROME_PATH;
 
@@ -16,19 +35,7 @@ const resolveChromePath = (): string | undefined => {
     return configured;
   }
 
-  const candidates =
-    process.platform === "win32"
-      ? [
-          "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-          "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-        ]
-      : [
-          "/usr/bin/google-chrome",
-          "/usr/bin/chromium-browser",
-          "/usr/bin/chromium",
-        ];
-
-  return candidates.find((candidate) => fs.existsSync(candidate));
+  return getChromeCandidates().find((candidate) => fs.existsSync(candidate));
 };
 
 const chromePath = resolveChromePath();

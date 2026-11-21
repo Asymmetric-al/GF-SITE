@@ -1,11 +1,15 @@
 import { defineConfig } from "oxlint";
 import antiSlop from "ultracite/oxlint/anti-slop";
 import core from "ultracite/oxlint/core";
+import { jsPluginSettings, selectJsPlugins } from "ultracite/oxlint/js-plugins";
 import next from "ultracite/oxlint/next";
+import nextJsPlugins from "ultracite/oxlint/next/js-plugins";
 import playwright from "ultracite/oxlint/playwright";
 import react from "ultracite/oxlint/react";
 import shadcn from "ultracite/oxlint/shadcn";
 import vitest from "ultracite/oxlint/vitest";
+
+const reactDoctor = selectJsPlugins(["react-doctor"]);
 
 const vitestScopedOverrides = (vitest.overrides ?? []).map((override) => ({
   ...override,
@@ -14,7 +18,16 @@ const vitestScopedOverrides = (vitest.overrides ?? []).map((override) => ({
 
 export default defineConfig({
   env: core.env,
-  extends: [core, react, next, playwright, antiSlop, shadcn],
+  extends: [
+    core,
+    react,
+    next,
+    playwright,
+    antiSlop,
+    shadcn,
+    reactDoctor,
+    nextJsPlugins,
+  ],
   ignorePatterns: [
     ...core.ignorePatterns,
     // Upstream agent skill and generated agent definitions
@@ -36,6 +49,7 @@ export default defineConfig({
   // Re-declared on root config so dependency analyzers (Knip) detect JS plugins
   jsPlugins: [
     ...(shadcn.jsPlugins ?? []),
+    ...(reactDoctor.jsPlugins ?? []),
     {
       name: "landmines-testing",
       specifier: "@interfere/landmines/testing",
@@ -51,15 +65,8 @@ export default defineConfig({
       files: ["src/components/ui/**/*.tsx"],
       rules: {
         "func-style": "off",
-      },
-    },
-    {
-      // Explicit property-scoped CSS transition (`transition-[background-color,color,box-shadow]`)
-      // on the Vercel UI SDK tab wrapper avoids `transition-all` while keeping
-      // raw colors, inline styles, unknown classes, and restyling enforced.
-      files: ["src/components/foundation-tabs.tsx"],
-      rules: {
-        "shadcn/no-arbitrary-values": "off",
+        "react-doctor/no-transition-all": "off",
+        "react-doctor/only-export-components": "off",
       },
     },
     {
@@ -93,6 +100,7 @@ export default defineConfig({
     ],
   },
   settings: {
+    ...jsPluginSettings,
     shadcn: {
       note: "See DESIGN.md for design system boundaries and approved exceptions.",
       ui: "@/components/ui",

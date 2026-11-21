@@ -52,7 +52,7 @@ export const FoundationTabs = ({ pillars }: FoundationTabsProps) => {
 
           return (
             <TabsTab
-              className="text-muted-foreground focus-visible:outline-ring data-selected:bg-card data-selected:text-foreground [@media(hover:hover)]:hover:text-foreground inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 data-selected:shadow-xs motion-reduce:transition-none"
+              className="text-muted-foreground focus-visible:outline-ring data-selected:bg-card data-selected:text-foreground hover:text-foreground inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 data-selected:shadow-xs motion-reduce:transition-none"
               key={pillar.id}
               value={pillar.id}
             >

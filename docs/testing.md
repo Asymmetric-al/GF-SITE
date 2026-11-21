@@ -54,8 +54,8 @@ This document describes the automated testing, accessibility, visual regression,
 - **Production test server:** `playwright.config.ts` starts the actual built app via `bun run start -- --hostname 127.0.0.1 --port 3147` (`PLAYWRIGHT_PORT` / `E2E_BASE_URL` / `E2E_START_COMMAND` configurable) with `reuseExistingServer: false` so tests never attach accidentally to an unrelated dev server. Build first (`bun run build`) before running Playwright.
 - **Suite organization (`tests/`):**
   - `tests/smoke.spec.ts` — Core route rendering, console/page error checks, UI SDK tab interaction, mobile overflow, 404 navigation.
-  - `tests/seo.spec.ts` (`@seo`) — Metadata, OpenGraph/Twitter tags, `noindex`/`nofollow`, canonical absence while `NEXT_PUBLIC_SITE_URL` is unset, `/robots.txt`, single `<h1>`, image dimensions, and 404 semantics.
-  - `tests/accessibility.spec.ts` (`@a11y`) — WCAG 2.1 A/AA `@axe-core/playwright` scans across all 3 UI SDK tab states and custom 404 route, skip-link keyboard focus, `prefers-reduced-motion: reduce`, and `320px` narrow-viewport overflow.
+  - `tests/seo.spec.ts` (`@seo`) — Metadata, OpenGraph/Twitter tags, `noindex`/`nofollow`, `X-Robots-Tag`, baseline HTTP security headers (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, no `X-Powered-By`), canonical absence while `NEXT_PUBLIC_SITE_URL` is unset, `/robots.txt`, single `<h1>`, image dimensions, and 404 semantics.
+  - `tests/accessibility.spec.ts` (`@a11y`) — WCAG 2.1 A/AA `@axe-core/playwright` scans across all 3 UI SDK tab states and custom 404 route, keyboard skip-link activation into `#main-content`, `prefers-reduced-motion: reduce`, and `320px` narrow-viewport overflow.
   - `tests/visual.spec.ts` (`@visual`) — Deterministic Desktop Chromium (`1280x900`, `reducedMotion: "reduce"`, `animations: "disabled"`, fonts awaited) full-page visual regression baseline.
   - `tests/seed.spec.ts` — Seed baseline for Playwright test agents (`planner`, `generator`, `healer`) configured under `specs/`, `.claude/agents/`, and `.codex/agents/`.
 - **Visual baseline policy:**
@@ -112,11 +112,13 @@ This document describes the automated testing, accessibility, visual regression,
 
 - **Normal PR / Push (`.github/workflows/ci.yml`):**
   1. `bun install --frozen-lockfile`
-  2. `bun run check` (Ultracite: Oxlint + `tsrs` + `@shadcn/lint` + `anti-slop` + Oxfmt)
-  3. `bun run knip`
-  4. `bun run test:run` (Vitest unit & component suite)
-  5. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
-  6. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
+  2. `bun run check` (Ultracite: Oxlint + `tsrs` + `@shadcn/lint` + `anti-slop` + `oxlint-plugin-react-doctor` + Oxfmt)
+  3. `bun run check:foundation` (zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, manifest sync)
+  4. `bun run knip`
+  5. Offline Lychee Markdown link check (`lycheeverse/lychee-action@v2`)
+  6. `bun run test:run` (Vitest unit & component suite)
+  7. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
+  8. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
 - **Scheduled / Manual Deep Audit (`.github/workflows/nightly-audit.yml`):**
   - Full 4-project Playwright cross-engine matrix (`chromium`, `firefox`, `webkit`, `mobile-webkit`, excluding Windows-specific visual snapshots on Linux runners).
   - Isolated Lighthouse CI mobile & desktop job uploading private `artifacts/lighthouse/` reports.

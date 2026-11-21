@@ -51,8 +51,7 @@ All validation checks below were **harmless local checks and non-mutating vendor
 | `sentry` | `0.47.0` (`sentry auth status`) | **Authenticated** (`Asymmetric.al`, token expires `2026-11-28`, auto-refresh enabled) |
 | `resend` | `v2.26.0` (`resend whoami`) | **Authenticated** (`full_access` via secure storage) |
 | `@shadscan/cli` | `0.17.0` (`--json --no-interactive`) | **Pass (diagnostic)** — reported 3 starter-scaffold warnings (`command-menu-present`, `theme-hotkey-present`, `theme-provider-configured`), deliberately deferred because no theme/command menu has been designed |
-| `react-doctor` | `0.9.23` (`--no-telemetry`) | **Blocked in non-TTY shell** — process hung waiting for interactive input under non-TTY PowerShell; recorded as on-demand interactive diagnostic |
-| `nia` | `v0.5.2` (`nia auth status`) | **Blocked / auth issue** — env key present, but CLI returned `Could not fetch plan info (API key may be invalid)` |
+| `react-doctor` | `0.9.23` (`oxlint-plugin-react-doctor@0.9.23` active in `bun run check`; CLI `--no-telemetry`) | **Static rules active in Oxlint** (`ultracite/oxlint/js-plugins` + `next/js-plugins`); standalone CLI hung waiting for TTY input under non-interactive PowerShell |
 | `cld` (Cloudinary) | `1.17.0` (`cld config`) | **Configured, authentication pending** — OAuth profile `dvgyndcnu` expired `2026-10-30`; supplied `CLOUDINARY_API_KEY` alone lacks cloud name/API secret |
 | `gitleaks` | `8.30.1` (`gitleaks dir --redact .`) | **Pass (`0` real leaks)** — verified across all tracked/candidate files; `.gitleaks.toml` allowlists gitignored build directories and the intentional dummy prompt string in vendored `video/evals/evals.json` |
 
@@ -105,7 +104,7 @@ _None of the third-party catalogs ship Vercel UI SDK native interactive primitiv
   - Confirmed direct discovery of `AGENTS.md`, `DESIGN.md`, `123` project skills, `3` Codex Playwright agents, valid `.codex/config.toml` declaring all `8` expected servers, host CLIs on PATH (`bun`, `node`, `gh`, `vercel`, `agent-browser`, `lychee`, `vale`, `gitleaks`), zero secrets across audited files, exact `package.json` pins (including all five Tiptap `3.35.0` packages), zero Radix hits across `package.json`, `bun.lock`, and `src/`, and valid `agent-toolkit-manifest.json` structure.
   - Review findings resolved before push: corrected unconfigured/uninstalled manifest item states (reserving `Configured, authentication pending` strictly for configured tools awaiting auth), added `cli:resend`, `runtime:node`, and `runtime:bun` to `agent-toolkit-manifest.json` (`204` total entries), and tightened the validation-log disclaimer above so local build/hook outputs are distinguished from non-mutating external vendor probes.
 - **Codex CLI MCP trust boundary (`codex mcp list` in `GF-SITE`):**
-  - Verified `codex mcp list` reads global `~/.codex/config.toml` servers (`github`, `context7`, `stripe`, `inngest-cloud`, `vercel`, `sentry`, `nia`, and separate `core_*` entries). Project-scoped `.codex/config.toml` activates automatically once the user trusts `C:\Users\Conrad\Documents\GitHub\GF-SITE` in Codex (user trust policy was deliberately not altered during setup).
+  - Verified `codex mcp list` reads global `~/.codex/config.toml` servers (`github`, `context7`, `stripe`, `inngest-cloud`, `vercel`, `sentry`, and separate `core_*` entries; `Nia` was removed from `GF-SITE` per user directive). Project-scoped `.codex/config.toml` activates automatically once the user trusts `C:\Users\Conrad\Documents\GitHub\GF-SITE` in Codex (user trust policy was deliberately not altered during setup).
 
 ---
 
@@ -113,5 +112,5 @@ _None of the third-party catalogs ship Vercel UI SDK native interactive primitiv
 
 1. **T3 Code session reload:** Click **Restart agent session** in T3 Code so running provider processes inherit the newly written Windows User-scope environment variables, skills, and project MCP definitions.
 2. **OAuth sign-ins (when needed):** ReUI MCP (`https://mcp.reui.io`), Vercel MCP (`https://mcp.vercel.com`), Cloudinary CLI (`cld login` to refresh expired `dvgyndcnu` token), and optional Figma / PostHog / Firecrawl / Deque / Google Search Console OAuth when those services are actively used.
-3. **Optional credentials not supplied:** Shadcn Space Pro, Motion+, Nia API key replacement (current env key returned plan-fetch error), Google Cloud keys (`PAGESPEED_API_KEY`, `CRUX_API_KEY`), Screaming Frog license/install, Ahrefs, WebPageTest, and Grafana `k6` OS install.
+3. **Optional credentials not supplied:** Shadcn Space Pro, Motion+, Google Cloud keys (`PAGESPEED_API_KEY`, `CRUX_API_KEY`), Screaming Frog license/install, Ahrefs, WebPageTest, and Grafana `k6` OS install.
 4. **Core CMS & Vercel project linkage:** Connect `Asymmetric-al/GF-SITE` to the confirmed Vercel project and integrate `Asymmetric-al/core` Payload CMS v4 when design and launch planning begin.

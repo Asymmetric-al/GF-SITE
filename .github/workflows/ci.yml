@@ -46,8 +46,17 @@ jobs:
       - name: Run Ultracite lint and format checks
         run: bun run check
 
+      - name: Verify foundation invariants (zero Radix, skill parity, manifest)
+        run: bun run check:foundation
+
       - name: Check unused files, exports, and dependencies (Knip)
         run: bun run knip
+
+      - name: Check offline Markdown documentation links (Lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --config lychee.toml README.md AGENTS.md DESIGN.md docs/**/*.md
+          fail: true
 
       - name: Run Vitest unit and component tests
         run: bun run test:run

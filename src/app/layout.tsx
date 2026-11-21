@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Figtree, Geist_Mono } from "next/font/google";
 
 import {
-  getCanonicalUrl,
   getMetadataBase,
   isSearchIndexingEnabled,
   SITE_DEFAULTS,
@@ -24,7 +23,6 @@ const geistMono = Geist_Mono({
 });
 
 const indexingEnabled = isSearchIndexingEnabled();
-const homeCanonical = getCanonicalUrl("/");
 
 export const metadata: Metadata = {
   description: SITE_DEFAULTS.description,
@@ -57,9 +55,6 @@ export const metadata: Metadata = {
     description: SITE_DEFAULTS.description,
     title: SITE_DEFAULTS.name,
   },
-  ...(homeCanonical === undefined
-    ? undefined
-    : { alternates: { canonical: homeCanonical } }),
 };
 
 const RootLayout = ({ children }: LayoutProps<"/">) => (

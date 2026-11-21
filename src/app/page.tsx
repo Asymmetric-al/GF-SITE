@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -6,6 +7,24 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { readStarterPageContent } from "@/lib/content/reader";
+import { getCanonicalUrl } from "@/lib/site";
+
+export const generateMetadata = (): Metadata => {
+  const homeCanonical = getCanonicalUrl("/");
+
+  if (homeCanonical === undefined) {
+    return {};
+  }
+
+  return {
+    alternates: {
+      canonical: homeCanonical,
+    },
+    openGraph: {
+      url: homeCanonical,
+    },
+  };
+};
 
 const HomePage = () => {
   const result = readStarterPageContent();
@@ -32,8 +51,9 @@ const HomePage = () => {
       </header>
 
       <main
-        className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-12"
+        className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-12 focus:outline-none"
         id="main-content"
+        tabIndex={-1}
       >
         <section
           aria-labelledby="starter-heading"
@@ -102,7 +122,7 @@ const HomePage = () => {
 
       <footer className="border-border/80 bg-background border-t">
         <div className="text-muted-foreground mx-auto flex w-full max-w-4xl flex-col gap-1 px-6 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>GF-SITE — Standalone frontend foundation (non-indexable).</p>
+          <p>GF-SITE: Standalone frontend foundation (non-indexable).</p>
           <p>Organized for later Core Payload CMS v4 integration.</p>
         </div>
       </footer>

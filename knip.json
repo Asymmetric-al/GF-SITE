@@ -1,13 +1,8 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": [
-    "scripts/*.ts",
-    "src/components/ui/*.tsx",
-    "src/lib/content/types.ts",
-    "tests/**/*.spec.ts"
-  ],
+  "entry": ["scripts/*.ts", "src/components/ui/*.tsx", "tests/**/*.spec.ts"],
   "project": [
-    "src/**/*.{ts,tsx}",
+    "src/**/*.{ts,tsx,css}",
     "tests/**/*.{ts,tsx}",
     "scripts/**/*.ts",
     "*.{ts,mts,mjs}"
@@ -22,8 +17,6 @@
     "@tiptap/static-renderer",
     "lighthouse",
     "svgo",
-    "tailwindcss",
-    "tsrs",
-    "tw-animate-css"
+    "tsrs"
   ]
 }

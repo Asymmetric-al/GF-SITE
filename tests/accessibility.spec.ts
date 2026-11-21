@@ -84,6 +84,9 @@ test.describe("Accessibility verification @a11y", () => {
     await expect(skipLink).toBeFocused();
     await expect(skipLink).toHaveAttribute("href", "#main-content");
 
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#main-content")).toBeFocused();
+
     const prefersReducedMotion = await page.evaluate(
       () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );

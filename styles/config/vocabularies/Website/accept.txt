@@ -43,7 +43,6 @@ Lychee
 MarketingSkills
 MCPs
 Next\.js
-Nia
 [Oo]xfmt
 [Oo]xlint
 Payload
