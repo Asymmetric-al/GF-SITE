@@ -10,12 +10,17 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# testing & audit artifacts (keep reviewed visual snapshots tracked separately)
 /coverage
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/.playwright-cli/
+/artifacts/
+/.lighthouseci/
+/playwright/.auth/
+*.storage-state.json
 
 # next.js
 /.next/
@@ -44,3 +49,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Playwright CLI output (may contain credentials)
+.playwright-cli/

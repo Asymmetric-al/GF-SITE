@@ -1,0 +1,52 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--headless=new --no-sandbox",
+        "onlyCategories": [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo"
+        ]
+      },
+      "startServerCommand": "bun run start -- --hostname 127.0.0.1 --port 3200",
+      "startServerReadyPattern": "Ready in",
+      "startServerReadyTimeout": 120000,
+      "url": ["http://127.0.0.1:3200/"]
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": [
+          "warn",
+          { "aggregationMethod": "median", "minScore": 0.9 }
+        ],
+        "categories:best-practices": [
+          "warn",
+          { "aggregationMethod": "median", "minScore": 0.9 }
+        ],
+        "categories:performance": [
+          "warn",
+          { "aggregationMethod": "median", "minScore": 0.9 }
+        ],
+        "cumulative-layout-shift": [
+          "warn",
+          { "aggregationMethod": "median", "maxNumericValue": 0.1 }
+        ],
+        "largest-contentful-paint": [
+          "warn",
+          { "aggregationMethod": "median", "maxNumericValue": 2500 }
+        ],
+        "total-blocking-time": [
+          "warn",
+          { "aggregationMethod": "median", "maxNumericValue": 200 }
+        ]
+      }
+    },
+    "upload": {
+      "outputDir": "artifacts/lighthouse/mobile",
+      "target": "filesystem"
+    }
+  }
+}

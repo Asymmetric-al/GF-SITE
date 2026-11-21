@@ -3,6 +3,40 @@
     "next-devtools": {
       "command": "bunx",
       "args": ["next-devtools-mcp@0.4.0"]
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["-y", "shadcn@4.23.0", "mcp"]
+    },
+    "reactbits-pro": {
+      "type": "http",
+      "url": "https://mcp.reactbits.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${REACTBITS_LICENSE_KEY}"
+      }
+    },
+    "shadcnuikit": {
+      "type": "http",
+      "url": "https://shadcnuikit.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${SHADCNUIKIT_API_KEY}"
+      }
+    },
+    "reui": {
+      "type": "http",
+      "url": "https://mcp.reui.io"
+    },
+    "shadcn-studio": {
+      "command": "bun",
+      "args": ["scripts/shadcn-studio-mcp.ts"]
+    },
+    "shadcn-space": {
+      "type": "http",
+      "url": "https://mcp.shadcnspace.com/mcp"
+    },
+    "playwright-test": {
+      "command": "bunx",
+      "args": ["--no-install", "playwright", "run-test-mcp-server"]
     }
   }
 }

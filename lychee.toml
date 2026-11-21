@@ -1,0 +1,18 @@
+# Local and bounded repository link-check policy for Lychee.
+# Use `lychee --offline ...` for deterministic local/CI docs verification;
+# omit `--offline` only for explicit bounded external URL audits.
+
+no_progress = true
+timeout = 20
+max_retries = 2
+exclude_path = [
+  "node_modules",
+  ".next",
+  ".agents",
+  ".claude",
+  "artifacts",
+  "coverage",
+  "playwright-report",
+  "test-results",
+]
+exclude = ["^http://127\\.0\\.0\\.1", "^http://localhost"]

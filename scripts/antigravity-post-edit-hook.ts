@@ -123,7 +123,7 @@ const main = async (): Promise<void> => {
     ) {
       const binName = process.platform === "win32" ? "bunx.exe" : "bunx";
 
-      spawnSync(binName, ["ultracite", "fix", relativeTarget], {
+      spawnSync(binName, ["--no-install", "ultracite", "fix", relativeTarget], {
         cwd: repoRoot,
         stdio: "ignore",
       });

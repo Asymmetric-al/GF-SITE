@@ -1,29 +1,63 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = Number(process.env.PLAYWRIGHT_PORT ?? "3147");
-const BASE_URL = `http://127.0.0.1:${PORT}`;
+const BASE_URL = process.env.E2E_BASE_URL ?? `http://127.0.0.1:${PORT}`;
+
+const START_COMMAND =
+  process.env.E2E_START_COMMAND ??
+  `bun run start -- --hostname 127.0.0.1 --port ${PORT}`;
+
 const IS_CI = Boolean(process.env.CI);
 
 export default defineConfig({
+  expect: {
+    timeout: 5000,
+  },
   forbidOnly: IS_CI,
   fullyParallel: true,
+  globalTimeout: IS_CI ? 15 * 60_000 : undefined,
+  outputDir: "test-results/playwright",
   projects: [
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
+    },
+    {
+      name: "mobile-webkit",
+      use: { ...devices["iPhone 13"] },
+    },
   ],
-  reporter: IS_CI ? "github" : "list",
-  retries: IS_CI ? 1 : 0,
+  reporter: IS_CI
+    ? [
+        ["github"],
+        ["html", { open: "never", outputFolder: "playwright-report" }],
+      ]
+    : [
+        ["list"],
+        ["html", { open: "never", outputFolder: "playwright-report" }],
+      ],
+  retries: 0,
   testDir: "./tests",
+  timeout: 30_000,
   use: {
     baseURL: BASE_URL,
-    trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    trace: "retain-on-failure",
+    video: "off",
   },
   webServer: {
-    command: `bun run start -- --hostname 127.0.0.1 --port ${PORT}`,
+    command: START_COMMAND,
     reuseExistingServer: false,
-    timeout: 60_000,
+    timeout: 120_000,
     url: BASE_URL,
   },
+  workers: IS_CI ? 1 : 4,
 });

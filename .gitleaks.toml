@@ -1,0 +1,17 @@
+title = "GF-SITE gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exclude gitignored build/dependency artifacts and upstream skill eval dummy example"
+paths = [
+  '''^node_modules/''',
+  '''^\.next/''',
+  '''^artifacts/''',
+  '''^coverage/''',
+  '''^playwright-report/''',
+  '''^test-results/''',
+  '''^\.agents/skills/video/evals/evals\.json$''',
+  '''^\.claude/skills/video/evals/evals\.json$''',
+]

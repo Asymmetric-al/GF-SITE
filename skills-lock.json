@@ -1,6 +1,526 @@
 {
   "version": 2,
   "skills": {
+    "Nia": {
+      "source": "nozomio-labs/nia-skill",
+      "commit": "b253a81f257d219f9842d864f9991be287bfc66f",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "4a1dc9ed0dfd957986e9096226888b806f31129470d97a5ec9824217bb735649",
+      "installMode": "copy"
+    },
+    "ab-testing": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/ab-testing/SKILL.md",
+      "computedHash": "56e4fd344bf686d5d3a083b2728a9fd65f173f047a6535eeb05712dd7ee10f13",
+      "installMode": "copy"
+    },
+    "access-protected-vercel-deployment": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/access-protected-vercel-deployment/SKILL.md",
+      "computedHash": "64d13ec924f401a57f616ff767adaf011e84385f77801066583f3c1a540776e0",
+      "installMode": "copy"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "commit": "1fde6b90e8f17474b2f122d4b4ce43a7fa0a6aa0",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "a0dfac7503f69bcf529b2660fc79964064c4f179eb65695904ddc45fc0d99d20",
+      "installMode": "copy"
+    },
+    "agent-email-inbox": {
+      "source": "resend/resend-skills",
+      "commit": "063246e39987faebc2608f968ca13a02d994a0d4",
+      "sourceType": "github",
+      "skillPath": "skills/agent-email-inbox/SKILL.md",
+      "computedHash": "61157a1f3781aca3614c1ff7777545b5a4e4cf8bec50d951d791b40796e902d0",
+      "installMode": "copy"
+    },
+    "agents-md": {
+      "source": "getsentry/skills",
+      "commit": "a582c51ee29d0f35e6ac321340796f77d43da733",
+      "sourceType": "github",
+      "skillPath": "skills/agents-md/SKILL.md",
+      "computedHash": "bdbf286bbd18b88533f295852e98aabf5577593b74c623a669d4f9985db7e226",
+      "installMode": "copy"
+    },
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "computedHash": "bb68811a6f0f5e2f734ae2683132d5932bdf4a1a9e109fd719fe9cf2a727a0ff",
+      "installMode": "copy"
+    },
+    "analytics": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/analytics/SKILL.md",
+      "computedHash": "d427971cc71c44d5c8734195ff69288a75c2022b97a9170ee9312256560a5f72",
+      "installMode": "copy"
+    },
+    "animate": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/animate/SKILL.md",
+      "computedHash": "c622e29fa956aea703dc4e2b8726d9a017d438beb284a60bc3fdb2540c602102",
+      "installMode": "copy"
+    },
+    "animation-performance": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/animation-performance/SKILL.md",
+      "computedHash": "1ff92f577fc2b7781ed622fd4eb5e514c252cf5cb95c3661743cd127ee01290a",
+      "installMode": "copy"
+    },
+    "animation-vocabulary": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/animation-vocabulary/SKILL.md",
+      "computedHash": "e1d19134dc63dfb09379f7b42557b63b6123becdd36d15bae991d0b6ca5b2110",
+      "installMode": "copy"
+    },
+    "apple-design": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/apple-design/SKILL.md",
+      "computedHash": "163ba8b42c7d9d5ccb08674266d4727c9ec610b9d876c906b1f29ce5e0d933da",
+      "installMode": "copy"
+    },
+    "ask-emil": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/ask-emil/SKILL.md",
+      "computedHash": "e7a92fe034a4151a27fbe2fad8813ffd18a9c98d6db8689930a1fdb3a7d536f5",
+      "installMode": "copy"
+    },
+    "ask-sonner": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/ask-sonner/SKILL.md",
+      "computedHash": "9e82788679f5f71c9e0686b66200565c3f4e47037a06b9d1e94567ed42361bbc",
+      "installMode": "copy"
+    },
+    "babysit-pr": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/babysit-pr/SKILL.md",
+      "computedHash": "b6f349b95dbf4cce64cf61608b4ed9a98ce3725afe29676e6614efc8dccb5c29",
+      "installMode": "copy"
+    },
+    "break-ui": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/break-ui/SKILL.md",
+      "computedHash": "f089f3663e197fb4e106249df70e815a96e3236520a2e1c0919d1694816baca8",
+      "installMode": "copy"
+    },
+    "cdn-caching": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/cdn-caching/SKILL.md",
+      "computedHash": "53abeffe4a962bf6e658c92449591aaa343a54ca8c6d39e39e9e43a576cc35b9",
+      "installMode": "copy"
+    },
+    "choreograph": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/choreograph/SKILL.md",
+      "computedHash": "a33a7cf57eacff502f833778eed62244fb5a890bb25124dacde73bcf8716218c",
+      "installMode": "copy"
+    },
+    "client-side-security": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/client-side-security/SKILL.md",
+      "computedHash": "88c8d2995d710951baa996160ed87c00f2b379ebe6064b3d4cfd331048e45951",
+      "installMode": "copy"
+    },
+    "cms-migration": {
+      "source": "payloadcms/skills",
+      "commit": "832d5bc4258ae784f08cb7f03a3a674d6b2fa5f1",
+      "sourceType": "github",
+      "skillPath": "skills/cms-migration/SKILL.md",
+      "computedHash": "9a74dc372db9c4ba5f6605b42f34959bf0907893e45fb061dbb2a8ceafd44bbc",
+      "installMode": "copy"
+    },
+    "co-marketing": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/co-marketing/SKILL.md",
+      "computedHash": "0d51144f2e9595dd033b44c0e84c6aeae3db4d7ccf9ab1ac7792990d8e72116f",
+      "installMode": "copy"
+    },
+    "code-simplifier": {
+      "source": "getsentry/skills",
+      "commit": "a582c51ee29d0f35e6ac321340796f77d43da733",
+      "sourceType": "github",
+      "skillPath": "skills/code-simplifier/SKILL.md",
+      "computedHash": "5d7c3f26d04fda382c378cbf1447037ef53a3ef929dd4e09d72005861d8e6a59",
+      "installMode": "copy"
+    },
+    "competitor-profiling": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/competitor-profiling/SKILL.md",
+      "computedHash": "76efcbc21f1aedb9003897638bba2adf265c05415e57444078c57a7a1021f3c2",
+      "installMode": "copy"
+    },
+    "competitors": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/competitors/SKILL.md",
+      "computedHash": "4a4740d93a85de0d5f3d5d99073a7ed2f953677dfefa9148654ff8ae6726018a",
+      "installMode": "copy"
+    },
+    "configure-knip": {
+      "source": "webpro/skills",
+      "commit": "30e66c946d87731ba1d51a133ac1f3f8c4f957e1",
+      "sourceType": "github",
+      "skillPath": "skills/configure-knip/SKILL.md",
+      "computedHash": "db7992d515c4c2e53708b202e6c27a61e9e19ff630045deedaa306c3c8fc26ba",
+      "installMode": "copy"
+    },
+    "content-strategy": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/content-strategy/SKILL.md",
+      "computedHash": "94a23ddb279c20ea8c7c7751eb07f548c855a5287aed8983f31e63b49e7dbf1a",
+      "installMode": "copy"
+    },
+    "conversion-tracking": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/conversion-tracking/SKILL.md",
+      "computedHash": "6847a545bf3ca478cf61c822652f1a940103a8bed899960e1d6303bf7f6def6e",
+      "installMode": "copy"
+    },
+    "copy-editing": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/copy-editing/SKILL.md",
+      "computedHash": "faf2d2cb156cdebe9b7ad16df2d25e42494e6069b33f237f5cdd24b04853636b",
+      "installMode": "copy"
+    },
+    "copywriting": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/copywriting/SKILL.md",
+      "computedHash": "6b86be15d7e8397c27d339fbcbf72718854f96f096ca617889e45b5b8174c393",
+      "installMode": "copy"
+    },
+    "council": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/council/SKILL.md",
+      "computedHash": "2b07ab25fa4a1bb07c70b89b8eaf4a5bb43c673faead94aa7f3e608e19577e4e",
+      "installMode": "copy"
+    },
+    "cro": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/cro/SKILL.md",
+      "computedHash": "cc8040529654755144b4dedce5f075ead4667969978257596a05fa4282a5b42f",
+      "installMode": "copy"
+    },
+    "customer-research": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/customer-research/SKILL.md",
+      "computedHash": "a8a89bd4789f64f3cdaedf0bf7f3531a79829755b715899d461be09cb0e6101e",
+      "installMode": "copy"
+    },
+    "deploy-to-vercel": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/deploy-to-vercel/SKILL.md",
+      "computedHash": "66b99dfa063b1c405155e9bffd99c04ca3e312e81b168d540b757bb194b7400a",
+      "installMode": "copy"
+    },
+    "deployments-cicd": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/deployments-cicd/SKILL.md",
+      "computedHash": "d312a670cbe5dd86e2a0d076a4b255d3271a0f5d9651cbf4231153fc4d6d5816",
+      "installMode": "copy"
+    },
+    "domains": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/domains/SKILL.md",
+      "computedHash": "42982a91edd7fd19e7510629c9553cac35030ba20763dbb52b1a3b4b82a0e2ca",
+      "installMode": "copy"
+    },
+    "email-best-practices": {
+      "source": "resend/resend-skills",
+      "commit": "063246e39987faebc2608f968ca13a02d994a0d4",
+      "sourceType": "github",
+      "skillPath": "skills/email-best-practices/SKILL.md",
+      "computedHash": "9618340453f52b03987949227de251a953af1d47bf505975fce1f55032fb3451",
+      "installMode": "copy"
+    },
+    "emails": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/emails/SKILL.md",
+      "computedHash": "85084a8b4df7be945ebb539c6b0a83dca7d29d3f8fb375f9af282ca320364fbe",
+      "installMode": "copy"
+    },
+    "emil-design-eng": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/emil-design-eng/SKILL.md",
+      "computedHash": "e1b377ccde1d32743d1d3f7d8626629deb8055c9114d180c184697928cc66cc6",
+      "installMode": "copy"
+    },
+    "env-vars": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/env-vars/SKILL.md",
+      "computedHash": "6ce018252d0ae993b0b6b7ce1945afb41a3df47379e16c8a84da86e6fabf389e",
+      "installMode": "copy"
+    },
+    "events": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/events/SKILL.md",
+      "computedHash": "4e6d76dfbc37019549ef6859c834b9e190dc58cd4ba80eb5557f04e379725681",
+      "installMode": "copy"
+    },
+    "file-pr": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/file-pr/SKILL.md",
+      "computedHash": "9f4f1174623e51b7d4582d53c387459af71032aa0cba70470bd0bb2a85820443",
+      "installMode": "copy"
+    },
+    "find-animation-opportunities": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/find-animation-opportunities/SKILL.md",
+      "computedHash": "9ec1c8c622b2c3caf9bda1712440e25dd4f9bc6da1207db4fa80b784aa319186",
+      "installMode": "copy"
+    },
+    "firecrawl": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl/SKILL.md",
+      "computedHash": "968d601a4015b995d8b226b48b5fad9454073be83a15eb278ffb942904483a67",
+      "installMode": "copy"
+    },
+    "firecrawl-crawl": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-crawl/SKILL.md",
+      "computedHash": "c81687665629f868fa8261568724bbfa3d7fd02e32efeac6f23a8a6ef0755d33",
+      "installMode": "copy"
+    },
+    "firecrawl-download": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-download/SKILL.md",
+      "computedHash": "8d842f00909038ef51c9e1ddee8d611f7d2d7c97497e2156a51ca2d918526c5b",
+      "installMode": "copy"
+    },
+    "firecrawl-map": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-map/SKILL.md",
+      "computedHash": "420f8f42a2ff170be77d84c290ae270479166bd36231c816bc07f1a2991035e9",
+      "installMode": "copy"
+    },
+    "firecrawl-parse": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-parse/SKILL.md",
+      "computedHash": "c73f9f4dd8dc6b7c97f179ffc68e6f28989463336efb5485ba246b430f1d4b03",
+      "installMode": "copy"
+    },
+    "firecrawl-scrape": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-scrape/SKILL.md",
+      "computedHash": "50ef166f469a3c12fe7161e7f2d7630c6bf40069bb791ae971923510bf5660d9",
+      "installMode": "copy"
+    },
+    "firecrawl-search": {
+      "source": "firecrawl/skills",
+      "commit": "1d4b0728d0f448cafef2eb8370c907fde7cb6f42",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl-search/SKILL.md",
+      "computedHash": "015939b74c9fd43b668940ad8d5fe724b62a7b53100f73169c7e15182fb6ae34",
+      "installMode": "copy"
+    },
+    "free-tools": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/free-tools/SKILL.md",
+      "computedHash": "8ac6a6881df107a32d1ed74dc0d9ae52232c7416fe4acc37ae1f281f9668e49b",
+      "installMode": "copy"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "83485963700bcf11d5bf78118facb301676b69d918fee2e45a95e7f1a2840f6c",
+      "installMode": "copy"
+    },
+    "full-send": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/full-send/SKILL.md",
+      "computedHash": "dd66dd22c76558f50c722c26432e713468a68599fb0db0eb2d9e50bbebdbd3f8",
+      "installMode": "copy"
+    },
+    "full-stop": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/full-stop/SKILL.md",
+      "computedHash": "97cd08646e1f9bbb89bf18bf131982ee66df7834cce071bc5385e8fc4f5a60a9",
+      "installMode": "copy"
+    },
+    "gestures": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/gestures/SKILL.md",
+      "computedHash": "f17aa90d244bed37d09a608f9b8f58cd7a8dd6b9ff1a06fe2217f6f242c624f7",
+      "installMode": "copy"
+    },
+    "image": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/image/SKILL.md",
+      "computedHash": "97ffb6d97131e3278f7922ec79893e6fb67f2eb4c91fb7e5e77b0140a8373604",
+      "installMode": "copy"
+    },
+    "improve-animations": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/improve-animations/SKILL.md",
+      "computedHash": "5c33add82a79754bec0d7ee3376525e24e77b34575d5ae29d0c204f730356eab",
+      "installMode": "copy"
+    },
+    "launch": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/launch/SKILL.md",
+      "computedHash": "585ae1023f9178c84490bf5fcf2a0e0d1dc418e215f3c8d813f3e648acaac5c1",
+      "installMode": "copy"
+    },
+    "lead-magnets": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/lead-magnets/SKILL.md",
+      "computedHash": "d6eea3541ee5761567d7a7ea7758e1a2900a386f86b042d34c1ee6240b9b00f9",
+      "installMode": "copy"
+    },
+    "learn-taste": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/learn-taste/SKILL.md",
+      "computedHash": "edaec540d02abdad48727b7d769574d0ee42e79304826c899a7aba90ef0197c1",
+      "installMode": "copy"
+    },
+    "leaving-pr-comments": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/leaving-pr-comments/SKILL.md",
+      "computedHash": "aa96b3df788cf8125aa202ad54bebbd91878a0218eae94c8035536d7bda026a2",
+      "installMode": "copy"
+    },
+    "leonardo-colors": {
+      "source": "adobe/leonardo",
+      "commit": "eb6481da40df27654ac8efa42038007f6fad2431",
+      "sourceType": "github",
+      "skillPath": "skills/leonardo-colors/SKILL.md",
+      "computedHash": "9fb405de8f8c42a8589ac46ea16d9c340637a733daeb71b5fc3a4f86b20a9e49",
+      "installMode": "copy"
+    },
+    "mobile-native": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/mobile-native/SKILL.md",
+      "computedHash": "2f55a258f185314d585cb6a3514a66c15e9cfc8cd45c936284c4fb7374603d7e",
+      "installMode": "copy"
+    },
+    "modernize": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/modernize/SKILL.md",
+      "computedHash": "01aceb93a7408157fc0038bc3e84e698e163ff4330a6da9f6358487ce8af3ddd",
+      "installMode": "copy"
+    },
+    "next-bundle-optimizer": {
+      "source": "vercel/next.js",
+      "commit": "794836c3cbb750d1e34f99e210b39b7bdfbc4c58",
+      "sourceType": "github",
+      "skillPath": "skills/next-bundle-optimizer/SKILL.md",
+      "computedHash": "2a2d38e9ba5476f6eef7a86cc1531801b454fdcd5ee8b96745973e01b5d25397",
+      "installMode": "copy"
+    },
+    "next-cache-components-optimizer": {
+      "source": "vercel/next.js",
+      "commit": "794836c3cbb750d1e34f99e210b39b7bdfbc4c58",
+      "sourceType": "github",
+      "skillPath": "skills/next-cache-components-optimizer/SKILL.md",
+      "computedHash": "97a5b125e85aff3ebe90626b887cf016f4de33c01b479a42758bd57fe233db4c",
+      "installMode": "copy"
+    },
     "next-dev-loop": {
       "source": "vercel/next.js",
       "commit": "794836c3cbb750d1e34f99e210b39b7bdfbc4c58",
@@ -9,12 +529,226 @@
       "computedHash": "78ebafaabaa8fd170da34957943f5845436f66c04daf85a93fc759f38a50a4ca",
       "installMode": "copy"
     },
+    "next-partial-prefetching-optimizer": {
+      "source": "vercel/next.js",
+      "commit": "794836c3cbb750d1e34f99e210b39b7bdfbc4c58",
+      "sourceType": "github",
+      "skillPath": "skills/next-partial-prefetching-optimizer/SKILL.md",
+      "computedHash": "c14905fe96b7cae2af2d359edbfa6f07cc1fae5ff94709ed58092834677dc24d",
+      "installMode": "copy"
+    },
+    "onboarding": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/onboarding/SKILL.md",
+      "computedHash": "5ce184188474818e786f36cbccac979bff528cc597a17eb241e58868be9c4609",
+      "installMode": "copy"
+    },
+    "payload": {
+      "source": "payloadcms/skills",
+      "commit": "832d5bc4258ae784f08cb7f03a3a674d6b2fa5f1",
+      "sourceType": "github",
+      "skillPath": "skills/payload/SKILL.md",
+      "computedHash": "f67e1ea36ba5b1bf2d1743801f3b0e55af145bd1f3aebb671c71c8add3a1400e",
+      "installMode": "copy"
+    },
+    "pick-ui-library": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/pick-ui-library/SKILL.md",
+      "computedHash": "3bc44e7faccb949583f4af6c8a15b5a50acc04a5e656f5168a96e5aa43e9f3cd",
+      "installMode": "copy"
+    },
+    "popups": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/popups/SKILL.md",
+      "computedHash": "c279f5d46798ad27c5a9ae04925bc22e346b04f372ced1d80b2bc5eee4459b16",
+      "installMode": "copy"
+    },
+    "product-marketing": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/product-marketing/SKILL.md",
+      "computedHash": "2b7f80ab415280e3e0a0bcc112af8e24059169642c70fb36e18e44a79f80f505",
+      "installMode": "copy"
+    },
+    "programmatic-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/programmatic-seo/SKILL.md",
+      "computedHash": "f37db3caa28d6e8e7d4bc0b73e65db26cae7dfb15b53d97f58a0f2330bca545b",
+      "installMode": "copy"
+    },
+    "prototype": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/prototype/SKILL.md",
+      "computedHash": "00fb13a91dbb746e2be91ae4dd67c4cc1f9907351f2d404a0cc6c849be1ebd95",
+      "installMode": "copy"
+    },
+    "public-relations": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/public-relations/SKILL.md",
+      "computedHash": "e8dd380b94e3252568d3dcb03537c4a0080ba6c3d3ba2116fd2fef3d623e82e1",
+      "installMode": "copy"
+    },
+    "react-email": {
+      "source": "resend/resend-skills",
+      "commit": "063246e39987faebc2608f968ca13a02d994a0d4",
+      "sourceType": "github",
+      "skillPath": "skills/react-email/SKILL.md",
+      "computedHash": "51cb2479b8c98641bfd1e69e2260f53f5fad251ed2d8e7a0c3138e8899b3d4b3",
+      "installMode": "copy"
+    },
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "commit": "6f55706d1069e512430582ad86e4e57dc07afe1b",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-best-practices/SKILL.md",
+      "computedHash": "3a00c916c1a0ee0ccb64b27b08049508d712d65c04ee1bd84d96709854c488e4",
+      "installMode": "copy"
+    },
+    "remove-animations": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/remove-animations/SKILL.md",
+      "computedHash": "22491898575c9eed57fc1add66a072bfb5ed2cc946289c54f41c3d10b6be4204",
+      "installMode": "copy"
+    },
+    "resend": {
+      "source": "resend/resend-skills",
+      "commit": "063246e39987faebc2608f968ca13a02d994a0d4",
+      "sourceType": "github",
+      "skillPath": "skills/resend/SKILL.md",
+      "computedHash": "5d09dbdf01bc6d640f2340f24069307c53a7b58c6c94c1276932c22c3abc8cb1",
+      "installMode": "copy"
+    },
+    "resend-cli": {
+      "source": "resend/resend-skills",
+      "commit": "063246e39987faebc2608f968ca13a02d994a0d4",
+      "sourceType": "github",
+      "skillPath": "skills/resend-cli/SKILL.md",
+      "computedHash": "7bb3b05bb2144a4e73819ec96b7176a8917e2fcbda79cd3abbb11f41b4afaf51",
+      "installMode": "copy"
+    },
+    "review-animations": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/review-animations/SKILL.md",
+      "computedHash": "50f1de2394b88bb3433eca1e30da6866a4e310963d872a66af20ca77fd77f07d",
+      "installMode": "copy"
+    },
+    "routing-middleware": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/routing-middleware/SKILL.md",
+      "computedHash": "f4e88d05aee8b308e1c825699dc8f0b3ff769de43b45f1068de8927e22ddd2e0",
+      "installMode": "copy"
+    },
+    "schema": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/schema/SKILL.md",
+      "computedHash": "f8704ea70fc7d7ff985b9d902e52bac2d455baa6678b803b4306c8afb99997b1",
+      "installMode": "copy"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "computedHash": "d42f6f32bb62f8ebce93826ef33a7b663f2259b2891a0992f3d63dbd46f0f5ad",
+      "installMode": "copy"
+    },
     "shadcn": {
       "source": "shadcn-ui/ui",
       "commit": "45bbf9ba23c9c0f63d38887947e5fb06f59c7da3",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
       "computedHash": "388962d16c7a4f13aaeee0d8f128e50a87df8553d42ef7988c39c0e1c74a40e8",
+      "installMode": "copy"
+    },
+    "signup": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/signup/SKILL.md",
+      "computedHash": "f6ee15c99bdc3a774f20f6d7a6ff8bf111a9a33431b6962ee34ce307762a3c14",
+      "installMode": "copy"
+    },
+    "site-architecture": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/site-architecture/SKILL.md",
+      "computedHash": "b705d5e242192822cdb1aa2efb48f3efc1fe10cdb97f444066c37a5fd629db88",
+      "installMode": "copy"
+    },
+    "social": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/social/SKILL.md",
+      "computedHash": "d4e3f754e4f6a1ef99a79f038656f53ae7d560492f06c6be075b400c614b20d4",
+      "installMode": "copy"
+    },
+    "sol-loop": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/sol-loop/SKILL.md",
+      "computedHash": "579718e954d9edc00de37bdc4666475bcebb5c398b4d8f608f8251a1599bc6f6",
+      "installMode": "copy"
+    },
+    "stripe-best-practices": {
+      "source": "docs.stripe.com",
+      "sourceUrl": "https://docs.stripe.com",
+      "sourceType": "well-known",
+      "computedHash": "abf8e949bcbcc38081c03eb66b22e741c3cf1be6bae627546d711e6d32327a09",
+      "wellKnownDigest": "sha256:7f8652e59a6e0c9c302fae67fcd8ad6ad7c8bf6ed772af39cc99dc4d48e560a2"
+    },
+    "stripe-docs": {
+      "source": "docs.stripe.com",
+      "sourceUrl": "https://docs.stripe.com",
+      "sourceType": "well-known",
+      "computedHash": "e4d4628efd7efb5558971920fcbf94176691fa279990a9a8b0833c12bf54bc0d",
+      "wellKnownDigest": "sha256:354fb04e9c979223bfecabc994fff41c8da5b5ea155684f1b4ade3a6fed07bac"
+    },
+    "supabase": {
+      "source": "supabase/agent-skills",
+      "commit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+      "sourceType": "github",
+      "skillPath": "skills/supabase/SKILL.md",
+      "computedHash": "2fbff32fd63b7d31585cacf0ed43e5bf8d05dd20d6c0c751d256cb967a00eec1",
+      "installMode": "copy"
+    },
+    "supabase-postgres-best-practices": {
+      "source": "supabase/agent-skills",
+      "commit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+      "sourceType": "github",
+      "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
+      "computedHash": "3eb972c2d7c818e544e35cc33ea8d7147d4d78ae08142ef40037b0fbac7a2505",
+      "installMode": "copy"
+    },
+    "takeover": {
+      "source": "t3dotgg/tstack",
+      "commit": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "sourceType": "github",
+      "skillPath": "skills/takeover/SKILL.md",
+      "computedHash": "3cd3b50b50005459839f9c77614a3e707121f3aad20b7b23c203813b6cf7b4fc",
       "installMode": "copy"
     },
     "ui-sdk": {
@@ -31,6 +765,118 @@
       "sourceType": "github",
       "skillPath": "skills/ultracite/SKILL.md",
       "computedHash": "52eac7a3ac5f3117d8d70f1058eed56403e9755fc93e0ba944c4c501fa560ba6"
+    },
+    "vercel-cli": {
+      "source": "vercel/vercel",
+      "commit": "155eacfa16840e68ae54bc50ee72fc8e16733857",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-cli/SKILL.md",
+      "computedHash": "2adc0fa8dffa6b9867e47923aaa892727d6e8f073c6a7f87aa2ae59089dc422d",
+      "installMode": "copy"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/composition-patterns/SKILL.md",
+      "computedHash": "f711ed8b16162eaa712abbcdbbae6c926f86c57e60127735fecc3ad0dd85b3fa",
+      "installMode": "copy"
+    },
+    "vercel-firewall": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-firewall/SKILL.md",
+      "computedHash": "bd67cbe73de518226bf51f3b9d1e4ebaa3675a126c643fdf6919f3b5c09391e9",
+      "installMode": "copy"
+    },
+    "vercel-functions": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-functions/SKILL.md",
+      "computedHash": "6162f01394cef6c0646d905c073fbac57001b893707f9f87e609d060fcd7ce67",
+      "installMode": "copy"
+    },
+    "vercel-optimize": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-optimize/SKILL.md",
+      "computedHash": "f69b2d70e9928eb4ae0b0acdaabb2ba2f42ba694aa33df52b4ee41e8fb9ced60",
+      "installMode": "copy"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "7991ed4fbecdac23f47c1a40c243e00a212a9e7f3604db93959b3ae11dffe299",
+      "installMode": "copy"
+    },
+    "vercel-react-view-transitions": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/react-view-transitions/SKILL.md",
+      "computedHash": "d5bdffc1f132ae0d6d9260c260ae206d48cd83cb148e3e3b75fc1a3b94b249fa",
+      "installMode": "copy"
+    },
+    "vercel-storage": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-storage/SKILL.md",
+      "computedHash": "8457cff5cb0e5d87bd09209c6daa83f04e0733fc0b4d161766e177bb7eb07c81",
+      "installMode": "copy"
+    },
+    "verification": {
+      "source": "vercel/vercel-plugin",
+      "commit": "8bb46159108f0cd6a749959b20c1411257411090",
+      "sourceType": "github",
+      "skillPath": "skills/verification/SKILL.md",
+      "computedHash": "5fac01274533f92e3736f97a164eda7a1d1babaaee4655fea6505fa97b313394",
+      "installMode": "copy"
+    },
+    "video": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",
+      "sourceType": "github",
+      "skillPath": "skills/video/SKILL.md",
+      "computedHash": "76445cee7d4c53d0a64a24967e6e6d4835a8626c785ac5b34cb8d1d79a88eaf3",
+      "installMode": "copy"
+    },
+    "vite": {
+      "source": "antfu/skills",
+      "commit": "4a6bb39e7b45e26402eb215393c51ccf5df1ca4c",
+      "sourceType": "github",
+      "skillPath": "skills/vite/SKILL.md",
+      "computedHash": "db9eea82d8bf6ce0f60a4a1d94a626c718df7d97160b5f1d5b150647e0c401b3",
+      "installMode": "copy"
+    },
+    "vitest": {
+      "source": "antfu/skills",
+      "commit": "4a6bb39e7b45e26402eb215393c51ccf5df1ca4c",
+      "sourceType": "github",
+      "skillPath": "skills/vitest/SKILL.md",
+      "computedHash": "bd95e41d66d76da9008893c9bc48c30f0a68f352cd2b00017767f5e4c129501d",
+      "installMode": "copy"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "5994e4cfd86144903d2ba750f862b9e36af15e3297aac983679e347b99f6cb71",
+      "installMode": "copy"
+    },
+    "writing-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/writing-guidelines/SKILL.md",
+      "computedHash": "fe1390adbe2f7ba68d5fb85d3b14a1d55e71ce04cff5c175245c550d1c3a6f7e",
+      "installMode": "copy"
     }
   }
 }
