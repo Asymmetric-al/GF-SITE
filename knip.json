@@ -1,0 +1,29 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "scripts/*.ts",
+    "src/components/ui/*.tsx",
+    "src/lib/content/types.ts",
+    "tests/**/*.spec.ts"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx}",
+    "tests/**/*.{ts,tsx}",
+    "scripts/**/*.ts",
+    "*.{ts,mts,mjs}"
+  ],
+  "ignoreBinaries": ["lychee", "vale"],
+  "ignoreDependencies": [
+    "@lhci/cli",
+    "@tiptap/core",
+    "@tiptap/pm",
+    "@tiptap/react",
+    "@tiptap/starter-kit",
+    "@tiptap/static-renderer",
+    "lighthouse",
+    "svgo",
+    "tailwindcss",
+    "tsrs",
+    "tw-animate-css"
+  ]
+}

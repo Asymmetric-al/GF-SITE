@@ -2,7 +2,7 @@
 
 `GF-SITE` is the standalone public website frontend for Global Fellowship. `Asymmetric-al/core` remains the future owner of Payload CMS administration, content persistence, uploads, editorial workflows, and publication rules.
 
-This repository **does not** install Payload CMS, a database client, an upload backend, authentication, or a rich-text editor. It installs, runs, typechecks, builds, and passes checks completely independently of Core.
+This repository **does not** install Payload CMS, a database client, an upload backend, or authentication. Per explicit user direction (2026-11-21), latest **Tiptap (`3.35.0`)** packages (`@tiptap/core`, `@tiptap/pm`, `@tiptap/react`, `@tiptap/starter-kit`, `@tiptap/static-renderer`) are pre-installed in `GF-SITE` so any frontend rich-text needs use Tiptap; Core's Payload CMS v4 Lexical editor (`@payloadcms/richtext-lexical`) remains separate and owned by Core. `GF-SITE` installs, runs, typechecks, builds, and passes checks completely independently of Core.
 
 ## Inspected Core Reference Snapshot
 

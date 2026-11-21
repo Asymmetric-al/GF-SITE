@@ -1,0 +1,106 @@
+name: Deep Audit (Cross-Engine, Lighthouse, Links)
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cross-engine-e2e:
+    name: Playwright Cross-Engine Matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.3"
+
+      - name: Install dependencies (frozen lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Build production bundle
+        run: bun run build
+
+      - name: Install Playwright browsers (Chromium, Firefox, WebKit)
+        run: bunx --no-install playwright install --with-deps chromium firefox webkit
+
+      - name: Run cross-engine E2E, SEO, and accessibility suite
+        run: bunx --no-install playwright test --grep-invert "@visual"
+
+      - name: Upload Playwright audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-cross-engine-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
+  lighthouse-ci:
+    name: Lighthouse CI (Mobile & Desktop)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.3"
+
+      - name: Install dependencies (frozen lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Build production bundle
+        run: bun run build
+
+      - name: Run Lighthouse CI mobile and desktop collections
+        run: bun run perf:lhci
+
+      - name: Upload Lighthouse CI reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-ci-reports
+          path: artifacts/lighthouse/
+          retention-days: 14
+
+  docs-links:
+    name: Documentation Link Check (Lychee)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run offline Lychee link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --config lychee.toml README.md AGENTS.md DESIGN.md docs/**/*.md
+          fail: true

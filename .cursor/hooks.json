@@ -2,7 +2,7 @@
   "hooks": {
     "afterFileEdit": [
       {
-        "command": "bunx ultracite fix --hook"
+        "command": "bunx --no-install ultracite fix --hook"
       }
     ]
   },

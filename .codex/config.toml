@@ -1,3 +1,40 @@
 [mcp_servers.next-devtools]
 command = "bunx"
 args = ["next-devtools-mcp@0.4.0"]
+
+[mcp_servers.shadcn]
+command = "npx"
+args = ["-y", "shadcn@4.23.0", "mcp"]
+cwd = "."
+env_vars = [
+  "REACTBITS_LICENSE_KEY",
+  "REUI_LICENSE_KEY",
+  "SHADCNBLOCKS_API_KEY",
+  "SHADCNUIKIT_API_KEY",
+  "SHADCN_STUDIO_EMAIL",
+  "SHADCN_STUDIO_LICENSE_KEY",
+  "EFFERD_REGISTRY_TOKEN",
+]
+
+[mcp_servers.reactbits_pro]
+url = "https://mcp.reactbits.dev/mcp"
+bearer_token_env_var = "REACTBITS_LICENSE_KEY"
+
+[mcp_servers.shadcnuikit]
+url = "https://shadcnuikit.com/api/mcp"
+bearer_token_env_var = "SHADCNUIKIT_API_KEY"
+
+[mcp_servers.reui]
+url = "https://mcp.reui.io"
+
+[mcp_servers.shadcn_studio]
+command = "bun"
+args = ["scripts/shadcn-studio-mcp.ts"]
+cwd = "."
+env_vars = ["SHADCN_STUDIO_EMAIL", "SHADCN_STUDIO_LICENSE_KEY"]
+
+[mcp_servers.shadcn_space]
+url = "https://mcp.shadcnspace.com/mcp"
+
+[mcp_servers.vercel]
+url = "https://mcp.vercel.com"
