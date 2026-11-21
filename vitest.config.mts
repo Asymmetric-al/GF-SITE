@@ -10,6 +10,8 @@ const sharedExclude = [
   "**/*.browser.test.{ts,tsx,js,jsx}",
   ".agents/**",
   ".claude/**",
+  ".codex/**",
+  ".cursor/**",
 ];
 
 const serverOnlyEmptyPath = fileURLToPath(
@@ -43,7 +45,7 @@ export default defineConfig({
         test: {
           environment: "node",
           exclude: sharedExclude,
-          include: ["src/**/*.test.ts"],
+          include: ["src/**/*.test.ts", "scripts/**/*.test.ts"],
           name: "server",
         },
       },

@@ -10,6 +10,8 @@ exclude_path = [
   ".next",
   ".agents",
   ".claude",
+  ".codex",
+  ".cursor",
   "artifacts",
   "coverage",
   "playwright-report",

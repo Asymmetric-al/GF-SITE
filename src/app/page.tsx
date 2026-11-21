@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { readStarterPageContent } from "@/lib/content/reader";
-import { getCanonicalUrl } from "@/lib/site";
+import { getCanonicalUrl, SITE_OPEN_GRAPH } from "@/lib/site";
 
 export const generateMetadata = (): Metadata => {
   const homeCanonical = getCanonicalUrl("/");
@@ -21,6 +21,7 @@ export const generateMetadata = (): Metadata => {
       canonical: homeCanonical,
     },
     openGraph: {
+      ...SITE_OPEN_GRAPH,
       url: homeCanonical,
     },
   };

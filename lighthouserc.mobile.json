@@ -19,7 +19,7 @@
     "assert": {
       "assertions": {
         "categories:accessibility": [
-          "warn",
+          "error",
           { "aggregationMethod": "median", "minScore": 0.9 }
         ],
         "categories:best-practices": [
@@ -31,7 +31,7 @@
           { "aggregationMethod": "median", "minScore": 0.9 }
         ],
         "cumulative-layout-shift": [
-          "warn",
+          "error",
           { "aggregationMethod": "median", "maxNumericValue": 0.1 }
         ],
         "largest-contentful-paint": [

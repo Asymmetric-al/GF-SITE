@@ -13,7 +13,7 @@ const reactDoctor = selectJsPlugins(["react-doctor"]);
 
 const vitestScopedOverrides = (vitest.overrides ?? []).map((override) => ({
   ...override,
-  files: ["src/**/*.test.{ts,tsx}"],
+  files: ["src/**/*.test.{ts,tsx}", "scripts/**/*.test.ts"],
 }));
 
 export default defineConfig({
@@ -73,7 +73,11 @@ export default defineConfig({
       // High-signal anti-flake testing rules from @interfere/landmines/testing
       // scoped to test suites without overriding `.spec.ts` filenames, prose
       // comments, or explicit return-type conventions.
-      files: ["src/**/*.test.{ts,tsx}", "tests/**/*.spec.ts"],
+      files: [
+        "src/**/*.test.{ts,tsx}",
+        "scripts/**/*.test.ts",
+        "tests/**/*.spec.ts",
+      ],
       rules: {
         "landmines-testing/no-fixed-sleep": "error",
         "landmines-testing/no-flake-masking": "error",
@@ -84,6 +88,18 @@ export default defineConfig({
     },
   ],
   rules: {
+    "no-restricted-imports": [
+      "error",
+      {
+        patterns: [
+          {
+            group: ["radix-ui", "radix-ui/*", "@radix-ui/*"],
+            message:
+              "Radix packages are forbidden in GF-SITE. Use @base-ui/react (static/display) or @ui-sdk/react (interactive).",
+          },
+        ],
+      },
+    ],
     // Allow Card and CardContent containers to control internal layout/spacing
     // on the theme spacing scale while keeping colors, typography, and borders locked.
     "shadcn/no-restyle": [

@@ -9,23 +9,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import type { CaughtRouteValue } from "@/lib/error-digest";
+import { extractErrorDigest } from "@/lib/error-digest";
 
 import "./globals.css";
 
-interface GlobalRouteError extends Error {
-  readonly digest?: string;
-}
-
 interface GlobalErrorPageProps {
-  readonly error: GlobalRouteError;
+  readonly error: CaughtRouteValue;
   readonly retry: () => void;
 }
 
 const GlobalErrorPage = ({ error, retry }: GlobalErrorPageProps) => {
-  const digest =
-    error.digest !== undefined && error.digest.length > 0
-      ? error.digest
-      : undefined;
+  const digest = extractErrorDigest(error);
 
   return (
     <html className="h-full antialiased" lang="en">
@@ -50,13 +45,13 @@ const GlobalErrorPage = ({ error, retry }: GlobalErrorPageProps) => {
                 An unexpected error interrupted loading the application layout.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              {digest === undefined ? null : (
+            {digest === undefined ? null : (
+              <CardContent>
                 <p className="text-muted-foreground font-mono text-xs">
                   Reference: {digest}
                 </p>
-              )}
-            </CardContent>
+              </CardContent>
+            )}
             <CardFooter>
               <Button onClick={retry} type="button">
                 Try again

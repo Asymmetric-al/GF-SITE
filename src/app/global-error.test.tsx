@@ -26,4 +26,17 @@ describe(GlobalErrorPage, () => {
 
     expect(retry).toHaveBeenCalledOnce();
   });
+
+  it("renders safely when a non-Error value is thrown", () => {
+    const retry = vi.fn<() => void>();
+
+    render(<GlobalErrorPage error={null} retry={retry} />, {
+      container: document,
+    });
+
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+    ).toBeVisible();
+    expect(screen.queryByText(/Reference:/u)).not.toBeInTheDocument();
+  });
 });

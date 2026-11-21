@@ -3,8 +3,8 @@ command = "bunx"
 args = ["next-devtools-mcp@0.4.0"]
 
 [mcp_servers.shadcn]
-command = "npx"
-args = ["-y", "shadcn@4.23.0", "mcp"]
+command = "bunx"
+args = ["--no-install", "shadcn", "mcp"]
 cwd = "."
 env_vars = [
   "REACTBITS_LICENSE_KEY",

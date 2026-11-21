@@ -18,7 +18,7 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --grep-invert @visual",
     "test:smoke": "playwright test --project=chromium --grep-invert @visual",
     "test:a11y": "playwright test --project=chromium --grep @a11y",
     "test:seo": "playwright test --project=chromium --grep @seo",
@@ -28,7 +28,7 @@
     "perf:lhci": "bun run perf:lhci:mobile && bun run perf:lhci:desktop",
     "analyze": "next analyze --output",
     "analyze:export": "next analyze export",
-    "check:links": "lychee --offline README.md AGENTS.md DESIGN.md docs/**/*.md",
+    "check:links": "lychee --offline README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md",
     "check:prose": "vale README.md DESIGN.md docs"
   },
   "dependencies": {
@@ -86,12 +86,7 @@
     "node": "24.x"
   },
   "packageManager": "bun@1.4.3",
-  "ignoreScripts": [
-    "sharp",
-    "unrs-resolver"
-  ],
   "trustedDependencies": [
-    "sharp",
-    "unrs-resolver"
+    "sharp"
   ]
 }

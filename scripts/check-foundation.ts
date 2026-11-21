@@ -2,15 +2,17 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
+import {
+  findForbiddenLockfileEntries,
+  findForbiddenNodeModules,
+  findForbiddenPackageManifestRefs,
+  findPrivateDisclosures,
+  readSkillFrontmatterName,
+} from "./foundation-invariants";
+
 const repoRoot = path.resolve(import.meta.dirname, "..");
 
 const errors: string[] = [];
-
-const FRONTMATTER_REGEX = /^---\r?\n(?<frontmatter>[\s\S]*?)\r?\n---/u;
-const FRONTMATTER_NAME_REGEX = /^name:\s*(?<name>.+)$/mu;
-
-const FORBIDDEN_LOCK_ENTRY_REGEX =
-  /^\s*"(?<pkg>(?:@radix-ui\/[^"]+|radix-ui|oxlint-tsgolint))"\s*:\s*\[/gmu;
 
 const readText = (relativePath: string): string =>
   fs.readFileSync(path.join(repoRoot, relativePath), "utf-8");
@@ -34,25 +36,6 @@ const listSkillDirs = (relativeRoot: string): string[] => {
     .toSorted();
 };
 
-const readFrontmatterName = (filePath: string): string | null => {
-  const content = fs.readFileSync(filePath, "utf-8");
-  const match = FRONTMATTER_REGEX.exec(content);
-  const frontmatter = match?.groups?.frontmatter;
-
-  if (frontmatter === undefined || frontmatter.length === 0) {
-    return null;
-  }
-
-  const nameMatch = FRONTMATTER_NAME_REGEX.exec(frontmatter);
-  const rawName = nameMatch?.groups?.name;
-
-  if (rawName === undefined || rawName.length === 0) {
-    return null;
-  }
-
-  return rawName.trim().replaceAll(/^["']|["']$/gu, "");
-};
-
 interface ToolkitManifestItem {
   readonly id: string;
 }
@@ -60,6 +43,7 @@ interface ToolkitManifestItem {
 interface ToolkitManifest {
   readonly items: readonly ToolkitManifestItem[];
   readonly summary: {
+    readonly nonSkillEntries: number;
     readonly projectSkills: number;
     readonly totalEntries: number;
   };
@@ -92,6 +76,8 @@ const isToolkitManifest = (value: unknown): value is ToolkitManifest => {
   const { summary } = value;
 
   return (
+    "nonSkillEntries" in summary &&
+    typeof summary.nonSkillEntries === "number" &&
     "projectSkills" in summary &&
     typeof summary.projectSkills === "number" &&
     "totalEntries" in summary &&
@@ -101,33 +87,22 @@ const isToolkitManifest = (value: unknown): value is ToolkitManifest => {
 };
 
 const checkForbiddenPackages = (): void => {
-  const pkgText = readText("package.json");
-  const lockText = readText("bun.lock");
-
-  for (const forbidden of [
-    "radix-ui",
-    "@radix-ui/",
-    "oxlint-tsgolint",
-  ] as const) {
-    if (pkgText.includes(forbidden)) {
-      errors.push(`Forbidden package "${forbidden}" found in package.json.`);
-    }
+  for (const forbidden of findForbiddenPackageManifestRefs(
+    readText("package.json")
+  )) {
+    errors.push(`Forbidden package "${forbidden}" found in package.json.`);
   }
 
-  for (const match of lockText.matchAll(FORBIDDEN_LOCK_ENTRY_REGEX)) {
-    const pkgName = match.groups?.pkg ?? "unknown";
-
-    errors.push(`Forbidden resolved package "${pkgName}" found in bun.lock.`);
+  for (const entry of findForbiddenLockfileEntries(readText("bun.lock"))) {
+    errors.push(`Forbidden resolved package "${entry}" found in bun.lock.`);
   }
 
-  for (const forbiddenDir of [
-    "node_modules/radix-ui",
-    "node_modules/@radix-ui",
-    "node_modules/oxlint-tsgolint",
-  ] as const) {
-    if (fs.existsSync(path.join(repoRoot, forbiddenDir))) {
-      errors.push(`Forbidden package directory "${forbiddenDir}" exists.`);
-    }
+  for (const dirPath of findForbiddenNodeModules(
+    path.join(repoRoot, "node_modules")
+  )) {
+    errors.push(
+      `Forbidden package directory "${path.relative(repoRoot, dirPath)}" exists.`
+    );
   }
 };
 
@@ -154,17 +129,39 @@ const checkManagedBlocksAndLayers = (): void => {
   }
 };
 
-const collectInstalledSkillIds = (
+const checkNoNiaInConfigs = (
   agentsSkills: readonly string[],
   claudeSkills: readonly string[]
-): Set<string> => {
-  if (agentsSkills.includes("nia") || claudeSkills.includes("nia")) {
+): void => {
+  if (
+    agentsSkills.some((name) => name.toLowerCase() === "nia") ||
+    claudeSkills.some((name) => name.toLowerCase() === "nia")
+  ) {
     errors.push("Removed Nia skill still exists under .agents or .claude.");
   }
 
   if (/"Nia"\s*:/iu.test(readText("skills-lock.json"))) {
     errors.push('Removed "Nia" entry still exists in skills-lock.json.');
   }
+
+  for (const configPath of [
+    ".mcp.json",
+    ".cursor/mcp.json",
+    ".codex/config.toml",
+    ".agents/plugins/gf-site-ui-registries/mcp_config.json",
+    ".agents/plugins/next-devtools/mcp_config.json",
+  ] as const) {
+    if (/\bnia\b/iu.test(readText(configPath))) {
+      errors.push(`Removed Nia server reference found in ${configPath}.`);
+    }
+  }
+};
+
+const collectInstalledSkillIds = (
+  agentsSkills: readonly string[],
+  claudeSkills: readonly string[]
+): Set<string> => {
+  checkNoNiaInConfigs(agentsSkills, claudeSkills);
 
   const agentsSet = new Set(agentsSkills);
   const claudeSet = new Set(claudeSkills);
@@ -184,21 +181,46 @@ const collectInstalledSkillIds = (
   const expectedSkillIds = new Set<string>();
 
   for (const skill of agentsSkills) {
-    const skillMd = path.join(repoRoot, ".agents", "skills", skill, "SKILL.md");
+    const agentsSkillMd = path.join(
+      repoRoot,
+      ".agents",
+      "skills",
+      skill,
+      "SKILL.md"
+    );
 
-    if (!fs.existsSync(skillMd)) {
-      errors.push(`Missing SKILL.md in .agents/skills/${skill}.`);
+    const claudeSkillMd = path.join(
+      repoRoot,
+      ".claude",
+      "skills",
+      skill,
+      "SKILL.md"
+    );
+
+    const agentsName = readSkillFrontmatterName(agentsSkillMd);
+    const claudeName = readSkillFrontmatterName(claudeSkillMd);
+
+    if (agentsName === null || agentsName.length === 0) {
+      errors.push(
+        `Missing SKILL.md frontmatter name in .agents/skills/${skill}.`
+      );
       continue;
     }
 
-    const name = readFrontmatterName(skillMd);
-
-    if (name === null || name.length === 0) {
-      errors.push(`Missing frontmatter name in .agents/skills/${skill}.`);
+    if (claudeName === null || claudeName.length === 0) {
+      errors.push(
+        `Missing SKILL.md frontmatter name in .claude/skills/${skill}.`
+      );
       continue;
     }
 
-    expectedSkillIds.add(`skill:${name}`);
+    if (agentsName !== claudeName) {
+      errors.push(
+        `Skill frontmatter name mismatch for "${skill}": .agents="${agentsName}" vs .claude="${claudeName}".`
+      );
+    }
+
+    expectedSkillIds.add(`skill:${agentsName}`);
   }
 
   return expectedSkillIds;
@@ -257,10 +279,36 @@ const checkManifestIntegrity = (
     );
   }
 
+  const expectedNonSkillCount = rawManifest.items.length - installedSkillCount;
+
+  if (rawManifest.summary.nonSkillEntries !== expectedNonSkillCount) {
+    errors.push(
+      `Manifest summary.nonSkillEntries (${String(rawManifest.summary.nonSkillEntries)}) does not match expected count (${String(expectedNonSkillCount)}).`
+    );
+  }
+
   if (rawManifest.summary.totalEntries !== rawManifest.items.length) {
     errors.push(
       `Manifest summary.totalEntries (${String(rawManifest.summary.totalEntries)}) does not match items.length (${String(rawManifest.items.length)}).`
     );
+  }
+};
+
+const checkPublicRepoPrivacy = (): void => {
+  for (const filePath of [
+    "README.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "DESIGN.md",
+    "docs/agent-toolkit.md",
+    "docs/agent-toolkit-validation.md",
+    "docs/testing.md",
+    "docs/core-integration.md",
+    "agent-toolkit-manifest.json",
+  ] as const) {
+    for (const disclosure of findPrivateDisclosures(readText(filePath))) {
+      errors.push(`Public file ${filePath} contains disallowed ${disclosure}.`);
+    }
   }
 };
 
@@ -274,6 +322,8 @@ const expectedSkillIds = collectInstalledSkillIds(agentsSkills, claudeSkills);
 
 checkManifestIntegrity(expectedSkillIds, agentsSkills.length);
 
+checkPublicRepoPrivacy();
+
 if (errors.length > 0) {
   for (const message of errors) {
     process.stderr.write(`FAIL: ${message}\n`);
@@ -283,5 +333,5 @@ if (errors.length > 0) {
 }
 
 process.stdout.write(
-  `Foundation invariants verified (${String(agentsSkills.length)} synced skills, zero Radix, zero oxlint-tsgolint, zero Nia).\n`
+  `Foundation invariants verified (${String(agentsSkills.length)} synced skills, zero Radix, zero oxlint-tsgolint, zero Nia, public docs sanitized).\n`
 );

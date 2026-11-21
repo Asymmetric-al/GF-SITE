@@ -9,21 +9,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-interface RouteError extends Error {
-  readonly digest?: string;
-}
+import type { CaughtRouteValue } from "@/lib/error-digest";
+import { extractErrorDigest } from "@/lib/error-digest";
 
 interface ErrorPageProps {
-  readonly error: RouteError;
+  readonly error: CaughtRouteValue;
   readonly retry: () => void;
 }
 
 const ErrorPage = ({ error, retry }: ErrorPageProps) => {
-  const digest =
-    error.digest !== undefined && error.digest.length > 0
-      ? error.digest
-      : undefined;
+  const digest = extractErrorDigest(error);
 
   return (
     <main
@@ -45,13 +40,13 @@ const ErrorPage = ({ error, retry }: ErrorPageProps) => {
             An unexpected error interrupted rendering of this route.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          {digest === undefined ? null : (
+        {digest === undefined ? null : (
+          <CardContent>
             <p className="text-muted-foreground font-mono text-xs">
               Reference: {digest}
             </p>
-          )}
-        </CardContent>
+          </CardContent>
+        )}
         <CardFooter>
           <Button onClick={retry} type="button">
             Try again

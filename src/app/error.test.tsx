@@ -25,10 +25,22 @@ describe(ErrorPage, () => {
     expect(retry).toHaveBeenCalledOnce();
   });
 
-  it("omits the reference line when no digest is present", () => {
+  it("handles errors without a digest and non-Error thrown values safely", () => {
     const retry = vi.fn<() => void>();
 
-    render(<ErrorPage error={new Error("Transient failure")} retry={retry} />);
+    const { rerender } = render(
+      <ErrorPage error={new Error("Transient failure")} retry={retry} />
+    );
+
+    expect(screen.queryByText(/Reference:/u)).not.toBeInTheDocument();
+
+    rerender(<ErrorPage error={null} retry={retry} />);
+
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+    ).toBeVisible();
+
+    rerender(<ErrorPage error="string-thrown-value" retry={retry} />);
 
     expect(screen.queryByText(/Reference:/u)).not.toBeInTheDocument();
   });

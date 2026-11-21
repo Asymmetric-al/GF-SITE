@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-11-21T16:30:00+07:00",
   "repository": "https://github.com/Asymmetric-al/GF-SITE",
-  "workspace": "C:\\Users\\Conrad\\Documents\\GitHub\\GF-SITE",
+  "workspace": ".",
   "statusVocabulary": [
     "Installed and verified",
     "Installed, on demand",
@@ -2317,8 +2317,8 @@
       "configOwner": "vitest.config.mts",
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "bun run test:run && bun run test:coverage",
-      "result": "pass (5 files, 12 tests, 68.49% statement coverage across src/**)",
+      "harmlessCheckPerformed": "bun run test:run",
+      "result": "pass (8 test files across src/** and scripts/**, covering site/canonical/OG, robots, reader, error/global-error, FoundationTabs, and nested Radix lockfile guards)",
       "remainingBlocker": null,
       "restoreOrUpdate": "bun install --frozen-lockfile"
     },
@@ -2335,8 +2335,8 @@
       "configOwner": "playwright.config.ts",
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
-      "harmlessCheckPerformed": "bun run test:e2e against built production app on 127.0.0.1:3147",
-      "result": "pass (61 passed, 3 expected non-chromium visual skips, 0 failed across 4 projects)",
+      "harmlessCheckPerformed": "bun run test:e2e && bun run test:visual against built production app on 127.0.0.1:3147",
+      "result": "pass (56 cross-engine tests across 4 projects + reviewed win32 Desktop Chromium visual baseline)",
       "remainingBlocker": null,
       "restoreOrUpdate": "bun install --frozen-lockfile && bunx --no-install playwright install chromium firefox webkit"
     },
@@ -2436,7 +2436,7 @@
       "harmlessCheckPerformed": "stdio initialize + tools/list via bunx --no-install shadcn mcp",
       "result": "pass (7 tools returned)",
       "remainingBlocker": null,
-      "restoreOrUpdate": "npx -y shadcn@4.23.0 mcp"
+      "restoreOrUpdate": "bunx --no-install shadcn mcp (via scripts/shadcn-mcp.ts in Antigravity plugin)"
     },
     {
       "id": "mcp:reactbits-pro",
@@ -2543,7 +2543,7 @@
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "HTTP initialize probe to https://mcp.vercel.com",
       "result": "HTTP 401 No authorization provided (expected prior to provider OAuth)",
-      "remainingBlocker": "Complete OAuth sign-in in active provider session when Vercel MCP is needed; vercel CLI is already authenticated as conrad-4371",
+      "remainingBlocker": "Complete OAuth sign-in in active provider session when Vercel MCP is needed; vercel CLI is authenticated separately",
       "restoreOrUpdate": "https://mcp.vercel.com"
     },
     {
@@ -2704,7 +2704,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "bunx --no-install shadcn info --json + read-only search/view",
-      "result": "Direct view @shadcnblocks/hero1 HTTP 200 on base-maia (0 Radix; no /registry search index; license dated expiry 2026-12-03 07:00 timezone unspecified)",
+      "result": "Direct view @shadcnblocks/hero1 HTTP 200 on base-maia (0 Radix; no /registry search index)",
       "remainingBlocker": null,
       "restoreOrUpdate": "Preserved in components.json"
     },
@@ -2992,7 +2992,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated as cobmojo (repo, workflow, read:org, gist)",
+      "result": "Authenticated with repo, workflow, read:org, and gist scopes",
       "remainingBlocker": null,
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3010,7 +3010,7 @@
       "state": "Installed and verified",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated as conrad-4371 (project not yet linked to Vercel)",
+      "result": "Authenticated via CLI (project not yet linked to Vercel)",
       "remainingBlocker": "Confirm target Vercel team/project before linking",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3028,7 +3028,7 @@
       "state": "Installed, on demand",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Authenticated to Asymmetric.al org (expires 2026-11-28, auto-refresh enabled)",
+      "result": "Authenticated via CLI with auto-refresh enabled",
       "remainingBlocker": "No Sentry SDK installed in GF-SITE yet",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3046,7 +3046,7 @@
       "state": "Installed, on demand",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "resend whoami confirmed authenticated full_access via secure storage (no emails sent)",
+      "result": "resend whoami confirmed authenticated via secure storage (no emails sent)",
       "remainingBlocker": "No verified sending domain or active email feature in GF-SITE yet",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },
@@ -3136,7 +3136,7 @@
       "state": "Configured, authentication pending",
       "lastValidationTime": "2026-11-21T16:30:00+07:00",
       "harmlessCheckPerformed": "Version and non-mutating status/help check from T3 execution context",
-      "result": "Installed on PATH; saved OAuth profile dvgyndcnu expired 2026-10-30; CLOUDINARY_API_KEY alone lacks cloud name/secret",
+      "result": "Installed on PATH; saved OAuth profile expired; CLOUDINARY_API_KEY alone lacks cloud name/secret",
       "remainingBlocker": "Run cld login to refresh OAuth session when Cloudinary is needed",
       "restoreOrUpdate": "Manage via host package manager (WinGet / npm global / pipx)"
     },

@@ -124,7 +124,8 @@ const main = async (): Promise<void> => {
 
     const insideRepo =
       relativeTarget !== "" &&
-      !relativeTarget.startsWith("..") &&
+      relativeTarget !== ".." &&
+      !relativeTarget.startsWith(`..${path.sep}`) &&
       !path.isAbsolute(relativeTarget);
 
     if (
@@ -147,7 +148,19 @@ const main = async (): Promise<void> => {
         process.stderr.write(
           `ultracite post-edit hook failed: ${result.error.message}\n`
         );
-      } else if (result.status !== 0) {
+        process.stdout.write("{}\n");
+        process.exit(1);
+      }
+
+      if (result.signal !== null) {
+        process.stderr.write(
+          `ultracite post-edit hook terminated by signal ${result.signal}\n`
+        );
+        process.stdout.write("{}\n");
+        process.exit(1);
+      }
+
+      if (result.status !== 0) {
         const diagnostics = [result.stdout, result.stderr]
           .filter((segment) => segment.trim().length > 0)
           .join("\n")
@@ -156,6 +169,9 @@ const main = async (): Promise<void> => {
         if (diagnostics.length > 0) {
           process.stderr.write(`${diagnostics}\n`);
         }
+
+        process.stdout.write("{}\n");
+        process.exit(result.status ?? 1);
       }
     }
   }

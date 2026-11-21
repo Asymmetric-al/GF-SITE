@@ -1,11 +1,16 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = Number(process.env.PLAYWRIGHT_PORT ?? "3147");
-const BASE_URL = process.env.E2E_BASE_URL ?? `http://127.0.0.1:${PORT}`;
+const EXTERNAL_BASE_URL = process.env.E2E_BASE_URL;
+const BASE_URL = EXTERNAL_BASE_URL ?? `http://127.0.0.1:${PORT}`;
 
 const START_COMMAND =
   process.env.E2E_START_COMMAND ??
   `bun run start -- --hostname 127.0.0.1 --port ${PORT}`;
+
+const USE_LOCAL_WEB_SERVER =
+  EXTERNAL_BASE_URL === undefined ||
+  process.env.E2E_START_COMMAND !== undefined;
 
 const IS_CI = Boolean(process.env.CI);
 
@@ -53,11 +58,15 @@ export default defineConfig({
     trace: "retain-on-failure",
     video: "off",
   },
-  webServer: {
-    command: START_COMMAND,
-    reuseExistingServer: false,
-    timeout: 120_000,
-    url: BASE_URL,
-  },
+  ...(USE_LOCAL_WEB_SERVER
+    ? {
+        webServer: {
+          command: START_COMMAND,
+          reuseExistingServer: false,
+          timeout: 120_000,
+          url: BASE_URL,
+        },
+      }
+    : undefined),
   workers: IS_CI ? 1 : 4,
 });

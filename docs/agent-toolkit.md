@@ -38,7 +38,7 @@ To avoid duplicate MCP registrations across T3 Code providers:
 
 - **Project-scoped MCPs in `GF-SITE`:**
   - `next-devtools` (`bunx next-devtools-mcp@0.4.0`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/next-devtools/`).
-  - `shadcn` (`npx -y shadcn@4.23.0 mcp`, workspace cwd = `GF-SITE`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/gf-site-ui-registries/` as `gf-site-shadcn`).
+  - `shadcn` (`bunx --no-install shadcn mcp`, workspace cwd = `GF-SITE`) — Claude, Cursor, Codex, Antigravity (`.agents/plugins/gf-site-ui-registries/` via `scripts/shadcn-mcp.ts` as `gf-site-shadcn`).
   - `reactbits-pro` (`https://mcp.reactbits.dev/mcp`, Bearer `REACTBITS_LICENSE_KEY`) — Claude, Cursor, Codex, Antigravity plugin.
   - `shadcnuikit` (`https://shadcnuikit.com/api/mcp`, Bearer `SHADCNUIKIT_API_KEY`) — Claude, Cursor, Codex, Antigravity plugin.
   - `reui` (`https://mcp.reui.io`, OAuth / separate `REUI_MCP_TOKEN`) — Claude, Cursor, Codex, Antigravity plugin.
@@ -54,34 +54,34 @@ To avoid duplicate MCP registrations across T3 Code providers:
 
 Never commit credential values into Git, `components.json`, `.mcp.json`, or logs. Load required values in the host's private user environment before starting or restarting T3 Code provider sessions.
 
-| Env Var Name | Role | Current Host State |
+| Env Var Name | Role | Expected Setup State |
 | --- | --- | --- |
-| `REACTBITS_LICENSE_KEY` | `@reactbits-starter`, `@reactbits-pro` registries and `reactbits-pro` HTTP MCP | Set in Windows User env; **verified Pro entitlement** |
-| `REUI_LICENSE_KEY` | `@reui` shadcn registry only (**not** ReUI MCP OAuth) | Set in Windows User env; **verified registry search/view** |
-| `REUI_MCP_TOKEN` _(optional)_ | Dedicated ReUI MCP PAT (alternative to OAuth sign-in) | Not supplied; ReUI MCP requires OAuth sign-in |
-| `SHADCNBLOCKS_API_KEY` | `@shadcnblocks` registry (`sk_live_` prefix is Shadcnblocks, **not** Stripe; dated license expiry `2026-12-03 07:00`, timezone unspecified) | Set in Windows User env; **verified item view (`base-maia`)** |
-| `SHADCNUIKIT_API_KEY` | `@shadcnuikit` registry and `shadcnuikit` HTTP MCP (vendor docs alias: `REGISTRY_TOKEN`) | Set in Windows User env; **verified registry + MCP** |
-| `SHADCN_STUDIO_EMAIL`, `SHADCN_STUDIO_LICENSE_KEY` | `@ss-*` registries and scoped child `EMAIL`/`API_KEY` via `scripts/shadcn-studio-mcp.ts` | Set in Windows User env; **verified registry + stdio MCP** |
-| `EFFERD_REGISTRY_TOKEN` | `@efferd` registry (free + licensed items) | Set in Windows User env; **verified registry search/view** |
-| `SHADCN_SPACE_EMAIL`, `SHADCN_SPACE_LICENSE_KEY` | Future Shadcn Space Pro tier | Not supplied; free catalog verified without auth |
-| `CONTEXT7_API_KEY` | Context7 HTTP MCP and `ctx7` CLI | Set in Windows User env; **verified HTTP MCP** |
-| `VERCEL_TOKEN` | Vercel CLI/API (`vercel whoami` authenticated; separate from `https://mcp.vercel.com` OAuth) | Set in Windows User env; CLI authenticated as `conrad-4371` |
-| `RESEND_API_KEY` | Resend CLI & HTTP MCP (`https://mcp.resend.com/mcp`) | Set in Windows User env & secure storage; **verified CLI + MCP** |
-| `CLOUDINARY_API_KEY` | Incomplete alone for key-based admin API (missing cloud name/secret); `cld` OAuth token expired (`2026-10-30`) | Set in Windows User env; re-run `cld login` when Cloudinary is needed |
-| `SUPABASE_ACCESS_TOKEN`, `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `INNGEST_SIGNING_KEY`, `INNGEST_EVENT_KEY` | Conditional service credentials (default Supabase PAT only; Stripe test-mode; Inngest app keys are **not** Cloud MCP auth) | Stored privately in Windows User env, **inactive** in `GF-SITE` |
-| `PAGESPEED_API_KEY`, `CRUX_API_KEY`, `GSC_*`, `AHREFS_API_KEY`, `WEBPAGETEST_API_KEY`, `AXE_API_KEY` | Optional external SEO/perf/a11y services | Not supplied |
+| `REACTBITS_LICENSE_KEY` | `@reactbits-starter`, `@reactbits-pro` registries and `reactbits-pro` HTTP MCP | Set in developer's private environment; verified Pro entitlement |
+| `REUI_LICENSE_KEY` | `@reui` shadcn registry only (**not** ReUI MCP OAuth) | Set in developer's private environment; verified registry search/view |
+| `REUI_MCP_TOKEN` _(optional)_ | Dedicated ReUI MCP PAT (alternative to OAuth sign-in) | Optional; ReUI MCP uses OAuth sign-in otherwise |
+| `SHADCNBLOCKS_API_KEY` | `@shadcnblocks` registry (`sk_live_` prefix is Shadcnblocks, **not** Stripe) | Set in developer's private environment; verified direct item view (`base-maia`) |
+| `SHADCNUIKIT_API_KEY` | `@shadcnuikit` registry and `shadcnuikit` HTTP MCP (vendor docs alias: `REGISTRY_TOKEN`) | Set in developer's private environment; verified registry + MCP |
+| `SHADCN_STUDIO_EMAIL`, `SHADCN_STUDIO_LICENSE_KEY` | `@ss-*` registries and isolated child `EMAIL`/`API_KEY` via `scripts/shadcn-studio-mcp.ts` | Set in developer's private environment; verified registry + isolated stdio MCP |
+| `EFFERD_REGISTRY_TOKEN` | `@efferd` registry (free + licensed items) | Set in developer's private environment; verified registry search/view |
+| `SHADCN_SPACE_EMAIL`, `SHADCN_SPACE_LICENSE_KEY` | Future Shadcn Space Pro tier | Optional; free catalog verified without auth |
+| `CONTEXT7_API_KEY` | Context7 HTTP MCP and `ctx7` CLI | Set in developer's private environment; verified HTTP MCP |
+| `VERCEL_TOKEN` | Vercel CLI/API (separate from `https://mcp.vercel.com` OAuth) | Set in developer's private environment when deploying/inspecting via CLI |
+| `RESEND_API_KEY` | Resend CLI & HTTP MCP (`https://mcp.resend.com/mcp`) | Set in developer's private environment; optional until email features exist |
+| `CLOUDINARY_API_KEY` | Incomplete alone for key-based admin API (requires cloud name/secret or `cld login` OAuth) | Optional; run `cld login` when Cloudinary is needed |
+| `SUPABASE_ACCESS_TOKEN`, `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `INNGEST_SIGNING_KEY`, `INNGEST_EVENT_KEY` | Conditional service credentials (inactive in frontend-only `GF-SITE`; Inngest app keys are **not** Cloud MCP auth) | Optional; unused in `GF-SITE` runtime |
+| `PAGESPEED_API_KEY`, `CRUX_API_KEY`, `GSC_*`, `AHREFS_API_KEY`, `WEBPAGETEST_API_KEY`, `AXE_API_KEY` | Optional external SEO/perf/a11y services | Not configured |
 
 ---
 
 ## 5. Global Skill Shadow Audit
 
-The host machine has personal global skills outside `GF-SITE`. No unrelated personal skills were deleted. Be aware of exact-name overlaps when diagnosing provider skill precedence (T3 Claude guidance notes active user/config directories can shadow project `.claude/skills` on name collisions):
+Developer workstations may also carry personal global skills outside `GF-SITE`. Do not delete unrelated personal skills; keep exact-name precedence in mind when diagnosing provider skill resolution (Claude user/config directories can shadow project `.claude/skills` on name collisions):
 
-- `C:\Users\Conrad\.claude\skills`: **0 overlaps** with `GF-SITE`.
-- T3 Antigravity `config\skills`: **0 exact-name overlaps** (global `emil-design-engineering` coexists under a distinct name from project `emil-design-eng`).
-- `C:\Users\Conrad\.codex\skills`: **1 overlap** (`vitest`).
-- `C:\Users\Conrad\.cursor\skills`: **8 overlaps** (`animate`, `animation-performance`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `pick-ui-library`, `prototype`, `review-animations`).
-- `C:\Users\Conrad\.agents\skills`: **16 overlaps** (`agent-browser`, `emil-design-eng`, `frontend-design`, `remotion-best-practices`, `resend`, `resend-cli`, `shadcn`, `stripe-best-practices`, `supabase`, `supabase-postgres-best-practices`, `ui-ux-pro-max`, `ultracite`, `vercel-composition-patterns`, `vercel-react-best-practices`, `vercel-react-view-transitions`, `web-design-guidelines`).
+- `~/.claude/skills`: `0` overlaps with `GF-SITE`.
+- T3 Antigravity user `config/skills`: `0` exact-name overlaps (`emil-design-engineering` coexists under a distinct name from project `emil-design-eng`).
+- `~/.codex/skills`: `1` overlap (`vitest`).
+- `~/.cursor/skills`: `8` overlaps (`animate`, `animation-performance`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `pick-ui-library`, `prototype`, `review-animations`).
+- `~/.agents/skills`: `16` overlaps (`agent-browser`, `emil-design-eng`, `frontend-design`, `remotion-best-practices`, `resend`, `resend-cli`, `shadcn`, `stripe-best-practices`, `supabase`, `supabase-postgres-best-practices`, `ui-ux-pro-max`, `ultracite`, `vercel-composition-patterns`, `vercel-react-best-practices`, `vercel-react-view-transitions`, `web-design-guidelines`).
 
 ---
 

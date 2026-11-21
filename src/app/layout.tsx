@@ -5,6 +5,7 @@ import {
   getMetadataBase,
   isSearchIndexingEnabled,
   SITE_DEFAULTS,
+  SITE_OPEN_GRAPH,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +14,7 @@ import "./globals.css";
 const figtree = Figtree({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-figtree",
 });
 
 const geistMono = Geist_Mono({
@@ -23,16 +24,12 @@ const geistMono = Geist_Mono({
 });
 
 const indexingEnabled = isSearchIndexingEnabled();
+const metadataBase = getMetadataBase();
 
 export const metadata: Metadata = {
   description: SITE_DEFAULTS.description,
-  metadataBase: getMetadataBase(),
-  openGraph: {
-    description: SITE_DEFAULTS.description,
-    siteName: SITE_DEFAULTS.name,
-    title: SITE_DEFAULTS.name,
-    type: "website",
-  },
+  ...(metadataBase === undefined ? undefined : { metadataBase }),
+  openGraph: SITE_OPEN_GRAPH,
   robots: indexingEnabled
     ? {
         follow: true,

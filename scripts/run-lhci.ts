@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import path from "node:path";
 import process from "node:process";
 
 const [profile] = process.argv.slice(2);
@@ -38,6 +39,7 @@ const resolveChromePath = (): string | undefined => {
   return getChromeCandidates().find((candidate) => fs.existsSync(candidate));
 };
 
+const repoRoot = path.resolve(import.meta.dirname, "..");
 const chromePath = resolveChromePath();
 const env: NodeJS.ProcessEnv = { ...process.env };
 
@@ -45,13 +47,14 @@ if (chromePath !== undefined) {
   env.CHROME_PATH = chromePath;
 }
 
-const configPath = `./lighthouserc.${profile}.json`;
+const configPath = path.join(repoRoot, `lighthouserc.${profile}.json`);
 const bin = process.platform === "win32" ? "bunx.exe" : "bunx";
 
 const result = spawnSync(
   bin,
   ["--no-install", "lhci", "autorun", `--config=${configPath}`],
   {
+    cwd: repoRoot,
     env,
     stdio: "inherit",
   }
@@ -62,4 +65,9 @@ if (result.error !== undefined) {
   process.exit(1);
 }
 
-process.exit(result.status ?? 0);
+if (result.signal !== null) {
+  process.stderr.write(`lhci terminated by signal ${result.signal}\n`);
+  process.exit(1);
+}
+
+process.exit(result.status ?? 1);

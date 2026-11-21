@@ -5,8 +5,8 @@
       "args": ["next-devtools-mcp@0.4.0"]
     },
     "shadcn": {
-      "command": "npx",
-      "args": ["-y", "shadcn@4.23.0", "mcp"]
+      "command": "bunx",
+      "args": ["--no-install", "shadcn", "mcp"]
     },
     "reactbits-pro": {
       "url": "https://mcp.reactbits.dev/mcp",
