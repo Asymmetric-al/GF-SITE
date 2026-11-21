@@ -13,6 +13,8 @@
     "format:check": "oxfmt --check",
     "check": "ultracite check",
     "check:foundation": "bun scripts/check-foundation.ts",
+    "okf:validate": "bun scripts/okf-validate.ts --strict",
+    "okf:scan": "bun scripts/okf-scan.ts",
     "fix": "ultracite fix",
     "knip": "knip",
     "test": "vitest",
@@ -28,8 +30,8 @@
     "perf:lhci": "bun run perf:lhci:mobile && bun run perf:lhci:desktop",
     "analyze": "next analyze --output",
     "analyze:export": "next analyze export",
-    "check:links": "lychee --offline README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md",
-    "check:prose": "vale README.md DESIGN.md docs"
+    "check:links": "lychee --offline README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md",
+    "check:prose": "vale README.md DESIGN.md docs knowledge"
   },
   "dependencies": {
     "@base-ui/react": "1.9.0",
@@ -80,7 +82,8 @@
     "typescript": "7.1.0-beta",
     "ultracite": "8.3.1",
     "vite": "8.3.8",
-    "vitest": "5.1.1"
+    "vitest": "5.1.1",
+    "yaml": "2.9.1"
   },
   "engines": {
     "node": "24.x"

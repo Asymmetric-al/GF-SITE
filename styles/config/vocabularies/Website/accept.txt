@@ -2,6 +2,8 @@ Ahrefs
 App Router
 argv
 Asymmetric-al
+attestable
+attester
 [Bb]ase UI
 BASE UI
 [Bb]un
@@ -21,6 +23,7 @@ FFmpeg
 Figtree
 Firecrawl
 fontTools
+frontmatter
 Geist
 GF-SITE
 gitleaks
@@ -43,6 +46,7 @@ Lychee
 MarketingSkills
 MCPs
 Next\.js
+OKF
 [Oo]xfmt
 [Oo]xlint
 Payload
@@ -51,6 +55,7 @@ PostHog
 prerender
 prerendered
 prerendering
+PyYAML
 React Bits
 Remotion
 Resend
@@ -62,6 +67,7 @@ Sentry
 [Ss]hadcn
 Shadcnblocks
 Shadscan
+SPDX
 Storybook
 Stripe
 subsetter
@@ -71,6 +77,7 @@ Tailwind
 TanStack
 Theo
 Tiptap
+traversable
 tsrs
 Tstack
 Turbopack

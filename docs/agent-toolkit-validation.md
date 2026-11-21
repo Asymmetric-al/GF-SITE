@@ -12,7 +12,8 @@ All validation checks below were **harmless local checks and non-mutating vendor
 
 | Check | Exact Command | Observed Result |
 | --- | --- | --- |
-| Foundation invariants | `bun run check:foundation` | **Pass** — `122` synced skills (`.agents/skills` & `.claude/skills`, zero symlinks, matching frontmatter), `0` Radix references (including nested lockfile/node_modules checks), `0` `oxlint-tsgolint`, `0` removed `Nia` entries, Next.js managed markers intact, `@layer ui-sdk;` on line 1, public-doc privacy guard clean |
+| Foundation invariants | `bun run check:foundation` | **Pass** — `124` synced skills (`.agents/skills` & `.claude/skills`, zero symlinks, matching frontmatter), `0` Radix references (including nested lockfile/node_modules checks), `0` `oxlint-tsgolint`, `0` removed `Nia` entries, Next.js managed markers intact, `@layer ui-sdk;` on line 1, public-doc privacy guard clean |
+| OKF v0.3 bundle validation & scan | `bun run okf:validate` & `bun run okf:scan` | **Pass** — strict OKF v0.3 conformance verified on `knowledge/` (`9` structural files, `0` errors, `0` warnings, `0` concepts until domain content is authored), backed by Vitest suite `scripts/okf.test.ts` |
 | Ultracite doctor | `bunx --no-install ultracite doctor` | **Pass** — `10 passed, 0 warnings, 0 failed` (`oxlint@1.94.0`, `oxfmt@0.79.0`, `3` lint plugins satisfied) |
 | Ultracite check | `bun run check` | **Pass** — `0 warnings, 0 errors` across `1,126` rules (`core`, `react`, `next`, `playwright`, `anti-slop`, `@shadcn/lint`, `oxlint-plugin-react-doctor`, `next/js-plugins`, scoped `vitest`, scoped `@interfere/landmines/testing`, `no-restricted-imports` for Radix) + Oxfmt clean |
 | Knip unused audit | `bun run knip` | **Pass** (`exit 0`, zero hints) — zero unused files, exports, or active dependencies |

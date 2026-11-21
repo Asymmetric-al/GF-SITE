@@ -48,6 +48,8 @@ Open [http://localhost:3000](http://localhost:3000). No external services, Core 
 | `bun run typecheck` | Run `next typegen && tsc --noEmit` across the full `tsconfig.json` |
 | `bun run check` | Run Ultracite checks (`oxlint` with `tsrs`, `anti-slop`, `@shadcn/lint`, `oxlint-plugin-react-doctor`, `@interfere/landmines/testing` + `oxfmt --check`) |
 | `bun run check:foundation` | Verify zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, and manifest integrity |
+| `bun run okf:validate` | Validate the `knowledge/` OKF v0.3 bundle strictly against conformance and field-shape rules |
+| `bun run okf:scan` | Scan concepts in `knowledge/` with trust tiers, statuses, and freshness signals |
 | `bun run fix` | Apply safe Ultracite auto-fixes and Oxfmt formatting |
 | `bun run knip` | Detect unused files, exports, and dependencies |
 | `bun run test` / `bun run test:run` | Run Vitest unit and component tests (watch mode / bounded run) |
@@ -83,6 +85,7 @@ Private developer credentials for licensed UI catalogs and external service CLIs
 
 - [AGENTS.md](./AGENTS.md) (and [CLAUDE.md](./CLAUDE.md) bridge) — Concise repository rules and task routing for coding agents.
 - [DESIGN.md](./DESIGN.md) — Canonical design setup reference (established constraints, implementation observations, undecided creative areas, and review process).
+- [`knowledge/index.md`](./knowledge/index.md) and [`docs/okf.md`](./docs/okf.md) — Generic Open Knowledge Format (OKF v0.3) knowledge bundle scaffold, authoring guide, and templates (`docs/okf-templates/`) for brand identity, audiences, messaging, offerings, marketing playbooks, and editorial policies.
 - [docs/testing.md](./docs/testing.md) — Unit, E2E, accessibility, visual regression, Lighthouse CI baselines, bundle analysis, technical SEO, and CI cadence.
 - [docs/agent-toolkit.md](./docs/agent-toolkit.md) — Sanitized agent toolkit architecture, skill/MCP scopes, credential roles, and restore commands.
 - [docs/agent-toolkit-validation.md](./docs/agent-toolkit-validation.md) — Recorded validation runs, measured baselines, live MCP/registry checks, and remaining human actions.

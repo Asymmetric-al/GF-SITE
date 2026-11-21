@@ -21,6 +21,7 @@ Every statement in this document is categorized into one of four evidence levels
 - **Does not govern:** `Asymmetric-al/core` administration, Payload CMS v4 schemas, database models, authentication, or backend infrastructure.
 - **Related canonical references:**
   - [AGENTS.md](./AGENTS.md) — Concise repository rules, task routing, and verification expectations.
+  - [`knowledge/index.md`](./knowledge/index.md) and [`docs/okf.md`](./docs/okf.md) — Open Knowledge Format (OKF v0.3) knowledge bundle and authoring guide for brand identity, voice, audiences, messaging, offerings, marketing playbooks, and editorial policies.
   - [README.md](./README.md) — Runtime environment, scripts, and local setup.
   - [docs/core-integration.md](./docs/core-integration.md) — Inspected Core CMS snapshot and future content-contract boundary.
   - [docs/testing.md](./docs/testing.md) — Automated testing, accessibility, visual regression, performance baselines, and technical SEO verification.
@@ -99,7 +100,7 @@ All areas below remain **Undecided or unknown** and require dedicated user input
 
 | Area | Status | Notes / Questions to Resolve Later |
 | --- | --- | --- |
-| Brand identity, positioning, and audiences | **Undecided** | Define primary visitor audiences, goals, and key journeys (understanding Global Fellowship, contacting, participating, giving, partnering). |
+| Brand identity, positioning, and audiences | **Undecided** | Define primary visitor audiences, goals, and key journeys (understanding Global Fellowship, contacting, participating, giving, partnering); store approved concepts in `knowledge/` (OKF v0.3) and link from `DESIGN.md`. |
 | Color palette, contrast system, and dark-mode support | **Undecided** | Choose light palette, semantic roles, accent hierarchy, and whether dark mode will be supported or exposed with a toggle. |
 | Typography system and type scale | **Undecided** | Confirm whether `Figtree` / `Geist_Mono` remain or are replaced by brand fonts; define heading, body, caption, and fluid scale rules. |
 | Layout grid, spacing rhythm, and breakpoints | **Undecided** | Define container widths, section rhythm, responsive grid patterns, and header/footer structure. |
@@ -107,7 +108,7 @@ All areas below remain **Undecided or unknown** and require dedicated user input
 | Imagery, photography, and illustration direction | **Undecided** | Define real photography standards, aspect ratios, framing, caption style, and decorative vs informative alt-text conventions. |
 | Iconography treatment | **Undecided** | Hugeicons (`@hugeicons/react`) is installed as the baseline library; stroke weight, sizing scale, and visual usage rules are undecided. |
 | Motion and interaction choreography | **Undecided** | Define motion principles, duration/easing tokens, transition scope, and whether Motion (`motion`) is needed beyond CSS transitions. |
-| Brand voice and public copy guidelines | **Undecided** | Plain language, factual accuracy, and no em dashes are established; detailed tone, terminology, and Vale ruleset tuning remain open. |
+| Brand voice and public copy guidelines | **Undecided** | Plain language, factual accuracy, and no em dashes are established; detailed tone, terminology, and Vale ruleset tuning remain open and will be documented in `knowledge/brand/` and `knowledge/policies/` (OKF v0.3). |
 | Component visual treatment and surface hierarchy | **Undecided** | Define elevation, borders, radii, interactive states, form styling, and rich-text/Tiptap typography (`prose` or semantic styles). |
 | Launch domain, canonical URL, and structured data policy | **Undecided** | `NEXT_PUBLIC_SITE_URL`, public indexing activation, sitemap strategy, and Schema.org JSON-LD types await real content and domain confirmation. |
 

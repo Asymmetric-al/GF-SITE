@@ -529,6 +529,22 @@
       "computedHash": "c14905fe96b7cae2af2d359edbfa6f07cc1fae5ff94709ed58092834677dc24d",
       "installMode": "copy"
     },
+    "okf-consume": {
+      "source": "open-knowledge-format/open-knowledge-format",
+      "commit": "527e81aff55992be21507e97004286789126f88c",
+      "sourceType": "github",
+      "skillPath": "skills/okf-consume/SKILL.md",
+      "computedHash": "edbeb42f6a6e80a0b460bcb2708ef2d0b43d6ce5e551776a12ef653a058c97e5",
+      "installMode": "copy"
+    },
+    "okf-generate": {
+      "source": "open-knowledge-format/open-knowledge-format",
+      "commit": "527e81aff55992be21507e97004286789126f88c",
+      "sourceType": "github",
+      "skillPath": "skills/okf-generate/SKILL.md",
+      "computedHash": "39eb54b2b431930cbd6e110487f31878934957609367f3b32462b47c0a653c9f",
+      "installMode": "copy"
+    },
     "onboarding": {
       "source": "coreyhaines31/marketingskills",
       "commit": "5b2b400eec1e7e1cec76245a715d0b0d4fd2a9c1",

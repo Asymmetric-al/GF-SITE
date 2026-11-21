@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-21T16:30:00+07:00",
+  "generatedAt": "2026-11-21T18:15:00+07:00",
   "repository": "https://github.com/Asymmetric-al/GF-SITE",
   "workspace": ".",
   "statusVocabulary": [
@@ -13,8 +13,8 @@
     "Blocked"
   ],
   "summary": {
-    "totalEntries": 203,
-    "projectSkills": 122,
+    "totalEntries": 205,
+    "projectSkills": 124,
     "nonSkillEntries": 81
   },
   "items": [
@@ -1331,6 +1331,42 @@
       "result": "pass",
       "remainingBlocker": null,
       "restoreOrUpdate": "bunx skills@1.9.0 add vercel/next.js --skill next-partial-prefetching-optimizer -a claude-code -a cursor -a codex -a antigravity --copy -y"
+    },
+    {
+      "id": "skill:okf-consume",
+      "type": "skill",
+      "purpose": "Answer questions from an Open Knowledge Format (OKF v0.3) bundle using progressive disclosure and report provenance, trust tier, freshness, status, and attestation status.",
+      "officialSource": "open-knowledge-format/open-knowledge-format",
+      "testedVersionOrCommit": "527e81aff55992be21507e97004286789126f88c",
+      "owningWorkspaceOrHost": "GF-SITE (repository-local)",
+      "activeAgentTargets": ["codex", "cursor", "antigravity", "claude-code"],
+      "installedPathOrEndpoint": ".agents/skills/okf-consume/SKILL.md & .claude/skills/okf-consume/SKILL.md",
+      "requiredEnvNames": [],
+      "configOwner": "GF-SITE repository",
+      "state": "Installed and verified",
+      "lastValidationTime": "2026-11-21T18:15:00+07:00",
+      "harmlessCheckPerformed": "Verified SKILL.md frontmatter (okf-consume), dual-directory placement (.agents/skills & .claude/skills), and OKF v0.3 scan/validation parity via bun run okf:scan",
+      "result": "pass",
+      "remainingBlocker": null,
+      "restoreOrUpdate": "bunx skills@1.9.0 add open-knowledge-format/open-knowledge-format --skill okf-consume -a codex -a claude-code --copy -y"
+    },
+    {
+      "id": "skill:okf-generate",
+      "type": "skill",
+      "purpose": "Create, update, migrate, repair, or validate an Open Knowledge Format (OKF v0.3) knowledge bundle with provenance, trust tiers, lifecycle fields, and index/log hygiene.",
+      "officialSource": "open-knowledge-format/open-knowledge-format",
+      "testedVersionOrCommit": "527e81aff55992be21507e97004286789126f88c",
+      "owningWorkspaceOrHost": "GF-SITE (repository-local)",
+      "activeAgentTargets": ["codex", "cursor", "antigravity", "claude-code"],
+      "installedPathOrEndpoint": ".agents/skills/okf-generate/SKILL.md & .claude/skills/okf-generate/SKILL.md",
+      "requiredEnvNames": [],
+      "configOwner": "GF-SITE repository",
+      "state": "Installed and verified",
+      "lastValidationTime": "2026-11-21T18:15:00+07:00",
+      "harmlessCheckPerformed": "Verified SKILL.md frontmatter (okf-generate), dual-directory placement (.agents/skills & .claude/skills), and strict OKF v0.3 conformance via bun run okf:validate",
+      "result": "pass",
+      "remainingBlocker": null,
+      "restoreOrUpdate": "bunx skills@1.9.0 add open-knowledge-format/open-knowledge-format --skill okf-generate -a codex -a claude-code --copy -y"
     },
     {
       "id": "skill:onboarding",

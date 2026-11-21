@@ -136,5 +136,5 @@ jobs:
       - name: Run offline Lychee link check
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md
+          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md
           fail: true
