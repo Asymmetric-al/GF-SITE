@@ -49,13 +49,16 @@ jobs:
       - name: Verify foundation invariants (zero Radix, skill parity, manifest)
         run: bun run check:foundation
 
+      - name: Validate OKF v0.3 knowledge bundle
+        run: bun run okf:validate
+
       - name: Check unused files, exports, and dependencies (Knip)
         run: bun run knip
 
       - name: Check offline Markdown documentation links (Lychee)
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md
+          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md
           fail: true
 
       - name: Scan repository for leaked secrets (Gitleaks)

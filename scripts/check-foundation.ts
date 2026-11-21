@@ -294,18 +294,49 @@ const checkManifestIntegrity = (
   }
 };
 
+const collectMarkdownFilesRecursive = (relativeDir: string): string[] => {
+  const fullDir = path.join(repoRoot, relativeDir);
+
+  if (!fs.existsSync(fullDir)) {
+    return [];
+  }
+
+  const results: string[] = [];
+
+  const walk = (directory: string): void => {
+    const entries = fs.readdirSync(directory, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(directory, entry.name);
+
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        results.push(
+          path.relative(repoRoot, fullPath).split(path.sep).join("/")
+        );
+      }
+    }
+  };
+
+  walk(fullDir);
+
+  return results.toSorted();
+};
+
 const checkPublicRepoPrivacy = (): void => {
-  for (const filePath of [
+  const publicFiles = [
     "README.md",
     "AGENTS.md",
     "CLAUDE.md",
     "DESIGN.md",
-    "docs/agent-toolkit.md",
-    "docs/agent-toolkit-validation.md",
-    "docs/testing.md",
-    "docs/core-integration.md",
+    ".agents/product-marketing.md",
     "agent-toolkit-manifest.json",
-  ] as const) {
+    ...collectMarkdownFilesRecursive("docs"),
+    ...collectMarkdownFilesRecursive("knowledge"),
+  ];
+
+  for (const filePath of publicFiles) {
     for (const disclosure of findPrivateDisclosures(readText(filePath))) {
       errors.push(`Public file ${filePath} contains disallowed ${disclosure}.`);
     }
