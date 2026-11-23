@@ -105,31 +105,23 @@ Global Fellowship's public website renders **exactly seven approved content bloc
 
 ## 5. Emergency Removal & Consent Withdrawal
 
-When a worker, local elder, or guardian withdraws consent - or when a Regional Director calls a security step-down - **do not wait for normal cache expiration or Monday office hours**[^triage].
+When a worker, local elder, or guardian withdraws consent - or when a Regional Director calls a security step-down - follow the single canonical 4-stage procedure in [On-Call Consent Withdrawal Runbook](../policies/consent-withdrawal-runbook.md) immediately without waiting for normal cache expiration or Monday office hours[^triage].
 
-### Part A: Non-Technical Staff Action (Do This Immediately)
+### Part A: Non-Technical Staff Action (Today & Future CMS)
 
 1. **Escalate immediately:** Notify the **Regional Director** (encrypted channel), **Co-Executive Directors** (`executivedirectors@globalfellowship.org`), and **Global Engagement / Web Ops** (`info@globalfellowship.org`) with a lock-screen-safe subject containing zero names, cities, or attached photos.
-2. **Unpublish in the CMS AND delete the uploaded photograph file:** Switch the page or update from **Published** back to **Draft / Unpublished** (or redact identifying blocks), AND **permanently delete the uploaded photograph file** from the CMS Media Library so direct media URLs cannot remain live.
-3. **Request immediate cache purge from Technical Ops:** Send the page URL, collection name (Page, Project Page, Worker Page, or Story Update), and CMS entry ID to your Technical / Web Ops maintainer so they clear the site cache immediately (Part B below).
-4. **Verify live removal yourself:** Open a fresh private/incognito browser window and confirm the withdrawn URL returns **"Page not found"** (or the cleared redacted version) and the photo URL no longer loads.
-5. **Complete Steps 2–5 of the [Consent Withdrawal Propagation Checklist](../policies/crisis-and-safeguarding-comms.md#3-consent-withdrawal--propagation-protocol-honest-removal-limits):** Have your maintainer check `brand-kit/manifest.json` (`storyRefs` array), log the withdrawal in the private non-Git archive (`OVR-14`), send calm partner retirement requests (`COPY-RETIRE-01`), and send honest confirmation (`COPY-WITHDRAW-01`) within 24 hours.
+2. **Trigger immediate web & media removal:**
+   - **Today (current live `globalfellowship.org` host, prior to Core CMS launch under `OVR-24`):** Have Web Operations unpublish or delete the live page and remove the underlying photograph binary directly from the active web host.
+   - **Once Core Payload CMS v4 is live (`OVR-24`):** Switch the page or update from **Published** back to **Draft / Unpublished** (or redact identifying blocks), **permanently delete the uploaded photograph file** from the CMS Media Library, and ask Technical Ops to run the authoritative Core release-withdrawal and cache purge (Part B below).
+3. **Verify live removal yourself:** Open a fresh private/incognito browser window and confirm the withdrawn URL returns **"Page not found"** (or the cleared redacted version) and the direct photo URL no longer loads.
+4. **Complete Stages 2–4 of [On-Call Consent Withdrawal Runbook](../policies/consent-withdrawal-runbook.md):** Check `brand-kit/manifest.json` (`storyRefs` array), log revocation strictly in the private non-Git archive (`OVR-14`), send calm partner retirement requests (`COPY-RETIRE-01`), and send honest confirmation (`COPY-WITHDRAW-01`) within 24 hours.
 
-### Part B: Technical / Web Ops Cache-Purge Handoff (Authorized Maintainer Only)
+### Part B: Technical / Web Ops Requirements (Implemented During Website Phase `OVR-24`)
 
-1. **Delete media binary & purge image caches:** Permanently remove the photograph asset (original + generated thumbnail/card sizes) from Core object storage and purge `CMS_MEDIA_ORIGIN` CDN and Next.js `/_next/image` caches.
-2. **Send immediate zero-expiry revalidation (`mode: "withdraw"`):** Call `POST https://<gf-site-host>/api/cms/revalidate` authenticated with either `x-cms-revalidate-secret: <CMS_REVALIDATE_SECRET>` or `Authorization: Bearer <CMS_REVALIDATE_SECRET>`:
-   ```json
-   {
-     "mode": "withdraw",
-     "tags": [
-       "public-cms:tenant:<tenant>",
-       "public-cms:tenant:<tenant>:collection:updates",
-       "public-cms:tenant:<tenant>:collection:<collection>:doc:<documentId>"
-     ]
-   }
-   ```
-   - **Exact tag rules:** `<tenant>` resolves from `CMS_TENANT_ID` first (falling back to sanitized `tenant.slug`, then `"default"`). Because `/stories` reads `collection:updates` without per-document tags, **always include `public-cms:tenant:<tenant>:collection:updates` (and the tenant tag for urgent Tier 3 certainty)** when removing a field update. Confirm HTTP `200` returns `"mode": "withdraw"` and `"revalidated": true` (using `"mode": "withdraw"` triggers `revalidateTag(tag, { expire: 0 })` immediately).
+No CMS revalidation route or CMS environment variables exist in `GF-SITE`'s current starter scaffold (`src/`); `docs/core-integration.md` governs the live integration contract built during website construction:
+
+1. **Permanent media deletion & CDN/image cache purge:** Remove the photograph asset (original + derived sizes) from Core object storage and purge CDN and Next.js `/_next/image` caches so direct media URLs fail immediately.
+2. **Authoritative Core release-admission withdrawal (never rely solely on cache invalidation):** Wire `GF-SITE`'s server-only reader (`src/lib/content/`) to `Asymmetric-al/core`'s verified release-backed serving admission contract (`docs/core-integration.md`) alongside immediate zero-expiry cache invalidation for affected document and listing collections (such as stories/updates), then verify HTTP `404` / redacted state directly on the live production URL.
 
 ---
 

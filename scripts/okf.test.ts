@@ -89,6 +89,15 @@ const isBrandManifestFile = (value: unknown): value is BrandManifestFile =>
   Array.isArray(value.items) &&
   value.items.every((entry) => isManifestItemEntry(entry));
 
+const UNSAFE_TIER3_LIVESTREAM_RE = /tier\s*3\s+livestream/iu;
+const LINE_SPLIT_RE = /\r?\n/u;
+const QUOTED_OVR_LEAK_RE = /^>\s.*OVR-\d+/iu;
+
+const UNBUILT_CMS_REVALIDATE_RE =
+  /\/api\/cms\/revalidate|CMS_REVALIDATE_SECRET|CMS_TENANT_ID/u;
+
+const WORKER_COUNT_DRIFT_RE = /served\s+584|584\s+people\s+served/iu;
+
 const readBrandManifestItems = (): readonly ManifestItemEntry[] => {
   const parsed: unknown = JSON.parse(
     fs.readFileSync(path.join(repoRoot, "brand-kit/manifest.json"), "utf-8")
@@ -183,6 +192,75 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
     expect(items.length).toBeGreaterThanOrEqual(100);
     expect(missingPaths).toStrictEqual([]);
     expect(scr05Refs).toContain("SYNTH-VETO-001");
+  });
+
+  it("blocks unsafe Tier 3 livestream shorthand, OVR IDs in public copy blocks, and broken handoff pointers", () => {
+    const knowledgeDir = path.join(repoRoot, "knowledge");
+
+    const markdownFiles: string[] = [
+      path.join(repoRoot, "brand-kit/photography/PHOTO-LICENSES.md"),
+      path.join(repoRoot, "brand-kit/tokens/FONT-LICENSES.md"),
+    ];
+
+    const collectMarkdown = (dir: string): void => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const fullPath = path.join(dir, entry.name);
+
+        if (entry.isDirectory()) {
+          collectMarkdown(fullPath);
+        } else if (entry.name.endsWith(".md")) {
+          markdownFiles.push(fullPath);
+        }
+      }
+    };
+
+    collectMarkdown(knowledgeDir);
+
+    const HISTORICAL_AUDIT_LOGS = new Set([
+      "knowledge/log.md",
+      "knowledge/references/organizational-coverage-record.md",
+      "knowledge/references/source-coverage-and-decisions.md",
+    ]);
+
+    const violations: string[] = [];
+
+    for (const filePath of markdownFiles) {
+      const content = fs.readFileSync(filePath, "utf-8");
+      const rel = path.relative(repoRoot, filePath).replaceAll("\\", "/");
+      const isHistoricalLog = HISTORICAL_AUDIT_LOGS.has(rel);
+
+      if (!isHistoricalLog && UNSAFE_TIER3_LIVESTREAM_RE.test(content)) {
+        violations.push(
+          `${rel}: contains unsafe "Tier 3 livestream" shorthand`
+        );
+      }
+
+      if (!isHistoricalLog && content.includes("participation-pathways.md")) {
+        violations.push(`${rel}: cites nonexistent participation-pathways.md`);
+      }
+
+      if (!isHistoricalLog && UNBUILT_CMS_REVALIDATE_RE.test(content)) {
+        violations.push(
+          `${rel}: references unbuilt /api/cms/revalidate route or unconfigured CMS env var`
+        );
+      }
+
+      if (!isHistoricalLog && WORKER_COUNT_DRIFT_RE.test(content)) {
+        violations.push(
+          `${rel}: inverts or drifts canonical "584 workers served" wording`
+        );
+      }
+
+      for (const line of content.split(LINE_SPLIT_RE)) {
+        if (QUOTED_OVR_LEAK_RE.test(line)) {
+          violations.push(
+            `${rel}: leaks internal OVR gate ID inside quoted copy block`
+          );
+        }
+      }
+    }
+
+    expect(violations).toStrictEqual([]);
   });
 });
 

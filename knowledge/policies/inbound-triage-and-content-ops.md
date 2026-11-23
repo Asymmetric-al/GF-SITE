@@ -77,7 +77,7 @@ Workers, sending churches, and regional hubs must match how they share online gi
    - Confirm EXIF/GPS stripping on all uploaded media and alt text written cleanly without hidden location leaks.
    - Publish in Core Payload CMS and refresh cached `GF-SITE` pages per the active Core admission and revalidation contract (`docs/core-integration.md`).
 3. **Emergency Removal / Consent Withdrawal:**
-   - Unpublish or redact in Core Payload CMS and invoke immediate withdrawal cache purge (`mode: "withdraw"` / `expire: 0` or the active Core release-withdrawal mechanism), then verify the live route no longer serves the removed content.
+   - Follow the single canonical 4-stage procedure in [On-Call Consent Withdrawal Runbook](consent-withdrawal-runbook.md) (direct unpublish and media deletion on the current `globalfellowship.org` host today, or authoritative Core Payload CMS release-admission withdrawal and cache purge once live under `OVR-24` per `docs/core-integration.md`), then verify live removal in a fresh private browser window.
 
 ---
 

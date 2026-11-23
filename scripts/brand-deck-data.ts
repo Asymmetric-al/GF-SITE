@@ -106,7 +106,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       "Global Fellowship · Church Planting · Local Leadership · Unreached People",
     specimenStatus: "Pre-publication specimen · awaiting approval",
     speakerNote:
-      "Lead with the Flagship Headline and point to The Local Edit block beneath it so the room sees local elders holding editorial authority before showing any figures (manifest trace ID: SYNTH-VETO-001). Note aloud that the tea table photograph is contextual documentary street photography (James Creegan, CC BY 2.0, creativecommons.org/licenses/by/2.0/), not a Global Fellowship congregation. Remove the pre-publication specimen notice only after leadership approval and Finance/Operations verifications close.",
+      "Lead with the Flagship Headline and point to The Local Edit block beneath it so the room sees local elders holding editorial authority before showing any figures (illustrative specimen, manifest trace ID: SYNTH-VETO-001; do not present as reported field testimony). Note aloud that the tea table photograph is contextual documentary street photography (James Creegan, CC BY 2.0, creativecommons.org/licenses/by/2.0/), not a Global Fellowship congregation. Remove the pre-publication specimen notice only after leadership approval and Finance/Operations verifications close.",
   },
   {
     number: 2,
@@ -142,7 +142,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
     headline: "Local church planters already belong to the neighborhood",
     sub: "Before founding Global Fellowship in Auburn, California in 1989, Don and Kathy Oates served in Liberia under a local pastor. When the fellowship expanded into North American cross-cultural sending in 2012, that order stayed intact across multilingual near-culture, regional, and North American teams.",
     secondaryCallout:
-      "In 2025, 584 workers served (reported as “workers mobilized” in our 2025 Annual Report) across 43 countries (“63 by 2030” is a prayerful aspiration).",
+      "In 2025, 584 workers served (reported as “workers mobilized” in our 2025 Annual Report) across 43 countries (“63 by 2030” is a 2030 strategic goal).",
     footerLeft: "Rooted in Ephesians 2:13-22 & 4:16 (ESV)",
     specimenStatus: "Pre-publication specimen · awaiting approval",
     columns: [
@@ -173,7 +173,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       },
     ],
     speakerNote:
-      "Emphasize how service under a local pastor in Liberia shaped Global Fellowship from day one before expanding into North American cross-cultural sending in 2012. Context for Q&A: 584 people served across 43 countries (reported as 'workers mobilized' in the 2025 Annual Report; orientation overview notes 47 countries, reconciliation tracked in OVR-04).",
+      "Emphasize how service under a local pastor in Liberia shaped Global Fellowship from day one before expanding into North American cross-cultural sending in 2012. Context for Q&A: 584 workers served across 43 countries (reported as 'workers mobilized' in the 2025 Annual Report; orientation overview notes 47 countries, reconciliation tracked in OVR-04).",
   },
   {
     number: 4,
@@ -208,7 +208,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
     ariaLabel: "Slide 5: Livestream-Safe Congregational Prayer",
     kicker: "WEEKLY PRAYER · 2026 · LIVESTREAM-SAFE COLLECTIVE SPECIMEN",
     headline: "God knows them by name",
-    sub: "Where public names or photographs bring real harm to families, local elders gather parents after market hours to read the Psalms in their mother tongue, care for a widowed neighbor, and raise new church shepherds together.",
+    sub: "Where public names or photographs could bring harm to families, congregations pray together without naming people, cities, or regions, asking Christ to strengthen local elders and households in every language.",
     secondaryCallout:
       "Guarding worker households on livestreamed screens is practical Christian love.",
     columns: [
@@ -229,10 +229,10 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       },
     ],
     footerLeft:
-      "No restricted names, cities, or photos on screen · Guard households in love",
+      "Tier 1 anonymous collective prayer · Zero restricted names, cities, or photos on screen",
     specimenStatus: "Pre-publication specimen · awaiting approval",
     speakerNote:
-      "Explain why no personal name or city appears on a livestreamed slide: guarding worker households is practical love. Invite the congregation to pray aloud or quietly through the three prompts on the right. This format is channel-eligible for sanctuary broadcast; swap in a real update only when that specific instance carries signed livestream clearance.",
+      "Explain why no personal name or city appears on a livestreamed slide: guarding worker households is practical love. Invite the congregation to pray aloud or quietly through the three prompts on the right. This is an illustrative Tier 1 anonymous collective prayer specimen (not a Tier 3 household update or field report); each specific broadcast instance requires separate clearance before going live.",
   },
   {
     number: 6,
@@ -262,7 +262,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       },
     ],
     speakerNote:
-      "Let the worked host-veto decision hold the room first: when grieving local elders say 'Not this spring,' the proposed April team actually pauses without financial or relational penalty. Then point underneath to the two ongoing pathways that build friendship year-round: The Bridge Project (no financial gift expected, equal freedom to pause) and Faith on the Frontlines gatherings (no fundraising appeal).",
+      "Let the worked host-veto decision hold the room first (illustrative specimen; do not present as reported field testimony): when grieving local elders say 'Not this spring,' the proposed April team actually pauses without financial or relational penalty. Then point underneath to the two ongoing pathways that build friendship year-round: The Bridge Project (no financial gift expected, equal freedom to pause) and Faith on the Frontlines gatherings (no fundraising appeal).",
   },
   {
     number: 7,

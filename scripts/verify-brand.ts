@@ -26,8 +26,8 @@ import {
 /**
  * Global Fellowship Brand System Build, Export & 6-Release-Gate Verification Engine (v15.0)
  * Enforces G1-G6 without silent skips or font exceptions:
- *  - G1: Byte-exact Protected Foundations, canonical 8-article public Statement of Faith parity (foundations.md:77-84 <-> GF-TPL-22),
- *        canonical Three Pillar glosses (foundations.md:63-65), & zero 2-pillar truncations
+ *  - G1: Byte-exact Protected Foundations, canonical 8-article public Statement of Faith reading copy parity (foundations.md:76-83 <-> GF-TPL-22),
+ *        canonical Three Pillar glosses (foundations.md:62-64), & zero 2-pillar truncations
  *  - G2: Truthfulness, Open Verification Register (OVR-01..OVR-24), Open-OVR contradiction + expanded bare unlaunched route guard
  *        (covering HTML, .txt, .vtt, .docx, .pptx including /statement-of-faith), zero fabricated human OKF entries, per-page
  *        print- & detached-export-surviving specimen holds across EVERY page, reverse failure-capable SYNTH-VETO-001 &

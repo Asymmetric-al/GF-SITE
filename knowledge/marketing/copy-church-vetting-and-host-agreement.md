@@ -51,12 +51,14 @@ This playbook provides ready-to-use copy for pastors, missions committees, regio
 
 ### Six Questions Elders Ask First (Plain Answers)
 
-1. **What do you believe?** Global Fellowship holds historic evangelical Christian faith centered on Scripture, the Triune God, salvation by grace through faith in Jesus Christ, and the calling of the local church. The full 8-article public Statement of Faith is included verbatim in `GF-TPL-22` (internal 10-point staff reconciliation tracked under `OVR-15`).
+1. **What do you believe?** Global Fellowship holds historic evangelical Christian faith centered on Scripture, the Triune God, salvation by grace through faith in Jesus Christ, and the calling of the local church. The full 8-article public Statement of Faith is included in `GF-TPL-22`, and leadership can also walk elders through our internal 10-point staff affirmation during vetting conversations.
 2. **Who leads the work on the ground?** Local believers lead their own churches (`Global coordinates. Regional contextualizes. Local leads.`). Cross-cultural missionaries arrive as learners and coworkers alongside and under local elders, never as outside directors imposing Western church forms.
-3. **Who oversees Global Fellowship legally and financially?** Global Fellowship, Inc. is a registered 501(c)(3) nonprofit founded in 1989 (`EIN 68-0214543`, Meadow Vista, CA), led by Founder & President Don Oates, Co-Executive Directors Jeremy Beaumont and Conrad O'Brien, and a governing board chaired by Eric Bergen.
+3. **Who oversees Global Fellowship legally and financially?** Global Fellowship, Inc. is a registered 501(c)(3) nonprofit founded in Auburn, California in 1989 (`EIN 68-0214543`, mailing address Meadow Vista, CA), led by Founder & President Don Oates, Co-Executive Directors Jeremy Beaumont and Conrad O'Brien, and a governing board chaired by Eric Bergen.
 4. **Can we inspect your books, and why are you not ECFA-accredited?** Yes. Our 2025 Consolidated Statement of Activity (`$5.82M` received / `$5.73M` disbursed across Global Fellowship `$2.08M/$2.13M` and affiliated ministries MissionStream `$3.08M/$2.92M` and BOLK `$660k/$683k`) and Candid profile (`8043461`) are open to review before you partner. We are not currently an ECFA member due to annual fees and small Home Office staff capacity; we welcome direct questions at `finance@globalfellowship.org`[^proof-2025].
 5. **How do you care for missionaries we send?** Member care is led regionally (including our Southeast Asia hub opened in Chiang Mai in 2024) rather than only from California, covering spiritual, emotional, physical, financial, and family health for both singles and families. We hold **Health Above Results**: rest seasons and honest hardship never disqualify a worker.
 6. **How do you protect sensitive workers during Sunday services and livestreams?** Two independent permissions govern church services: offline recordings vs. public YouTube/Facebook livestreams. Tier 2 and Tier 3 worker names, cities, and photos are **never** shown on public livestreams[^security].
+
+_(Internal editorial note, omit from church handouts: public 8-article vs. internal 10-point Statement of Faith alignment is tracked under `OVR-15B` in [Open Verification Register](../references/open-verification-register.md).)_
 
 ---
 
@@ -87,7 +89,7 @@ Faith on the Frontlines brings visiting church planters into homes and local con
 ### Pre-Gathering Check (48 Hours Before)
 
 - **Confirm the speaker's cleared security tier** with the Global Engagement Coordinator (Tier 1 Open, Tier 2 Partial/Alias, or Tier 3 Private/Offline Only).
-- **Device & livestream rule:** If ANY speaker or story in the room is Tier 2 or Tier 3, **turn off all livestreams, video cameras, voice recorders, and public photography**. Announce this calmly at the start so guests feel welcomed rather than policed.
+- **Device & livestream rule (stricter live-room default):** If ANY speaker or story in the room is Tier 2 or Tier 3, default to **turning off all livestreams, video cameras, voice recorders, and public photography** (even where general policy permits Tier 2 offline-only archival recording with prior written `GF-TPL-15` consent, live Q&A rooms default to all recording devices off unless a Regional Director explicitly clears an offline-only Tier 2 exception in advance; public livestreams are NEVER permitted for Tier 2 or Tier 3 personal details). Announce this calmly at the start so guests feel welcomed rather than policed.
 - **Name tag rule:** Use first names only when sensitive workers are present; never print sensitive regions or surnames on lobby signage or social-media event promos.
 
 ### 60–75 Minute Calm Room Flow (Aligned with `GF-TPL-07`)

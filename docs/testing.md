@@ -37,7 +37,7 @@ This document describes the automated testing, accessibility, visual regression,
   - Uses Vite 8's native `resolve.tsconfigPaths: true` (no `vite-tsconfig-paths` plugin required).
   - Explicit imports (`globals: false`), `clearMocks: true`, `restoreMocks: true`.
   - Split into two projects:
-    - `server` (`src/**/*.test.ts`, `scripts/**/*.test.ts`, `environment: "node"`): maps `"server-only"` to `node_modules/server-only/empty.js` so pure server modules (`src/lib/content/reader.ts`, `src/lib/site.ts`, `src/app/robots.ts`, `src/app/page.ts`) and repository invariant helpers (`scripts/foundation-invariants.ts`) execute directly without module mocking.
+    - `server` (`src/**/*.test.ts`, `scripts/**/*.test.ts`, `environment: "node"`): maps `"server-only"` to `node_modules/server-only/empty.js` so pure server modules (`src/lib/content/reader.ts`, `src/lib/site.ts`, `src/app/robots.ts`, `src/app/page.tsx`) and repository invariant helpers (`scripts/foundation-invariants.ts`) execute directly without module mocking.
     - `dom` (`src/**/*.test.tsx`, `environment: "jsdom"`): loads `vitest.setup.ts` (`@testing-library/jest-dom/vitest`, explicit `afterEach(cleanup)`, and a minimal `Element.prototype.getAnimations` polyfill required by `@ui-sdk/core` motion presence under jsdom 31).
   - Excludes `tests/**`, `**/e2e/**`, `**/*.browser.test.*`, `.agents/**`, `.claude/**`, `.codex/**`, and `.cursor/**`.
 - **Next.js Server Component boundary:** Async React Server Components are **not** unit-tested in jsdom. Route rendering, metadata streaming, hydration, and full server/client integration are verified against the real production Next.js server in Playwright.

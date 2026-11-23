@@ -37,7 +37,7 @@ Pastors, elders, and missions committees carry spiritual responsibility for wher
 
 ## What Must Be Clear Immediately
 
-- **Unmistakable historic Christian ecclesiology:** Verbatim 8-article public Statement of Faith (`P008`) upfront (with transparent internal 10-point doctrinal reconciliation tracked in `OVR-15`), paired with clear explanation of how evangelism and discipleship grow into locally led churches that support their own elders and send new planters[^source-synthesis].
+- **Unmistakable historic Christian ecclesiology:** Canonical 8-article public Statement of Faith reading copy (`foundations.md:76-83`, normalizing only a single `cross..` double-period typo from legacy `P008`, with internal 10-point doctrinal alignment tracked in `OVR-15B`) upfront, paired with clear explanation of how evangelism and discipleship grow into locally led churches that support their own elders and send new planters[^source-synthesis].
 - **Radical financial candor:** Direct access to published annual Statements of Activity, Candid profile `8043461`, and plain-spoken ECFA explanation ([2025 Proof Ledger](../messaging/proof-ledger-2025.md))[^proof-2025].
 - **Listening-first church trips:** Exposure Trips are governed by a two-sided understanding where local hosts set the purpose, group size, photo boundaries, and timing (`"not this year"` is always respected).
 - **Ready Sunday tools:** Give pastors a 2-minute livestream-safe pulpit script, an exact `5.5 x 8.5 in` 1-color monochrome half-letter bulletin insert (`GF-TPL-17`), and a livestream-safe slide so partnering requires minimal staff burden.

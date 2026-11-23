@@ -1,12 +1,12 @@
 ---
 okf_version: "0.3"
 title: Global Fellowship Brand, Messaging, and Knowledge Repository
-description: Open Knowledge Format (OKF v0.3) canonical knowledge bundle for Global Fellowship's proposed Living Nearness v15.0 brand strategy, protected foundations, audiences, messaging, offerings, copy playbooks, editorial/security policies, zero-ShareAlike documentary street photography vault, and open verification gates.
+description: Open Knowledge Format (OKF v0.3) canonical knowledge bundle for Global Fellowship's Living Nearness v15.0 delegated working brand candidate, protected foundations, audiences, messaging, offerings, copy playbooks, editorial/security policies, zero-ShareAlike documentary street photography vault, and open verification gates.
 ---
 
 # Global Fellowship Brand, Messaging, and Knowledge Repository
 
-**Release Status:** Completed and verified Version 15 (`v15.0`, Living Nearness) organization-wide brand system and OKF v0.3 knowledge repository (`55` concepts across `7` domains: `54` `draft`, `1` `deprecated`, `verified: []`; GF `x-gf-approval-state` separates `locked-foundation`, `delegated-working-guidance`, `source-record`, and `retired-legacy`), synced with `brand-kit/manifest.json` (`schemaVersion: "15.0"`), awaiting explicit human leadership approval (`OVR-15`). Run `bun run okf:scan` to inspect trust tiers, status, and freshness, and run `bun run okf:validate` after every edit.
+**Release Status:** Completed and automated-check-verified Version 15 (`v15.0`, Living Nearness) organization-wide brand system and OKF v0.3 knowledge repository (`55` concepts across `7` domains: `54` `draft`, `1` `deprecated`, `verified: []`, meaning unverified by human leadership in OKF terms; GF `x-gf-approval-state` separates `locked-foundation`, `delegated-working-guidance`, `source-record`, and `retired-legacy`), synced with `brand-kit/manifest.json` (`schemaVersion: "15.0"`), awaiting explicit human leadership approval (`OVR-15`). Run `bun run okf:scan` to inspect trust tiers, status, and freshness, and run `bun run okf:validate` after every edit.
 
 ## Fast Start Routes (Read First)
 

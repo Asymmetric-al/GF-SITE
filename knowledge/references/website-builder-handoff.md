@@ -76,8 +76,8 @@ Source of truth: [Protected Foundations](../brand/foundations.md)[^foundations].
 - **Mission Statement (Declarative):** `"We make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people."`
 - **Mission Statement (Infinitive public website form):** `"To make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people."`
 - **Vision Statement (Always framed as a prayerful longing, never a coverage metric):** `"It is our vision to plant a Gospel witness within 30 minutes of everyone."`
-- **Three Pillars (Always all 3 together):** **Church Planting**, **Local Leadership**, **Unreached People** (canonical one-line glosses in `foundations.md:63-65`).
-- **Public Statement of Faith (8 articles):** Canonical straight-ASCII wording in `foundations.md:77-84` (note internal 10-point staff reconciliation tracked in `OVR-15`).
+- **Three Pillars (Always all 3 together):** **Church Planting**, **Local Leadership**, **Unreached People** (canonical one-line glosses in `foundations.md:62-64`).
+- **Public Statement of Faith (8 articles):** Canonical straight-ASCII reading copy in `foundations.md:76-83` (matching `P008` word for word with one legacy `cross..` typo normalized; internal 10-point staff reconciliation tracked in `OVR-15B`).
 
 ---
 
@@ -107,12 +107,14 @@ All machine-verified assets are indexed with SHA-256 checksums in `brand-kit/man
 
 Ready-to-adapt copy lives in `knowledge/marketing/copy-*.md` and `knowledge/messaging/`:
 
-- **Core & overview:** `copy-core-and-overview.md`, `message-hierarchy.md` (5s / 30s / 2m / deep altitudes), `audience-messaging-matrix.md`, `participation-pathways.md`.
+- **Core & overview:** `copy-core-and-overview.md`, `message-hierarchy.md` (5s / 30s / 2m / deep altitudes), `audience-messaging-matrix.md`, `participation-and-ctas.md`.
 - **Churches, elders & events:** `copy-churches-and-events.md`, `copy-church-vetting-and-host-agreement.md`.
 - **Donors, stewardship & Bridge Project:** `copy-donors-and-bridge.md`, `copy-donor-lifecycle-and-receipts.md`.
 - **Workers, candidates, boilerplate & press:** `copy-workers-and-local-leaders.md`, `copy-support-raising-and-onboarding.md`, `copy-boilerplate-and-media.md`.
-- **What is fixed:** Protected Foundations, verified legal/contact identity (`Global Fellowship, Inc.`, 501(c)(3), `EIN 68-0214543`, `Candid ID 8043461`, `P.O. Box 1, Meadow Vista, CA 95722`, `1 866 984 5622`, verified emails `info@`, `finance@`, `prayer@`, `executivedirectors@`), dated financial scope distinctions, candid ECFA wording, Agency Grammar, zero em dashes, and security disclosure ceilings.
-- **What is adaptable during website design:** Headlines, page introductions, section sequencing, UI labels, form microcopy, empty/error states, and progressive disclosure tailored to the final website information architecture.
+- **Three-level editorial flexibility rule (never confuse):**
+  1. **Permanently Locked (Zero Edits):** Protected Foundations (`foundations.md`), verified legal/contact identity (`Global Fellowship, Inc.`, 501(c)(3), `EIN 68-0214543`, `Candid ID 8043461`, `P.O. Box 1, Meadow Vista, CA 95722`, `1 866 984 5622`, verified emails `info@`, `finance@`, `prayer@`, `executivedirectors@`), dated financial scope distinctions, candid ECFA wording, Agency Grammar, zero em dashes, zero internal `OVR-*` codes in public copy, and security disclosure ceilings.
+  2. **Strong Channel Default (Prefer Unless IA Demands Adaptation):** The flagship headline (`"When a cross-cultural missionary arrives, the local leader still leads"`) and companion descriptor on cold primary surfaces (`message-hierarchy.md`).
+  3. **Freely Adaptable During Website Design:** Supporting headlines, page introductions, section sequencing, UI labels, form microcopy, empty/error states, and progressive disclosure tailored to the final website information architecture (never presenting supporting prose as a replacement formal Mission or Vision statement).
 
 ---
 

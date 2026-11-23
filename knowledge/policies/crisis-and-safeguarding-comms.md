@@ -48,7 +48,7 @@ Global Fellowship communicates in crisis with **quiet speed, truthfulness, zero 
 
 ### Immediate Communications Sequence
 
-1. **Freeze external channels within 30 minutes:** Suspend scheduled newsletters, social posts, and worker webpage updates tied to the region. If the worker has a public page on `globalfellowship.org`, trigger immediate CMS withdrawal (`POST /api/cms/revalidate` with `mode: "withdraw"` so cache expires at `expire: 0` immediately).
+1. **Freeze external channels within 30 minutes:** Suspend scheduled newsletters, social posts, and worker webpage updates tied to the region. If the worker has a public page on `globalfellowship.org`, immediately execute Section 2 of [On-Call Consent Withdrawal Runbook](consent-withdrawal-runbook.md) (direct unpublish and media deletion on the active web host today, or authoritative Core CMS withdrawal once live under `OVR-24`) and confirm in a private browser window that both page and image URLs no longer load.
 2. **Confirm one single spokesperson:** Only the Co-Executive Directors (in coordination with the Regional Director and security counsel) authorize every written word.
 3. **Notify vetted inner circle privately (encrypted/phone only):** Inform immediate family and sending-church elders first, with explicit instructions: _"Please pray privately at home; do not mention names, cities, or circumstances on livestreams, church bulletins, or social media."_
 4. **Lock-screen-safe private prayer message (if cleared by family & Regional Director):**
@@ -80,15 +80,14 @@ Any individual, parent/guardian, local elder, or field worker may withdraw conse
 - **Routine withdrawal:** Complete direct GF channel removal within 24 hours (aligned with `GF-TPL-15` so weekend notices never wait until Monday; exact SLA subject to legal confirmation under `OVR-22`)[^open-verification].
 - **Off-hours & weekend staffing candor (`OVR-17`):** Because Meadow Vista phone lines (`1 866 984 5622`) are staffed Pacific business hours only until `OVR-17` closes, route Friday-evening or weekend withdrawal requests immediately through the Regional Director's encrypted channel plus `executivedirectors@globalfellowship.org` and `info@globalfellowship.org` rather than leaving voicemail for Monday.
 
-### 5-Step Propagation Checklist
+### Canonical 4-Stage Execution Sequence (Follow the 1-Hop Runbook)
 
-1. **Unpublish in Core Payload CMS, delete media binary & purge live web cache immediately:** Remove or redact the record in `Asymmetric-al/core`, permanently delete any uploaded photograph binary from Core Media storage, run immediate cache invalidation (`POST /api/cms/revalidate` with `mode: "withdraw"`, including `collection:updates` and/or tenant tag for `/stories`), and confirm the live URL returns a not-found state or the cleared redacted state.
-2. **Check `brand-kit/manifest.json` `storyRefs` (plural array) and active queues:** Locate every linked slide deck, PDF, email template, video, and social post referencing that story ID; delete or supersede active copies and pause scheduled emails.
-3. **Update private non-Git consent ledger and deny-list (`OVR-14`):** Log the withdrawal date and confirm the subject's name/identifier is excluded from future exports.
-4. **Send partner retirement requests (`COPY-RETIRE-01`) where third parties hold copies:** Contact sending churches or partner platforms logged in the private archive calmly to request immediate deletion and cessation of printing/livestreaming. On a **full withdrawal**, default to the **No-Send Option** (complete silence) rather than pushing a replacement story unless the family and Regional Director explicitly approve a Tier 3 collective prompt later.
-5. **Confirm completion honestly (`COPY-WITHDRAW-01`: never promise the impossible):** Send written confirmation to the requester distinguishing clearly between:
-   - **Direct Global Fellowship channels removed** (website, CMS, media library, official social accounts, active print masters, scheduled emails), and
-   - **Non-recallable copies already distributed** (printed bulletins/cards already in homes, forwarded personal emails, or third-party search/web archives outside GF's technical control, for which GF submits removal requests where available).
+Execute the exact four stages in [On-Call Consent Withdrawal Runbook](consent-withdrawal-runbook.md) without splitting or reordering steps:
+
+1. **Immediate triage (first 15 minutes):** Acknowledge without debate, escalate urgent cases to the Regional Director (encrypted channel) and `executivedirectors@globalfellowship.org`, and pull the tracking ID from the private consent log (`OVR-14`) plus `brand-kit/manifest.json` (`storyRefs`).
+2. **Direct Global Fellowship removal:** Unpublish and delete the page and media binary on the active `globalfellowship.org` host today (or via authoritative Core Payload CMS withdrawal + cache purge once live under `OVR-24` per `docs/core-integration.md`), cancel scheduled emails, delete social/video posts, update brand-kit templates (`bun run verify:brand`), and default to the **No-Send Option** on full withdrawal.
+3. **Honest external partner & print limits (`COPY-RETIRE-01`):** Notify partner churches and recipients logged in the private archive (`OVR-14`) to delete digital copies and retire printed cards (with 24-hour phone/encrypted follow-up on unacknowledged Tier 2/3 notices). Never promise instant erasure of non-recallable physical or third-party copies.
+4. **Written closure & private audit log (`COPY-WITHDRAW-01`):** Send plain-language written confirmation separating direct GF deletions (with UTC timestamps) from partner retirement requests, and log revocation strictly in the private non-Git consent file (`OVR-14`).
 
 ### Withdrawal Confirmation Script (`COPY-WITHDRAW-01`)
 

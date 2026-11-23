@@ -10,7 +10,7 @@ Global Fellowship's complete kit covers 27 templates and 6 Office starters; most
 1. **Daily Reference:** `guide/brand-on-one-sheet.html` (1-page rules, colors, fonts & Tier 1–3 routing)
 2. **Safety Gate:** `guide/field-safe-checklist.html` + `templates/revocable-consent-form.html` (sign & store outside Git before publishing)
 3. **Worker Letters:** `office/worker-prayer-letter-public-starter.docx` (Tier 1) OR `office/worker-prayer-letter-restricted-starter.docx` (Tier 2/3 zero-logo)
-4. **Church & Partner Slides:** `office/global-fellowship-deck-starter.pptx` (8 slides synced with `GF-TPL-10` + embedded street photo)
+4. **Church & Partner Slides (Tier 1 Public Only):** `office/global-fellowship-deck-starter.pptx` (8 slides synced with `GF-TPL-10` + embedded street photo; no restricted Tier 2/3 `.pptx` exists by design because Tier 2/3 household details are never projected on slides; use Slide 5 strictly for Tier 1 anonymous collective prayer, and use `worker-prayer-letter-restricted-starter.docx` / `GF-TPL-01` / `GF-TPL-14` for vetted offline Tier 2/3 sharing)
 5. **Donor Care & Receipts:** `office/donor-receipt-and-redesignation-starter.docx` (manual fill-in Finance letters)
 
 Everything else in `brand-kit/` (Arab/Thai localized sheets, social PNGs, video, press-bleed prayer cards, elders' vetting packet) stays organized below when a specific need arises.
