@@ -1,0 +1,12 @@
+extends: existence
+message: "Retired or unverified legacy claim detected: '%s'. Check knowledge/messaging/retired-claims.md and knowledge/references/open-verification-register.md."
+level: error
+ignorecase: true
+tokens:
+  - 'zero overhead'
+  - '0% overhead'
+  - 'no written policies'
+  - '10-25% (agency |admin )?fee'
+  - '3% of missionaries'
+  - '1% of (christian )?giving'
+  - '24/7 prayer (coverage|service|network) (is |now )?(live|available|operating)'

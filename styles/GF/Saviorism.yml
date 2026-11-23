@@ -1,0 +1,12 @@
+extends: existence
+message: "Avoid donor-saviorism or colonial framing ('%s'). God is the actor in spiritual fruit; local leaders act first; financial gifts free workers to remain present."
+level: error
+ignorecase: true
+tokens:
+  - '\byour (gift|donation|dollars?) (?:will |can )?(saves?|transforms?|rescues?|changes? lives|brings? salvation)\b'
+  - '\byou can (save|transform|rescue)\b'
+  - '\binvest in transforming lives\b'
+  - '\bwe rescue\b'
+  - '\bsave the unreached\b'
+  - '\bdeliver(ing)? the gospel to the helpless\b'
+  - '\bnative missionar(y|ies)\b'

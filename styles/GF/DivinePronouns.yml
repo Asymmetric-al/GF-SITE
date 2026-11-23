@@ -1,0 +1,7 @@
+extends: existence
+message: "Use lowercase divine pronouns ('%s' -> lowercase he/his/him) consistently across original Global Fellowship prose (excluding verbatim Statement of Faith quotations)."
+level: error
+ignorecase: false
+tokens:
+  - '\b(?:Christ|God|Jesus|Lord|Spirit)[^.\n]{0,45}\b(?:He|His|Him|Himself)\b'
+  - '\b(?:builds|building|gathers|gathering|leads|leading|shepherds|shepherding|knows|loving|follow|following|trust|trusting|obey|obeying|serve|serving|for|in|through|by|of|to)\s+(?:His|Him|Himself)\b'

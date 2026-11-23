@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Standalone Revocable Story, Photo &amp; Security
+      Consent Form
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      .consent-sheet {
+        padding: 26px 46px 22px;
+      }
+      fieldset.form-block {
+        border: 0;
+        border-top: 2.5px solid var(--gf-ink);
+        padding: 8px 0 0;
+        margin: 0 0 11px;
+      }
+      legend.form-legend {
+        font-family: var(--gf-font-display);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--gf-harbor);
+        padding: 0 10px 0 0;
+        margin-bottom: 5px;
+      }
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 1fr;
+        gap: 7px 18px;
+        font-size: 13px;
+      }
+      .fill-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        min-width: 0;
+      }
+      .fill-row.full-span {
+        grid-column: 1 / -1;
+      }
+      .fill-row label {
+        font-weight: 700;
+        white-space: nowrap;
+        color: var(--gf-ink);
+      }
+      .fill-input {
+        flex: 1;
+        border: 0;
+        border-bottom: 1.25px solid var(--gf-ink);
+        background: transparent;
+        font-family: var(--gf-font-sans);
+        font-size: 13px;
+        color: var(--gf-ink);
+        min-width: 56px;
+        height: 22px;
+        padding: 0 3px;
+      }
+      .opt-grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px 16px;
+      }
+      .opt-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 20px;
+      }
+      .chk-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        min-height: 28px;
+        padding: 3px 0;
+        font-size: 13px;
+        line-height: 1.44;
+        color: var(--gf-ink);
+        cursor: pointer;
+      }
+      .chk-label input[type="checkbox"],
+      .chk-label input[type="radio"] {
+        width: 17px;
+        height: 17px;
+        margin: 2px 0 0;
+        accent-color: var(--gf-harbor);
+        flex-shrink: 0;
+      }
+      .ch-ico {
+        color: var(--gf-harbor);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .tier-warn {
+        color: var(--gf-crimson);
+        font-weight: 700;
+      }
+      .sig-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 24px;
+        margin-top: 14px;
+      }
+      .sig-line {
+        border-bottom: 1.25px solid var(--gf-ink);
+        padding-top: 26px;
+        font-size: 12px;
+        color: var(--gf-slate);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- PAGE 1: PARTICIPANT, TWO SECURITY AXES & VISUAL FORMAT -->
+      <section
+        class="gf-sheet consent-sheet"
+        aria-label="Page 1: Participant Record, Security Axes, and Visual Format"
+      >
+        <div>
+          <div
+            class="gf-header-bar"
+            style="margin-bottom: 14px; padding-bottom: 10px"
+          >
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 26px; width: auto"
+            />
+            <span class="gf-dateline"
+              >STANDALONE REVOCABLE CONSENT FORM · PRIVATE REGIONAL FILE</span
+            >
+          </div>
+
+          <h1
+            class="gf-serif-display"
+            style="font-size: 28px; line-height: 1.14; margin-bottom: 8px"
+          >
+            Story, Photo &amp; Security Disclosure Consent
+          </h1>
+          <p
+            style="
+              font-family: var(--gf-font-serif);
+              font-size: 13.8px;
+              color: var(--gf-slate);
+              margin-bottom: 15px;
+              line-height: 1.52;
+              max-width: 66ch;
+            "
+          >
+            Effective with this standard, Global Fellowship publishes no story,
+            name, place, video, or photograph without your informed, revocable
+            consent (previously archived items require fresh written renewal
+            before reuse). Declining, choosing photo-free, or stepping down
+            later never affects your fellowship, standing, or financial support.
+          </p>
+
+          <form
+            aria-label="Revocable consent form part 1: participant, security axes, and visual permissions"
+          >
+            <fieldset class="form-block">
+              <legend class="form-legend">
+                1. Participant / Local Ministry &amp; Regional Care Contact
+                (Private Record Only)
+              </legend>
+              <div class="field-grid">
+                <div class="fill-row">
+                  <label for="f-name">Full Name / Local Ministry:</label>
+                  <input id="f-name" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row">
+                  <label for="f-date">Date:</label>
+                  <input id="f-date" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row">
+                  <label for="f-ref">Record / Case Ref (Copy to p. 2):</label>
+                  <input id="f-ref" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row">
+                  <label for="f-lang">Working Language:</label>
+                  <input id="f-lang" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row full-span">
+                  <label for="f-rd"
+                    >Regional Director &amp; Encrypted Contact:</label
+                  >
+                  <input id="f-rd" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row full-span">
+                  <label for="f-asset-ref"
+                    >Draft / Proof Ref &amp; Date Reviewed:</label
+                  >
+                  <input id="f-asset-ref" class="fill-input" type="text" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block">
+              <legend class="form-legend">
+                2. Approved Identity Axis (Select One · Stricter Axis Always
+                Governs)
+              </legend>
+              <div class="opt-grid-3">
+                <label class="chk-label">
+                  <input type="radio" name="id-tier" value="1" />
+                  <span
+                    ><strong>Tier 1 (Open):</strong> Cleared full public name
+                    approved</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="id-tier" value="2" />
+                  <span
+                    ><strong>Tier 2 (Partial):</strong> Approved first name or
+                    alias only</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="id-tier" value="3" />
+                  <span
+                    ><strong>Tier 3 (Withheld):</strong> Collective description
+                    only (no personal names)</span
+                  >
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block">
+              <legend class="form-legend">
+                3. Approved Location Axis (Select One)
+              </legend>
+              <div class="opt-grid-3">
+                <label class="chk-label">
+                  <input type="radio" name="loc-tier" value="1" />
+                  <span
+                    ><strong>Tier 1 (Open):</strong> Cleared city and/or country
+                    approved</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="loc-tier" value="2" />
+                  <span
+                    ><strong>Tier 2 (Partial):</strong> Approved broad region
+                    only</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="loc-tier" value="3" />
+                  <span
+                    ><strong>Tier 3 (Withheld):</strong> Location withheld
+                    (tier-neutral card front; zero indirect clues)</span
+                  >
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block" style="margin-bottom: 14px">
+              <legend class="form-legend">
+                4. Visual Format Permission (Select One)
+              </legend>
+              <div class="opt-grid-3">
+                <label class="chk-label">
+                  <input type="radio" name="visual" value="none" />
+                  <span
+                    ><strong>Photo-free layout only</strong> (Required for Tier
+                    3; equal graphic dignity)</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="visual" value="detail" />
+                  <span
+                    ><strong>Metadata-stripped detail photo</strong>
+                    (non-identifying; Tier 1&ndash;2 only)</span
+                  >
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="visual" value="portrait" />
+                  <span
+                    ><strong>Consented eye-level photo or video</strong> (Tier 1
+                    only; never Tier 2/3)</span
+                  >
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block" style="margin-bottom: 12px">
+              <legend class="form-legend">
+                5. Working-Language &amp; Oral-Consent Verification (When Read
+                Aloud or Interpreted)
+              </legend>
+              <label class="chk-label" style="margin-bottom: 8px">
+                <input type="checkbox" name="oral-read" value="yes" />
+                <span
+                  ><strong
+                    >Confirmed read aloud and explained in participant&rsquo;s
+                    working language</strong
+                  >
+                  before selecting any tier or distribution channel</span
+                >
+              </label>
+              <div class="field-grid">
+                <div class="fill-row">
+                  <label for="f-witness">Oral Witness Name &amp; Role:</label>
+                  <input id="f-witness" class="fill-input" type="text" />
+                </div>
+                <div class="fill-row">
+                  <label for="f-interp">Interpreter (if used):</label>
+                  <input id="f-interp" class="fill-input" type="text" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+          <div
+            class="gf-notice"
+            style="padding: 11px 15px; font-size: 12.6px; margin-top: 8px"
+          >
+            <strong>How the Two Axes Work Together:</strong> Identity and
+            Location are chosen separately so a leader can allow a broad region
+            while withholding personal names, or allow an approved alias while
+            keeping location strictly withheld. Whenever the two axes differ,
+            the stricter tier governs channel and visual eligibility on Page 2.
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >DRAFT SPECIMEN · LEGAL &amp; REGIONAL REVIEW PENDING · KEEP
+              SIGNED COPY IN PRIVATE REGIONAL FILE</span
+            >
+            <span>GF-TPL-15</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship · Ethical Storytelling &amp; Consent
+              Standard</span
+            >
+            <span>Monochrome Copier Ready · Page 1 of 2</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: APPROVED CHANNELS (SEMANTICALLY ACCURATE 100% ORIGINAL GF 1.5PX ICONS), REVOCATION & SIGNATURES -->
+      <section
+        class="gf-sheet consent-sheet"
+        aria-label="Page 2: Approved Channels, Translation Veto, Revocation, and Signatures"
+      >
+        <div>
+          <div
+            class="gf-header-bar"
+            style="margin-bottom: 14px; padding-bottom: 10px"
+          >
+            <span class="gf-dateline"
+              >STORY, PHOTO &amp; SECURITY CONSENT · CHANNELS &amp;
+              SIGNATURES</span
+            >
+            <span class="gf-dateline">REVOCABLE AT ANY TIME</span>
+          </div>
+
+          <form
+            aria-label="Revocable consent form part 2: channels, revocation, and signatures"
+          >
+            <div
+              class="field-grid"
+              style="
+                margin-bottom: 12px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--gf-rule);
+              "
+            >
+              <div class="fill-row">
+                <label for="f-ref-p2"
+                  >Record / Case Ref (Must Match p. 1):</label
+                >
+                <input id="f-ref-p2" class="fill-input" type="text" />
+              </div>
+              <div class="fill-row">
+                <label for="f-date-p2">Page 1 Date:</label>
+                <input id="f-date-p2" class="fill-input" type="text" />
+              </div>
+            </div>
+
+            <fieldset class="form-block" style="margin-bottom: 13px">
+              <legend class="form-legend">
+                6. Approved Distribution Channels (Check Each Allowed Channel
+                Independently)
+              </legend>
+              <div class="opt-grid-2" style="gap: 9px 18px">
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="print-card" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 6.5c-2-1.4-5.2-1.9-8-1.5v12.5c2.8-.4 6 .1 8 1.5m0-12.5c2-1.4 5.2-1.9 8-1.5v12.5c-2.8-.4-6 .1-8 1.5m0-12.5V19"
+                    />
+                  </svg>
+                  <span
+                    ><strong>Printed prayer card / church handout</strong> (All
+                    tiers; do-not-post notice on Tier 2&ndash;3)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="encrypted-chat" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 3 4.5 6v5.4c0 4.6 3.1 8.5 7.5 9.6 4.4-1.1 7.5-5 7.5-9.6V6L12 3Z"
+                    />
+                    <circle cx="12" cy="11" r="1.4" />
+                    <path d="M12 12.4v2.4" />
+                  </svg>
+                  <span
+                    ><strong
+                      >Authorized encrypted chat / password-gated portal</strong
+                    >
+                    (All tiers; required for Tier 3 electronic updates)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="private-email" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="M3.8 6.5 12 12.6l8.2-6.1" />
+                  </svg>
+                  <span
+                    ><strong>Vetted private email</strong> (Tier 1&ndash;2 only
+                    · <span class="tier-warn">NEVER Tier 3</span>)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="annual-report" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6.5 3.5h7.5L18.5 8v12.5h-12V3.5Z" />
+                    <path d="M14 3.5V8h4.5" />
+                    <path d="M9 11.5h6M9 14.5h6M9 17.5h4" />
+                  </svg>
+                  <span
+                    ><strong>Annual Report PDF</strong> (Tier 1&ndash;2 only ·
+                    <span class="tier-warn">NEVER Tier 3</span>)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="public-web" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="8.5" />
+                    <ellipse cx="12" cy="12" rx="3.8" ry="8.5" />
+                    <path d="M4 9.2h16M4 14.8h16" />
+                  </svg>
+                  <span
+                    ><strong>Public website</strong> (Tier 1&ndash;2 only ·
+                    <span class="tier-warn">NEVER Tier 3</span>)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="church-recorded" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3.2" y="7" width="12.2" height="10" rx="2" />
+                    <path d="m15.4 10.2 5.4-2.8v9.2l-5.4-2.8" />
+                  </svg>
+                  <span
+                    ><strong>Recorded church service (offline archive)</strong>
+                    (Separate opt-in ·
+                    <span class="tier-warn">NEVER Tier 3</span>)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="church-livestream" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="1.8" />
+                    <path
+                      d="M8.4 8.4a5.1 5.1 0 0 0 0 7.2m7.2-7.2a5.1 5.1 0 0 1 0 7.2M5.6 5.6a9.1 9.1 0 0 0 0 12.8m12.8-12.8a9.1 9.1 0 0 1 0 12.8"
+                    />
+                  </svg>
+                  <span
+                    ><strong>Livestreamed public church service</strong> (Tier 1
+                    personal opt-in or anonymous collective prayer ONLY ·
+                    <span class="tier-warn">NEVER Tier 2/3 personal</span
+                    >)</span
+                  >
+                </label>
+
+                <label class="chk-label">
+                  <input type="checkbox" name="ch" value="social-media" />
+                  <svg
+                    class="ch-ico"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="17.5" cy="5.8" r="2.3" />
+                    <circle cx="6.5" cy="12" r="2.3" />
+                    <circle cx="17.5" cy="18.2" r="2.3" />
+                    <path d="m8.6 10.9 6.8-3.9m-6.8 6.1 6.8 3.9" />
+                  </svg>
+                  <span
+                    ><strong>Public social media / video</strong> (Tier 1 only ·
+                    <span class="tier-warn">NEVER Tier 2 or Tier 3</span>)</span
+                  >
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block" style="margin-bottom: 11px">
+              <legend class="form-legend">
+                7. Version Scope, Translation Veto, 24-Month Expiry &amp;
+                Signatures
+              </legend>
+              <p style="font-size: 12.2px; line-height: 1.48; margin: 0 0 8px">
+                This consent applies strictly to the specific
+                <strong>Draft / Proof Ref &amp; Date Reviewed</strong> listed in
+                Section 1; any substantive rewrite or new channel requires fresh
+                review. I have read (or heard read in my working language) the
+                final text, headline, and caption, and hold full authority to
+                edit or decline before publication. To withdraw or step down
+                consent at any time, contact the
+                <strong>Regional Director on Page 1</strong>, email
+                <strong>info@globalfellowship.org</strong> (or
+                <strong>executivedirectors@globalfellowship.org</strong> for
+                urgent safety escalations), or call
+                <strong class="gf-nowrap">1 866 984 5622</strong> (Pacific
+                business hours; off-hours urgent: Regional Director encrypted
+                channel +
+                <strong>executivedirectors@globalfellowship.org</strong>).
+                <strong>Direct GF channels:</strong> Global Fellowship acts
+                immediately in urgent safety cases to remove materials we
+                directly control (target turnaround within 24 hours for routine
+                updates, pending Operations staffing confirmation).
+                <strong>Partner-held copies:</strong> We promptly notify partner
+                churches and recipients to delete forwarded copies or retire
+                printed cards, though third-party copies already distributed
+                outside GF systems cannot be guaranteed erased. Consent expires
+                automatically after <strong>24 months</strong> unless renewed.
+              </p>
+
+              <div class="fill-row" style="margin-bottom: 4px; font-size: 12px">
+                <label for="f-readback"
+                  >Working-Language Summary / Local Read-Back Notes:</label
+                >
+                <input id="f-readback" class="fill-input" type="text" />
+              </div>
+
+              <div class="sig-grid">
+                <div class="sig-line">
+                  Participant / Local Leader Signature (or Logged Verbal Consent
+                  Witness)
+                </div>
+                <div class="sig-line">Date &amp; Working Language Reviewed</div>
+              </div>
+              <div class="sig-grid">
+                <div class="sig-line">
+                  Parent / Guardian Signature (Required for Any Identifiable
+                  Minor)
+                </div>
+                <div class="sig-line">
+                  Global Fellowship Regional / Security Reviewer Signature
+                </div>
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 0.9fr 1.1fr;
+                  gap: 20px;
+                  align-items: center;
+                  margin-top: 12px;
+                  padding-top: 10px;
+                  border-top: 1px solid var(--gf-rule);
+                  font-size: 12px;
+                "
+              >
+                <label class="chk-label" style="min-height: auto; padding: 0">
+                  <input type="checkbox" name="copy-provided" value="yes" />
+                  <span
+                    ><strong>Participant copy provided</strong> (printed or
+                    encrypted copy handed to signer)</span
+                  >
+                </label>
+                <div class="fill-row">
+                  <label for="f-withdraw"
+                    >Withdrawal Logged (Date / Staff Initials):</label
+                  >
+                  <input id="f-withdraw" class="fill-input" type="text" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+          <div
+            class="gf-notice"
+            style="padding: 11px 15px; font-size: 12.6px; margin-top: 6px"
+          >
+            <strong>Private Storage &amp; Jurisdiction Note:</strong> Keep
+            completed forms and active recipient logs strictly in Global
+            Fellowship&rsquo;s private encrypted regional archive (never in
+            public repositories or public donor files). Final cross-border
+            data-retention wording will be confirmed with legal counsel before
+            field rollout.
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >DRAFT SPECIMEN · LEGAL &amp; REGIONAL REVIEW PENDING · KEEP
+              SIGNED COPY IN PRIVATE REGIONAL FILE</span
+            >
+            <span>GF-TPL-15</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship · Ethical Storytelling &amp; Consent
+              Standard</span
+            >
+            <span>Monochrome Copier Ready · Page 2 of 2</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

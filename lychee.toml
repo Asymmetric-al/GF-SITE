@@ -13,7 +13,7 @@ exclude_path = [
   ".codex",
   ".cursor",
   "artifacts",
-  "coverage",
+  "^coverage/",
   "playwright-report",
   "test-results",
 ]

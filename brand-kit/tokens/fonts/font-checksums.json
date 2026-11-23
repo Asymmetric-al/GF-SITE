@@ -1,0 +1,540 @@
+{
+  "generatedAtUtc": "2026-11-21T19:51:49.137Z",
+  "license": "SIL OFL 1.1 (./OFL-1.1.txt)",
+  "fileCount": 76,
+  "totalBytes": 3260596,
+  "files": [
+    {
+      "file": "gf-ofl-01-2a10d33e.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notonaskharabic/v44/RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN2DHV20Lg.woff2",
+      "bytes": 94032,
+      "sha256": "2a10d33e1f7129ab2b6ec76666e82ac5b509fbcfa7b4a3a1289bff42d2d64cd7",
+      "family": "Noto Naskh Arabic"
+    },
+    {
+      "file": "gf-ofl-02-8e60f95f.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notonaskharabic/v44/RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN36HV20Lg.woff2",
+      "bytes": 14284,
+      "sha256": "8e60f95fdb5e14d50f2571de500b312a96831e4fc7ecc6f30c54b54e4d5f4e48",
+      "family": "Noto Naskh Arabic"
+    },
+    {
+      "file": "gf-ofl-03-ab68a53d.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notonaskharabic/v44/RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN3oHV20Lg.woff2",
+      "bytes": 9408,
+      "sha256": "ab68a53d846a9683111a565632e34ec0d5869f95ee28868035f72ad394dcfa38",
+      "family": "Noto Naskh Arabic"
+    },
+    {
+      "file": "gf-ofl-04-3d779525.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notonaskharabic/v44/RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN2IHV20Lg.woff2",
+      "bytes": 10392,
+      "sha256": "3d7795251bdfdecb545a745ae027a05fbcd60c824b2a374fe3921881fbe4279b",
+      "family": "Noto Naskh Arabic"
+    },
+    {
+      "file": "gf-ofl-05-2a30d48d.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notonaskharabic/v44/RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN2GHV0.woff2",
+      "bytes": 19696,
+      "sha256": "2a30d48ddf0a75254b40b236fcfe789aed180526224ccb5089fd0b49999e0ec0",
+      "family": "Noto Naskh Arabic"
+    },
+    {
+      "file": "gf-ofl-06-74c34f5c.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2V3SyFtY.woff2",
+      "bytes": 24408,
+      "sha256": "74c34f5ce7414f353e4d5beba0dc4ef173bc3e930d628c51d785e1b8fbda629c",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-07-8d37eb62.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VTSyFtY.woff2",
+      "bytes": 8696,
+      "sha256": "8d37eb626fdbb4188026558df33ea1d5c62c96e630f2ef367e9c370adf48a8e7",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-08-39e78b40.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VHSyFtY.woff2",
+      "bytes": 42880,
+      "sha256": "39e78b404324be6e38a725af394e51125f6750a995d9c1c3ab6e8b3c0a8daef9",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-09-f0930cae.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VzSyFtY.woff2",
+      "bytes": 5440,
+      "sha256": "f0930caef373fad465aff18f4952941f1faad487ccfbe589555646253c848b91",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-10-083cf480.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VPSyFtY.woff2",
+      "bytes": 8528,
+      "sha256": "083cf480ee5b05d7c210d5a736d72bdf6ce173b79687a34ffdca6b88f7299d8b",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-11-36e30fbf.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2V_SyFtY.woff2",
+      "bytes": 5336,
+      "sha256": "36e30fbf2839f9e2bee84697e8e5cf859b6714f63da244ac7fb26fc6a1bdc0c5",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-12-8931874d.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2V7SyFtY.woff2",
+      "bytes": 57224,
+      "sha256": "8931874d4c940ef6eed0e231e74e3048fdd36eb5333246235aeb2b0113a8b361",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-13-c302cbfd.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VDSyA.woff2",
+      "bytes": 13888,
+      "sha256": "c302cbfdd98d628d60b6ef8de3c8459c70449df3a5ff2baacfa7481d95e79f4c",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-14-82ff72b2.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aPdu2ui.woff2",
+      "bytes": 70680,
+      "sha256": "82ff72b28e6610f2c62de49d0f295c160a157b2718fa814bb6c512ebfdebb31d",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-15-6ab64433.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5ardu2ui.woff2",
+      "bytes": 20080,
+      "sha256": "6ab64433de6077ca5ad31b05420450ce986a616a4ea47b6ad16f3217055dafc3",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-16-ea6a530b.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a_du2ui.woff2",
+      "bytes": 99236,
+      "sha256": "ea6a530b75d93de7dde68b1271c5b67a1af45031810db7cd4883f6620b7b1d3d",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-17-790b255c.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aLdu2ui.woff2",
+      "bytes": 10760,
+      "sha256": "790b255c10c32e0b10bdcd961abad098c9697b7ffbabc1b09aca0b17af3201fd",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-18-7f655207.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a3du2ui.woff2",
+      "bytes": 21776,
+      "sha256": "7f655207c2f6c140c327d6bd263bccc7a11833084f4fb0c51d9a24b7cd753651",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-19-791e3f21.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aHdu2ui.woff2",
+      "bytes": 14456,
+      "sha256": "791e3f213c155a5b1f4bbe4cbf8e33f321cfb7f46248a5ed11077dc79209a63c",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-20-6d5a7931.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aDdu2ui.woff2",
+      "bytes": 167960,
+      "sha256": "6d5a79315528df191b9d86f97b0c4272a8b588fcb166773fe6588ac795de0613",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-21-51ca196f.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7duw.woff2",
+      "bytes": 35820,
+      "sha256": "51ca196f49a33e79e7870ff88ebd2829a3f627a51e7d690986618f0e7ad2b52d",
+      "family": "Noto Sans"
+    },
+    {
+      "file": "gf-ofl-22-ce85091f.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansarabic/v33/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj4wv4r4xA.woff2",
+      "bytes": 165960,
+      "sha256": "ce85091f020920b65762b387b194ef59457ea5b25b760f2dcc35240a94bb8669",
+      "family": "Noto Sans Arabic"
+    },
+    {
+      "file": "gf-ofl-23-2c7bffd5.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansarabic/v33/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj5Jv4r4xA.woff2",
+      "bytes": 22716,
+      "sha256": "2c7bffd56133bb333f6f23d240ba72ee767aa3e7de67cb71fb83bbb3595ded2b",
+      "family": "Noto Sans Arabic"
+    },
+    {
+      "file": "gf-ofl-24-090786c8.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansarabic/v33/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj5bv4r4xA.woff2",
+      "bytes": 14584,
+      "sha256": "090786c8626fb67f5c50809079ed7fe42eb68b95d1afccffeb86943ec10254a2",
+      "family": "Noto Sans Arabic"
+    },
+    {
+      "file": "gf-ofl-25-27fe6458.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansarabic/v33/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj47v4r4xA.woff2",
+      "bytes": 16816,
+      "sha256": "27fe6458d54bcf13a2fe92228dd932ef3de9439267ca214e5c9f6bb02659e614",
+      "family": "Noto Sans Arabic"
+    },
+    {
+      "file": "gf-ofl-26-fed070ab.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansarabic/v33/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj41v4o.woff2",
+      "bytes": 31416,
+      "sha256": "fed070abc960c5f214fcb02b7b178cdab751ef7facd79a899f571bc21d38b8f8",
+      "family": "Noto Sans Arabic"
+    },
+    {
+      "file": "gf-ofl-27-4ccdc626.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansbengali/v33/Cn-fJsCGWQxOjaGwMQ6fIiMywrNJIky6nvd8BjzVMvJx2mc4I3mYvNY.woff2",
+      "bytes": 107720,
+      "sha256": "4ccdc6269af7581727fc3eea491831bda1962c1baaca7f2c0dec054bfddde478",
+      "family": "Noto Sans Bengali"
+    },
+    {
+      "file": "gf-ofl-28-2270ecaa.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansbengali/v33/Cn-fJsCGWQxOjaGwMQ6fIiMywrNJIky6nvd8BjzVMvJx2mc4P3mYvNY.woff2",
+      "bytes": 13616,
+      "sha256": "2270ecaab89cf255c1c225a769d93e02feb1f51518e477e22ab86af03fc1098c",
+      "family": "Noto Sans Bengali"
+    },
+    {
+      "file": "gf-ofl-29-814167d7.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansbengali/v33/Cn-fJsCGWQxOjaGwMQ6fIiMywrNJIky6nvd8BjzVMvJx2mc4MXmY.woff2",
+      "bytes": 25604,
+      "sha256": "814167d71aec0f1c1e678e23c5317dd977f9c464e06678a7bb132c6cbbe36da8",
+      "family": "Noto Sans Bengali"
+    },
+    {
+      "file": "gf-ofl-30-6c354352.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansdevanagari/v33/TuG7UUFzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmHN5TV_9qo.woff2",
+      "bytes": 120056,
+      "sha256": "6c354352c14e6c5507f8c0fc8985134407d09f12c1577f5706ca58e62fb4cd2f",
+      "family": "Noto Sans Devanagari"
+    },
+    {
+      "file": "gf-ofl-31-787d445a.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansdevanagari/v33/TuG7UUFzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmHN6jV_9qo.woff2",
+      "bytes": 13576,
+      "sha256": "787d445aa5f02adcb61ded2fc341dd168afde6f35aa20a95c9135a54914c2e54",
+      "family": "Noto Sans Devanagari"
+    },
+    {
+      "file": "gf-ofl-32-9982931f.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansdevanagari/v33/TuG7UUFzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmHN5DV_.woff2",
+      "bytes": 25076,
+      "sha256": "9982931f6e9edbe1d1e1bec7b98b713dd386c7c8a0eaee2f8eaad1c9429f30ec",
+      "family": "Noto Sans Devanagari"
+    },
+    {
+      "file": "gf-ofl-33-1f5a1736.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansthai/v29/iJWQBXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcdfKI2hX2g.woff2",
+      "bytes": 26924,
+      "sha256": "1f5a173641bbcb3ca4fb0a986858b6b07f8cd5dd2ed61236b40548c7a3c7292f",
+      "family": "Noto Sans Thai"
+    },
+    {
+      "file": "gf-ofl-34-49929deb.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansthai/v29/iJWQBXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcdfMo2hX2g.woff2",
+      "bytes": 15944,
+      "sha256": "49929deb3afa3fea37b19fdd148889ef19b3e44a8452b13568af089a7d5db934",
+      "family": "Noto Sans Thai"
+    },
+    {
+      "file": "gf-ofl-35-1a66f268.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notosansthai/v29/iJWQBXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcdfPI2h.woff2",
+      "bytes": 30748,
+      "sha256": "1a66f268c8d76575807979309cbbac3aff7b61919f59ea19fdc821d92fb407f3",
+      "family": "Noto Sans Thai"
+    },
+    {
+      "file": "gf-ofl-36-bb4982fa.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cFrqvyzw.woff2",
+      "bytes": 30452,
+      "sha256": "bb4982fa7f34b1814c5c1addcc64831a5c2657b4905fcb77a5d1914c36ebb602",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-37-cc967469.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cMrqvyzw.woff2",
+      "bytes": 9928,
+      "sha256": "cc967469ff60e3386f8fc664b1df34ada138cfaac8ad4ae549b4849df687f27e",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-38-585d109a.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cErqvyzw.woff2",
+      "bytes": 5596,
+      "sha256": "585d109a9951bf6a99b13386fe90dc4e19a0ad38c210bad0cd22140e238842d2",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-39-8d512582.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cLrqvyzw.woff2",
+      "bytes": 10112,
+      "sha256": "8d51258200de4d85d209eac6f0cd6798ec251b7be4672e8a2e6e7f6f07dc8460",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-40-beb4eb84.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_d0rqvyzw.woff2",
+      "bytes": 29128,
+      "sha256": "beb4eb845df30631a69e29a0c46763583fe335322852e9506396dd69cd13126e",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-41-4b59ce2a.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cHrqvyzw.woff2",
+      "bytes": 5736,
+      "sha256": "4b59ce2a13d696b34950c628aea26585b870169c78719f3d6fb6ad5dce00e4df",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-42-4851e60d.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cGrqvyzw.woff2",
+      "bytes": 66588,
+      "sha256": "4851e60df7e67b489609516bdc9f53d3ed8b6090c3e16e149350a88f172a574e",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-43-a7386f77.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cIrqs.woff2",
+      "bytes": 15664,
+      "sha256": "a7386f772de25b62a3a449fa5d9f3e09916b65cf6a6dfc52f5a103c276fee157",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-44-7c7afb20.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf3D33Esw.woff2",
+      "bytes": 89100,
+      "sha256": "7c7afb20d33e30ec38245187464419281115615db288f294414f49802396b612",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-45-54e3bd0c.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf-D33Esw.woff2",
+      "bytes": 24572,
+      "sha256": "54e3bd0c4a002b0f76bf9c758507fe9bb170f9e364ea4ecc85fc8b22819bca7e",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-46-9b3f4c4f.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf2D33Esw.woff2",
+      "bytes": 12704,
+      "sha256": "9b3f4c4ff3adefd2476a2ac234ac3c72bea116c21a6f98dbe5d524c38b239c46",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-47-1252037b.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf5D33Esw.woff2",
+      "bytes": 27844,
+      "sha256": "1252037b6f1d6e86c49f59cd4b2cc953413fcad1fc3659a55aacfb4ae5f42531",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-48-d4a6aba2.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYeGD33Esw.woff2",
+      "bytes": 65124,
+      "sha256": "d4a6aba2cb4636b371991a197aed964f2308b7e3d5f5748bfe8d1b9af191f3a7",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-49-fb6a5ed7.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf1D33Esw.woff2",
+      "bytes": 14704,
+      "sha256": "fb6a5ed734c2fbe39794a1e11ea075c70676ed82b8e8cd57c175ebbb4af805c1",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-50-2654f8d1.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf0D33Esw.woff2",
+      "bytes": 186552,
+      "sha256": "2654f8d1261a420fc81628122bee9d494b493227e3d7d9baa4238360b92b11d3",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-51-46281456.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf6D30.woff2",
+      "bytes": 36756,
+      "sha256": "46281456234014ceb2a79bff447245de0f76b8d803be0738972ed374c3206c5b",
+      "family": "Noto Serif"
+    },
+    {
+      "file": "gf-ofl-52-8ae8a8ce.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserifbengali/v31/hYkhPvggTvnzO14VSXltirUdnnkt1pwmWrprmO7RjE0a5BtdKyg8JCJZ.woff2",
+      "bytes": 191284,
+      "sha256": "8ae8a8ce3e7a0c1511b418919f49afc7f28532286acb57cd4158d245754d0170",
+      "family": "Noto Serif Bengali"
+    },
+    {
+      "file": "gf-ofl-53-b400a793.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserifbengali/v31/hYkhPvggTvnzO14VSXltirUdnnkt1pwmWrprmO7RjE0a5BtdKzQ8JCJZ.woff2",
+      "bytes": 14832,
+      "sha256": "b400a793b275ed48b672b2994f26e80becd84c44d7424074e3ead668221acdb5",
+      "family": "Noto Serif Bengali"
+    },
+    {
+      "file": "gf-ofl-54-6b52f9bb.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/notoserifbengali/v31/hYkhPvggTvnzO14VSXltirUdnnkt1pwmWrprmO7RjE0a5BtdKzo8JA.woff2",
+      "bytes": 28144,
+      "sha256": "6b52f9bb0776f54a0d655e56e218f153e939bea7ed4ea875a5974bd16e9c34a2",
+      "family": "Noto Serif Bengali"
+    },
+    {
+      "file": "gf-ofl-55-4970f7e4.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCS_aOKyYRw.woff2",
+      "bytes": 1048,
+      "sha256": "4970f7e484700a2518beef5c5e56cf6be336d464ac72dd7a50ad4a5163eafd84",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-56-54737a23.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCS_YOKyYRw.woff2",
+      "bytes": 4332,
+      "sha256": "54737a23b85d7b05bfb9796bb7e5da32ae17e1f4258ed92c2c2ab4ae5973faaf",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-57-8bdc0f1b.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCS_ZOKyYRw.woff2",
+      "bytes": 11140,
+      "sha256": "8bdc0f1b580aa381668eac662c2ea4a39efabef8225987d8f7b4865120617f27",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-58-e3d33148.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCS_XOKw.woff2",
+      "bytes": 12592,
+      "sha256": "e3d33148aa32c737949f4f91a0a3ef014792be66c61539455c492ec2cd4796e6",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-59-c46a510a.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko70yyygA.woff2",
+      "bytes": 1716,
+      "sha256": "c46a510ab43925a55ecfe6c2d5fad0ce1902cd48ab276621d41f7afa42e4daee",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-60-b275d125.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+      "bytes": 8352,
+      "sha256": "b275d1258601dda240fc6a1d4a6cad56e691d898f5cdf1b0e4fd6ca0022d8e40",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-61-38e3b8fd.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+      "bytes": 21728,
+      "sha256": "38e3b8fd8045048eb311d90170a4429ed2c8f405852dc3d91b5af8452758703f",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-62-153fc85b.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+      "bytes": 27348,
+      "sha256": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+      "family": "Plus Jakarta Sans"
+    },
+    {
+      "file": "gf-ofl-63-99a84c17.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewti_Wo7H.woff2",
+      "bytes": 46648,
+      "sha256": "99a84c1761574935d04279e0b02dc7116a06e578fd1d2d553604273ab0d496a5",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-64-db1083ed.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewtG_Wo7H.woff2",
+      "bytes": 90356,
+      "sha256": "db1083ed2d695783955e1144c0ad784b6cbb7fa564524d6697e0aa09b7228ac0",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-65-d29b0cfc.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewta_Wo7H.woff2",
+      "bytes": 51644,
+      "sha256": "d29b0cfc1b6bdca3d8ccca2b242f04f7c13d50934d31ea46fe19eb2313bc01bb",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-66-c687d297.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewtq_Wo7H.woff2",
+      "bytes": 32208,
+      "sha256": "c687d297eb2ae3c9fcf1ece9a1380c75c399c6ed7a0aabd9c63abb18ae28bb9f",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-67-2078240c.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewtu_Wo7H.woff2",
+      "bytes": 110324,
+      "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-68-96e63932.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFK2_tTDB4M7-auWDN0ahZJW1gewtW_Wg.woff2",
+      "bytes": 130188,
+      "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-69-c4fbd999.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gW8tenXg.woff2",
+      "bytes": 45220,
+      "sha256": "c4fbd9994039466f864b5f025fdb214f0f58a8c2f888d99c1885efcd516baf2d",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-70-e553fa82.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gf8tenXg.woff2",
+      "bytes": 93440,
+      "sha256": "e553fa829fd9ae0900931584f73c6b894539558b598d5ee7c4907140a1f29f05",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-71-d69b8909.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gY8tenXg.woff2",
+      "bytes": 49336,
+      "sha256": "d69b8909cbccf5948675c7de331858d40f48b1ef3e4a9fc5ddfaa8c097fb434b",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-72-eb9684d1.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gU8tenXg.woff2",
+      "bytes": 29500,
+      "sha256": "eb9684d1e58cfe4985d3365dde645b0092e31450f79c94bb037cbf4484442168",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-73-155f6e70.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gV8tenXg.woff2",
+      "bytes": 100872,
+      "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-74-f2ea9c12.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/s/sourceserif4/v15/vEFI2_tTDB4M7-auWDN0ahZJW1gb8tc.woff2",
+      "bytes": 122360,
+      "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0",
+      "family": "Source Serif 4"
+    },
+    {
+      "file": "gf-ofl-75-ddb8d0db.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/l/font?kit=k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYlV2fXjzkWqcLWIl8EO7Eq1mMLxAufUbuT2tSxt4yqkZ-61PrL7Zw7MMvQ5YrNjuaLnfFSaAV58QgXzwGukxJ4gGRuojK9hXXa-g-sov7ATc87fmnyWsTVko5psf9otYBinU1DWxC54F4HfsCsEvDzdKhx8oBLMQ0fIKsXuzCOjLT6Qgdhe8qAnupAA2XKBiNPltLgkIVSSdj9S7p0ilP-ido_nrmtqbr-7Y8KS_Tb47lXhtD4&skey=cf0bb10b5602fdc3&v=v41",
+      "bytes": 9776,
+      "sha256": "ddb8d0db7ce2c135b40c0fd2f7af2b203d0d00f5999f05d062de3821aef349d5",
+      "family": "Noto Sans SC"
+    },
+    {
+      "file": "gf-ofl-76-7baef535.woff2",
+      "sourceUrl": "https://fonts.gstatic.com/l/font?kit=k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaGzjCnYlV2fXjzkWqcLWIl8EO7Eq1mMLxAufUbuT2tSxt4yqkZ-61PrL7Zw7MMvQ5YrNjuaLnfFSaAV58QgXzwGukxJ4gGRuojK9hXXa-g-sov7ATc87fmnyWsTVko5psf9otYBinU1DWxC54F4HfsCsEvDzdKhx8oBLMQ0fIKsXuzCOjLT6Qgdhe8qAnupAA2XKBiNPltLgkIVSSdj9S7p0ilP-ido_nrmtqbr-7Y8KS_Tb47lXhtD4&skey=cf0bb10b5602fdc3&v=v41",
+      "bytes": 9912,
+      "sha256": "7baef5351ccf837c5b21f1d793bec34c5ca364b78b542e651d17da7564d9797e",
+      "family": "Noto Sans SC"
+    }
+  ]
+}

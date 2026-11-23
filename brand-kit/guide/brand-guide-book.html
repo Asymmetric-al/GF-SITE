@@ -1,0 +1,2412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Living Nearness Brand &amp; Design Guide Book
+    </title>
+    <link rel="stylesheet" href="../templates/_shared.css" />
+    <style>
+      .cover-sheet {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 36px 50px 26px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cover-sheet h1,
+      .cover-sheet h2,
+      .cover-sheet p {
+        color: var(--gf-paper);
+      }
+      .cover-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1.5px solid var(--gf-border-dark);
+        padding-bottom: 14px;
+      }
+      .cover-edition-meta {
+        text-align: end;
+        line-height: 1.3;
+      }
+      .cover-edition-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 10.2px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+      }
+      .cover-edition-sub {
+        font-family: var(--gf-font-display);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gf-sea-mist);
+        margin-top: 3px;
+      }
+      .cover-photo-band {
+        margin-top: 22px;
+        position: relative;
+        height: 314px;
+        overflow: hidden;
+        border: 1px solid var(--gf-border-dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .cover-photo-band img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 36%;
+      }
+      .cover-photo-scrim {
+        position: relative;
+        z-index: 2;
+        padding: 12px 18px 13px;
+        background: rgba(11, 39, 46, 0.96);
+        border-top: 2px solid var(--gf-apricot);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 16px;
+      }
+      .cover-photo-scrim::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 39, 46, 0) 0%,
+          rgba(11, 39, 46, 0.72) 100%
+        );
+        pointer-events: none;
+      }
+      .script-banner-wrap {
+        margin-top: 22px;
+        padding: 14px 0 15px;
+        border-top: 1px solid var(--gf-border-dark);
+        border-bottom: 1px solid var(--gf-border-dark);
+        position: relative;
+      }
+      .script-banner-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 9.8px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        color: var(--gf-apricot);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .script-banner {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        font-size: 21px;
+        font-weight: 700;
+        color: var(--gf-paper);
+        position: relative;
+        white-space: nowrap;
+      }
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 18px;
+        padding-top: 13px;
+        border-top: 2px solid var(--gf-ink);
+      }
+      .pillar-title {
+        font-family: var(--gf-font-display);
+        font-size: 13.5px;
+        font-weight: 800;
+        color: var(--gf-harbor);
+        margin-bottom: 5px;
+      }
+      .pillar-desc {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--gf-ink);
+        margin: 0;
+      }
+      .unboxed-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        margin-top: 12px;
+      }
+      .rule-block {
+        border-top: 2px solid var(--gf-ink);
+        padding-top: 10px;
+      }
+      .rule-block h3 {
+        font-family: var(--gf-font-display);
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--gf-harbor);
+        margin-bottom: 6px;
+      }
+      .rule-block p,
+      .rule-block li {
+        font-size: 12.2px;
+        line-height: 1.5;
+      }
+      .rule-block ul {
+        margin: 0;
+        padding-inline-start: 16px;
+      }
+      .rule-block li {
+        margin-bottom: 4.5px;
+      }
+      .values-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px 16px;
+        margin-top: 10px;
+        padding-top: 13px;
+        border-top: 1.5px solid var(--gf-ink);
+      }
+      .val-item {
+        font-size: 11.8px;
+        line-height: 1.46;
+      }
+      .val-item strong {
+        display: block;
+        color: var(--gf-harbor);
+        font-size: 12.2px;
+        margin-bottom: 3px;
+      }
+      .timeline-band {
+        margin-top: 20px;
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 14px 18px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+      .tl-yr {
+        font-family: var(--gf-font-display);
+        font-size: 11.2px;
+        font-weight: 800;
+        color: var(--gf-apricot);
+        margin-bottom: 4px;
+      }
+      .tl-txt {
+        font-size: 10.5px;
+        line-height: 1.42;
+        color: var(--gf-mist-text);
+      }
+      .sw-band {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .sw-tile {
+        height: 92px;
+        padding: 10px 11px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 11.2px;
+        font-weight: 700;
+      }
+      .sw-tile span:last-child {
+        font-size: 10.2px;
+        font-weight: 500;
+      }
+      .reg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 8px;
+      }
+      .do-dont {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 12px;
+      }
+      .do-box {
+        border-top: 3px solid var(--gf-forest);
+        padding-top: 8px;
+        font-size: 11.6px;
+        line-height: 1.46;
+      }
+      .dont-box {
+        border-top: 3px solid var(--gf-crimson);
+        padding-top: 8px;
+        font-size: 11.6px;
+        line-height: 1.46;
+      }
+      .photo-hero-proof {
+        position: relative;
+        height: 236px;
+        overflow: hidden;
+        border: 1px solid var(--gf-rule);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .photo-hero-proof img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 26%;
+      }
+      .photo-hero-scrim {
+        position: relative;
+        z-index: 2;
+        padding: 11px 15px 11px;
+        background: rgba(11, 39, 46, 0.96);
+        border-top: 2px solid var(--gf-apricot);
+        color: var(--gf-paper);
+      }
+      .photo-hero-scrim::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 39, 46, 0) 0%,
+          rgba(11, 39, 46, 0.72) 100%
+        );
+        pointer-events: none;
+      }
+      .contact-sheet {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .contact-tile {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .contact-thumb {
+        width: 100%;
+        height: 98px;
+        overflow: hidden;
+        border-bottom: 3px solid var(--gf-clay);
+        background: var(--gf-harbor-deep);
+      }
+      .contact-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .contact-meta {
+        margin-top: 5px;
+        font-size: 10.2px;
+        line-height: 1.32;
+        color: var(--gf-slate);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .contact-meta strong {
+        display: block;
+        font-size: 10.6px;
+        color: var(--gf-ink);
+        margin-bottom: 2px;
+      }
+      .local-edit-trio {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .le-card {
+        background: transparent;
+        border-top: 2.5px solid var(--gf-clay);
+        padding: 8px 0 0;
+      }
+      .le-card.harbor {
+        border-top-color: var(--gf-harbor);
+      }
+      .le-card-tag {
+        font-family: var(--gf-font-display);
+        font-size: 9.2px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gf-clay);
+        margin-bottom: 4px;
+      }
+      .le-card.harbor .le-card-tag {
+        color: var(--gf-harbor);
+      }
+      .p6-ledger th,
+      .p6-ledger td {
+        padding: 6.5px 8px;
+        font-size: 11px;
+        line-height: 1.38;
+      }
+    </style>
+  </head>
+  <body>
+    <main aria-label="Global Fellowship Living Nearness Brand and Design Guide">
+      <!-- PAGE 1: MONOGRAPH COVER (SINGLE AUTHORITATIVE COMPOSITION + DOCUMENTARY STREET PHOTOGRAPHY BAND) -->
+      <section
+        class="gf-sheet cover-sheet gf-dark-surface"
+        aria-label="Page 1: Brand Guide Cover"
+      >
+        <div style="position: relative">
+          <div class="cover-top-row">
+            <img
+              src="../logos/svg/gf-lockup-horizontal-reversed.svg"
+              alt="Global Fellowship"
+              style="height: 40px; width: auto"
+            />
+            <div class="cover-edition-meta">
+              <div class="cover-edition-kicker">
+                LIVING NEARNESS · BRAND SYSTEM V15
+              </div>
+              <div class="cover-edition-sub">
+                CHRISTIAN CHURCH-PLANTING FELLOWSHIP · FOUNDED 1989
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 26px; max-width: 688px">
+            <div
+              style="
+                width: 78px;
+                height: 5px;
+                background: var(--gf-apricot);
+                margin-bottom: 18px;
+              "
+            ></div>
+            <h1
+              class="gf-serif-display"
+              style="
+                font-size: 52px;
+                font-weight: 600;
+                line-height: 1.05;
+                letter-spacing: -0.022em;
+                margin-bottom: 14px;
+              "
+            >
+              When a cross-cultural missionary arrives, the local leader still
+              leads
+            </h1>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-size: 17.5px;
+                line-height: 1.46;
+                color: var(--gf-mist-text);
+                margin-bottom: 16px;
+                max-width: 640px;
+              "
+            >
+              Global Fellowship is an evangelical church-planting fellowship
+              empowering local leaders to plant self-governing churches among
+              unreached people while cross-cultural teammates serve alongside
+              and under them.
+            </p>
+            <div
+              style="
+                border-inline-start: 4px solid var(--gf-apricot);
+                padding-inline-start: 14px;
+                font-size: 12.6px;
+                line-height: 1.44;
+                color: var(--gf-paper);
+              "
+            >
+              <strong style="color: var(--gf-apricot)">The Local Edit:</strong>
+              &ldquo;Our church gathered neighboring households to read Mark in
+              our own language.&rdquo;
+              <span style="color: var(--gf-mist-text)">
+                (Replacing outsider draft:
+                <del style="text-decoration-color: var(--gf-apricot)"
+                  >&ldquo;Our team launched a new outreach across the
+                  district.&rdquo;</del
+                >)</span
+              >
+            </div>
+          </div>
+
+          <figure class="cover-photo-band" style="margin-inline: 0">
+            <img
+              src="../photography/gf-street-vendor-hands.jpg"
+              alt="Close documentary street photograph of hands lifting steaming hot noodles with tongs into a bowl at a neighborhood food stall"
+            />
+            <figcaption class="cover-photo-scrim">
+              <div>
+                <div
+                  style="
+                    font-family: var(--gf-font-display);
+                    font-size: 10px;
+                    font-weight: 800;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--gf-apricot);
+                    margin-bottom: 3px;
+                  "
+                >
+                  DOCUMENTARY STREET PHOTOGRAPHY · CONTEXTUAL SETTING
+                </div>
+                <div
+                  style="
+                    font-size: 11px;
+                    line-height: 1.38;
+                    color: var(--gf-paper);
+                  "
+                >
+                  Ordinary neighborhood street stall; contextual street
+                  photography (James Sutton, CC0 1.0 ·
+                  creativecommons.org/publicdomain/zero/1.0/), not a Global
+                  Fellowship congregation.
+                </div>
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 10.2px;
+                  font-weight: 700;
+                  color: var(--gf-sea-mist);
+                  white-space: nowrap;
+                "
+              >
+                Global coordinates · Regional contextualizes · Local leads
+              </div>
+            </figcaption>
+          </figure>
+
+          <!-- Own Tongue Display Band (6 Neutral Vendored Scripts · Strictly Within Page Margins) -->
+          <div
+            class="script-banner-wrap"
+            aria-label="Global Fellowship multilingual witness scripts"
+          >
+            <div class="script-banner-kicker">
+              OWN TONGUE · &ldquo;GOSPEL&rdquo; IN SIX VENDORED SIL OFL SCRIPTS
+            </div>
+            <div class="script-banner">
+              <div lang="th" style="font-family: var(--gf-font-thai)">
+                พระกิตติคุณ
+              </div>
+              <div
+                lang="ar"
+                style="font-family: var(--gf-font-arabic)"
+                dir="rtl"
+              >
+                إنجيل
+              </div>
+              <div lang="bn" style="font-family: var(--gf-font-bengali)">
+                সুসমাচার
+              </div>
+              <div lang="ru" style="font-family: var(--gf-font-serif)">
+                Евангелие
+              </div>
+              <div lang="hi" style="font-family: var(--gf-font-devanagari)">
+                सुसमाचार
+              </div>
+              <div lang="zh" style="font-family: var(--gf-font-cjk)">福音</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative">
+          <div class="gf-print-status on-dark">
+            <span>PROPOSED BRAND CANDIDATE V15 · AWAITING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div
+            class="gf-footer-bar"
+            style="
+              color: var(--gf-mist-text);
+              border-top-color: var(--gf-border-dark);
+              margin-top: 8px;
+              padding-top: 8px;
+            "
+          >
+            <span
+              >Global Fellowship, Inc. · Founded 1989 · 501(c)(3)
+              <span class="gf-nowrap">EIN 68-0214543</span></span
+            >
+            <span>Page 1 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: PROTECTED FOUNDATIONS, THREE PILLARS, SEVEN VALUES & FOUNDING TIMELINE -->
+      <section
+        class="gf-sheet"
+        style="padding: 32px 46px 24px"
+        aria-label="Page 2: Protected Foundations, Three Pillars, Seven Core Values, and Founding History"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 16px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >01 · FOUNDATIONS, THREE PILLARS &amp; SEVEN VALUES</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 30px; line-height: 1.1; margin-bottom: 14px"
+          >
+            Permanent foundations, seven lived values
+          </h2>
+
+          <div
+            class="gf-locked-foundation"
+            style="padding: 13px 18px; margin-bottom: 11px"
+          >
+            <div class="gf-locked-label">
+              OFFICIAL VERBATIM TEXT · Mission Statement
+            </div>
+            <p class="gf-locked-quote" style="font-size: 15.8px">
+              &ldquo;We make disciples and plant new churches by empowering
+              local leaders and sending cross-cultural missionaries to pioneer
+              church-planting work among unreached people.&rdquo;
+            </p>
+            <p
+              style="font-size: 11.4px; color: var(--gf-slate); margin: 6px 0 0"
+            >
+              Public infinitive form (Home / Our Mission): &ldquo;To make
+              disciples and plant new churches by empowering local leaders and
+              sending cross-cultural missionaries to pioneer church-planting
+              work among unreached people.&rdquo;
+            </p>
+          </div>
+
+          <div
+            class="gf-locked-foundation"
+            style="padding: 12px 18px; margin-bottom: 18px"
+          >
+            <div class="gf-locked-label">
+              OFFICIAL VERBATIM TEXT · Vision Statement (Prayerful Longing ·
+              Never a Coverage Metric)
+            </div>
+            <p class="gf-locked-quote" style="font-size: 15.8px">
+              &ldquo;It is our vision to plant a Gospel witness within 30
+              minutes of everyone.&rdquo;
+            </p>
+          </div>
+
+          <div
+            class="pillars-grid"
+            aria-label="Global Fellowship Three Pillars"
+          >
+            <div>
+              <div class="pillar-title">1. Church Planting</div>
+              <p class="pillar-desc">
+                Proclaiming Christ&rsquo;s death and resurrection, making
+                disciples, baptizing believers, and gathering healthy,
+                multiplying local churches.
+              </p>
+            </div>
+            <div>
+              <div class="pillar-title">2. Local Leadership</div>
+              <p class="pillar-desc">
+                Empowering believers who already belong to the language,
+                culture, and community to shepherd and multiply the church.
+              </p>
+            </div>
+            <div>
+              <div class="pillar-title">3. Unreached People</div>
+              <p class="pillar-desc">
+                Communities with little or no access to the Gospel and no
+                self-sustaining local church movement able to reach the wider
+                group.
+              </p>
+            </div>
+          </div>
+
+          <div class="gf-kicker" style="margin-bottom: 4px">
+            Global Fellowship&rsquo;s Seven Core Values in Daily Communication
+          </div>
+          <div class="values-strip">
+            <div class="val-item">
+              <strong>1. Gospel First</strong>
+              Proclaiming Christ&rsquo;s death and resurrection to gather local
+              churches.
+            </div>
+            <div class="val-item">
+              <strong>2. Relationships</strong>
+              Two-way prayer and letters; singles and families included equally.
+            </div>
+            <div class="val-item">
+              <strong>3. Local Leadership</strong>
+              Local leaders open stories, hold editorial veto, and guide work.
+            </div>
+            <div class="val-item">
+              <strong>4. Humility</strong>
+              God brings spiritual fruit; teammates serve as learners under
+              local leaders and honor peer Christian ministries.
+            </div>
+            <div class="val-item">
+              <strong>5. Health Above Results</strong>
+              Support workers in rest and grief without demanding monthly wins;
+              honor the No-Send Option.
+            </div>
+            <div class="val-item">
+              <strong>6. Biblical Principle</strong>
+              Test every claim, campaign, and story against Scripture before
+              strategy or speed.
+            </div>
+            <div class="val-item">
+              <strong>7. Trust &amp; Transparency</strong>
+              Date every figure, print scope beside totals, keep books open.
+            </div>
+            <div
+              class="val-item"
+              style="background: var(--gf-apricot); padding: 9px 11px"
+            >
+              <strong style="color: var(--gf-ink)">Operating Order</strong>
+              Global coordinates. Regional contextualizes. Local leads.
+            </div>
+          </div>
+
+          <div class="timeline-band">
+            <div>
+              <div class="tl-yr">Pre-1989 · Liberia</div>
+              <div class="tl-txt">
+                Don &amp; Kathy Oates serve directly under a local pastor,
+                establishing our leadership posture.
+              </div>
+            </div>
+            <div>
+              <div class="tl-yr">1989 · Auburn, CA</div>
+              <div class="tl-txt">
+                Global Fellowship incorporated to strengthen indigenous church
+                planters worldwide.
+              </div>
+            </div>
+            <div>
+              <div class="tl-yr">2012 · Sending Expansion</div>
+              <div class="tl-txt">
+                Expanded into North American cross-cultural sending while
+                keeping local leadership intact.
+              </div>
+            </div>
+            <div>
+              <div class="tl-yr">2024 · Chiang Mai</div>
+              <div class="tl-txt">
+                Southeast Asia regional hub opened to strengthen care, training,
+                and local language support.
+              </div>
+            </div>
+            <div>
+              <div class="tl-yr">2025 · 43 Countries</div>
+              <div class="tl-txt">
+                584 workers served across 43 countries (2025 Annual Report
+                snapshot).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Origin: Service under local leadership in Liberia · Founded 1989
+              · Sending expansion 2012 · Chiang Mai hub 2024</span
+            >
+            <span>Page 2 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 3: CROSS-IN-OVAL MARK, LIVING APERTURE SYSTEM & FOUR-LEVEL PARTNER ARCHITECTURE -->
+      <section
+        class="gf-sheet"
+        style="padding: 28px 46px 22px"
+        aria-label="Page 3: Mark, Living Aperture Graphic System, and Partner Architecture"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 12px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >02 · MARK, LIVING APERTURE SYSTEM &amp; PARTNER
+              ARCHITECTURE</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 29px; line-height: 1.1; margin-bottom: 7px"
+          >
+            One preserved mark, built to frame local voices
+          </h2>
+          <p
+            style="
+              font-size: 12.8px;
+              line-height: 1.52;
+              color: var(--gf-slate);
+              margin-bottom: 11px;
+            "
+          >
+            Global Fellowship&rsquo;s 140:101 Cross-in-Oval silhouette stays
+            exact, renewed in <strong>Harbor Teal + Kiln Clay</strong> on
+            daylight paper and <strong>Warm Paper + Candle Apricot</strong> on
+            Harbor Night, paired with vector-outlined
+            <strong>Plus Jakarta Sans</strong> lockups and mark-derived
+            <strong>Living Aperture</strong> margin geometry.
+          </p>
+
+          <div class="unboxed-2col" style="margin-top: 6px">
+            <div class="rule-block">
+              <h3>Master, Hub, Sub-Program &amp; Copier Lockups</h3>
+              <div style="margin: 10px 0">
+                <img
+                  src="../logos/svg/gf-lockup-horizontal.svg"
+                  alt="Global Fellowship horizontal lockup"
+                  style="height: 28px; width: auto; display: block"
+                />
+              </div>
+              <div style="margin-bottom: 10px">
+                <img
+                  src="../logos/svg/gf-lockup-regional-hub.svg"
+                  alt="Global Fellowship Southeast Asia regional hub lockup"
+                  style="
+                    height: 28px;
+                    width: auto;
+                    max-width: 100%;
+                    display: block;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 10px">
+                <img
+                  src="../logos/svg/gf-lockup-bridge-project.svg"
+                  alt="The Bridge Project, Global Fellowship Correspondence and Prayer lockup"
+                  style="height: 30px; width: auto; display: block"
+                />
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 8px;
+                  margin-bottom: 10px;
+                "
+              >
+                <div style="background: var(--gf-apricot); padding: 8px 10px">
+                  <div
+                    style="
+                      font-size: 8.8px;
+                      font-weight: 800;
+                      letter-spacing: 0.06em;
+                      text-transform: uppercase;
+                      color: var(--gf-ink);
+                      margin-bottom: 4px;
+                    "
+                  >
+                    ON APRICOT · CHARCOAL INK
+                  </div>
+                  <img
+                    src="../logos/svg/gf-lockup-horizontal-mono.svg"
+                    alt="Global Fellowship Charcoal Ink lockup on Candle Apricot"
+                    style="height: 20px; width: auto; display: block"
+                  />
+                </div>
+                <div
+                  style="
+                    background: #ffffff;
+                    border: 1px solid #000000;
+                    padding: 8px 10px;
+                  "
+                >
+                  <div
+                    style="
+                      font-size: 8.8px;
+                      font-weight: 800;
+                      letter-spacing: 0.06em;
+                      text-transform: uppercase;
+                      color: #000000;
+                      margin-bottom: 4px;
+                    "
+                  >
+                    1-COLOR COPIER · #000000
+                  </div>
+                  <img
+                    src="../logos/svg/gf-lockup-horizontal-black.svg"
+                    alt="Global Fellowship pure black copier lockup"
+                    style="height: 20px; width: auto; display: block"
+                  />
+                </div>
+              </div>
+              <p style="font-size: 11.4px; color: var(--gf-slate); margin: 0">
+                <strong>Clear space:</strong> 0.5H on all sides.
+                <strong>Minimum widths:</strong> Lockup 120px web / 32mm print;
+                standalone mark 24px / 8mm (integer-snapped 16px adaptive SVG
+                favicon switching automatically for light/dark browser tabs plus
+                16px Harbor Night tile below 24px).
+              </p>
+            </div>
+
+            <div class="rule-block">
+              <h3>Four-Level Partner Architecture</h3>
+              <ul>
+                <li>
+                  <strong>Level 1 · Master &amp; Sub-Programs:</strong> Global
+                  Fellowship master lockup plus parent-anchored
+                  <em>The Bridge Project</em> lockup.
+                </li>
+                <li>
+                  <strong>Level 2 · Regional Hubs:</strong> Master lockup + Kiln
+                  Clay (<code>#7E3119</code>) vertical divider + regional hub
+                  descriptor (English or local script).
+                </li>
+                <li>
+                  <strong>Level 3 · Local Ministries (Endorsed):</strong> Local
+                  congregation leads visibly above in its own language and
+                  script; Global Fellowship signs quietly beneath.
+                </li>
+                <li>
+                  <strong>Level 4 · Zero-Attribution:</strong> Self-contained
+                  local-only sheet and editable Word starters (English and
+                  Arabic RTL) with neutral Noto typography and zero GF name,
+                  mark, EIN, or CSS import.
+                </li>
+              </ul>
+              <div
+                style="
+                  border-top: 1px solid var(--gf-rule);
+                  padding-top: 9px;
+                  margin-top: 9px;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 10px;
+                "
+              >
+                <div>
+                  <div
+                    style="
+                      font-size: 8.8px;
+                      font-weight: 800;
+                      letter-spacing: 0.07em;
+                      text-transform: uppercase;
+                      color: var(--gf-slate);
+                      margin-bottom: 3px;
+                    "
+                  >
+                    LEVEL 3 · LATIN SPECIMEN
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 14.5px;
+                      font-weight: 600;
+                      color: var(--gf-ink);
+                      margin-bottom: 5px;
+                    "
+                  >
+                    [Local Congregation Name]
+                  </div>
+                  <img
+                    src="../logos/svg/gf-lockup-endorsement.svg"
+                    alt="In fellowship with Global Fellowship"
+                    style="height: 18px; width: auto; display: block"
+                  />
+                </div>
+                <div
+                  style="
+                    border-inline-start: 1px solid var(--gf-rule);
+                    padding-inline-start: 10px;
+                  "
+                >
+                  <div
+                    style="
+                      font-size: 8.8px;
+                      font-weight: 800;
+                      letter-spacing: 0.07em;
+                      text-transform: uppercase;
+                      color: var(--gf-slate);
+                      margin-bottom: 3px;
+                    "
+                  >
+                    LEVEL 3 · NON-LATIN ENDORSED
+                  </div>
+                  <div
+                    lang="th"
+                    style="
+                      font-family: var(--gf-font-thai);
+                      font-size: 14px;
+                      font-weight: 700;
+                      color: var(--gf-ink);
+                      margin-bottom: 5px;
+                    "
+                  >
+                    คริสตจักรท้องถิ่น (ตัวอย่าง)
+                  </div>
+                  <img
+                    src="../logos/svg/gf-lockup-endorsement.svg"
+                    alt="In fellowship with Global Fellowship"
+                    style="height: 18px; width: auto; display: block"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="gf-harbor-band"
+            style="
+              margin-top: 13px;
+              padding: 14px 18px;
+              display: grid;
+              grid-template-columns: 94px 94px 1fr;
+              gap: 14px;
+              align-items: center;
+              border-inline-start: 5px solid var(--gf-apricot);
+            "
+          >
+            <img
+              src="../patterns/living-aperture-split.svg"
+              alt="Edge-bleeding curved Living Aperture arcs derived from the Cross-in-Oval"
+              style="
+                width: 94px;
+                height: 94px;
+                display: block;
+                border: 1px solid var(--gf-border-dark);
+                background: var(--gf-harbor-deep);
+              "
+            />
+            <img
+              src="../patterns/architectural-frame-dark.svg"
+              alt="Cross-free architectural dark frame for prayer card headers and Tier 3 prayer cuts"
+              style="
+                width: 94px;
+                height: 94px;
+                display: block;
+                border: 1px solid var(--gf-border-dark);
+              "
+            />
+            <div>
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 10.2px;
+                  font-weight: 800;
+                  letter-spacing: 0.09em;
+                  color: var(--gf-apricot);
+                  text-transform: uppercase;
+                  margin-bottom: 4px;
+                "
+              >
+                THREE COMPOSITION MODES &amp; VISUAL VARIETY DISCIPLINE
+              </div>
+              <p style="font-size: 11.4px; line-height: 1.46; margin: 0">
+                Vary masthead and page rhythm intentionally rather than forcing
+                every document under one dark banner:
+                <strong>1. Monumental Local Voice</strong> (Harbor Night covers,
+                slides, and documentary street photography),
+                <strong>2. Quiet Letter &amp; Hospitality</strong> (Warm Paper
+                or Warm Linen with Kiln Clay rules for letters and welcome
+                guides), and <strong>3. Open Books Field Note</strong> (daylight
+                typography, tabular comparisons, and 10pt+ scope notes for elder
+                vetting and finance).
+              </p>
+            </div>
+          </div>
+
+          <div class="do-dont">
+            <div class="do-box">
+              <strong style="color: var(--gf-forest); display: block"
+                >DO</strong
+              >
+              Keep exact 140:101 mark ratios, use Harbor Teal + Kiln Clay on
+              Warm Paper, switch to Warm Paper + Candle Apricot on Harbor Night,
+              use Charcoal Ink on Candle Apricot, and print pure #000000 on
+              church copiers.
+            </div>
+            <div class="dont-box">
+              <strong style="color: var(--gf-crimson); display: block"
+                >DO NOT</strong
+              >
+              Never place bright Candle Apricot text on light paper, never place
+              Signal Crimson beside the Cross-in-Oval mark, never stretch the
+              oval, assign colors to regions, or put the cross mark on Tier 3
+              card fronts.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Partner Levels (1&ndash;4) stay distinct from Security Tiers
+              (1&ndash;3)</span
+            >
+            <span>Page 3 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 4: LIVING NEARNESS V14 PALETTE, PROPOSED CULTURAL NEUTRALITY & OPTICAL TYPE -->
+      <section
+        class="gf-sheet"
+        style="padding: 30px 46px 24px"
+        aria-label="Page 4: Living Nearness Palette and Multilingual Typography"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 13px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >03 · LIVING NEARNESS PALETTE &amp; MULTILINGUAL TYPE</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 31px; line-height: 1.1; margin-bottom: 9px"
+          >
+            Harbor teal, kiln clay, warm paper
+          </h2>
+          <p
+            style="
+              font-size: 13px;
+              color: var(--gf-slate);
+              margin-bottom: 13px;
+              line-height: 1.54;
+              max-width: 68ch;
+            "
+          >
+            Anchored in 2 Corinthians 4:7 earthenware warmth, this proposed
+            palette achieves
+            <strong>40/40 WCAG 2.2 AA/AAA and deuteranopia passes</strong>. It
+            is designed to avoid specified corporate and regional flag
+            combinations (actual local associations assessed by regional
+            reviewers before public adoption), paired with a complete
+            Ink-Neutral Fallback wherever preferred.
+          </p>
+
+          <div class="sw-band">
+            <div class="sw-tile" style="background: #0c525c; color: #faf7f2">
+              <span>Harbor Teal</span>
+              <span>#0C525C · 8.27:1 AAA</span>
+            </div>
+            <div class="sw-tile" style="background: #0b272e; color: #faf7f2">
+              <span>Harbor Night</span>
+              <span>#0B272E · 14.62:1 AAA</span>
+            </div>
+            <div class="sw-tile" style="background: #7e3119; color: #faf7f2">
+              <span>Kiln Clay</span>
+              <span>#7E3119 · 8.40:1 AAA</span>
+            </div>
+            <div class="sw-tile" style="background: #f2b488; color: #16191c">
+              <span>Candle Apricot</span>
+              <span>#F2B488 · 9.80:1 Ink</span>
+            </div>
+            <div
+              class="sw-tile"
+              style="
+                background: #faf7f2;
+                color: #16191c;
+                border: 1px solid #dbd4c9;
+              "
+            >
+              <span>Warm Paper</span>
+              <span>#FAF7F2 · 16.51:1 Ink</span>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 10px;
+              margin-top: 10px;
+              font-size: 11.2px;
+              color: var(--gf-slate);
+              line-height: 1.44;
+            "
+          >
+            <div>
+              <strong style="color: var(--gf-ink)">Charcoal Ink</strong><br />
+              #16191C · Primary Ink
+            </div>
+            <div>
+              <strong style="color: var(--gf-ink)">Warm Linen</strong><br />
+              #F1ECE3 · Locked &amp; Rails
+            </div>
+            <div>
+              <strong style="color: var(--gf-ink)">Harbor Mist</strong><br />
+              #E9F2F3 · Calm Notice
+            </div>
+            <div>
+              <strong style="color: var(--gf-ink)">Sea Mist / Rules</strong
+              ><br />
+              #8CE0E5 / #6EAAB2
+            </div>
+            <div>
+              <strong style="color: var(--gf-ink)">Semantic Only</strong><br />
+              #821818 / #1B5E3A
+            </div>
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 25px; margin: 18px 0 7px"
+          >
+            Optical editorial serif, crisp tabular sans, global scripts
+          </h2>
+          <div class="unboxed-2col" style="margin-top: 5px">
+            <div class="rule-block">
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 30px;
+                  font-weight: 600;
+                  line-height: 1.06;
+                  color: var(--gf-ink);
+                  margin-bottom: 7px;
+                "
+              >
+                Source Serif 4 + Noto
+              </div>
+              <p>
+                <strong>Optical Display, Witness &amp; Script Engine.</strong>
+                Leads covers, essays, prayer cards, Scripture, Locked
+                Foundations, and local elders&rsquo; words with tactile book
+                dignity. Harmonized SIL OFL 1.1 Noto siblings (including Noto
+                Sans Arabic for crisp legibility) support Arabic RTL, Bengali,
+                Thai, Devanagari, Cyrillic, and Simplified Chinese.
+              </p>
+            </div>
+            <div class="rule-block">
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 28px;
+                  font-weight: 800;
+                  letter-spacing: -0.01em;
+                  line-height: 1.08;
+                  color: var(--gf-harbor);
+                  margin-bottom: 7px;
+                "
+              >
+                Plus Jakarta Sans
+              </div>
+              <p>
+                <strong>Wordmark, Open Books Data, UI &amp; Forms.</strong>
+                Crisp geometric sans-serif reserved for tabular financial
+                totals, navigation, structured forms, datelines, and accessible
+                email buttons (<code>tabular-nums</code> for financial columns;
+                Microsoft Office offline fallback: Calibri/Georgia).
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.55fr 1fr 0.95fr 0.95fr;
+              gap: 14px;
+              margin-top: 14px;
+              padding-top: 12px;
+              border-top: 2px solid var(--gf-ink);
+              align-items: end;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 72px;
+                  font-weight: 600;
+                  letter-spacing: -0.04em;
+                  line-height: 0.82;
+                  color: var(--gf-harbor);
+                  font-variant-numeric: tabular-nums;
+                "
+              >
+                1989
+              </div>
+              <div
+                style="font-size: 11px; color: var(--gf-slate); margin-top: 6px"
+              >
+                Monument Scale (96px / 6rem on Covers &amp; Chapters)
+              </div>
+            </div>
+            <div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 26px;
+                  font-weight: 600;
+                "
+              >
+                Display H1
+              </div>
+              <div
+                style="font-size: 11px; color: var(--gf-slate); margin-top: 5px"
+              >
+                42px Source Serif 4 Optical
+              </div>
+            </div>
+            <div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 18px;
+                  line-height: 1.45;
+                "
+              >
+                Witness Story
+              </div>
+              <div
+                style="font-size: 11px; color: var(--gf-slate); margin-top: 5px"
+              >
+                16px web / 10.5pt print
+              </div>
+            </div>
+            <div>
+              <div class="gf-dateline">CLEAR DATELINE</div>
+              <div
+                style="font-size: 11px; color: var(--gf-slate); margin-top: 5px"
+              >
+                One cue · Hairlines first
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 16px;
+              background: var(--gf-paper-subtle);
+              padding: 14px 18px;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 18px;
+              font-size: 11.4px;
+              line-height: 1.46;
+            "
+          >
+            <div>
+              <strong
+                style="
+                  color: var(--gf-harbor);
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >Restrained Framing</strong
+              >
+              Reserve Warm Linen + stepped Harbor Teal / Kiln Clay bars strictly
+              for verbatim Mission and Vision. Lead with type scale and
+              hairlines before adding tinted panels.
+            </div>
+            <div>
+              <strong
+                style="
+                  color: var(--gf-harbor);
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >Ink-Neutral Escape Hatch</strong
+              >
+              Where any brand color carries local sensitivity, publish in
+              Charcoal Ink on Warm Paper with solid neutral rules (mapped in
+              Four-Environment Survival Proof).
+            </div>
+            <div>
+              <strong
+                style="
+                  color: var(--gf-harbor);
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >100% Vendored SIL OFL 1.1</strong
+              >
+              All 76 font files and <code>OFL-1.1.txt</code> ship locally in
+              <code>brand-kit/tokens/fonts/</code>, audited across every
+              exported PDF with zero proprietary fonts.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Canonical token source: brand-kit/tokens/tokens.json · 40/40 WCAG
+              2.2 AA/AAA &amp; deuteranopia verified</span
+            >
+            <span>Page 4 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 5: DOCUMENTARY STREET PHOTOGRAPHY STANDARD, LIVE SCRIM PROOF & VISUAL CONTACT SHEET -->
+      <section
+        class="gf-sheet"
+        style="padding: 26px 46px 22px"
+        aria-label="Page 5: Documentary Street Photography Standard and Visual Contact Sheet"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 12px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >04 · DOCUMENTARY STREET PHOTOGRAPHY &amp; CURATION STANDARD</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 29px; line-height: 1.1; margin-bottom: 7px"
+          >
+            Ordinary streets, never generic illustrations
+          </h2>
+          <p
+            style="
+              font-size: 12.6px;
+              line-height: 1.5;
+              color: var(--gf-slate);
+              margin: 0 0 13px;
+              max-width: 70ch;
+            "
+          >
+            Public covers, decks, social posts, and editorial spreads pair
+            restrained typography with vetted, sRGB-normalized, EXIF-stripped
+            documentary street photography stored in
+            <code>brand-kit/photography/</code> (zero ShareAlike encumbrance;
+            pending regional accept/replace review). Every frame honors
+            neighbors without identifying unconsented people.
+          </p>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.15fr 0.85fr;
+              gap: 18px;
+              align-items: stretch;
+            "
+          >
+            <div>
+              <figure class="photo-hero-proof" style="margin: 0">
+                <img
+                  src="../photography/gf-street-tea-table.jpg"
+                  alt="Documentary street photograph of two hands pouring warm tea across a wooden tray with clay pots and cups"
+                />
+                <figcaption class="photo-hero-scrim">
+                  <div
+                    style="
+                      font-family: var(--gf-font-display);
+                      font-size: 10px;
+                      font-weight: 800;
+                      letter-spacing: 0.08em;
+                      text-transform: uppercase;
+                      color: var(--gf-apricot);
+                      margin-bottom: 3px;
+                    "
+                  >
+                    LIVE SCRIM PROOF (8.68:1 SOLID / 7.7:1+ WORST-CASE APRICOT ·
+                    13.0:1+ PAPER AAA)
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 15.6px;
+                      font-weight: 600;
+                      line-height: 1.18;
+                      color: var(--gf-paper);
+                      margin-bottom: 3px;
+                    "
+                  >
+                    Ordinary neighborhood hospitality, zero identifiable faces
+                  </div>
+                  <div
+                    style="
+                      font-size: 9.8px;
+                      line-height: 1.35;
+                      color: var(--gf-mist-text);
+                    "
+                  >
+                    GF-PHO-01 · James Creegan (CC BY 2.0 ·
+                    creativecommons.org/licenses/by/2.0/) · Contextual street
+                    photography, not a Global Fellowship congregation.
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="rule-block" style="margin-top: 0">
+              <h3 style="margin-bottom: 7px">Three-Path Sourcing Standard</h3>
+              <ul style="font-size: 11.4px; line-height: 1.45">
+                <li>
+                  <strong>Path A · Public Contextual Street Photos:</strong>
+                  Tier 1 public channels use vetted non-identifying street
+                  plates (<code>GF-PHO-01..06</code>, CC0 1.0 &amp; CC BY 2.0
+                  only) with visible-only alt text, license URL, and
+                  <em>&ldquo;not a Global Fellowship congregation.&rdquo;</em>
+                </li>
+                <li>
+                  <strong>Path B · Commissioned GF Field Photos:</strong> Any
+                  photo of real workers, elders, or partner congregations
+                  requires signed, revocable <code>GF-TPL-15</code> consent in
+                  the private archive, natural daylight WB, eye-level 1&ndash;2m
+                  framing, and EXIF/GPS stripped.
+                </li>
+                <li>
+                  <strong>Path C · Photo-Free Print &amp; Tier 2/3:</strong>
+                  Restricted prayer cards, encrypted mobile notes, office
+                  copiers, and Level 4 local sheets stay 100% photo-free with
+                  equal editorial dignity.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="gf-kicker" style="margin: 13px 0 4px">
+            Complete 6-Frame Public Vault (GF-PHO-01 Above + GF-PHO-02..06 Below
+            · sRGB · Zero EXIF · Zero ShareAlike)
+          </div>
+          <div class="contact-sheet">
+            <div class="contact-tile">
+              <div class="contact-thumb">
+                <img
+                  src="../photography/gf-street-shared-bread.jpg"
+                  alt="Warm freshly baked bread loaf resting on white linen over a dark wooden table"
+                />
+              </div>
+              <div class="contact-meta">
+                <strong>GF-PHO-02 · Shared Bread</strong>
+                Brooke Cagle (CC0 1.0 · creativecommons.org/<wbr />publicdomain/<wbr />zero/<wbr />1.0/)
+                · Annual Report &amp; tables.
+              </div>
+            </div>
+            <div class="contact-tile">
+              <div class="contact-thumb">
+                <img
+                  src="../photography/gf-street-vendor-hands.jpg"
+                  alt="Close street photograph of hands lifting steaming hot noodles with metal tongs into a rectangular aluminum foil tray"
+                />
+              </div>
+              <div class="contact-meta">
+                <strong>GF-PHO-03 · Vendor Hands</strong>
+                James Sutton (CC0 1.0 · creativecommons.org/<wbr />publicdomain/<wbr />zero/<wbr />1.0/)
+                · Cover &amp; 4:5 photo story.
+              </div>
+            </div>
+            <div class="contact-tile">
+              <div class="contact-thumb">
+                <img
+                  src="../photography/gf-street-neighborhood-dusk.jpg"
+                  alt="Golden late-afternoon sunlight falling across plastered residential buildings along a quiet neighborhood street"
+                />
+              </div>
+              <div class="contact-meta">
+                <strong>GF-PHO-04 · Dusk Street</strong>
+                Daniel Beilinson (CC0 1.0 · creativecommons.org/<wbr />publicdomain/<wbr />zero/<wbr />1.0/)
+                · 16:9 headers.
+              </div>
+            </div>
+            <div class="contact-tile">
+              <div class="contact-thumb">
+                <img
+                  src="../photography/gf-street-urban-balconies.jpg"
+                  alt="Contemporary multi-story urban apartment building facades and balconies catching warm afternoon light"
+                />
+              </div>
+              <div class="contact-meta">
+                <strong>GF-PHO-05 · Urban Balconies</strong>
+                Naomi Hutchinson (CC0 1.0 · creativecommons.org/<wbr />publicdomain/<wbr />zero/<wbr />1.0/)
+                · 21st-century city life.
+              </div>
+            </div>
+            <div class="contact-tile">
+              <div class="contact-thumb">
+                <img
+                  src="../photography/gf-street-terracotta-alley.jpg"
+                  alt="Narrow shaded residential cobblestone lane flanked by warm terracotta walls opening toward daylight"
+                />
+              </div>
+              <div class="contact-meta">
+                <strong>GF-PHO-06 · Terracotta Alley</strong>
+                Ken &amp; Nyetta (CC BY 2.0 · creativecommons.org/<wbr />licenses/<wbr />by/<wbr />2.0/)
+                · Editorial dividers.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 11px;
+              background: var(--gf-paper-subtle);
+              padding: 8px 13px;
+              font-size: 10.8px;
+              line-height: 1.42;
+              color: var(--gf-ink);
+              border-inline-start: 4px solid var(--gf-harbor);
+            "
+          >
+            <strong style="color: var(--gf-harbor)"
+              >Mandatory Contextual Caption Formula:</strong
+            >
+            &ldquo;Ordinary [place-type]; contextual street photography
+            ([Photographer, License &amp; URL]), not a Global Fellowship
+            congregation.&rdquo; Never label an unconsented passerby as a local
+            elder, believer, or partner.
+          </div>
+
+          <div class="do-dont" style="margin-top: 10px">
+            <div class="do-box">
+              <strong style="color: var(--gf-forest); display: block"
+                >APPROVE FOR PUBLIC VAULT (DO)</strong
+              >
+              Natural daylight, unified warm-neutral sRGB grade, contemporary
+              urban &amp; hospitality scenes without faces, CC0 1.0 or CC BY
+              (non-ShareAlike) only, zero-EXIF JPEGs, and opaque Harbor Night
+              backing bands (&gt;=0.94 opacity) behind every overlaid glyph.
+            </div>
+            <div class="dont-box">
+              <strong style="color: var(--gf-crimson); display: block"
+                >REJECTED IN EDITORIAL REVIEW (DO NOT)</strong
+              >
+              ShareAlike copyleft encumbrance, identifiable faces, national
+              flags, religious amulets or shrines, modern license plates or
+              signage, traffic cones, stock/AI people, or blurred silhouettes
+              (logged in <code>photography/PHOTO-LICENSES.md</code>).
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Full SHA-256 digests, CC links &amp; Rejection Log:
+              brand-kit/photography/PHOTO-LICENSES.md</span
+            >
+            <span>Page 5 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 6: THREE REGISTERS, MULTI-REGISTER LOCAL EDIT SPECIMENS & TIER 3 PARITY -->
+      <section
+        class="gf-sheet"
+        style="padding: 26px 46px 22px"
+        aria-label="Page 6: Verbal Registers, Local Edit Specimens, and Tier 3 Photo-Free Parity"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 11px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >05 · THREE REGISTERS, LOCAL EDIT &amp; PHOTO-FREE PARITY</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 28px; line-height: 1.1; margin-bottom: 6px"
+          >
+            Show clarity without self-congratulation
+          </h2>
+          <div class="reg-grid">
+            <div class="rule-block">
+              <h3>1. Witness · Stories &amp; Prayer</h3>
+              <p>
+                <strong>Source Serif 4</strong> leads. First-person local voice
+                at the top when consented; joyful when celebrating baptism,
+                tender in grief, direct about Jesus Christ.
+              </p>
+            </div>
+            <div class="rule-block">
+              <h3>2. Open Books · Finance</h3>
+              <p>
+                <strong>Plus Jakarta Sans</strong> tabular numerals. Print
+                reporting scope right beside every figure at reading size (10pt+
+                in print). Never bury caveats in fine print.
+              </p>
+            </div>
+            <div class="rule-block">
+              <h3>3. Note · Mobile &amp; Video</h3>
+              <p>
+                <strong>Under 60 words</strong>, present tense, phone-native for
+                encrypted prayer groups, 9:16 vertical captions, and scannable
+                next steps.
+              </p>
+            </div>
+          </div>
+
+          <!-- Three Distinct Multi-Register Local Edit Specimens -->
+          <div class="local-edit-trio">
+            <div class="le-card">
+              <div class="le-card-tag">1. WITNESS · LOCAL EDIT (SPECIMEN)</div>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 13.2px;
+                  font-weight: 600;
+                  line-height: 1.36;
+                  color: var(--gf-ink);
+                  margin: 0 0 5px;
+                "
+              >
+                &ldquo;Our church gathered neighboring households to read Mark
+                in our own language.&rdquo;
+              </p>
+              <p
+                style="
+                  font-size: 10.6px;
+                  line-height: 1.38;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                <em>Draft set aside:</em>
+                <del style="text-decoration-color: var(--gf-clay)"
+                  >&ldquo;Our team launched a new outreach across the
+                  district.&rdquo;</del
+                >
+                Even plausible outsider framing yields to local elders&rsquo;
+                wording.
+              </p>
+            </div>
+
+            <div class="le-card harbor">
+              <div class="le-card-tag">2. VISIT · HOST STOP AUTHORITY</div>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 13.2px;
+                  font-weight: 600;
+                  line-height: 1.36;
+                  color: var(--gf-ink);
+                  margin: 0 0 5px;
+                "
+              >
+                &ldquo;Not this spring. Our congregation is grieving and needs
+                space to heal.&rdquo;
+              </p>
+              <p
+                style="
+                  font-size: 10.6px;
+                  line-height: 1.38;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                <strong>Decision:</strong> Proposed April team visit postponed
+                without penalty. Health Above Results governs travel calendars.
+              </p>
+            </div>
+
+            <div class="le-card">
+              <div class="le-card-tag">3. URBAN · LOCAL EDIT (SPECIMEN)</div>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 13.2px;
+                  font-weight: 600;
+                  line-height: 1.36;
+                  color: var(--gf-ink);
+                  margin: 0 0 5px;
+                "
+              >
+                &ldquo;Two apartment fellowships welcomed shift-work neighbors
+                to read Luke together.&rdquo;
+              </p>
+              <p
+                style="
+                  font-size: 10.6px;
+                  line-height: 1.38;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                <em>Draft set aside:</em>
+                <del style="text-decoration-color: var(--gf-clay)"
+                  >&ldquo;We launched a new urban church-planting
+                  hub.&rdquo;</del
+                >
+                Local congregations stay the active subject in cities too.
+              </p>
+            </div>
+          </div>
+
+          <div class="gf-kicker" style="margin: 14px 0 8px">
+            Photo-Free Print Fallbacks &amp; Tier 3 Equal-Dignity Parity
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.32fr 0.68fr;
+              gap: 16px;
+              align-items: stretch;
+            "
+          >
+            <div style="border-top: 2px solid var(--gf-ink); padding-top: 10px">
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1.05fr 0.95fr;
+                  gap: 12px;
+                  margin-bottom: 8px;
+                  align-items: start;
+                "
+              >
+                <div>
+                  <div
+                    style="
+                      background: var(--gf-harbor-deep);
+                      border: 1px solid var(--gf-rule);
+                    "
+                  >
+                    <img
+                      src="../patterns/editorial-aperture-script-plate.svg"
+                      alt="Original cut-paper Living Aperture architectural plate in Harbor Night, Harbor Teal, Kiln Clay, Candle Apricot, and Warm Paper"
+                      style="
+                        width: 100%;
+                        aspect-ratio: 16 / 10;
+                        object-fit: contain;
+                        display: block;
+                      "
+                    />
+                    <div
+                      style="
+                        background: var(--gf-harbor-deep);
+                        border-top: 1px solid var(--gf-border-dark);
+                        padding: 5px 8px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: baseline;
+                        font-size: 9px;
+                        font-weight: 700;
+                        color: var(--gf-paper);
+                        white-space: nowrap;
+                      "
+                    >
+                      <div lang="th" style="font-family: var(--gf-font-thai)">
+                        พระกิตติคุณ
+                      </div>
+                      <div
+                        lang="ar"
+                        dir="rtl"
+                        style="font-family: var(--gf-font-arabic)"
+                      >
+                        إنجيل
+                      </div>
+                      <div
+                        lang="bn"
+                        style="font-family: var(--gf-font-bengali)"
+                      >
+                        সুসমাচার
+                      </div>
+                      <div lang="ru" style="font-family: var(--gf-font-serif)">
+                        Евангелие
+                      </div>
+                      <div
+                        lang="hi"
+                        style="font-family: var(--gf-font-devanagari)"
+                      >
+                        सुसमाचार
+                      </div>
+                      <div lang="zh" style="font-family: var(--gf-font-cjk)">
+                        福音
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      margin-top: 5px;
+                      font-size: 10px;
+                      line-height: 1.36;
+                      color: var(--gf-ink);
+                    "
+                  >
+                    <strong style="color: var(--gf-harbor)"
+                      >Plate A · Living Aperture &amp; Own Tongue</strong
+                    ><br />
+                    <span style="color: var(--gf-slate)"
+                      >Architectural 140:101 print fallback when photography is
+                      unavailable or unsafe.</span
+                    >
+                  </div>
+                </div>
+
+                <div>
+                  <div
+                    style="
+                      background: var(--gf-paper-subtle);
+                      border: 1px solid var(--gf-rule);
+                      border-bottom: 3px solid var(--gf-clay);
+                    "
+                  >
+                    <img
+                      src="../patterns/editorial-borrowed-table-plate.svg"
+                      alt="Original non-figurative architectural courtyard plan plate framing an open-folio gathering threshold"
+                      style="
+                        width: 100%;
+                        aspect-ratio: 2 / 1;
+                        object-fit: contain;
+                        display: block;
+                      "
+                    />
+                  </div>
+                  <div
+                    style="
+                      margin-top: 5px;
+                      font-size: 10px;
+                      line-height: 1.36;
+                      color: var(--gf-ink);
+                    "
+                  >
+                    <strong style="color: var(--gf-harbor)"
+                      >Plate B · Courtyard Plan Plate</strong
+                    ><br />
+                    <span style="color: var(--gf-slate)"
+                      >Non-figurative print fallback for restricted or
+                      pre-consent booklets; never replaces public street
+                      photography.</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 10.6px;
+                  color: var(--gf-slate);
+                  margin: 0;
+                  line-height: 1.42;
+                "
+              >
+                <strong style="color: var(--gf-ink)"
+                  >Consistent pronoun &amp; Scripture discipline:</strong
+                >
+                Keep original Global Fellowship prose in lowercase divine
+                pronouns (<code>he/his/him</code>, verified automatically by
+                <code>GF.DivinePronouns</code>), while preserving verbatim
+                protected Statement of Faith wording byte-for-byte.
+              </p>
+            </div>
+
+            <div
+              class="gf-harbor-band"
+              style="
+                padding: 15px 17px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                background: var(--gf-harbor-deep);
+                border-top: 5px solid var(--gf-apricot);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 10px;
+                    font-weight: 800;
+                    letter-spacing: 0.1em;
+                    color: var(--gf-apricot);
+                    text-transform: uppercase;
+                    margin-bottom: 6px;
+                  "
+                >
+                  TIER 3 · ALL-TYPE PARITY
+                </div>
+                <div
+                  style="
+                    font-family: var(--gf-font-serif);
+                    font-size: 21px;
+                    font-weight: 600;
+                    line-height: 1.15;
+                    margin-bottom: 8px;
+                  "
+                >
+                  Equal warmth without photography
+                </div>
+                <p
+                  style="
+                    font-family: var(--gf-font-serif);
+                    font-size: 11.8px;
+                    line-height: 1.48;
+                    color: var(--gf-mist-text);
+                    margin: 0;
+                  "
+                >
+                  Prefer the cross-free architectural header and optical serif
+                  Scripture on Tier 2/3 cards, border-crossing handouts, and
+                  mobile notes. Never use silhouettes, blurred faces, black
+                  bars, or regional colors.
+                </p>
+              </div>
+              <div
+                style="
+                  font-size: 10.2px;
+                  color: var(--gf-sea-mist);
+                  font-weight: 700;
+                  padding-top: 8px;
+                  border-top: 1px solid var(--gf-border-dark);
+                "
+              >
+                Identical 4x6 duplex skeleton · Equal dignity
+              </div>
+            </div>
+          </div>
+
+          <div class="do-dont" style="margin-top: 10px">
+            <div class="do-box">
+              <strong style="color: var(--gf-forest); display: block"
+                >AGENCY GRAMMAR (DO)</strong
+              >
+              &ldquo;God gathers believers into local churches. Local church
+              planters teach Scripture in their own tongue, and your giving
+              supports practical ministry costs so workers can remain
+              present.&rdquo;
+            </div>
+            <div class="dont-box">
+              <strong style="color: var(--gf-crimson); display: block"
+                >NEVER PUBLISH (DO NOT)</strong
+              >
+              &ldquo;Your gift saves the unreached&rdquo; · &ldquo;Native
+              missionary&rdquo; · &ldquo;Transforming nations&rdquo; ·
+              &ldquo;Target villages&rdquo; · Em dashes in public copy.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Automated editorial checks enforced in Vale (styles/GF/) across
+              docs, templates, transcripts, and Office starters</span
+            >
+            <span>Page 6 of 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 7: PRACTICAL CHANNEL DIRECTORY, ORIGINAL GF ICONS & GOVERNANCE -->
+      <section
+        class="gf-sheet"
+        style="padding: 22px 46px 19px"
+        aria-label="Page 7: Practical Channel Directory and Pre-Launch Governance"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 10px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >06 · CHANNEL KIT (27 TEMPLATES, 6 PHOTOS &amp; 6 OFFICE STARTERS)
+              &amp; GOVERNANCE</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 27px; line-height: 1.1; margin-bottom: 8px"
+          >
+            Every channel, one ready-to-use kit
+          </h2>
+
+          <table
+            class="gf-ledger p6-ledger"
+            aria-label="Channel template directory"
+          >
+            <thead>
+              <tr>
+                <th style="width: 24%">Channel &amp; Audience</th>
+                <th style="width: 43%">Ready-to-Use Deliverable</th>
+                <th>Governance &amp; Safety Standard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Street Photography</strong></td>
+                <td>
+                  Curated Public Vault (<span class="gf-nowrap"
+                    ><code>GF-PHO-01..06</code></span
+                  >) &amp; Provenance/Rejection Log (<span class="gf-nowrap"
+                    ><code>PHOTO-LICENSES.md</code></span
+                  >)
+                </td>
+                <td>
+                  Byte-verified zero-EXIF JPEGs, zero identifiable faces/flags,
+                  CC attribution, and regional accept/replace gate.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>4x6 Prayer Cards</strong></td>
+                <td>
+                  Restricted Master (<span class="gf-nowrap"
+                    ><code>GF-TPL-01</code></span
+                  >) &amp; Public Variant (<span class="gf-nowrap"
+                    ><code>GF-TPL-02</code></span
+                  >) in exact 4x6 trim and 0.125in bleed press PDFs
+                </td>
+                <td>
+                  Shared warm architectural header &amp; serif Scripture; mark
+                  on back of Tier 3; neutral PDF title; fresh consent required.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Local &amp; Arabic Briefs</strong></td>
+                <td>
+                  Welcome Brief (<span class="gf-nowrap"
+                    ><code>GF-TPL-03</code></span
+                  >), Level 4 Sheet (<span class="gf-nowrap"
+                    ><code>GF-TPL-16</code></span
+                  >), 1-Page Pure-Arabic Brief (<span class="gf-nowrap"
+                    ><code>GF-TPL-19</code></span
+                  >) + Translator Sheet (<span class="gf-nowrap"
+                    ><code>19B</code></span
+                  >) &amp; RTL Word Starter
+                </td>
+                <td>
+                  Local leadership leads visually; Level 4 &amp; Arabic handouts
+                  ship standalone with pure-Arabic metadata and zero outside
+                  tells.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Field Workers &amp; Staff</strong></td>
+                <td>
+                  Prayer-Letter Kit (<span class="gf-nowrap"
+                    ><code>GF-TPL-04</code></span
+                  >) + Dual Word, Candidate Kit (<span class="gf-nowrap"
+                    ><code>GF-TPL-24A</code></span
+                  >), Internal Day-1 Pack (<span class="gf-nowrap"
+                    ><code>GF-TPL-24B</code></span
+                  >) &amp; 8-Slide Deck (<span class="gf-nowrap"
+                    ><code>.pptx</code></span
+                  >)
+                </td>
+                <td>
+                  Strict separation of Tier 1 vs. Tier 2/3 signatures and
+                  starters; joyful &amp; rest options; Georgia/Calibri offline
+                  fallbacks.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Churches &amp; Bridge</strong></td>
+                <td>
+                  Partnership Kit (<span class="gf-nowrap"
+                    ><code>GF-TPL-06</code></span
+                  >), Elders&rsquo; Vetting (<span class="gf-nowrap"
+                    ><code>GF-TPL-22</code></span
+                  >), Host Agreement (<span class="gf-nowrap"
+                    ><code>GF-TPL-23</code></span
+                  >), Pure-Black Bulletin (<span class="gf-nowrap"
+                    ><code>GF-TPL-17</code></span
+                  >), Bridge Kids (<span class="gf-nowrap"><code>20</code></span
+                  >) &amp; Welcome Guide (<span class="gf-nowrap"
+                    ><code>25</code></span
+                  >)
+                </td>
+                <td>
+                  Byte-exact 8-article Statement of Faith; unconditional host
+                  veto (&ldquo;not this year&rdquo;); pure #000000 lobby/table
+                  masters.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Annual Report &amp; Donors</strong></td>
+                <td>
+                  2025 Spread (<span class="gf-nowrap"
+                    ><code>GF-TPL-05</code></span
+                  >), Zero-Image Fluid Emails (<span class="gf-nowrap"
+                    ><code>GF-TPL-08/09</code></span
+                  >), Donor Lifecycle &amp; Receipt Kit (<span class="gf-nowrap"
+                    ><code>GF-TPL-21</code></span
+                  >) + Editable Manual Fill-In Word Starter
+                </td>
+                <td>
+                  Comparable disbursement scale, IRS substantiation &amp;
+                  PCI-safe payment care, re-designation tree, and flush-left
+                  wordmarks.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Mobile, Social &amp; Video</strong></td>
+                <td>
+                  Social/OG/Photo-Story + 3 Q&amp;A Carousel PNGs (<span
+                    class="gf-nowrap"
+                    ><code>GF-TPL-11</code></span
+                  >), EN/TH/AR Phone Notes &amp; Audio Spec (<span
+                    class="gf-nowrap"
+                    ><code>GF-TPL-14</code></span
+                  >), 25.00s Tier 1 Video (<span class="gf-nowrap"
+                    ><code>GF-VID-01</code></span
+                  >)
+                </td>
+                <td>
+                  Tier 1 public video (ambient audio + 10-cue captions + street
+                  photo); Tier 3 encrypted chats stay strictly photo-free.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Consent, Care &amp; Stationery</strong></td>
+                <td>
+                  Standalone 2-Page Consent Form (<span class="gf-nowrap"
+                    ><code>GF-TPL-15</code></span
+                  >), Confidential Care Journal (<span class="gf-nowrap"
+                    ><code>GF-TPL-18</code></span
+                  >) &amp; Stationery (<span class="gf-nowrap"
+                    ><code>GF-TPL-12</code></span
+                  >)
+                </td>
+                <td>
+                  Confidential pastoral journal strictly separated from public
+                  letterhead; store signed consent &amp; care files outside Git.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 100% Original Global Fellowship 1.65px Functional Iconography -->
+          <div
+            style="
+              margin-top: 9px;
+              border-top: 2px solid var(--gf-ink);
+              padding-top: 8px;
+              display: grid;
+              grid-template-columns: 0.36fr 0.64fr;
+              gap: 14px;
+              align-items: center;
+            "
+          >
+            <div>
+              <div class="gf-kicker" style="margin-bottom: 3px">
+                Original GF Icons · 1.65px Stroke
+              </div>
+              <p
+                style="
+                  font-size: 10.4px;
+                  line-height: 1.38;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                Original 1.65px rounded-cap SVGs authored specifically for
+                Global Fellowship (zero third-party icon licenses), paired with
+                visible text labels.
+              </p>
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 7px;
+                font-size: 9.6px;
+                font-weight: 700;
+              "
+            >
+              <div
+                style="
+                  background: var(--gf-paper-subtle);
+                  padding: 7px 8px;
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: var(--gf-ink);
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0C525C"
+                  stroke-width="1.65"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3.8 6.5 12 12.6l8.2-6.1" />
+                </svg>
+                <span>Bridge Mail</span>
+              </div>
+              <div
+                style="
+                  background: var(--gf-harbor-deep);
+                  padding: 7px 8px;
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: var(--gf-paper);
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#F2B488"
+                  stroke-width="1.65"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 6.5c-2-1.4-5.2-1.9-8-1.5v12.5c2.8-.4 6 .1 8 1.5m0-12.5c2-1.4 5.2-1.9 8-1.5v12.5c-2.8-.4-6 .1-8 1.5m0-12.5V19"
+                  />
+                </svg>
+                <span>Open Books</span>
+              </div>
+              <div
+                style="
+                  background: #ffffff;
+                  border: 1px solid #000000;
+                  padding: 7px 8px;
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: #000000;
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="1.65"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3 4.5 6v5.4c0 4.6 3.1 8.5 7.5 9.6 4.4-1.1 7.5-5 7.5-9.6V6L12 3Z"
+                  />
+                  <circle cx="12" cy="11" r="1.4" />
+                  <path d="M12 12.4v2.4" />
+                </svg>
+                <span>Field Care</span>
+              </div>
+              <div
+                style="
+                  background: var(--gf-apricot);
+                  padding: 7px 8px;
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: var(--gf-ink);
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#16191C"
+                  stroke-width="1.65"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M8.5 12.2 10.9 14.6 15.8 9.6" />
+                </svg>
+                <span>Local Veto</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="gf-apricot-band"
+            style="
+              margin-top: 10px;
+              padding: 11px 16px;
+              border-inline-start: 5px solid var(--gf-ink);
+            "
+          >
+            <h3 style="font-size: 13.6px; margin-bottom: 4px">
+              Before Public Launch: Leadership Release Checklist (V15)
+            </h3>
+            <p style="font-size: 11px; line-height: 1.44; margin: 0">
+              This Living Nearness V15 brand system remains
+              <strong>awaiting explicit human approval</strong> (website
+              implementation is paused until brand sign-off). Before external
+              distribution, Global Fellowship leaders complete three gates
+              tracked in
+              <strong>knowledge/references/open-verification-register.md</strong
+              >: <strong>1. Finance &amp; Operations</strong> confirm entity
+              scope, reply timelines, and planned web routes;
+              <strong>2. Regional &amp; Pastoral Leads</strong> review palette
+              and street photography acceptance, native translations, Scripture
+              permissions, and fresh consent; <strong>3. Production</strong>
+              runs physical 300dpi copier and CMYK press proofs.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span>PROPOSED BRAND CANDIDATE V15 · PENDING HUMAN APPROVAL</span>
+            <span>GF-GDE-01</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship, Inc. · P.O. Box 1, Meadow Vista, CA 95722 ·
+              <span class="gf-nowrap">1 866 984 5622</span> ·
+              globalfellowship.org</span
+            >
+            <span>Page 7 of 7</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

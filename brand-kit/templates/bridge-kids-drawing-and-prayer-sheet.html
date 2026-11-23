@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Bridge Kids Family Drawing &amp; Prayer Sheet
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      @page {
+        size: letter;
+        margin: 0;
+      }
+      html,
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      .kids-sheet {
+        width: 816px;
+        height: 1056px;
+        margin: 0 auto;
+        background: #ffffff;
+        color: #000000;
+        padding: 32px 44px 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+      .mono-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+      }
+      .mono-tag {
+        font-family: var(--gf-font-display);
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #000000;
+      }
+      .kids-title {
+        font-family: var(--gf-font-serif);
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: #000000;
+        margin: 0 0 8px;
+      }
+      .kids-intro {
+        font-family: var(--gf-font-serif);
+        font-size: 14.4px;
+        line-height: 1.5;
+        color: #000000;
+        margin: 0 0 14px;
+        max-width: 68ch;
+      }
+      .name-row {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 20px;
+        margin-bottom: 14px;
+        font-size: 13.4px;
+        font-weight: 700;
+        color: #000000;
+      }
+      .fill-line {
+        display: inline-block;
+        border-bottom: 1.5px solid #000000;
+        min-width: 210px;
+        height: 18px;
+        vertical-align: bottom;
+        margin-left: 6px;
+      }
+      .drawing-frame {
+        border: 2.5px dashed #000000;
+        border-radius: 14px;
+        height: 332px;
+        padding: 14px 18px;
+        margin-bottom: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #ffffff;
+      }
+      .step-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #000000;
+        color: #ffffff;
+        font-family: var(--gf-font-display);
+        font-size: 12px;
+        font-weight: 800;
+        margin-inline-end: 7px;
+        flex-shrink: 0;
+      }
+      .frame-prompt {
+        display: flex;
+        align-items: center;
+        font-family: var(--gf-font-display);
+        font-size: 13px;
+        font-weight: 800;
+        color: #000000;
+      }
+      .frame-hint {
+        font-family: var(--gf-font-serif);
+        font-style: italic;
+        font-size: 11.4px;
+        color: #000000;
+      }
+      .prompts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        border-top: 2px solid #000000;
+        padding-top: 12px;
+        margin-bottom: 12px;
+      }
+      .prompt-box h2 {
+        display: flex;
+        align-items: center;
+        font-family: var(--gf-font-display);
+        font-size: 13.2px;
+        font-weight: 800;
+        color: #000000;
+        margin: 0 0 6px;
+      }
+      .prompt-box p {
+        font-size: 12px;
+        line-height: 1.44;
+        margin: 0 0 8px;
+        color: #000000;
+      }
+      .write-line {
+        border-bottom: 1px dashed #000000;
+        height: 24px;
+        margin-bottom: 4px;
+      }
+      .parent-safety {
+        border: 1.5px solid #000000;
+        border-inline-start: 5px solid #000000;
+        padding: 10px 14px;
+        font-size: 12px;
+        line-height: 1.48;
+        color: #000000;
+      }
+      .mono-status {
+        border-top: 1px solid #000000;
+        padding-top: 6px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--gf-font-display);
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #000000;
+      }
+      .mono-foot {
+        border-top: 1px solid #000000;
+        padding-top: 6px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 10.6px;
+        color: #000000;
+      }
+      @media print {
+        .kids-sheet {
+          width: 8.5in;
+          height: 11in;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section
+        class="kids-sheet"
+        aria-label="Bridge Kids Family Drawing and Prayer Sheet (Pure 1-Color Black Ink)"
+      >
+        <div>
+          <div class="mono-head">
+            <img
+              src="../logos/svg/gf-lockup-horizontal-black.svg"
+              alt="Global Fellowship"
+              style="height: 24px; width: auto"
+            />
+            <span class="mono-tag"
+              >THE BRIDGE PROJECT · BRIDGE KIDS FAMILY SHEET</span
+            >
+          </div>
+
+          <h1 class="kids-title">
+            Draw a picture and pray for a friend across the world
+          </h1>
+          <p class="kids-intro">
+            Families and children around the world follow Jesus together. Draw
+            something from your week below, write one friendly question, and
+            pray together around your dinner table. After we send your drawing,
+            our friend&rsquo;s family may write back later, switch to a short
+            text note, or pause whenever they need to. No financial gift is ever
+            expected.
+          </p>
+
+          <div class="name-row">
+            <div>
+              My first name only:
+              <span class="fill-line" aria-hidden="true"></span>
+            </div>
+            <div>
+              Date:
+              <span
+                class="fill-line"
+                style="min-width: 150px"
+                aria-hidden="true"
+              ></span>
+            </div>
+          </div>
+
+          <div class="drawing-frame">
+            <div class="frame-prompt">
+              <span class="step-badge" aria-hidden="true">1</span>
+              <span
+                >Draw your dinner table, a favorite meal, or an outdoor game for
+                a friend in another country:</span
+              >
+            </div>
+            <div class="frame-hint">
+              Tip: Use bright crayons or dark markers so your picture shows up
+              clearly on paper or in a photo.
+            </div>
+          </div>
+
+          <div class="prompts-grid">
+            <div class="prompt-box">
+              <h2>
+                <span class="step-badge" aria-hidden="true">2</span>
+                <span>Ask our friend one neighborly question</span>
+              </h2>
+              <p>
+                Ideas: What meal does your family love? What game do kids play
+                near your home? What psalm makes you smile?
+              </p>
+              <div class="write-line" aria-hidden="true"></div>
+              <div class="write-line" aria-hidden="true"></div>
+              <div class="write-line" aria-hidden="true"></div>
+            </div>
+
+            <div class="prompt-box">
+              <h2>
+                <span class="step-badge" aria-hidden="true">3</span>
+                <span>Our family&rsquo;s short prayer for them</span>
+              </h2>
+              <p>
+                Pray aloud together before sending: ask Jesus to give their
+                household peace, good sleep, joy, and courage this week.
+              </p>
+              <div class="write-line" aria-hidden="true"></div>
+              <div class="write-line" aria-hidden="true"></div>
+              <div class="write-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="parent-safety">
+            <strong>For Parents &amp; Leaders (Safety First):</strong> Check
+            your Bridge match card or email
+            <strong class="gf-nowrap">info@globalfellowship.org</strong>
+            (Subject: <em>Bridge Project: Letter or Voice Note</em>) before
+            snapping a photo or mailing so our coordinator confirms which format
+            is safe. Use first names only, leave off street addresses and school
+            names, and never post replies online.
+            <div
+              style="
+                margin-top: 6px;
+                padding-top: 6px;
+                border-top: 1px dashed #000000;
+                font-weight: 700;
+              "
+            >
+              Cleared postal drawings: Global Fellowship, Attn: Bridge Kids,
+              P.O. Box 1, Meadow Vista, CA 95722
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mono-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · PURE BLACK COPIER MASTER · NO
+              FINANCIAL GIFT EXPECTED</span
+            >
+            <span>GF-TPL-20</span>
+          </div>
+          <div class="mono-foot">
+            <span
+              >Global Fellowship · Church Planting · Local Leadership ·
+              Unreached People</span
+            >
+            <span
+              >501(c)(3) <span class="gf-nowrap">EIN 68-0214543</span> ·
+              <span class="gf-nowrap">1 866 984 5622</span></span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

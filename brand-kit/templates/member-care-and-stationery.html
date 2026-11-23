@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Lean Stationery &amp; Dual-Tier Travel Card Spec
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      .letterhead-mini {
+        background: var(--gf-surface-card);
+        border: 1px solid var(--gf-rule);
+        border-top: 4px solid var(--gf-harbor);
+        padding: 20px 26px;
+        margin-bottom: 18px;
+      }
+      .biz-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .biz-card {
+        width: 336px;
+        height: 192px;
+        background: var(--gf-paper);
+        border: 1px solid var(--gf-rule);
+        padding: 18px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
+      .biz-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--gf-harbor) 0%,
+          var(--gf-harbor) 72%,
+          var(--gf-clay) 72%,
+          var(--gf-clay) 100%
+        );
+      }
+      .biz-card.restricted {
+        justify-content: center;
+        background: var(--gf-surface-card);
+      }
+      .biz-card.restricted::before {
+        background: var(--gf-rule);
+        height: 2px;
+      }
+      .print-spec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 16px;
+        border-top: 2px solid var(--gf-ink);
+        padding-top: 12px;
+      }
+      .print-spec-grid h3 {
+        font-family: var(--gf-font-display);
+        font-size: 12.2px;
+        font-weight: 800;
+        color: var(--gf-harbor);
+        margin: 0 0 4px;
+      }
+      .print-spec-grid p {
+        font-size: 11.4px;
+        line-height: 1.48;
+        margin: 0;
+        color: var(--gf-ink);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- PUBLIC 1-PAGE LEAN STATIONERY & DUAL-TIER TRAVEL CARD SPEC (Strictly Separated from Confidential Member Care Journal GF-TPL-18) -->
+      <section
+        class="gf-sheet"
+        style="padding: 32px 46px 24px"
+        aria-label="Lean Letterhead and Dual-Tier Travel Business Card Specification"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 16px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 26px; width: auto"
+            />
+            <span class="gf-dateline"
+              >LEAN STATIONERY SPEC · PUBLIC &amp; RESTRICTED TRAVEL CARDS</span
+            >
+          </div>
+
+          <h1
+            class="gf-serif-display"
+            style="font-size: 27px; line-height: 1.12; margin-bottom: 14px"
+          >
+            Official letterhead, envelopes, and dual-tier travel cards
+          </h1>
+
+          <h2
+            style="
+              font-family: var(--gf-font-display);
+              font-size: 16px;
+              font-weight: 800;
+              color: var(--gf-harbor);
+              margin-bottom: 8px;
+            "
+          >
+            1. Official Letterhead (US Letter &amp; A4 Ready)
+          </h2>
+          <div class="letterhead-mini">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--gf-rule);
+                padding-bottom: 11px;
+                margin-bottom: 14px;
+              "
+            >
+              <img
+                src="../logos/svg/gf-lockup-horizontal.svg"
+                alt="Global Fellowship"
+                style="height: 26px; width: auto"
+              />
+              <div
+                style="
+                  text-align: right;
+                  font-size: 11px;
+                  color: var(--gf-slate);
+                  line-height: 1.45;
+                "
+              >
+                P.O. Box 1, Meadow Vista, CA 95722<br />
+                <span class="gf-nowrap">1 866 984 5622</span>
+                · globalfellowship.org
+              </div>
+            </div>
+            <div
+              style="
+                font-size: 11.4px;
+                color: var(--gf-slate);
+                margin-bottom: 9px;
+              "
+            >
+              [Date]
+            </div>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-size: 13.6px;
+                line-height: 1.56;
+                margin-bottom: 12px;
+              "
+            >
+              Dear [Name],<br /><br />
+              Standard correspondence uses 0.85in margins, Source Serif 4
+              (10.5pt) for body paragraphs, and Plus Jakarta Sans for subject
+              lines with zero full-page background tints so any monochrome
+              office laser printer reproduces every sheet sharply.
+            </p>
+            <div
+              style="
+                border-top: 1px solid var(--gf-rule);
+                padding-top: 8px;
+                font-size: 10.4px;
+                color: var(--gf-slate);
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <span
+                >Global Fellowship, Inc. · 501(c)(3) Nonprofit ·
+                <span class="gf-nowrap">EIN 68-0214543</span></span
+              >
+              <span>Church Planting · Local Leadership · Unreached People</span>
+            </div>
+          </div>
+
+          <h2
+            style="
+              font-family: var(--gf-font-display);
+              font-size: 16px;
+              font-weight: 800;
+              color: var(--gf-harbor);
+              margin-bottom: 8px;
+            "
+          >
+            2. Dual-Tier Business Cards (3.5 x 2.0 in)
+          </h2>
+          <div class="biz-grid">
+            <div>
+              <div class="gf-kicker" style="margin-bottom: 7px">
+                Public Card (Home Office &amp; Open Regions)
+              </div>
+              <div class="biz-card">
+                <div style="margin-top: 4px">
+                  <img
+                    src="../logos/svg/gf-lockup-horizontal.svg"
+                    alt="Global Fellowship"
+                    style="height: 24px; width: auto"
+                  />
+                </div>
+                <div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-display);
+                      font-size: 16.5px;
+                      font-weight: 800;
+                      color: var(--gf-ink);
+                    "
+                  >
+                    [Full Name]
+                  </div>
+                  <div
+                    style="
+                      font-size: 11.2px;
+                      color: var(--gf-harbor);
+                      font-weight: 700;
+                      margin-bottom: 6px;
+                    "
+                  >
+                    [Role Title]
+                  </div>
+                  <div
+                    style="
+                      font-size: 10.4px;
+                      color: var(--gf-slate);
+                      line-height: 1.44;
+                    "
+                  >
+                    [name]@globalfellowship.org · 1 866 984 5622<br />
+                    P.O. Box 1, Meadow Vista, CA 95722
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div
+                class="gf-kicker"
+                style="margin-bottom: 7px; color: var(--gf-ink)"
+              >
+                Restricted Travel Card (No Organizational Affiliation)
+              </div>
+              <div class="biz-card restricted">
+                <div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-display);
+                      font-size: 17px;
+                      font-weight: 700;
+                      color: var(--gf-ink);
+                      margin-bottom: 3px;
+                    "
+                  >
+                    [Local / Personal Name]
+                  </div>
+                  <div
+                    style="
+                      font-size: 11.8px;
+                      color: var(--gf-slate);
+                      margin-bottom: 13px;
+                      padding-bottom: 11px;
+                      border-bottom: 1px solid var(--gf-rule);
+                    "
+                  >
+                    [Approved Vocation / Ordinary Title]
+                  </div>
+                  <div
+                    style="
+                      font-size: 10.8px;
+                      color: var(--gf-slate);
+                      line-height: 1.5;
+                    "
+                  >
+                    [Personal / Non-GF Email]<br />
+                    [Approved Messaging Handle or Phone]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="print-spec-grid">
+            <div>
+              <h3>Paper Stock &amp; Ink</h3>
+              <p>
+                Letterhead: 100gsm uncoated warm white. Business cards: 350gsm
+                matte uncoated, zero spot UV or metallic foil (plain CMYK or
+                1-color black).
+              </p>
+            </div>
+            <div>
+              <h3>Envelopes (#10 &amp; DL)</h3>
+              <p>
+                Public mailings place the horizontal lockup (120px / 32mm wide,
+                24px tall) at top-left. Restricted correspondence uses plain
+                unbranded envelopes with personal return name only.
+              </p>
+            </div>
+            <div>
+              <h3>Office Fallbacks</h3>
+              <p>
+                When SIL OFL webfonts are unavailable on local machines, use
+                Georgia (10.5pt body) and Calibri (Bold labels) without changing
+                margins.
+              </p>
+            </div>
+          </div>
+
+          <div class="gf-notice" style="margin-top: 14px; font-size: 11.7px">
+            <strong>Travel Safety Reminder:</strong> Workers crossing borders
+            into Tier 2 or Tier 3 jurisdictions carry the Restricted Travel Card
+            only (zero Global Fellowship name, cross mark, or California postal
+            address). Confidential pastoral check-ins ship in a strictly
+            separate file so print vendors never receive care records.
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · PUBLIC STATIONERY &amp; TRAVEL SAFETY
+              SPEC ONLY</span
+            >
+            <span>GF-TPL-12</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span>Global Fellowship · Lean Print &amp; Travel Safety Spec</span>
+            <span>Page 1 of 1 · Stationery Specification</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

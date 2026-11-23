@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Public-Named Prayer Card Variant (4x6 Duplex Specimen)
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      body {
+        background: #e5e0d7;
+      }
+      /* Shared warm architectural header across Tier 1 & Tier 3 cards (equal dignity, zero tier tell) */
+      .card-hero {
+        background:
+          url("../patterns/architectural-frame-dark.svg") right -5px / cover
+            no-repeat,
+          var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        border-top: 5px solid var(--gf-apricot);
+        padding: 19px 26px 20px;
+        min-height: 178px;
+        border-bottom: 3px solid var(--gf-apricot);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-cue {
+        font-family: var(--gf-font-display);
+        font-size: 10.6px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+      }
+      .local-org {
+        font-family: var(--gf-font-serif);
+        font-size: 31px;
+        line-height: 1.07;
+        font-weight: 600;
+        letter-spacing: -0.016em;
+        color: var(--gf-paper);
+        margin: 8px 0 6px;
+        max-width: 280px;
+      }
+      .worker-role {
+        font-size: 13px;
+        color: var(--gf-mist-text);
+        font-weight: 500;
+        margin: 0;
+        max-width: 280px;
+        line-height: 1.42;
+      }
+      .card-lower {
+        padding: 22px 26px 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--gf-paper);
+      }
+      .scripture-line {
+        font-family: var(--gf-font-serif);
+        font-size: 15px;
+        line-height: 1.54;
+        color: var(--gf-ink);
+        margin: 0 0 15px;
+        padding-inline-start: 13px;
+        border-inline-start: 3px solid var(--gf-clay);
+      }
+      .scripture-ref {
+        display: block;
+        font-family: var(--gf-font-display);
+        font-size: 10.8px;
+        font-weight: 700;
+        color: var(--gf-harbor);
+        margin-top: 5px;
+        letter-spacing: 0.05em;
+      }
+      /* Exact same Harbor Teal top rule as Tier 3 Master (zero visual tier tell) */
+      .back-wrap {
+        padding: 15px 26px 14px;
+        border-top: 5px solid var(--gf-harbor);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--gf-paper);
+      }
+      .pray-list {
+        margin: 5px 0 0;
+        padding-inline-start: 18px;
+        font-size: 12.6px;
+        line-height: 1.4;
+        color: var(--gf-ink);
+      }
+      .pray-list li {
+        margin-bottom: 4.5px;
+      }
+      .reciprocal-line {
+        margin: 5px 0 0;
+        font-family: var(--gf-font-serif);
+        font-style: italic;
+        font-size: 11.8px;
+        line-height: 1.38;
+        color: var(--gf-slate);
+      }
+      /* Clean unboxed Kiln Clay rule (reserving Warm Linen strictly for Locked Foundations) */
+      .bridge-band {
+        border-top: 2px solid var(--gf-clay);
+        color: var(--gf-ink);
+        padding: 6px 0 0;
+        font-size: 11.5px;
+        line-height: 1.38;
+        margin-top: 6px;
+      }
+      .bridge-band strong {
+        color: var(--gf-harbor);
+      }
+      .card-foot {
+        font-size: 11.4px;
+        color: var(--gf-slate);
+        padding-top: 8px;
+        border-top: 1px solid var(--gf-rule);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .card-specimen-micro {
+        font-family: var(--gf-font-display);
+        font-size: 11.2px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--gf-harbor);
+        margin-top: 4px;
+      }
+      .photo-slot-spec {
+        max-width: 812px;
+        margin: 0 auto 28px;
+        background: var(--gf-surface-card);
+        border: 1px solid var(--gf-rule);
+        border-top: 4px solid var(--gf-harbor);
+        padding: 18px 22px;
+        display: grid;
+        grid-template-columns: 244px 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+      @page {
+        size: 4in 6in;
+        margin: 0;
+      }
+      @media print {
+        body {
+          background: var(--gf-surface-card);
+        }
+        .photo-slot-spec {
+          display: none !important;
+        }
+        .gf-card-stage {
+          display: block;
+          padding: 0;
+          background: var(--gf-surface-card);
+        }
+        .gf-prayer-card {
+          width: 4in;
+          height: 6in;
+          margin: 0;
+          box-shadow: none;
+          break-after: page;
+          page-break-after: always;
+        }
+        .gf-prayer-card:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gf-specimen-bar" role="note">
+      <span
+        ><strong
+          >Illustrative Synthetic Tier 1 Public Specimen (Photo-Free Finished
+          Option):</strong
+        >
+        Identical 4x6 grid, tier-neutral <code>WEEKLY PRAYER · 2026</code> front
+        header, cross-free architectural Harbor Night band, and back rule to
+        Tier 3 Master. Swap in a consented 1-2m eye-level photograph in the top
+        zone when Tier 1 consent is signed (OVR-06), or print photo-free as
+        shown. 0.125in commercial bleed PDF with per-page TrimBox and BleedBox
+        ships alongside exact trim.</span
+      >
+      <span>Duplex 4in x 6in PDF</span>
+    </div>
+
+    <main
+      class="gf-card-stage"
+      aria-label="Two-sided 4x6 public prayer card specimen sharing identical skeleton"
+    >
+      <!-- FRONT SIDE (4x6 in): Local Church Leads First; shared tier-neutral architectural header -->
+      <article class="gf-prayer-card" aria-label="Public prayer card front">
+        <div class="card-hero gf-dark-surface">
+          <div class="card-cue">WEEKLY PRAYER · 2026</div>
+          <div>
+            <h1 class="local-org">Cedar Lane Fellowship</h1>
+            <p class="worker-role">
+              Local elders teaching Scripture with neighborhood households
+            </p>
+          </div>
+        </div>
+
+        <div class="card-lower">
+          <div>
+            <p class="scripture-line">
+              &ldquo;May God be gracious to us and bless us and make his face to
+              shine upon us, <em>Selah</em><br />that your way may be known on
+              earth, your saving power among all nations.&rdquo;
+              <span class="scripture-ref">Psalm 67:1&ndash;2 (ESV)</span>
+            </p>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-size: 13.8px;
+                line-height: 1.54;
+                color: var(--gf-ink);
+                margin: 0;
+              "
+            >
+              Local elders welcome university students and transit-line
+              neighbors into a bright upstairs storefront each Friday evening,
+              opening Scripture in their mother tongue and training new
+              shepherds across the city.
+            </p>
+          </div>
+
+          <div>
+            <div class="card-foot">
+              <img
+                src="../logos/svg/gf-lockup-endorsement.svg"
+                alt="In fellowship with Global Fellowship"
+                style="height: 27px; width: auto; display: block"
+              />
+            </div>
+            <div class="card-specimen-micro">
+              SYNTHETIC SPECIMEN · REPLACE BEFORE PRINT
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BACK SIDE (4x6 in): Matching Harbor Teal top rule, urban storefront fellowship prayers, clean Bridge invitation -->
+      <article class="gf-prayer-card" aria-label="Public prayer card back">
+        <div class="back-wrap">
+          <div>
+            <div class="gf-dateline" style="margin-bottom: 4px">
+              PRAY WITH CEDAR LANE FELLOWSHIP
+            </div>
+            <h2
+              class="gf-serif-display"
+              style="font-size: 20px; line-height: 1.15; margin: 0 0 7px"
+            >
+              Opening John&rsquo;s Gospel after work
+            </h2>
+
+            <ol class="pray-list">
+              <li>
+                <strong>Newly baptized disciples:</strong> Give thanks for
+                believers who publicly confessed Christ&rsquo;s death and
+                resurrection this spring and now read John&rsquo;s Gospel
+                together after work.
+              </li>
+              <li>
+                <strong>Local shepherds:</strong> Ask God for clear wisdom as
+                two emerging elders prepare to host a second neighborhood
+                congregation across the transit line.
+              </li>
+              <li>
+                <strong>Household health:</strong> Pray for physical rest,
+                encouragement for single workers and families, and lasting
+                friendship with our church.
+              </li>
+            </ol>
+
+            <p class="reciprocal-line">
+              How can our congregation pray for your household and church this
+              month? Share one specific prayer request when you write.
+            </p>
+
+            <div class="bridge-band">
+              <strong>Write through The Bridge Project:</strong> Exchange
+              letters with no gift expected via
+              <strong class="gf-nowrap">info@globalfellowship.org</strong>
+              (Subject: <em>Bridge Project match request</em>).
+            </div>
+          </div>
+
+          <div style="padding: 6px 4px; text-align: center">
+            <div
+              style="
+                width: 34px;
+                height: 2px;
+                background: var(--gf-clay);
+                margin: 0 auto 5px;
+              "
+            ></div>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-style: italic;
+                font-size: 12px;
+                line-height: 1.36;
+                color: var(--gf-slate);
+                margin: 0;
+              "
+            >
+              Lord of the harvest, strengthen these elders and multiply healthy
+              local churches.
+            </p>
+          </div>
+
+          <div>
+            <div
+              style="
+                font-size: 11px;
+                line-height: 1.35;
+                color: var(--gf-slate);
+                padding-top: 5px;
+                border-top: 1px solid var(--gf-rule);
+                margin-bottom: 3px;
+              "
+            >
+              <strong style="color: var(--gf-ink)">Global Fellowship</strong> ·
+              501(c)(3) <span class="gf-nowrap">EIN 68-0214543</span><br />
+              P.O. Box 1, Meadow Vista, CA 95722 ·
+              <span class="gf-nowrap">1 866 984 5622</span> ·
+              <span class="gf-nowrap">info@globalfellowship.org</span>
+            </div>
+            <div
+              style="font-size: 11px; font-weight: 700; color: var(--gf-ink)"
+            >
+              Church Planting · Local Leadership · Unreached People
+            </div>
+            <div class="card-specimen-micro">
+              SYNTHETIC SPECIMEN · CONSENT REQUIRED
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Non-Printing Screen Architecture Proof: Tier 1 Consented Photo Slot Geometry (OVR-06) -->
+    <aside
+      class="photo-slot-spec"
+      aria-label="Tier 1 optional consented photograph slot geometry"
+    >
+      <svg
+        viewBox="0 0 244 156"
+        width="244"
+        height="156"
+        role="img"
+        aria-label="4x6 Tier 1 top photo slot with 45-degree corner chamfer, eye-level horizon line, and dark Harbor Night caption scrim"
+        style="display: block"
+      >
+        <defs>
+          <clipPath id="cardPhotoSlotV10">
+            <polygon points="0,0 220,0 244,24 244,156 0,156" />
+          </clipPath>
+        </defs>
+        <g clip-path="url(#cardPhotoSlotV10)">
+          <rect width="244" height="156" fill="#0B272E" />
+          <line
+            x1="0"
+            y1="62"
+            x2="244"
+            y2="62"
+            stroke="#F2B488"
+            stroke-width="1.2"
+            stroke-dasharray="4 3"
+          />
+          <rect
+            x="0"
+            y="106"
+            width="244"
+            height="50"
+            fill="#16191C"
+            fill-opacity="0.82"
+          />
+          <text
+            x="14"
+            y="24"
+            fill="#F2B488"
+            font-family="Plus Jakarta Sans, sans-serif"
+            font-size="9"
+            font-weight="800"
+          >
+            TIER 1 OPTIONAL PHOTO SLOT (4x2.0 IN)
+          </text>
+          <text
+            x="14"
+            y="48"
+            fill="#FAF7F2"
+            font-family="Plus Jakarta Sans, sans-serif"
+            font-size="9.5"
+            font-weight="700"
+          >
+            Eye-level 1-2m portrait or editorial still life
+          </text>
+          <text
+            x="14"
+            y="84"
+            fill="#CDE2E6"
+            font-family="Plus Jakarta Sans, sans-serif"
+            font-size="8.6"
+          >
+            Neutral daylight WB · EXIF stripped · Consent
+          </text>
+          <text
+            x="14"
+            y="126"
+            fill="#FAF7F2"
+            font-family="Source Serif 4, serif"
+            font-size="12"
+            font-weight="600"
+          >
+            Local Ministry Name (Scrim 12:1+ AAA)
+          </text>
+          <text
+            x="14"
+            y="142"
+            fill="#CDE2E6"
+            font-family="Plus Jakarta Sans, sans-serif"
+            font-size="8.6"
+          >
+            Paid local photographer credit on back or caption
+          </text>
+        </g>
+        <line
+          x1="220"
+          y1="0"
+          x2="244"
+          y2="24"
+          stroke="#F2B488"
+          stroke-width="2.6"
+        />
+      </svg>
+      <div>
+        <div class="gf-dateline" style="margin-bottom: 5px">
+          TIER 1 PHOTO-OPTIONAL ARCHITECTURE (SCREEN SPEC · NON-PRINTING)
+        </div>
+        <p style="font-size: 12.4px; line-height: 1.54; margin: 0 0 8px">
+          Both Tier 1 and Tier 3 cards print finished and warm without
+          photography. When a Tier 1 local ministry signs revocable consent and
+          provides a locally commissioned 1&ndash;2m eye-level photograph (EXIF
+          stripped), swap the top <code>178px</code> Harbor Night architectural
+          header for the photo with a bottom Harbor Night opaque-floor scrim
+          (12:1+ AAA contrast) holding the congregation name.
+        </p>
+        <p style="font-size: 11.4px; color: var(--gf-slate); margin: 0">
+          Zero stock or AI-generated portraits are ever inserted. Photo slot
+          remains uncommitted until fresh written consent is filed outside Git.
+        </p>
+      </div>
+    </aside>
+  </body>
+</html>

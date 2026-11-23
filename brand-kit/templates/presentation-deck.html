@@ -1,0 +1,1640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: 8-Slide Church &amp; Partner Presentation Deck
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      body {
+        background: #ebe7e0;
+        padding: 18px 0 36px;
+      }
+      .deck-wrap {
+        width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .deck-spec-bar {
+        width: 1280px;
+        margin: 0 auto 14px;
+        background: var(--gf-notice-surface);
+        border-inline-start: 4px solid var(--gf-harbor);
+        padding: 10px 18px;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .slide-frame {
+        display: flex;
+        flex-direction: column;
+        break-after: page;
+        page-break-after: always;
+      }
+      .slide-frame:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+      .slide {
+        width: 1280px;
+        height: 720px;
+        background: var(--gf-paper);
+        color: var(--gf-ink);
+        padding: 46px 64px 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+      .slide.dark {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+      }
+      .slide.dark h1,
+      .slide.dark h2,
+      .slide.dark h3 {
+        color: var(--gf-paper);
+      }
+      .slide.linen {
+        background: var(--gf-paper-subtle);
+        color: var(--gf-ink);
+        border-inline-start: 16px solid var(--gf-clay);
+      }
+      .slide.s1-cover {
+        background: var(--gf-harbor-deep);
+        border-top: 6px solid var(--gf-apricot);
+      }
+      .slide.prayer-dark {
+        border-top: 6px solid var(--gf-apricot);
+      }
+      .s3-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .s3-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        border-inline-start: 2px solid var(--gf-harbor);
+        padding-inline-start: 26px;
+      }
+      .s3-mile {
+        border-bottom: 1px solid var(--gf-rule);
+        padding-bottom: 11px;
+      }
+      .s3-mile:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .s3-year {
+        font-family: var(--gf-font-display);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        color: var(--gf-clay);
+        margin-bottom: 2px;
+      }
+      .s3-place {
+        font-family: var(--gf-font-serif);
+        font-size: 23px;
+        font-weight: 600;
+        color: var(--gf-harbor-deep);
+        line-height: 1.15;
+        margin-bottom: 3px;
+      }
+      .s3-mile p {
+        font-size: 14.5px;
+        line-height: 1.42;
+        color: var(--gf-slate);
+        margin: 0;
+      }
+      .slide-body,
+      .slide-top,
+      .slide-foot {
+        position: relative;
+        z-index: 2;
+      }
+      .slide-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .slide-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gf-clay);
+        margin-bottom: 10px;
+      }
+      .slide.dark .slide-kicker {
+        color: var(--gf-apricot);
+      }
+      .slide-h1 {
+        font-family: var(--gf-font-serif);
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin: 0 0 14px;
+        color: var(--gf-ink);
+      }
+      .slide.dark .slide-h1 {
+        color: var(--gf-paper);
+      }
+      .slide-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--gf-rule);
+        padding-top: 12px;
+        font-size: 13px;
+        color: var(--gf-slate);
+      }
+      .slide.dark .slide-foot {
+        border-top-color: var(--gf-border-dark);
+        color: var(--gf-mist-text);
+      }
+      .slide.linen .slide-foot {
+        border-top-color: var(--gf-rule);
+        color: var(--gf-slate);
+      }
+      .deck-link {
+        color: var(--gf-harbor);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .deck-link-dark {
+        color: var(--gf-sea-mist);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        font-weight: 700;
+      }
+      .deck-link-ink {
+        color: var(--gf-ink);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        font-weight: 800;
+      }
+      .slide.dark .deck-link {
+        color: var(--gf-sea-mist);
+      }
+      .speaker-note {
+        background: #ffffff;
+        border: 1px solid var(--gf-rule);
+        border-top: 0;
+        padding: 10px 22px;
+        font-size: 11.5px;
+        line-height: 1.48;
+        color: var(--gf-slate);
+      }
+      /* Slide 1: Uncluttered Flagship Headline + Concise Local Edit + Vetted Street Photo Right Plate */
+      .s1-stage-grid {
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 42px;
+        align-items: stretch;
+        margin: auto 0;
+      }
+      .s1-monument {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 22px;
+      }
+      .s1-hero-head {
+        padding-top: 4px;
+      }
+      .s1-accent-rule {
+        width: 84px;
+        height: 5px;
+        background: var(--gf-apricot);
+        margin-bottom: 18px;
+      }
+      .s1-gf-title {
+        font-family: var(--gf-font-serif);
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.07;
+        letter-spacing: -0.022em;
+        color: var(--gf-paper);
+        margin: 0 0 14px;
+        max-width: 21ch;
+      }
+      .s1-sub {
+        font-family: var(--gf-font-sans);
+        font-size: 16.5px;
+        line-height: 1.48;
+        color: var(--gf-mist-text);
+        max-width: 52ch;
+        margin: 0;
+      }
+      .s1-quote-stage {
+        border-inline-start: 5px solid var(--gf-apricot);
+        padding: 4px 0 4px 22px;
+      }
+      .le-tag {
+        display: inline-block;
+        font-family: var(--gf-font-display);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+        margin-bottom: 8px;
+      }
+      .le-accepted {
+        font-family: var(--gf-font-serif);
+        font-size: 24px;
+        line-height: 1.24;
+        letter-spacing: -0.012em;
+        font-weight: 600;
+        color: var(--gf-paper);
+        max-width: 38ch;
+        margin: 0 0 8px;
+      }
+      .s1-edit-after {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0;
+      }
+      .s1-draft-label {
+        font-family: var(--gf-font-display);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gf-sea-mist);
+      }
+      .le-struck {
+        font-family: var(--gf-font-serif);
+        font-style: italic;
+        font-size: 16px;
+        line-height: 1.32;
+        color: var(--gf-mist-text);
+        text-decoration: line-through;
+        text-decoration-color: var(--gf-apricot);
+        text-decoration-thickness: 2px;
+        margin: 0;
+      }
+      .s4-script-band {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+        padding-top: 14px;
+        border-top: 1.5px solid var(--gf-rule);
+      }
+      .s4-script-label {
+        font-family: var(--gf-font-display);
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gf-harbor);
+        white-space: nowrap;
+      }
+      .s1-script-line {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--gf-font-serif);
+        font-size: 19px;
+        font-weight: 600;
+        color: var(--gf-ink);
+      }
+      .script-dot {
+        color: var(--gf-clay);
+        font-weight: 700;
+      }
+      .s1-photo-frame {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--gf-border-dark);
+        background: var(--gf-harbor-card);
+        min-height: 472px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .s1-photo-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 26%;
+      }
+      .s1-photo-scrim {
+        position: relative;
+        z-index: 2;
+        padding: 13px 18px 14px;
+        background: rgba(11, 39, 46, 0.96);
+        border-top: 2px solid var(--gf-apricot);
+      }
+      .s1-photo-scrim::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 39, 46, 0) 0%,
+          rgba(11, 39, 46, 0.72) 100%
+        );
+        pointer-events: none;
+      }
+      .s1-photo-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+        margin-bottom: 4px;
+      }
+      .s1-photo-cap {
+        font-size: 12.2px;
+        line-height: 1.4;
+        color: var(--gf-paper);
+        margin: 0;
+      }
+      /* Slide 2: Foundations */
+      .s2-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 44px;
+        align-items: start;
+      }
+      .pillar-item {
+        border-top: 1px solid var(--gf-rule);
+        padding: 11px 0 9px;
+      }
+      .pillar-item:first-of-type {
+        border-top: 2px solid var(--gf-ink);
+      }
+      .pillar-item h3 {
+        font-size: 17px;
+        color: var(--gf-harbor);
+        margin: 0 0 4px;
+      }
+      .pillar-item p {
+        font-size: 15px;
+        line-height: 1.44;
+        color: var(--gf-ink);
+        margin: 0;
+      }
+      /* Slide 4: Stepped Authority Cascade */
+      .s4-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        align-items: stretch;
+        margin-top: 10px;
+      }
+      .step-card {
+        border-top: 3px solid var(--gf-harbor);
+        background: var(--gf-paper-subtle);
+        padding: 26px 26px 22px;
+        min-height: 312px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .step-card h3 {
+        font-family: var(--gf-font-serif);
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--gf-ink);
+        margin: 0 0 14px;
+      }
+      .step-card p {
+        font-size: 18px;
+        line-height: 1.48;
+        color: var(--gf-ink);
+        margin: 0;
+      }
+      .step-foot {
+        font-family: var(--gf-font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gf-harbor);
+        border-top: 1px solid var(--gf-rule);
+        padding-top: 12px;
+        margin-top: 18px;
+      }
+      .step-card.local-lead {
+        background: var(--gf-harbor-deep);
+        border-top: 5px solid var(--gf-apricot);
+        color: var(--gf-paper);
+      }
+      .step-card.local-lead h3,
+      .step-card.local-lead p {
+        color: var(--gf-paper);
+      }
+      .step-card.local-lead .step-foot {
+        color: var(--gf-apricot);
+        border-top-color: var(--gf-border-dark);
+      }
+      /* Slide 5: Balanced Two-Column Sanctuary Prayer (zero right-half void!) */
+      .s5-grid {
+        display: grid;
+        grid-template-columns: 1.06fr 0.94fr;
+        gap: 48px;
+        align-items: center;
+        margin: auto 0;
+      }
+      .s5-prompts {
+        border-inline-start: 2px solid var(--gf-apricot);
+        padding-inline-start: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .s5-prompt {
+        border-bottom: 1px solid var(--gf-border-dark);
+        padding-bottom: 16px;
+      }
+      .s5-prompt:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .s5-prompt-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        color: var(--gf-apricot);
+        margin-bottom: 4px;
+      }
+      .s5-prompt h3 {
+        font-family: var(--gf-font-serif);
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--gf-paper);
+        margin: 0 0 6px;
+      }
+      .s5-prompt p {
+        font-size: 16px;
+        line-height: 1.48;
+        color: var(--gf-mist-text);
+        margin: 0;
+      }
+      /* Slide 6: Commanding Full-Width Host Stop-Authority Decision + Hairline Pathways Below */
+      .s6-stage {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .s6-host-stage {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        border-inline-start: 8px solid var(--gf-apricot);
+        padding: 26px 32px 24px;
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 32px;
+        align-items: center;
+      }
+      .s6-host-quote {
+        font-family: var(--gf-font-serif);
+        font-size: 31px;
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: -0.015em;
+        color: var(--gf-paper);
+        margin: 8px 0 0;
+      }
+      .s6-host-outcome {
+        border-inline-start: 1px solid var(--gf-border-dark);
+        padding-inline-start: 26px;
+      }
+      .s6-host-outcome p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--gf-mist-text);
+        margin: 0 0 12px;
+      }
+      .s6-host-foot {
+        font-family: var(--gf-font-display);
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--gf-apricot);
+      }
+      .s6-pathways {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .s6-pathway-item {
+        border-top: 2px solid var(--gf-harbor);
+        padding-top: 14px;
+      }
+      .s6-pathway-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--gf-clay);
+        margin-bottom: 4px;
+      }
+      .s6-pathway-item h3 {
+        font-family: var(--gf-font-serif);
+        font-size: 21px;
+        font-weight: 600;
+        color: var(--gf-ink);
+        margin: 0 0 6px;
+      }
+      .s6-pathway-item p {
+        font-size: 15.5px;
+        line-height: 1.48;
+        color: var(--gf-ink);
+        margin: 0;
+      }
+      /* Slide 7: Open Books */
+      .s7-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 18px 0 22px;
+      }
+      .s7-bar-row {
+        display: grid;
+        grid-template-columns: 376px 1fr 144px;
+        gap: 20px;
+        align-items: center;
+      }
+      .s7-bar-label {
+        font-size: 18px;
+        color: var(--gf-ink);
+        display: block;
+      }
+      .s7-bar-sub {
+        font-size: 15.8px;
+        line-height: 1.35;
+        color: var(--gf-slate);
+      }
+      .s7-track {
+        height: 22px;
+        background: var(--gf-paper-subtle);
+      }
+      .s7-fill {
+        height: 100%;
+      }
+      .s7-val {
+        text-align: end;
+        font-family: var(--gf-font-display);
+        font-size: 22px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+      }
+      .s7-lower {
+        display: grid;
+        grid-template-columns: 0.96fr 1.04fr;
+        gap: 28px;
+        border-top: 1.5px solid var(--gf-ink);
+        padding-top: 18px;
+      }
+      .s7-ops-box {
+        background: var(--gf-paper-subtle);
+        border-inline-start: 4px solid var(--gf-clay);
+        padding: 15px 18px;
+      }
+      /* Slide 8: Single Primary Focal Action + Calm Hairline Secondaries */
+      .s8-layout {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 44px;
+        align-items: stretch;
+      }
+      .s8-primary {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+        padding: 32px 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .s8-primary-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gf-ink);
+        margin-bottom: 10px;
+      }
+      .slide.dark .s8-primary h2,
+      .s8-primary h2 {
+        font-family: var(--gf-font-serif);
+        font-size: 34px;
+        font-weight: 600;
+        line-height: 1.12;
+        color: var(--gf-ink);
+        margin: 0 0 12px;
+      }
+      .slide.dark .s8-primary p,
+      .s8-primary p {
+        font-size: 17px;
+        line-height: 1.52;
+        color: var(--gf-ink);
+        margin: 0 0 20px;
+      }
+      .s8-primary-contact {
+        border-top: 1.5px solid var(--gf-ink);
+        padding-top: 14px;
+      }
+      .s8-primary-email {
+        font-family: var(--gf-font-display);
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .s8-sec-stack {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .s8-sec-item {
+        border-top: 2px solid var(--gf-border-dark);
+        padding-top: 16px;
+      }
+      .s8-sec-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+        margin-bottom: 6px;
+      }
+      .s8-sec-item h3 {
+        font-family: var(--gf-font-serif);
+        font-size: 23px;
+        font-weight: 600;
+        color: var(--gf-paper);
+        margin: 0 0 6px;
+      }
+      .s8-sec-item p {
+        font-size: 15px;
+        line-height: 1.48;
+        color: var(--gf-mist-text);
+        margin: 0 0 8px;
+      }
+      .s8-sec-email {
+        font-size: 15px;
+      }
+      @media print {
+        @page {
+          size: 13.333in 7.5in;
+          margin: 0;
+        }
+        body {
+          background: #ffffff !important;
+          padding: 0 !important;
+        }
+        .deck-spec-bar,
+        .speaker-note {
+          display: none !important;
+        }
+        .deck-wrap {
+          gap: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck-spec-bar no-print">
+      <span>
+        <strong>8-Slide 16:9 Presentation Deck:</strong> Single Source of Truth
+        generated verbatim from
+        <code>scripts/brand-deck-data.ts</code> alongside
+        <code>office/global-fellowship-deck-starter.pptx</code>. Clickable email
+        links and per-slide specimen holds persist inside PDF exports.
+      </span>
+      <span style="white-space: nowrap">GF-TPL-10 · 13.333in x 7.5in</span>
+    </div>
+
+    <main class="deck-wrap">
+      <!-- SLIDE 1 -->
+      <div class="slide-frame">
+        <section class="slide dark s1-cover" aria-label="Slide 1: Cover">
+          <div class="slide-top">
+            <img
+              src="../logos/svg/gf-lockup-horizontal-reversed.svg"
+              alt="Global Fellowship"
+              style="height: 36px; width: auto"
+            />
+            <div class="slide-kicker" style="margin: 0">
+              GLOBAL FELLOWSHIP · CHRISTIAN CHURCH-PLANTING FELLOWSHIP · 1989
+            </div>
+          </div>
+          <div class="slide-body s1-stage-grid">
+            <div class="s1-monument">
+              <div class="s1-hero-head">
+                <div class="s1-accent-rule"></div>
+                <h1 class="s1-gf-title">
+                  When a cross-cultural missionary arrives, the local leader
+                  still leads
+                </h1>
+                <p class="s1-sub">
+                  Local believers plant churches and shepherd neighbors for
+                  Christ among unreached people, joined by cross-cultural
+                  teammates.
+                </p>
+              </div>
+              <div class="s1-quote-stage">
+                <div class="le-tag">
+                  The Local Edit · Local elders’ wording (illustrative)
+                </div>
+                <p class="le-accepted">
+                  &ldquo;Our church gathered neighboring households to read Mark
+                  in our own language.&rdquo;
+                </p>
+                <div class="s1-edit-after">
+                  <span class="s1-draft-label">Outsider draft set aside:</span>
+                  <p class="le-struck">
+                    &ldquo;Our team launched a new outreach across the
+                    district.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+            <figure class="s1-photo-frame" style="margin: 0">
+              <img
+                src="../photography/gf-street-tea-table.jpg"
+                alt="Documentary street photograph of two hands pouring warm tea across a wooden tray with clay pots and cups"
+                class="s1-photo-img"
+              />
+              <figcaption class="s1-photo-scrim">
+                <div class="s1-photo-kicker">CONTEXTUAL STREET PHOTOGRAPHY</div>
+                <p class="s1-photo-cap">
+                  Ordinary neighborhood tea table · contextual street
+                  photography (James Creegan, CC BY 2.0 ·
+                  creativecommons.org/licenses/by/2.0/), not a Global Fellowship
+                  congregation.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="slide-foot">
+            <span
+              >Global Fellowship · Church Planting · Local Leadership ·
+              Unreached People</span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 1 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Lead with the Flagship Headline and
+          point to The Local Edit block beneath it so the room sees local elders
+          holding editorial authority before showing any figures (illustrative
+          specimen, manifest trace ID: SYNTH-VETO-001; do not present as
+          reported field testimony). Note aloud that the tea table photograph is
+          contextual documentary street photography (James Creegan, CC BY 2.0,
+          creativecommons.org/licenses/by/2.0/), not a Global Fellowship
+          congregation. Remove the pre-publication specimen notice only after
+          leadership approval and Finance/Operations verifications close.
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-frame">
+        <section
+          class="slide"
+          aria-label="Slide 2: Protected Mission, Vision, and Three Pillars"
+        >
+          <div class="slide-body">
+            <div class="slide-kicker">OUR UNCHANGING FOUNDATIONS</div>
+            <h2 class="slide-h1" style="font-size: 40px; margin-bottom: 22px">
+              Mission, prayerful vision, and three pillars
+            </h2>
+            <div class="s2-grid">
+              <div style="display: flex; flex-direction: column; gap: 18px">
+                <div class="gf-locked-foundation">
+                  <div class="gf-locked-label">
+                    Our Official Mission · OFFICIAL VERBATIM TEXT
+                  </div>
+                  <p class="gf-locked-quote" style="font-size: 19px">
+                    &ldquo;We make disciples and plant new churches by
+                    empowering local leaders and sending cross-cultural
+                    missionaries to pioneer church-planting work among unreached
+                    people.&rdquo;
+                  </p>
+                </div>
+                <div class="gf-locked-foundation">
+                  <div class="gf-locked-label">
+                    Our Prayerful Vision · OFFICIAL VERBATIM TEXT
+                  </div>
+                  <p class="gf-locked-quote" style="font-size: 20px">
+                    &ldquo;It is our vision to plant a Gospel witness within 30
+                    minutes of everyone.&rdquo;
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="slide-kicker"
+                  style="margin-bottom: 8px; color: var(--gf-harbor)"
+                >
+                  Our Three Pillars
+                </div>
+                <div class="pillar-item">
+                  <h3>1. Church Planting</h3>
+                  <p>
+                    Proclaiming Christ's death and resurrection, making
+                    disciples, baptizing believers, and gathering healthy,
+                    multiplying local churches.
+                  </p>
+                </div>
+                <div class="pillar-item">
+                  <h3>2. Local Leadership</h3>
+                  <p>
+                    Empowering believers who already belong to the language,
+                    culture, and community to shepherd and multiply the church.
+                  </p>
+                </div>
+                <div class="pillar-item">
+                  <h3>3. Unreached People</h3>
+                  <p>
+                    Communities with little or no access to the Gospel and no
+                    self-sustaining local church movement able to reach the
+                    wider group.*
+                  </p>
+                </div>
+                <p
+                  style="
+                    font-size: 13.5px;
+                    line-height: 1.44;
+                    color: var(--gf-slate);
+                    margin: 12px 0 0;
+                  "
+                >
+                  *Unreached threshold: 2% or fewer evangelicals and 5% or fewer
+                  Christian adherents (Joshua Project, consulted Nov 2026; exact
+                  snapshot date pending verification).
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              >Request Statement of Faith (8 articles):
+              <a href="mailto:info@globalfellowship.org" class="deck-link"
+                >info@globalfellowship.org</a
+              ></span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 2 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Read the Mission and Vision verbatim;
+          emphasize that the Vision is a prayerful longing, never a measured
+          coverage claim. Context for Q&amp;A: Joshua Project defines unreached
+          people groups (UPGs) as 2% or fewer evangelicals and 5% or fewer
+          Christian adherents, and distinguishes Unengaged, Unreached People
+          Groups (UUPGs) where no known active church-planting strategy yet
+          exists (consulted Nov 2026; exact snapshot date pending under OVR-19).
+          Route Statement of Faith requests to info@globalfellowship.org while
+          public web routes remain open under OVR-21.
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-frame">
+        <section
+          class="slide linen"
+          aria-label="Slide 3: From Liberia Under Local Leadership to 43 Countries"
+        >
+          <div class="slide-body s3-grid" style="margin: auto 0">
+            <div>
+              <div class="slide-kicker">
+                OUR FOUNDING POSTURE · 1989 TO 2025
+              </div>
+              <h2
+                class="slide-h1"
+                style="font-size: 48px; max-width: 17ch; margin-bottom: 20px"
+              >
+                Local church planters already belong to the neighborhood
+              </h2>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 20.5px;
+                  line-height: 1.5;
+                  color: var(--gf-ink);
+                  max-width: 44ch;
+                  margin: 0 0 24px;
+                "
+              >
+                Before founding Global Fellowship in Auburn, California in 1989,
+                Don and Kathy Oates served in Liberia under a local pastor. When
+                the fellowship expanded into North American cross-cultural
+                sending in 2012, that order stayed intact across multilingual
+                near-culture, regional, and North American teams.
+              </p>
+              <div
+                style="
+                  border-top: 2px solid var(--gf-harbor);
+                  padding-top: 14px;
+                  max-width: 44ch;
+                "
+              >
+                <strong
+                  style="
+                    font-size: 18px;
+                    line-height: 1.44;
+                    color: var(--gf-harbor);
+                  "
+                  >In 2025, 584 workers served (reported as “workers mobilized”
+                  in our 2025 Annual Report) across 43 countries (“63 by 2030”
+                  is a 2030 strategic goal).</strong
+                >
+              </div>
+            </div>
+            <div class="s3-timeline" aria-label="Founding order chronology">
+              <div class="s3-mile">
+                <div class="s3-year">PRE-1989</div>
+                <div class="s3-place">Liberia</div>
+                <p>
+                  Don and Kathy Oates serve under a local pastor before founding
+                  the fellowship.
+                </p>
+              </div>
+              <div class="s3-mile">
+                <div class="s3-year">1989</div>
+                <div class="s3-place">Auburn, CA</div>
+                <p>
+                  Global Fellowship begins uniting churches with indigenous
+                  church planters.
+                </p>
+              </div>
+              <div class="s3-mile">
+                <div class="s3-year">2012</div>
+                <div class="s3-place">North American Sending</div>
+                <p>
+                  Expanded into North American cross-cultural sending with local
+                  leadership intact.
+                </p>
+              </div>
+              <div class="s3-mile">
+                <div class="s3-year">2024</div>
+                <div class="s3-place">Chiang Mai Regional Hub</div>
+                <p>
+                  Southeast Asia hub opens to strengthen polycentric
+                  near-culture sending, local care, and training.
+                </p>
+              </div>
+              <div class="s3-mile">
+                <div class="s3-year">2025 SNAPSHOT</div>
+                <div class="s3-place">43 Countries · 584 Workers</div>
+                <p>Reported across Global Fellowship's 2025 Annual Report.</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span>Rooted in Ephesians 2:13-22 &amp; 4:16 (ESV)</span>
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 3 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Emphasize how service under a local
+          pastor in Liberia shaped Global Fellowship from day one before
+          expanding into North American cross-cultural sending in 2012. Context
+          for Q&amp;A: 584 workers served across 43 countries (reported as
+          'workers mobilized' in the 2025 Annual Report; orientation overview
+          notes 47 countries, reconciliation tracked in OVR-04).
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-frame">
+        <section class="slide" aria-label="Slide 4: Stepped Authority Cascade">
+          <div class="slide-body">
+            <div class="slide-kicker">
+              HOW AUTHORITY WORKS ACROSS THE FELLOWSHIP
+            </div>
+            <h2
+              class="slide-h1"
+              style="font-size: 44px; max-width: 24ch; margin-bottom: 18px"
+            >
+              Global coordinates, regional contextualizes, local leads
+            </h2>
+            <div class="s4-grid">
+              <div class="step-card">
+                <div>
+                  <h3>1. Global Coordinates</h3>
+                  <p>
+                    Stewards financial accountability, church links, and shared
+                    tools quietly behind the scenes.
+                  </p>
+                </div>
+                <div class="step-foot">Behind-the-scenes support</div>
+              </div>
+              <div class="step-card">
+                <div>
+                  <h3>2. Regional Contextualizes</h3>
+                  <p>
+                    Adapts church-planting training, local safety, and Health
+                    Above Results care close to the field.
+                  </p>
+                </div>
+                <div class="step-foot">
+                  Chiang Mai hub (2024) &amp; regional leads
+                </div>
+              </div>
+              <div class="step-card local-lead">
+                <div>
+                  <h3>3. Local Leads</h3>
+                  <p>
+                    Local planters keep their own church name, edit every story
+                    before release, and can decline any visit.
+                  </p>
+                </div>
+                <div class="step-foot">Local elders hold stop authority</div>
+              </div>
+            </div>
+            <div
+              class="s4-script-band"
+              aria-label="Gospel in six global scripts"
+            >
+              <span class="s4-script-label"
+                >OWN TONGUE · GOSPEL IN SIX SCRIPTS</span
+              >
+              <div class="s1-script-line">
+                <p
+                  class="s1-script-item"
+                  lang="th"
+                  dir="ltr"
+                  style="
+                    margin: 0;
+                    font-family:
+                      &quot;Noto Sans Thai&quot;, var(--gf-font-sans);
+                  "
+                >
+                  พระกิตติคุณ
+                </p>
+                <span class="script-dot" aria-hidden="true">·</span>
+                <p
+                  class="s1-script-item"
+                  lang="ar"
+                  dir="rtl"
+                  style="
+                    margin: 0;
+                    font-family:
+                      &quot;Noto Sans Arabic&quot;, var(--gf-font-sans);
+                  "
+                >
+                  إنجيل
+                </p>
+                <span class="script-dot" aria-hidden="true">·</span>
+                <p
+                  class="s1-script-item"
+                  lang="bn"
+                  dir="ltr"
+                  style="
+                    margin: 0;
+                    font-family:
+                      &quot;Noto Serif Bengali&quot;, var(--gf-font-sans);
+                  "
+                >
+                  সুসমাচার
+                </p>
+                <span class="script-dot" aria-hidden="true">·</span>
+                <p
+                  class="s1-script-item"
+                  lang="ru"
+                  dir="ltr"
+                  style="
+                    margin: 0;
+                    font-family: &quot;Noto Serif&quot;, var(--gf-font-sans);
+                  "
+                >
+                  Евангелие
+                </p>
+                <span class="script-dot" aria-hidden="true">·</span>
+                <p
+                  class="s1-script-item"
+                  lang="hi"
+                  dir="ltr"
+                  style="
+                    margin: 0;
+                    font-family:
+                      &quot;Noto Sans Devanagari&quot;, var(--gf-font-sans);
+                  "
+                >
+                  सुसमाचार
+                </p>
+                <span class="script-dot" aria-hidden="true">·</span>
+                <p
+                  class="s1-script-item"
+                  lang="zh"
+                  dir="ltr"
+                  style="
+                    margin: 0;
+                    font-family: &quot;Noto Sans SC&quot;, var(--gf-font-sans);
+                  "
+                >
+                  福音
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              >Integration without assimilation · Decisions stay closest to the
+              local church</span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 4 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Walk left-to-right from Global support
+          to Regional contextualization to Local stop authority so the audience
+          sees decision power resting closest to the local church rather than in
+          California. Operational detail for Q&amp;A: our lean Home Office
+          handles financial reporting, donor receipts, and church relationships;
+          regional directors (including our Chiang Mai regional hub, opened
+          2024) oversee contextual training, legal safety, and member care for
+          singles and families. When a regional recommendation and a local
+          preference differ, local elders retain unconditional stop authority
+          over congregation life, stories, and visits, while regional directors
+          retain safety-tier, safeguarding, and legal-stewardship
+          accountability; neither side overrides the other's protective
+          boundary.
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide-frame">
+        <section
+          class="slide dark prayer-dark"
+          aria-label="Slide 5: Livestream-Safe Congregational Prayer"
+        >
+          <div class="slide-body s5-grid">
+            <div>
+              <div class="slide-kicker">
+                WEEKLY PRAYER · 2026 · LIVESTREAM-SAFE COLLECTIVE SPECIMEN
+              </div>
+              <h2 class="slide-h1" style="font-size: 62px; margin-bottom: 22px">
+                God knows them by name
+              </h2>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 22px;
+                  line-height: 1.52;
+                  color: var(--gf-paper);
+                  max-width: 38ch;
+                  margin: 0 0 22px;
+                "
+              >
+                Where public names or photographs could bring harm to families,
+                congregations pray together without naming people, cities, or
+                regions, asking Christ to strengthen local elders and households
+                in every language.
+              </p>
+              <p
+                style="
+                  font-size: 16px;
+                  line-height: 1.48;
+                  font-weight: 700;
+                  color: var(--gf-apricot);
+                  max-width: 38ch;
+                  margin: 0;
+                "
+              >
+                Guarding worker households on livestreamed screens is practical
+                Christian love.
+              </p>
+            </div>
+            <div
+              class="s5-prompts"
+              aria-label="Three congregational prayer prompts"
+            >
+              <div class="s5-prompt">
+                <div class="s5-prompt-kicker">PRAYER 01</div>
+                <h3>Quiet courage in Scripture</h3>
+                <p>
+                  Ask Christ to open quiet homes for mother-tongue Bible reading
+                  and faithful local discipleship.
+                </p>
+              </div>
+              <div class="s5-prompt">
+                <div class="s5-prompt-kicker">PRAYER 02</div>
+                <h3>Unhurried rest for households</h3>
+                <p>
+                  Pray for renewed strength for single workers, married
+                  families, and elders carrying heavy pastoral seasons.
+                </p>
+              </div>
+              <div class="s5-prompt">
+                <div class="s5-prompt-kicker">PRAYER 03</div>
+                <h3>Neighborly mercy</h3>
+                <p>
+                  Pray for widows, elderly neighbors, and local believers
+                  showing everyday hospitality across the street.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              >Anonymous collective prayer · No restricted names, cities, or
+              photos on screen</span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 5 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Explain why no personal name or city
+          appears on a livestreamed slide: guarding worker households is
+          practical love. Invite the congregation to pray aloud or quietly
+          through the three prompts on the right. This is an illustrative Tier 1
+          anonymous collective prayer specimen (not a Tier 3 household update or
+          field report); each specific broadcast instance requires separate
+          clearance before going live.
+        </div>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="slide-frame">
+        <section
+          class="slide"
+          aria-label="Slide 6: Reciprocal Fellowship Question and Decision"
+        >
+          <div class="slide-body s6-stage">
+            <div>
+              <div class="slide-kicker">RECIPROCAL FELLOWSHIP IN PRACTICE</div>
+              <h2
+                class="slide-h1"
+                style="font-size: 38px; max-width: 30ch; margin-bottom: 0"
+              >
+                Who decides whether a visit would help? The local church hosting
+                it can say no
+              </h2>
+            </div>
+            <div class="s6-host-stage">
+              <div>
+                <div
+                  class="slide-kicker"
+                  style="color: var(--gf-apricot); margin-bottom: 4px"
+                >
+                  WORKED HOST STOP-AUTHORITY DECISION (ILLUSTRATIVE)
+                </div>
+                <h3 class="s6-host-quote">
+                  “Not this spring. Our congregation is grieving and needs space
+                  to heal.”
+                </h3>
+              </div>
+              <div class="s6-host-outcome">
+                <p>
+                  Proposed April visiting team postponed without penalty. The
+                  partner church prays privately at home, keeps Bridge letters
+                  unhurried, and waits for local elders' invitation.
+                </p>
+                <div class="s6-host-foot">
+                  “Not this year” is always honored without penalty.
+                </div>
+              </div>
+            </div>
+            <div class="s6-pathways">
+              <div class="s6-pathway-item">
+                <div class="s6-pathway-kicker">YEAR-ROUND CORRESPONDENCE</div>
+                <h3>The Bridge Project</h3>
+                <p>
+                  Exchange letters or short group voice notes and pray mutually
+                  across cultures (including Bridge Kids). Both households
+                  choose their own pace, and no financial gift is expected.
+                </p>
+              </div>
+              <div class="s6-pathway-item">
+                <div class="s6-pathway-kicker">IN-PERSON TABLE GATHERING</div>
+                <h3>Faith on the Frontlines</h3>
+                <p>
+                  Small living-room or church coffee with a visiting planter,
+                  candid Q&amp;A, and mutual prayer with no fundraising pitch.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              >Start a two-way friendship:
+              <a href="mailto:info@globalfellowship.org" class="deck-link"
+                >info@globalfellowship.org</a
+              ></span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 6 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Let the worked host-veto decision hold
+          the room first (illustrative specimen; do not present as reported
+          field testimony): when grieving local elders say 'Not this spring,'
+          the proposed April team actually pauses without financial or
+          relational penalty. Then point underneath to the two ongoing pathways
+          that build friendship year-round: The Bridge Project (no financial
+          gift expected, equal freedom to pause) and Faith on the Frontlines
+          gatherings (no fundraising appeal).
+        </div>
+      </div>
+
+      <!-- SLIDE 7 -->
+      <div class="slide-frame">
+        <section class="slide" aria-label="Slide 7: 2025 Open Books Snapshot">
+          <div class="slide-body">
+            <div class="slide-kicker">
+              OPEN BOOKS · 2025 STATEMENTS OF ACTIVITY
+            </div>
+            <h2 class="slide-h1" style="font-size: 40px; margin-bottom: 10px">
+              Request both 2025 financial statements before you give
+            </h2>
+            <div
+              style="
+                font-size: 14px;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--gf-harbor);
+              "
+            >
+              2025 Disbursements · Consolidated, GF Standalone &amp; Home Office
+              Measure Different Scopes
+            </div>
+            <div class="s7-bars">
+              <div class="s7-bar-row">
+                <div>
+                  <strong class="s7-bar-label"
+                    >Consolidated Disbursements</strong
+                  >
+                  <div class="s7-bar-sub">
+                    GF + affiliated MissionStream &amp; BOLK* ($5.82M received)
+                  </div>
+                </div>
+                <div class="s7-track" aria-hidden="true">
+                  <div
+                    class="s7-fill"
+                    style="width: 100%; background: var(--gf-harbor)"
+                  ></div>
+                </div>
+                <div class="s7-val" style="color: var(--gf-harbor)">
+                  $5.73M out
+                </div>
+              </div>
+              <div class="s7-bar-row">
+                <div>
+                  <strong class="s7-bar-label">Global Fellowship Entity</strong>
+                  <div class="s7-bar-sub">
+                    GF breakout in 2025 Statement of Activity ($2.08M in)
+                  </div>
+                </div>
+                <div class="s7-track" aria-hidden="true">
+                  <div
+                    class="s7-fill"
+                    style="width: 37.2%; background: var(--gf-harbor-deep)"
+                  ></div>
+                </div>
+                <div class="s7-val" style="color: var(--gf-harbor-deep)">
+                  $2.13M out
+                </div>
+              </div>
+            </div>
+            <div class="s7-lower">
+              <div class="s7-ops-box">
+                <div
+                  style="
+                    font-size: 12px;
+                    font-weight: 800;
+                    letter-spacing: 0.07em;
+                    text-transform: uppercase;
+                    color: var(--gf-clay);
+                  "
+                >
+                  Home Office Operating Expenses (2025 Statement)
+                </div>
+                <div
+                  style="
+                    font-family: var(--gf-font-display);
+                    font-size: 36px;
+                    font-weight: 800;
+                    color: var(--gf-ink);
+                    margin: 4px 0 6px;
+                    font-variant-numeric: tabular-nums;
+                  "
+                >
+                  $251.6k
+                </div>
+                <p
+                  style="
+                    font-size: 15.6px;
+                    line-height: 1.46;
+                    color: var(--gf-ink);
+                    margin: 0;
+                  "
+                >
+                  Separately reported 2025 funding lines (not a reconciliation
+                  to operating expenses; Finance review open): 8% admin fee
+                  ($192.5k), Home Office &amp; fee-coverage gifts ($40.2k),
+                  rental income ($33k), and WMN Inc ($14.5k).
+                </p>
+              </div>
+              <div style="padding-top: 6px">
+                <div
+                  style="
+                    font-size: 12.5px;
+                    font-weight: 800;
+                    letter-spacing: 0.07em;
+                    text-transform: uppercase;
+                    color: var(--gf-harbor);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Scope &amp; Pending Finance Review
+                </div>
+                <p
+                  style="
+                    font-size: 16.5px;
+                    line-height: 1.5;
+                    color: var(--gf-ink);
+                    margin: 0;
+                  "
+                >
+                  *Consolidated totals combine Global Fellowship with affiliated
+                  MissionStream and BOLK ($5.9M Annual Report summary and 8% fee
+                  scope pending Finance review). Request our 2025 Statement of
+                  Activity &amp; Statement of Financial Position:
+                  <a
+                    href="mailto:finance@globalfellowship.org"
+                    class="deck-link"
+                    >finance@globalfellowship.org</a
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              >501(c)(3) EIN 68-0214543 · Candid ID 8043461 ·
+              <a href="mailto:finance@globalfellowship.org" class="deck-link"
+                >finance@globalfellowship.org</a
+              ></span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 7 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Show comparable 2025 disbursements
+          ($5.73M Consolidated vs. $2.13M Global Fellowship breakout inside the
+          2025 Statement of Activity) separately from Home Office operating
+          expenses ($251.6k, including $52.7k merchant processing) and
+          separately reported Home Office funding lines ($192.5k 8% admin fee,
+          $40.2k gifts, $33k rental income, $14.5k WMN Inc; explicitly not a
+          reconciliation to operating expenses while Finance confirms
+          entity/fund scope under OVR-01/03/16). Invite churches to request both
+          published 2025 financial statements (Statement of Activity and
+          Statement of Financial Position). Global Fellowship is not currently
+          ECFA-accredited because annual audit costs driven by total transaction
+          volume would draw heavily on our lean Home Office resources.
+        </div>
+      </div>
+
+      <!-- SLIDE 8 -->
+      <div class="slide-frame">
+        <section
+          class="slide dark"
+          aria-label="Slide 8: Begin With One Quiet Friendship"
+        >
+          <div class="slide-body">
+            <div class="slide-kicker">JOIN THIS FELLOWSHIP</div>
+            <h2 class="slide-h1" style="font-size: 46px; margin-bottom: 26px">
+              Request a Bridge Project match
+            </h2>
+            <div class="s8-layout">
+              <div class="s8-primary">
+                <div>
+                  <div class="s8-primary-kicker">
+                    PRIMARY INVITATION · NO GIFT EXPECTED
+                  </div>
+                  <h2>Write and pray with a local church planter</h2>
+                  <p>
+                    Email to request a Bridge Project match. A coordinator
+                    checks regional readiness and confirms safe formats before
+                    either household shares letters or voice notes.
+                  </p>
+                </div>
+                <div class="s8-primary-contact">
+                  <div class="s8-primary-email">
+                    <a
+                      href="mailto:info@globalfellowship.org"
+                      class="deck-link-ink"
+                      >info@globalfellowship.org</a
+                    >
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      font-weight: 600;
+                      color: var(--gf-ink);
+                    "
+                  >
+                    Subject: Bridge Project match request · Both households set
+                    the pace
+                  </div>
+                </div>
+              </div>
+              <div class="s8-sec-stack">
+                <div class="s8-sec-item">
+                  <div class="s8-sec-kicker">OPEN BOOKS FIRST</div>
+                  <h3>Request our 2025 statements</h3>
+                  <p>
+                    Email Finance to inspect full entity financial statements
+                    and confirm how designated gifts are handled before giving.
+                  </p>
+                  <div class="s8-sec-email">
+                    <a
+                      href="mailto:finance@globalfellowship.org"
+                      class="deck-link-dark"
+                      >finance@globalfellowship.org</a
+                    >
+                  </div>
+                </div>
+                <div class="s8-sec-item">
+                  <div class="s8-sec-kicker">NO APPLICATION REQUIRED</div>
+                  <h3>Ask about cross-cultural service</h3>
+                  <p>
+                    Write in your working language with honest questions. We
+                    answer directly without adding you to a mailing list.
+                  </p>
+                  <div class="s8-sec-email">
+                    <a
+                      href="mailto:info@globalfellowship.org"
+                      class="deck-link-dark"
+                      >info@globalfellowship.org</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <span
+              ><a href="mailto:info@globalfellowship.org" class="deck-link"
+                >info@globalfellowship.org</a
+              >
+              ·
+              <a href="mailto:finance@globalfellowship.org" class="deck-link"
+                >finance@globalfellowship.org</a
+              >
+              · 1 866 984 5622</span
+            >
+            <span
+              >Pre-publication specimen · awaiting approval · Slide 8 / 8</span
+            >
+          </div>
+        </section>
+        <div class="speaker-note no-print">
+          <strong>Speaker Note:</strong> Keep the room anchored on one clear,
+          no-pressure first step (Request a Bridge Project match), with Open
+          Books and Exploring Service visible as calm secondary pathways for
+          anyone ready after the service. Online portals remain pending under
+          OVR-21; route people to confirmed email desks until launch. When
+          presenting outside North America, localize the participation
+          invitation into the room's working language with native regional
+          review.
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

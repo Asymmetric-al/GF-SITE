@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global Fellowship: Exposure Trip Two-Sided Host Agreement</title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      .agree-hero {
+        background: transparent;
+        color: var(--gf-ink);
+        margin: 0 0 15px;
+        padding: 12px 0 14px;
+        border-top: 5px solid var(--gf-harbor);
+        border-bottom: 2px solid var(--gf-ink);
+      }
+      .agree-hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--gf-rule);
+        padding-bottom: 9px;
+        margin-bottom: 10px;
+      }
+      .agree-hero h1 {
+        font-family: var(--gf-font-serif);
+        font-size: 29px;
+        line-height: 1.12;
+        color: var(--gf-ink);
+        margin: 0 0 6px;
+      }
+      .agree-hero p {
+        font-family: var(--gf-font-serif);
+        font-size: 13.5px;
+        line-height: 1.52;
+        color: var(--gf-slate);
+        margin: 0;
+      }
+      .veto-callout {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+        border-inline-start: 5px solid var(--gf-ink);
+        padding: 13px 16px;
+        margin-bottom: 16px;
+        font-size: 12.6px;
+        line-height: 1.54;
+      }
+      .side-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .side-card {
+        background: var(--gf-surface-card);
+        border-top: 4px solid var(--gf-harbor);
+        border-inline-start: 3px solid var(--gf-clay);
+        padding: 14px 16px;
+      }
+      .side-card.visiting {
+        background: var(--gf-paper-subtle);
+        border-top-color: var(--gf-ink);
+        border-inline-start-color: var(--gf-ink);
+      }
+      .side-card h2 {
+        font-size: 14.8px;
+        color: var(--gf-harbor);
+        margin: 0 0 8px;
+      }
+      .side-card.visiting h2 {
+        color: var(--gf-ink);
+      }
+      .side-card ul {
+        margin: 0;
+        padding-inline-start: 17px;
+        font-size: 12.2px;
+        line-height: 1.56;
+      }
+      .side-card li {
+        margin-bottom: 8px;
+      }
+      .sequence-strip {
+        background: var(--gf-notice-surface);
+        border-top: 2.5px solid var(--gf-harbor);
+        padding: 13px 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        font-size: 11.6px;
+        line-height: 1.5;
+      }
+      .sequence-strip h3 {
+        font-size: 12px;
+        color: var(--gf-harbor);
+        margin: 0 0 4px;
+      }
+      .boundary-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11.4px;
+        line-height: 1.44;
+        margin: 8px 0 13px;
+      }
+      .boundary-table th {
+        text-align: left;
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 7px 9px;
+        font-family: var(--gf-font-display);
+        font-size: 10.2px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .boundary-table td {
+        border-bottom: 1px solid var(--gf-rule);
+        padding: 8px 9px;
+        vertical-align: top;
+      }
+      .chk-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-inline-end: 10px;
+        margin-bottom: 3px;
+        white-space: normal;
+      }
+      .chk-box {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border: 1.5px solid var(--gf-ink);
+        background: #ffffff;
+        flex-shrink: 0;
+      }
+      .fill-rule {
+        display: inline-block;
+        border-bottom: 1px solid var(--gf-ink);
+        min-width: 96px;
+        height: 12px;
+        vertical-align: baseline;
+      }
+      .fill-rule.short {
+        min-width: 36px;
+      }
+      .fill-rule.wide {
+        min-width: 155px;
+      }
+      .covenant-box {
+        background: var(--gf-paper-subtle);
+        border-top: 2px solid var(--gf-clay);
+        padding: 10px 14px;
+        font-size: 11.2px;
+        line-height: 1.48;
+        margin-bottom: 12px;
+      }
+      .sig-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .sig-box {
+        background: var(--gf-surface-card);
+        border: 1.5px solid var(--gf-rule);
+        border-top: 3px solid var(--gf-harbor);
+        padding: 14px 16px;
+        font-size: 11.8px;
+        line-height: 1.65;
+      }
+      .sig-line {
+        border-bottom: 1px solid var(--gf-ink);
+        height: 28px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- PAGE 1: MUTUAL EXPOSURE TRIP TERMS & UNCONDITIONAL HOST VETO -->
+      <section
+        class="gf-sheet"
+        style="padding: 30px 44px 22px"
+        aria-label="Page 1: Two-Sided Exposure Trip Commitments and Local Host Veto"
+      >
+        <div>
+          <div class="agree-hero">
+            <div class="agree-hero-top">
+              <img
+                src="../logos/svg/gf-lockup-horizontal.svg"
+                alt="Global Fellowship"
+                style="height: 25px; width: auto"
+              />
+              <span
+                class="gf-dateline"
+                style="color: var(--gf-harbor); font-size: 10.6px"
+                >EXPOSURE TRIP HOST AGREEMENT · PAGE 1 OF 2</span
+              >
+            </div>
+            <h1>Listening-first Exposure Trip Agreement</h1>
+            <p>
+              Completed jointly by local hosting leaders and visiting church
+              elders before any trip is announced to a congregation, funds are
+              raised, or airfare is purchased.
+            </p>
+          </div>
+
+          <div class="veto-callout">
+            <strong>Unconditional Local-Host Veto:</strong> Local church elders
+            and regional hosts hold full authority to say &ldquo;not this
+            year,&rdquo; shorten dates, reduce team size, or postpone a visit at
+            any stage if family capacity, congregation health, or regional
+            safety shifts. Saying no carries no relational penalty and never
+            weakens long-term fellowship or support.
+          </div>
+
+          <div class="side-grid">
+            <div class="side-card">
+              <h2>Side A · Local Host &amp; Regional Authority</h2>
+              <ul>
+                <li>
+                  <strong>Season &amp; timing:</strong> Hosts confirm privately
+                  whether welcoming guests strengthens or strains everyday
+                  household and congregation life during the proposed window.
+                </li>
+                <li>
+                  <strong>Team size &amp; daily pace:</strong> Hosts set the
+                  exact headcount ceiling, lodging expectations, dress and
+                  cultural norms, and a sustainable daily rhythm.
+                </li>
+                <li>
+                  <strong>Teaching &amp; ministry leadership:</strong> Local
+                  elders lead Scripture teaching, worship, and neighborhood
+                  hospitality; guests speak only where explicitly invited.
+                </li>
+                <li>
+                  <strong>Media &amp; privacy boundaries:</strong> Hosts set
+                  binding rules before arrival on smartphones, photos, audio
+                  recording, names, and post-trip church reports.
+                </li>
+              </ul>
+            </div>
+
+            <div class="side-card visiting">
+              <h2>Side B · Visiting Church Commitments</h2>
+              <ul>
+                <li>
+                  <strong>Arrive as guests and learners:</strong> Leave
+                  uninvited building projects, outside programs, and short-term
+                  savior scripts at home. Listen first and pray faithfully.
+                </li>
+                <li>
+                  <strong>Self-funded &amp; no host financial burden:</strong>
+                  Visiting churches cover all airfare, lodging, local transport,
+                  and host hospitality expenses so local households carry no
+                  financial strain.
+                </li>
+                <li>
+                  <strong>Refundable travel &amp; graceful pause:</strong> Team
+                  books refundable or insured tickets and absorbs any
+                  host-called postponement calmly and without pressure.
+                </li>
+                <li>
+                  <strong>Multi-year friendship:</strong> Commit to ongoing
+                  prayer, Bridge Project correspondence, and durable regional
+                  partnership long after returning home.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sequence-strip">
+            <div>
+              <h3>Step 1 · Elder Examination</h3>
+              <p style="margin: 0">
+                Visiting elders examine Global Fellowship&rsquo;s Sending Church
+                and Elders&rsquo; Vetting Packet and speak with Global
+                Engagement before mentioning dates publicly.
+              </p>
+            </div>
+            <div>
+              <h3>Step 2 · Private Host Check</h3>
+              <p style="margin: 0">
+                Regional Director consults local elders privately without
+                pressure so &ldquo;not this year&rdquo; remains genuinely easy
+                to say.
+              </p>
+            </div>
+            <div>
+              <h3>Step 3 · Written Sign-Off</h3>
+              <p style="margin: 0">
+                Both sides complete Page 2 security boundaries and signatures
+                before any team recruitment or flight booking begins.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · AWAITING LEADERSHIP APPROVAL BEFORE
+              USE</span
+            >
+            <span>GF-TPL-23</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship, Inc. · P.O. Box 1, Meadow Vista, CA 95722 ·
+              <span class="gf-nowrap">info@globalfellowship.org</span></span
+            >
+            <span>Page 1 of 2 · Mutual Commitments</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: MEDIA & SECURITY BOUNDARIES + SIGN-OFF BLOCKS -->
+      <section
+        class="gf-sheet"
+        style="padding: 28px 44px 22px"
+        aria-label="Page 2: Security and Media Boundaries and Two-Sided Sign-Off"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 13px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 24px; width: auto"
+            />
+            <span class="gf-dateline"
+              >EXPOSURE TRIP BOUNDARIES &amp; SIGN-OFF · PAGE 2 OF 2</span
+            >
+          </div>
+
+          <h2 class="gf-serif-display" style="font-size: 23px; margin: 0 0 6px">
+            Written Visit Parameters &amp; Media Boundaries
+          </h2>
+          <p style="font-size: 12px; color: var(--gf-slate); margin: 0 0 10px">
+            Store completed copies strictly inside Global Fellowship&rsquo;s
+            private regional archive. Never upload filled agreements containing
+            sensitive regions, travel dates, or host names to public drives or
+            social channels.
+          </p>
+
+          <table
+            class="boundary-table"
+            aria-label="Visit security and media boundaries"
+          >
+            <thead>
+              <tr>
+                <th style="width: 30%">Parameter</th>
+                <th style="width: 37%">Host-Approved Setting</th>
+                <th>Team Verification Standard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Visibility &amp; Security Level</strong></td>
+                <td>
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Open
+                    (Public)</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Alias
+                    (Vetted)</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Private
+                    (Offline)</span
+                  >
+                </td>
+                <td>
+                  Open allows named sharing; Alias uses vetted circles only;
+                  Private keeps names and places strictly offline.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Proposed Window &amp; Max Team Size</strong></td>
+                <td>
+                  Dates: <span class="fill-rule"></span> &nbsp;|&nbsp; Max:
+                  <span class="fill-rule short"></span>
+                </td>
+                <td>
+                  No last-minute roster additions without written host approval.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Smartphones, Photos &amp; Audio</strong></td>
+                <td>
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>None</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>No
+                    faces</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span
+                    >Consented</span
+                  >
+                </td>
+                <td>
+                  Strip EXIF/GPS metadata; require signed consent before
+                  photographing faces or recording audio.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Livestream &amp; Social Media</strong></td>
+                <td>
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Offline
+                    only</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Open level
+                    only</span
+                  >
+                </td>
+                <td>
+                  Never tag cities, hosts, flight routes, or house churches
+                  online or on church livestreams.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Safeguarding, Minors &amp; Medical</strong></td>
+                <td>
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Adults
+                    only</span
+                  >
+                  <span class="chk-row"
+                    ><span class="chk-box" aria-hidden="true"></span>Minors w/
+                    guardian</span
+                  >
+                </td>
+                <td>
+                  Church background checks, travel medical/evacuation insurance,
+                  and written emergency escalation confirmed before departure.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Cancellation &amp; Regional Lead</strong></td>
+                <td>Regional Lead: <span class="fill-rule wide"></span></td>
+                <td>
+                  Refundable or insured travel confirmed prior to ticket
+                  purchase; host-language translation supplied for Side A.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="covenant-box">
+            <strong>Team Member Briefing &amp; Post-Trip Review:</strong> Every
+            traveler completes a pre-departure briefing covering local host
+            authority, humble listening, and media rules before boarding. Within
+            two weeks after returning home, visiting leaders debrief with the
+            Regional Director so any photographs or Sunday testimonies respect
+            host approval before sharing.
+          </div>
+
+          <div class="sig-grid">
+            <div class="sig-box">
+              <strong
+                style="
+                  color: var(--gf-harbor);
+                  display: block;
+                  margin-bottom: 5px;
+                "
+                >Side A · Local Host / Regional Director Approval</strong
+              >
+              I confirm local leaders welcome this visit under the boundaries
+              above and retain unconditional freedom to postpone or decline.
+              <div class="sig-line"></div>
+              <div>Name / Approved Alias &amp; Role</div>
+              <div class="sig-line"></div>
+              <div>Signature &amp; Date</div>
+            </div>
+
+            <div class="sig-box" style="border-top-color: var(--gf-ink)">
+              <strong
+                style="color: var(--gf-ink); display: block; margin-bottom: 5px"
+                >Side B · Visiting Church Elder / Team Leader</strong
+              >
+              We agree to arrive as learners, self-fund all costs, brief every
+              traveler on security rules, and honor any host-called change.
+              <div class="sig-line"></div>
+              <div>Visiting Church &amp; Elder / Leader Name</div>
+              <div class="sig-line"></div>
+              <div>Signature &amp; Date</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · STORE SIGNED COPIES IN PRIVATE
+              REGIONAL FILE</span
+            >
+            <span>GF-TPL-23</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship, Inc. ·
+              <span class="gf-nowrap">info@globalfellowship.org</span> ·
+              <span class="gf-nowrap">1 866 984 5622</span></span
+            >
+            <span>Page 2 of 2 · Boundaries &amp; Sign-Off</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

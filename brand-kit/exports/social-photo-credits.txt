@@ -1,0 +1,43 @@
+SOCIAL POST CAPTIONS, PHOTOGRAPHY CREDITS & COPYABLE OPENERS (TIER 1 PUBLIC ONLY)
+=================================================================================
+Status: Pre-publication specimen awaiting leadership approval.
+Scope: Pair these plain-text captions with the standalone PNGs in `brand-kit/exports/png/`
+so detached social images always carry distributable photo attribution, license URLs,
+and tap-to-copy contact text. Never cross-post restricted Tier 2/3 details to public feeds.
+
+1. DOCUMENTARY STREET PHOTO STORY (`social-photo-story-1080x1350.png`)
+----------------------------------------------------------------------
+Caption:
+"Not this spring," and the partnership continues. Local church elders set visit timing,
+edit every story before release, and hold full authority to postpone a visiting team
+without relational or financial penalty. Partner churches keep praying at home and wait
+for their invitation.
+
+Photo credit (GF-PHO-03): Ordinary street food stall; contextual street photography by
+James Sutton (CC0 1.0 Public Domain Dedication: https://creativecommons.org/publicdomain/zero/1.0/),
+cropped and lightly color-graded for editorial legibility; not a Global Fellowship congregation.
+
+2. OPENGRAPH LINK PREVIEW (`og-link-preview-1200x630.png`)
+----------------------------------------------------------
+Alt text:
+Global Fellowship OpenGraph preview pairing the headline "When a cross-cultural missionary
+arrives, the local leader still leads" with a contextual documentary photograph of hands
+pouring warm tea across a wooden tray.
+
+Photo credit (GF-PHO-01): Ordinary neighborhood tea table; contextual street photography by
+James Creegan (CC BY 2.0: https://creativecommons.org/licenses/by/2.0/), cropped and lightly
+color-graded for editorial legibility; not a Global Fellowship congregation.
+
+3. CANDIDATE & SKEPTIC Q&A CAROUSEL (`carousel-qa-1/2/3`): COPYABLE FIRST MESSAGE
+----------------------------------------------------------------------------------
+Paste directly into the Carousel post caption so readers on phones can tap and copy:
+
+To: info@globalfellowship.org
+Subject: Exploring service
+Message: Hi, I am [First Name]. My working language is [Language]. I would like a first call
+about [serving under local church planters / support-staff ministry].
+Optional encrypted-handoff line: Please connect me with a regional hub for an encrypted
+messaging handoff in [Language] before we discuss location or personal details.
+
+(Omit restricted cities, local names, or visa details in an initial email. No application form
+or mailing list signup required.)

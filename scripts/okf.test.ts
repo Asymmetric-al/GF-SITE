@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
+import { DECK_SLIDES } from "./brand-deck-data";
 import { scanOkfBundle, validateOkfBundle } from "./okf";
 
 const repoRoot = path.resolve(import.meta.dirname, "..");
@@ -41,6 +42,78 @@ const createFixtureSuite = (): OkfFixtureSuite => {
   };
 };
 
+interface ManifestExportEntry {
+  readonly path: string;
+}
+
+interface ManifestItemEntry {
+  readonly id: string;
+  readonly source: string;
+  readonly exports?: readonly ManifestExportEntry[];
+  readonly storyRefs?: readonly string[];
+}
+
+interface BrandManifestFile {
+  readonly items: readonly ManifestItemEntry[];
+}
+
+const isString = (value: unknown): value is string => typeof value === "string";
+
+const isStringArray = (value: unknown): value is readonly string[] =>
+  Array.isArray(value) && value.every((entry) => isString(entry));
+
+const isManifestExportEntry = (value: unknown): value is ManifestExportEntry =>
+  typeof value === "object" &&
+  value !== null &&
+  "path" in value &&
+  typeof value.path === "string";
+
+const isManifestItemEntry = (value: unknown): value is ManifestItemEntry =>
+  typeof value === "object" &&
+  value !== null &&
+  "id" in value &&
+  typeof value.id === "string" &&
+  "source" in value &&
+  typeof value.source === "string" &&
+  (!("exports" in value) ||
+    value.exports === undefined ||
+    (Array.isArray(value.exports) &&
+      value.exports.every((entry) => isManifestExportEntry(entry)))) &&
+  (!("storyRefs" in value) ||
+    value.storyRefs === undefined ||
+    isStringArray(value.storyRefs));
+
+const isBrandManifestFile = (value: unknown): value is BrandManifestFile =>
+  typeof value === "object" &&
+  value !== null &&
+  "items" in value &&
+  Array.isArray(value.items) &&
+  value.items.every((entry) => isManifestItemEntry(entry));
+
+const UNSAFE_TIER3_LIVESTREAM_RE = /tier\s*3\s+livestream/iu;
+
+const UNSAFE_LIVESTREAM_TIER3_HTML_RE =
+  /for\s+tier\s*3\s+livestreams?|livestream\s+slide\s+5.*tier\s*3|tier\s*3\s*=\s*[^.\n]*livestreams?/iu;
+
+const LINE_SPLIT_RE = /\r?\n/u;
+const QUOTED_OVR_LEAK_RE = /^>\s.*OVR-\d+/iu;
+
+const UNBUILT_CMS_REVALIDATE_RE =
+  /\/api\/cms\/revalidate|CMS_REVALIDATE_SECRET|CMS_TENANT_ID/u;
+
+const WORKER_COUNT_DRIFT_RE = /served\s+584|584\s+people\s+served/iu;
+const HTML_TAG_RE = /<[^>]+>/gu;
+const WHITESPACE_RE = /\s+/gu;
+const INTERNAL_TIER_LABEL_RE = /\bTier\s*[123]\b/iu;
+
+const readBrandManifestItems = (): readonly ManifestItemEntry[] => {
+  const parsed: unknown = JSON.parse(
+    fs.readFileSync(path.join(repoRoot, "brand-kit/manifest.json"), "utf-8")
+  );
+
+  return isBrandManifestFile(parsed) ? parsed.items : [];
+};
+
 describe("repository knowledge/ OKF v0.3 scaffold", () => {
   it("validates cleanly with zero errors and zero warnings", () => {
     const report = validateOkfBundle(path.join(repoRoot, "knowledge"));
@@ -51,14 +124,219 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
     expect(report.filesChecked).toBeGreaterThanOrEqual(9);
   });
 
-  it("scans as an empty generic bundle until domain concepts are authored", () => {
+  it("scans the populated Global Fellowship knowledge bundle cleanly", () => {
     const report = scanOkfBundle(path.join(repoRoot, "knowledge"));
 
     expect(report.okfVersion).toBe("0.3");
-    expect(report.summary.concepts).toBe(0);
+    expect(report.summary.concepts).toBeGreaterThanOrEqual(55);
     expect(report.summary.notConcepts).toBe(0);
     expect(report.bundle.title).toBeTruthy();
     expect(report.bundle.description).toBeTruthy();
+  });
+
+  it("preserves protected foundations and honest unverified OKF metadata", () => {
+    const foundations = fs.readFileSync(
+      path.join(repoRoot, "knowledge/brand/foundations.md"),
+      "utf-8"
+    );
+
+    const requiredFoundations = [
+      "We make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people.",
+      "To make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people.",
+      "It is our vision to plant a Gospel witness within 30 minutes of everyone.",
+      "Church Planting",
+      "Local Leadership",
+      "Unreached People",
+      "1. We believe that the writings of both Old and New Testaments were breathed out by God",
+      "8. We believe in the resurrection of the dead, the eternal punishment of the wicked, and the eternal blessedness of the redeemed.",
+    ];
+
+    const missingFoundations = requiredFoundations.filter(
+      (phrase) => !foundations.includes(phrase)
+    );
+
+    const requiredDocs = [
+      "knowledge/references/source-coverage-and-decisions.md",
+      "knowledge/references/organizational-coverage-record.md",
+      "knowledge/references/website-builder-handoff.md",
+      "brand-kit/manifest.json",
+    ];
+
+    const missingDocs = requiredDocs.filter(
+      (relPath) => !fs.existsSync(path.join(repoRoot, relPath))
+    );
+
+    const scan = scanOkfBundle(path.join(repoRoot, "knowledge"));
+
+    expect(missingFoundations).toStrictEqual([]);
+    expect(missingDocs).toStrictEqual([]);
+    expect(scan.summary.trust["human-reviewed"]).toBe(0);
+    expect(scan.summary.stale).toBe(0);
+  });
+
+  it("verifies brand-kit manifest files and SYNTH-VETO-001 withdrawal coverage", () => {
+    const items = readBrandManifestItems();
+    const missingPaths: string[] = [];
+
+    for (const item of items) {
+      const srcAbs = path.join(repoRoot, "brand-kit", item.source);
+
+      if (!fs.existsSync(srcAbs)) {
+        missingPaths.push(item.source);
+      }
+
+      for (const exp of item.exports ?? []) {
+        const expAbs = path.join(repoRoot, "brand-kit", exp.path);
+
+        if (!fs.existsSync(expAbs)) {
+          missingPaths.push(exp.path);
+        }
+      }
+    }
+
+    const scr05 = items.find((item) => item.id === "GF-SCR-05");
+    const scr05Refs = scr05?.storyRefs ?? [];
+
+    expect(items.length).toBeGreaterThanOrEqual(100);
+    expect(missingPaths).toStrictEqual([]);
+    expect(scr05Refs).toContain("SYNTH-VETO-001");
+  });
+
+  it("blocks unsafe Tier 3 livestream shorthand, OVR IDs in public copy blocks, and broken handoff pointers", () => {
+    const knowledgeDir = path.join(repoRoot, "knowledge");
+
+    const markdownFiles: string[] = [
+      path.join(repoRoot, "brand-kit/photography/PHOTO-LICENSES.md"),
+      path.join(repoRoot, "brand-kit/tokens/FONT-LICENSES.md"),
+    ];
+
+    const collectMarkdown = (dir: string): void => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const fullPath = path.join(dir, entry.name);
+
+        if (entry.isDirectory()) {
+          collectMarkdown(fullPath);
+        } else if (entry.name.endsWith(".md")) {
+          markdownFiles.push(fullPath);
+        }
+      }
+    };
+
+    collectMarkdown(knowledgeDir);
+
+    const HISTORICAL_AUDIT_LOGS = new Set([
+      "knowledge/log.md",
+      "knowledge/references/organizational-coverage-record.md",
+      "knowledge/references/source-coverage-and-decisions.md",
+    ]);
+
+    const violations: string[] = [];
+
+    for (const filePath of markdownFiles) {
+      const content = fs.readFileSync(filePath, "utf-8");
+      const rel = path.relative(repoRoot, filePath).replaceAll("\\", "/");
+      const isHistoricalLog = HISTORICAL_AUDIT_LOGS.has(rel);
+
+      if (
+        !isHistoricalLog &&
+        (UNSAFE_TIER3_LIVESTREAM_RE.test(content) ||
+          UNSAFE_LIVESTREAM_TIER3_HTML_RE.test(content))
+      ) {
+        violations.push(
+          `${rel}: contains unsafe Tier 3 livestream routing shorthand`
+        );
+      }
+
+      if (!isHistoricalLog && content.includes("participation-pathways.md")) {
+        violations.push(`${rel}: cites nonexistent participation-pathways.md`);
+      }
+
+      if (!isHistoricalLog && UNBUILT_CMS_REVALIDATE_RE.test(content)) {
+        violations.push(
+          `${rel}: references unbuilt /api/cms/revalidate route or unconfigured CMS env var`
+        );
+      }
+
+      if (!isHistoricalLog && WORKER_COUNT_DRIFT_RE.test(content)) {
+        violations.push(
+          `${rel}: inverts or drifts canonical "584 workers served" wording`
+        );
+      }
+
+      for (const line of content.split(LINE_SPLIT_RE)) {
+        if (QUOTED_OVR_LEAK_RE.test(line)) {
+          violations.push(
+            `${rel}: leaks internal OVR gate ID inside quoted copy block`
+          );
+        }
+      }
+    }
+
+    expect(violations).toStrictEqual([]);
+  });
+
+  it("blocks unsafe Tier 3 livestream wording, unsupported statement labels, and false scrim ratios in brand-kit HTML and deck data", () => {
+    const violations: string[] = [];
+
+    const htmlDirs = [
+      path.join(repoRoot, "brand-kit/templates"),
+      path.join(repoRoot, "brand-kit/guide"),
+    ];
+
+    for (const dir of htmlDirs) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (!entry.isFile() || !entry.name.endsWith(".html")) {
+          continue;
+        }
+
+        const fullPath = path.join(dir, entry.name);
+        const rel = path.relative(repoRoot, fullPath).replaceAll("\\", "/");
+
+        const plain = fs
+          .readFileSync(fullPath, "utf-8")
+          .replaceAll(HTML_TAG_RE, " ")
+          .replaceAll(WHITESPACE_RE, " ");
+
+        if (
+          UNSAFE_TIER3_LIVESTREAM_RE.test(plain) ||
+          UNSAFE_LIVESTREAM_TIER3_HTML_RE.test(plain)
+        ) {
+          violations.push(
+            `${rel}: contains unsafe Tier 3 livestream wording in rendered HTML`
+          );
+        }
+
+        if (plain.includes("2025 Standalone 501(c)(3) Statement")) {
+          violations.push(
+            `${rel}: cites unsupported "2025 Standalone 501(c)(3) Statement"`
+          );
+        }
+
+        if (plain.includes("LIVE SCRIM PROOF (10:1+")) {
+          violations.push(
+            `${rel}: prints mathematically inaccurate 10:1+ Apricot scrim claim`
+          );
+        }
+      }
+    }
+
+    for (const slide of DECK_SLIDES) {
+      const projectedFields = [
+        slide.kicker,
+        slide.headline,
+        slide.sub ?? "",
+        slide.secondaryCallout ?? "",
+        slide.footerLeft,
+      ].join(" ");
+
+      if (INTERNAL_TIER_LABEL_RE.test(projectedFields)) {
+        violations.push(
+          `scripts/brand-deck-data.ts slide ${slide.number}: leaks internal Tier label onto projected slide text`
+        );
+      }
+    }
+
+    expect(violations).toStrictEqual([]);
   });
 });
 

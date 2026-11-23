@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Faith on the Frontlines Host Kit &amp; Missionary
+      Candidate Brief
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      /* Calm Editorial Hospitality Split (Harbor Night + Warm Linen / Kiln Clay) */
+      .invite-split-hero {
+        display: grid;
+        grid-template-columns: 1.44fr 0.76fr;
+        margin-bottom: 18px;
+        border: 1px solid var(--gf-rule);
+        overflow: hidden;
+      }
+      .invite-left {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 24px 26px 22px;
+      }
+      .invite-left h1 {
+        font-family: var(--gf-font-serif);
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.13;
+        color: var(--gf-paper);
+        margin: 0 0 10px;
+      }
+      .invite-left p {
+        font-family: var(--gf-font-serif);
+        font-size: 14px;
+        line-height: 1.56;
+        color: var(--gf-mist-text);
+        margin: 0;
+      }
+      .invite-right {
+        background: var(--gf-paper-subtle);
+        color: var(--gf-ink);
+        border-inline-start: 4px solid var(--gf-clay);
+        padding: 20px 20px 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .rsvp-row {
+        border-bottom: 1px solid var(--gf-rule);
+        padding-bottom: 9px;
+        margin-bottom: 9px;
+        font-size: 12.2px;
+        line-height: 1.4;
+        color: var(--gf-ink);
+      }
+      .rsvp-row:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .rsvp-row strong {
+        display: block;
+        font-family: var(--gf-font-display);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gf-clay);
+        margin-bottom: 2px;
+      }
+      .split-cols {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 24px;
+      }
+      .rule-col {
+        border-top: 2px solid var(--gf-ink);
+        padding-top: 10px;
+      }
+      .rule-col h2,
+      .rule-col h3 {
+        font-family: var(--gf-font-display);
+        font-size: 14.8px;
+        font-weight: 800;
+        color: var(--gf-harbor);
+        margin-bottom: 7px;
+      }
+      .rule-col p,
+      .rule-col li {
+        font-size: 12.3px;
+        line-height: 1.54;
+      }
+      .rule-col ol {
+        margin: 0;
+        padding-inline-start: 17px;
+      }
+      .rule-col li {
+        margin-bottom: 6px;
+      }
+      .guest-strip {
+        margin-top: 16px;
+        background: var(--gf-paper-subtle);
+        border-top: 2.5px solid var(--gf-harbor);
+        padding: 13px 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .guest-strip h3 {
+        font-family: var(--gf-font-display);
+        font-size: 12.2px;
+        font-weight: 800;
+        color: var(--gf-harbor);
+        margin: 0 0 4px;
+      }
+      .guest-strip p {
+        font-size: 11.6px;
+        line-height: 1.48;
+        margin: 0;
+        color: var(--gf-ink);
+      }
+      .prep-strip {
+        margin-top: 14px;
+        border-top: 1.5px solid var(--gf-ink);
+        padding-top: 10px;
+        display: grid;
+        grid-template-columns: 0.34fr 0.66fr;
+        gap: 18px;
+        font-size: 11.8px;
+        line-height: 1.5;
+      }
+      /* Page 2: Harbor Night Masthead Candidate Brief */
+      .candidate-sheet {
+        padding: 24px 44px 18px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cand-masthead {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        margin: -24px -44px 11px;
+        padding: 16px 44px 14px;
+        border-bottom: 4px solid var(--gf-apricot);
+      }
+      .cand-masthead-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--gf-border-dark);
+        padding-bottom: 8px;
+        margin-bottom: 9px;
+      }
+      .cand-masthead h2 {
+        font-family: var(--gf-font-serif);
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.12;
+        color: var(--gf-paper);
+        margin: 0 0 5px;
+      }
+      .cand-masthead p {
+        font-family: var(--gf-font-serif);
+        font-size: 13.4px;
+        line-height: 1.46;
+        color: var(--gf-mist-text);
+        margin: 0;
+      }
+      .qa-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 22px;
+        margin-top: 8px;
+      }
+      .qa-item {
+        border-top: 2px solid var(--gf-harbor);
+        padding-top: 6px;
+      }
+      .qa-item h3 {
+        font-family: var(--gf-font-display);
+        font-size: 13.6px;
+        font-weight: 800;
+        color: var(--gf-ink);
+        margin-bottom: 3px;
+      }
+      .qa-item p {
+        font-size: 13px;
+        line-height: 1.42;
+        margin: 0;
+        color: var(--gf-ink);
+      }
+      .readiness-worksheet {
+        margin-top: 10px;
+        background: var(--gf-paper-subtle);
+        border-top: 2.5px solid var(--gf-ink);
+        padding: 9px 14px 8px;
+      }
+      .ws-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px 18px;
+        margin-top: 5px;
+        font-size: 11.6px;
+        line-height: 1.38;
+      }
+      .ws-line {
+        border-bottom: 1px dashed var(--gf-slate);
+        height: 12px;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gf-specimen-bar" role="note">
+      <span
+        ><strong>Pre-Publication Host Note (Non-Printing Slug):</strong> Confirm
+        visiting planter availability via Global Engagement before printing
+        dates (OVR-08); program title retained pending leadership review
+        (OVR-10); doctrinal reconciliation tracked in OVR-15; candidate timeline
+        norms tracked in OVR-23.</span
+      >
+      <span>2-Page Letter Kit</span>
+    </div>
+
+    <main>
+      <!-- PAGE 1: HOSPITALITY SPLIT INVITATION & HOST GUIDE -->
+      <section
+        class="gf-sheet"
+        style="padding: 32px 46px 26px"
+        aria-label="Page 1: Faith on the Frontlines Living-Room Invite and Host Guide"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 14px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 26px; width: auto"
+            />
+            <span class="gf-dateline"
+              >FAITH ON THE FRONTLINES · INVITE &amp; HOST GUIDE</span
+            >
+          </div>
+
+          <div class="invite-split-hero">
+            <div class="invite-left gf-dark-surface">
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 10.2px;
+                  font-weight: 800;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--gf-apricot);
+                  margin-bottom: 7px;
+                "
+              >
+                HOME &amp; CHURCH GATHERING · GREATER SACRAMENTO, REGIONAL HUBS
+                &amp; REMOTE
+              </div>
+              <h1>Coffee, honest questions, and a visiting church planter</h1>
+              <p>
+                Sit down for coffee and candid conversation with a church
+                planter serving alongside Global Fellowship. Hear firsthand how
+                local congregations are growing in Jesus Christ, ask honest
+                questions, and pray together with no fundraising pitch.
+              </p>
+            </div>
+            <div class="invite-right">
+              <div class="rsvp-row">
+                <strong>When</strong>
+                [Day, Date · Time]
+              </div>
+              <div class="rsvp-row">
+                <strong>Where</strong>
+                [Host Home or Church Hall]
+              </div>
+              <div class="rsvp-row">
+                <strong>RSVP</strong>
+                [Host Name · Email or Phone]
+              </div>
+            </div>
+          </div>
+
+          <div class="split-cols">
+            <div class="rule-col">
+              <h2>Host Run-of-Show (75 Minutes)</h2>
+              <ol>
+                <li>
+                  <strong>Welcome &amp; Coffee (15 min):</strong> Ordinary
+                  hospitality around food; no formal stage or fundraising
+                  appeal.
+                </li>
+                <li>
+                  <strong>Firsthand Witness (25 min):</strong> The visiting
+                  church planter chooses the emphasis and boundaries (confirm
+                  phone, photo, and recording rules before starting).
+                </li>
+                <li>
+                  <strong
+                    >Open Q&amp;A &amp; Reciprocal Prayer (20 min):</strong
+                  >
+                  Invite the visiting planter, if they wish, to ask how their
+                  congregation can pray for your neighborhood too.
+                </li>
+                <li>
+                  <strong>Prayer &amp; Side-Table Options (15 min):</strong>
+                  Pray together; place prayer cards, Bridge Project sign-up, and
+                  open financial statements on a side table without passing a
+                  plate.
+                </li>
+              </ol>
+            </div>
+
+            <div class="rule-col">
+              <h2>Pressure-Free Host Closing Script</h2>
+              <p
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-style: italic;
+                  font-size: 13.2px;
+                  line-height: 1.58;
+                  margin-bottom: 12px;
+                "
+              >
+                &ldquo;Thank you for welcoming our friend tonight. If you want
+                to stay connected, three simple options sit on the table: take a
+                prayer card home, join The Bridge Project to exchange letters
+                with no financial ask, or read our open financial statements to
+                partner financially. Whatever you choose, thank you for praying
+                with us.&rdquo;
+              </p>
+              <div
+                style="
+                  border-top: 1.5px solid var(--gf-rule);
+                  padding-top: 10px;
+                  font-size: 11.7px;
+                  line-height: 1.5;
+                  color: var(--gf-ink);
+                "
+              >
+                <strong style="color: var(--gf-harbor)"
+                  >Host preparation (in-person or remote):</strong
+                >
+                Confirm visiting planter availability, security tier, and agenda
+                preferences with Global Engagement at
+                <strong>info@globalfellowship.org</strong> before inviting
+                guests. Regional hubs and remote churches outside Northern
+                California can host video conversations using the same
+                hospitality-first format.
+              </div>
+            </div>
+          </div>
+
+          <div class="guest-strip">
+            <div>
+              <h3>No Fundraising Pitch</h3>
+              <p>
+                Guests are never put on the spot with a basket, pledge card, or
+                countdown appeal; giving stays strictly voluntary.
+              </p>
+            </div>
+            <div>
+              <h3>Local Voice First</h3>
+              <p>
+                The visiting church planter shapes what is shared and decides
+                whether photos or recordings are appropriate.
+              </p>
+            </div>
+            <div>
+              <h3>Take-Home Open Books</h3>
+              <p>
+                Printed prayer cards, Bridge Project invitations, and open 2025
+                financial sheets sit on a side table.
+              </p>
+            </div>
+          </div>
+
+          <div class="prep-strip">
+            <div style="font-weight: 800; color: var(--gf-harbor)">
+              3-MINUTE HOST CHECK BEFORE GUESTS ARRIVE
+            </div>
+            <div>
+              <strong>1.</strong> Ask your visiting friend how they prefer to be
+              introduced (full name, first name, or role only).
+              <strong>2.</strong> State clearly at the door whether phones and
+              photos should stay put away. <strong>3.</strong> Keep snacks
+              simple so neighbors feel comfortable hosting next time.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION HOST SPECIMEN · CONFIRM VISITING PLANTER SCHEDULE
+              BEFORE PRINTING</span
+            >
+            <span>GF-TPL-07</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 7px; padding-top: 7px">
+            <span
+              >Global Fellowship · Warmth, sound judgment, and persistence
+              without pressure</span
+            >
+            <span>Page 1 of 2 · Faith on the Frontlines Kit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: CROSS-CULTURAL CANDIDATE BRIEF -->
+      <section
+        class="gf-sheet candidate-sheet"
+        aria-label="Page 2: Cross-Cultural Missionary Candidate Decision Brief"
+      >
+        <div>
+          <div class="cand-masthead gf-dark-surface">
+            <div class="cand-masthead-top">
+              <img
+                src="../logos/svg/gf-lockup-horizontal-reversed.svg"
+                alt="Global Fellowship"
+                style="height: 24px; width: auto"
+              />
+              <span
+                class="gf-dateline"
+                style="color: var(--gf-apricot); font-size: 10.5px"
+                >CANDIDATE DECISION BRIEF · CROSS-CULTURAL SERVICE</span
+              >
+            </div>
+            <h2>
+              Six honest questions before you explore cross-cultural service
+            </h2>
+            <p>
+              For single believers, married couples, parents, and local church
+              planters from any nation discerning service alongside indigenous
+              leaders.
+            </p>
+          </div>
+
+          <div
+            class="gf-notice"
+            style="
+              margin-bottom: 10px;
+              padding: 8px 13px;
+              font-size: 12.4px;
+              line-height: 1.44;
+            "
+          >
+            <strong
+              >Start with one candid question (no application required):</strong
+            >
+            Email
+            <a
+              href="mailto:info@globalfellowship.org?subject=Exploring%20Service"
+              style="font-weight: 700"
+              class="gf-nowrap"
+              >info@globalfellowship.org</a
+            >
+            (Subject: <em>Exploring Service</em>) or call
+            <strong class="gf-nowrap">1 866 984 5622</strong> with your first
+            name and working language. Omit sensitive cities or names.
+          </div>
+
+          <div
+            class="gf-locked-foundation"
+            style="margin-bottom: 9px; padding: 9px 15px"
+          >
+            <div class="gf-locked-label">
+              OFFICIAL VERBATIM TEXT · Our Mission &amp; Three Pillars
+            </div>
+            <p
+              class="gf-locked-quote"
+              style="font-size: 13.6px; line-height: 1.4"
+            >
+              &ldquo;We make disciples and plant new churches by empowering
+              local leaders and sending cross-cultural missionaries to pioneer
+              church-planting work among unreached people.&rdquo;
+            </p>
+            <p
+              style="
+                font-family: var(--gf-font-display);
+                font-size: 11px;
+                color: var(--gf-harbor);
+                font-weight: 800;
+                margin: 3px 0 0;
+              "
+            >
+              Three Pillars: Church Planting · Local Leadership · Unreached
+              People
+            </p>
+          </div>
+
+          <div class="qa-grid">
+            <div class="qa-item">
+              <h3>1. Who leads when I arrive?</h3>
+              <p>
+                <strong>The local leader still leads.</strong> Rooted in service
+                under a local pastor in Liberia before 1989 (cross-cultural
+                sending began in 2012), missionaries serve as learners under
+                local elders.
+              </p>
+            </div>
+
+            <div class="qa-item">
+              <h3>2. Funding, debt, and global sending paths?</h3>
+              <p>
+                Our regional hub team (including Chiang Mai) walks candidly
+                through whether paid local work is legally permitted, how
+                sending-church support teams work in your home currency, and
+                realistic debt plans before you set any dates.
+              </p>
+            </div>
+
+            <div class="qa-item">
+              <h3>3. How does discernment involve my church?</h3>
+              <p>
+                Bring your home pastor or elders early, whether sending from
+                Asia, Africa, Latin America, Europe, or North America: listening
+                call, doctrinal review, regional fit, and language prep paced to
+                host readiness.
+              </p>
+            </div>
+
+            <div class="qa-item">
+              <h3>4. Who cares for my soul, mind, and household?</h3>
+              <p>
+                Regional directors guard spiritual, emotional, physical, and
+                financial health under <em>Health Above Results</em> for single
+                workers, couples, kids, and teens, with confidential counseling
+                referrals.
+              </p>
+            </div>
+
+            <div class="qa-item">
+              <h3>5. What happens when conflict arises?</h3>
+              <p>
+                Regional leads mediate early, and every worker has direct access
+                to our <strong>International Member Care Facilitator</strong>
+                outside their reporting line whenever independent care is
+                needed.
+              </p>
+            </div>
+
+            <div class="qa-item">
+              <h3>6. What happens after my first message?</h3>
+              <p>
+                A sending or regional teammate replies directly to schedule a
+                calm conversation and read our historic evangelical Statement of
+                Faith together (8 public articles plus full doctrinal review).
+              </p>
+            </div>
+          </div>
+
+          <div class="readiness-worksheet">
+            <div class="gf-kicker" style="margin-bottom: 2px">
+              Household Readiness Worksheet · Jot Notes Before Your First Call
+            </div>
+            <div class="ws-grid">
+              <div>
+                <span class="gf-check" aria-hidden="true"></span
+                ><strong>1. Funding path:</strong> Support, bi-vocational, or
+                debt
+                <div class="ws-line" aria-hidden="true"></div>
+              </div>
+              <div>
+                <span class="gf-check" aria-hidden="true"></span
+                ><strong>2. Sending elders:</strong> Pastor or elder to invite
+                early
+                <div class="ws-line" aria-hidden="true"></div>
+              </div>
+              <div>
+                <span class="gf-check" aria-hidden="true"></span
+                ><strong>3. Language &amp; visas:</strong> Working language
+                questions
+                <div class="ws-line" aria-hidden="true"></div>
+              </div>
+              <div>
+                <span class="gf-check" aria-hidden="true"></span
+                ><strong>4. Household season:</strong> Singles, marriage, kids,
+                teens
+                <div class="ws-line" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · DOCTRINAL &amp; CANDIDATE TIMELINE
+              NORMS PENDING LEADERSHIP CONFIRMATION</span
+            >
+            <span>GF-TPL-07</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span
+              >Global Fellowship · Serving alongside and under local leadership
+              since 1989</span
+            >
+            <span>Page 2 of 2 · Cross-Cultural Candidate Brief</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+/*
+ * Global Fellowship Proposed Brand Candidate Tokens (GENERATED from canonical brand-kit/tokens/tokens.json)
+ * Direction: Living Nearness (v15.0-draft) | Status: Proposed Candidate (Awaiting Human Approval).
+ * Do NOT publish publicly until explicit human brand approval under OVR-15.
+ * Preview website work (src/app/globals.css) is paused under OVR-24; once brand approval completes
+ * and website work resumes, these variables map directly into :root / .dark in src/app/globals.css
+ * while preserving line 1 (@layer ui-sdk;) and shadcn base-maia semantic token contracts.
+ */
+
+:root {
+  /* Core Global Fellowship Harbor Teal, Kiln Clay & Warm Paper Palette (from tokens.json) */
+  --gf-paper: #faf7f2; /* oklch(0.9771 0.0074 80.7) | Warm Paper */
+  --gf-surface-card: #ffffff; /* oklch(1 0 89.9) | Pure White */
+  --gf-paper-subtle: #f1ece3; /* oklch(0.9445 0.0132 82.4) | Warm Linen */
+  --gf-ink: #16191c; /* oklch(0.2115 0.0075 248.2) | Charcoal Ink */
+  --gf-harbor: #0c525c; /* oklch(0.4035 0.0655 209.8) | Harbor Teal */
+  --gf-harbor-deep: #0b272e; /* oklch(0.255 0.0357 217) | Harbor Night */
+  --gf-harbor-card: #12353e; /* oklch(0.3078 0.0429 217.5) | Harbor Elevated */
+  --gf-harbor-mid: #19434e; /* oklch(0.3585 0.0498 217.8) | Harbor Surface */
+  --gf-clay: #7e3119; /* oklch(0.4183 0.1131 37.5) | Kiln Clay */
+  --gf-apricot: #f2b488; /* oklch(0.8172 0.0929 56.4) | Candle Apricot */
+  --gf-sea-mist: #8ce0e5; /* oklch(0.855 0.0819 200.6) | Sea Mist */
+  --gf-mist-text: #cde2e6; /* oklch(0.8984 0.023 210.4) | Mist Text */
+  --gf-notice-surface: #e9f2f3; /* oklch(0.9547 0.0097 204.9) | Harbor Mist */
+  --gf-slate: #4b5357; /* oklch(0.4366 0.0122 229.1) | Warm Slate */
+  --gf-rule: #dbd4c9; /* oklch(0.8725 0.0168 79.3) | Warm Rule */
+  --gf-border-ui: #636b6e; /* oklch(0.5219 0.0109 222.2) | Control Border */
+  --gf-border-dark: #6eaab2; /* oklch(0.7 0.0631 206.5) | Dark Structural Rule */
+  --gf-input-dark: #85bec6; /* oklch(0.765 0.06 206.9) | Dark Control Border */
+  --gf-crimson: #821818; /* oklch(0.3965 0.141 26.5) | Signal Crimson */
+  --gf-crimson-dark: #ff9b93; /* oklch(0.7903 0.121 25.1) | Coral Alert */
+  --gf-forest: #1b5e3a; /* oklch(0.43 0.0897 155.7) | Forest Confirm */
+
+  /* Typography Stacks (100% SIL OFL 1.1, from tokens.json) */
+  --gf-font-display:
+    "Plus Jakarta Sans", "Noto Sans", "Noto Sans Thai", "Noto Sans Devanagari",
+    "Noto Sans Arabic", "Noto Serif Bengali", "Noto Sans SC", sans-serif;
+  --gf-font-ui:
+    "Plus Jakarta Sans", "Noto Sans", "Noto Sans Thai", "Noto Sans Devanagari",
+    "Noto Sans Arabic", "Noto Serif Bengali", "Noto Sans SC", sans-serif;
+  --gf-font-serif:
+    "Source Serif 4", "Noto Serif", "Noto Sans Arabic", "Noto Serif Bengali",
+    "Noto Sans Thai", "Noto Sans Devanagari", "Noto Sans SC", serif;
+  --gf-font-sans:
+    "Plus Jakarta Sans", "Noto Sans", "Noto Sans Thai", "Noto Sans Devanagari",
+    "Noto Sans Arabic", "Noto Serif Bengali", "Noto Sans SC", sans-serif;
+  --gf-font-thai: "Noto Sans Thai", "Noto Sans", sans-serif;
+  --gf-font-arabic:
+    "Noto Sans Arabic", "Noto Naskh Arabic", "Noto Sans", sans-serif;
+  --gf-font-bengali:
+    "Noto Serif Bengali", "Noto Sans Bengali", "Noto Sans", serif;
+  --gf-font-devanagari: "Noto Sans Devanagari", "Noto Sans", sans-serif;
+  --gf-font-cjk: "Noto Sans SC", "Noto Sans", sans-serif;
+
+  /* Type Scale Tokens (1-to-1 from tokens.json) */
+  --gf-text-monument: 6rem;
+  --gf-text-hero: 4.25rem;
+  --gf-text-h1: 2.625rem;
+  --gf-text-h2: 1.625rem;
+  --gf-text-h3: 1.1875rem;
+  --gf-text-body: 1rem;
+  --gf-text-note: 0.875rem;
+  --gf-text-dateline: 0.75rem;
+
+  /* Spacing & Radius Tokens (1-to-1 from tokens.json) */
+  --gf-space-base: 4px;
+  --gf-space-xs: 8px;
+  --gf-space-sm: 12px;
+  --gf-space-md: 16px;
+  --gf-space-lg: 24px;
+  --gf-space-xl: 32px;
+  --gf-space-2xl: 48px;
+  --gf-space-3xl: 64px;
+  --gf-radius-none: 0px;
+  --gf-radius-sm: 4px;
+  --gf-radius-md: 8px;
+
+  /* Future Website Bridge: Complete Light-Mode shadcn base-maia Semantic Token Mapping */
+  --background: oklch(0.9771 0.0074 80.7);
+  --foreground: oklch(0.2115 0.0075 248.2);
+  --card: oklch(1 0 89.9);
+  --card-foreground: oklch(0.2115 0.0075 248.2);
+  --popover: oklch(1 0 89.9);
+  --popover-foreground: oklch(0.2115 0.0075 248.2);
+  --primary: oklch(0.4035 0.0655 209.8);
+  --primary-foreground: oklch(0.9771 0.0074 80.7);
+  --secondary: oklch(0.9445 0.0132 82.4);
+  --secondary-foreground: oklch(0.2115 0.0075 248.2);
+  --muted: oklch(0.9445 0.0132 82.4);
+  --muted-foreground: oklch(0.4366 0.0122 229.1);
+  --accent: oklch(0.9547 0.0097 204.9);
+  --accent-foreground: oklch(0.4035 0.0655 209.8);
+  --destructive: oklch(0.3965 0.141 26.5);
+  --destructive-foreground: oklch(0.9771 0.0074 80.7);
+  --border: oklch(0.8725 0.0168 79.3);
+  --input: oklch(0.5219 0.0109 222.2);
+  --ring: oklch(0.4035 0.0655 209.8);
+  --radius: 0.5rem;
+}
+
+/* Complete Dark Semantic Scope (Unified Harbor Night across web, covers, video & dark emails) */
+.gf-dark-surface,
+.dark {
+  --background: oklch(0.255 0.0357 217);
+  --foreground: oklch(0.9771 0.0074 80.7);
+  --card: oklch(0.3078 0.0429 217.5);
+  --card-foreground: oklch(0.9771 0.0074 80.7);
+  --popover: oklch(0.3078 0.0429 217.5);
+  --popover-foreground: oklch(0.9771 0.0074 80.7);
+  --primary: oklch(0.8172 0.0929 56.4);
+  --primary-foreground: oklch(0.2115 0.0075 248.2);
+  --secondary: oklch(0.3585 0.0498 217.8);
+  --secondary-foreground: oklch(0.9771 0.0074 80.7);
+  --muted: oklch(0.3585 0.0498 217.8);
+  --muted-foreground: oklch(0.8984 0.023 210.4);
+  --accent: oklch(0.3585 0.0498 217.8);
+  --accent-foreground: oklch(0.8172 0.0929 56.4);
+  --destructive: oklch(0.7903 0.121 25.1);
+  --destructive-foreground: oklch(0.2115 0.0075 248.2);
+  --border: oklch(0.7 0.0631 206.5);
+  --input: oklch(0.765 0.06 206.9);
+  --ring: oklch(0.8172 0.0929 56.4);
+}
