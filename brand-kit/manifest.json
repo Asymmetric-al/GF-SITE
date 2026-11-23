@@ -3,14 +3,14 @@
   "brand": "Global Fellowship",
   "direction": "Living Nearness",
   "approvalStatus": "proposed-candidate-awaiting-human-approval",
-  "generatedAtUtc": "2026-11-23T05:53:52.620Z",
+  "generatedAtUtc": "2026-11-23T06:35:53.354Z",
   "totalAssets": 103,
   "items": [
     {
       "id": "GF-GDE-01",
       "category": "guide",
       "source": "guide/brand-guide-book.html",
-      "sha256": "60e76d98fc98ffda3635f933697f4f9f8e96eb299008015d5e977557e146b3ad",
+      "sha256": "f5dd83bb9989da824e87e4eefb00ed1d7005b204c4d0fc0d3fcff0d2d1d881fa",
       "securityTier": "public",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1; contextual documentary photos: CC0 1.0 & CC BY 2.0 per PHOTO-LICENSES.md)",
@@ -28,13 +28,13 @@
       "exports": [
         {
           "path": "exports/png/brand-guide-book.png",
-          "sha256": "5e587aad22ac39ed189af028265e500934ec06fddf5c4971098965f92331e307",
+          "sha256": "458f74315d5438601be5c88d1c75e709938df8a9bf70a35be090a760e7318d53",
           "width": 1800,
           "height": 15072
         },
         {
           "path": "exports/pdf/brand-guide-book.pdf",
-          "sha256": "235d396697650f0e0358ba1145ec15aa07236c2414c29d52ec4ba2cd90e9c03f",
+          "sha256": "a62bcceca08bf6ba4a091538bd288885f7b8b61fea2594ee09ae693cddc06412",
           "pages": 7
         }
       ],
@@ -108,7 +108,7 @@
         },
         {
           "path": "exports/pdf/brand-on-one-sheet.pdf",
-          "sha256": "85216657e9701c84a47d5dcd409b57b5a97316b1582ce8f31d79b363c64f44e9",
+          "sha256": "cd603e768bb4553d285db2bd3ff3441fae7afebba17cae1d5d2c3149c987bba2",
           "pages": 1
         }
       ],
@@ -119,7 +119,7 @@
       "id": "GF-GDE-03",
       "category": "guide",
       "source": "guide/field-safe-checklist.html",
-      "sha256": "ca0f7651e758976640a2aad20cef6bf2e085b4f3fd0c316466752409f7e394f8",
+      "sha256": "03709679f1ea4d7c9bb95c4228f4da2011996aff9a28bc054e80bd8d992606d4",
       "securityTier": "all-tiers",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -129,13 +129,13 @@
       "exports": [
         {
           "path": "exports/png/field-safe-checklist.png",
-          "sha256": "dd3f5b19f1a2ef94ebbeb36ace1cf84a1939d61660dca41aa632e21cc26bf369",
+          "sha256": "2bfb8cea0db17a4b285d8629919f2cb823f465c3f6f31b0cf8abdd7320c7e09f",
           "width": 1800,
           "height": 2240
         },
         {
           "path": "exports/pdf/field-safe-checklist.pdf",
-          "sha256": "feee59337c67b86c65f86288dba0f0fb3069ff8029c8611a46fbbc05fa44fc90",
+          "sha256": "f404ee246130aecec4021247eaa24baad4c6103b6d081cdfa64877bf62180ded",
           "pages": 1
         }
       ],
@@ -162,7 +162,7 @@
         },
         {
           "path": "exports/pdf/four-environment-survival-proof.pdf",
-          "sha256": "633193119dae3baca3f155a2a18c6e5cccdcad88a1e180fe476a68ef05b1ad04",
+          "sha256": "6e44c512ff79a1baed8fee9bc3b1e8f2d73d619f0eaeaf523890a3a2401a9a7f",
           "pages": 2
         }
       ],
@@ -196,12 +196,12 @@
         },
         {
           "path": "exports/pdf/prayer-card-restricted-master.pdf",
-          "sha256": "61fec5657fd144e7edb9064657b7b2e0dc640bda23740e397d24e586acdb10e0",
+          "sha256": "126b4bb1531e1e1e1088bf62979ddf6c14e4cc27918b00992490133227d6458f",
           "pages": 2
         },
         {
           "path": "exports/pdf/prayer-card-restricted-master-bleed.pdf",
-          "sha256": "533ffa31218f90c7d89eea82e6937b12e18c9ea05af6577531288a4ac8677455",
+          "sha256": "4f47a47c35be48cb54a080e92ba421ff2588647258cdfe476f72308034f8512f",
           "pages": 2
         }
       ],
@@ -235,12 +235,12 @@
         },
         {
           "path": "exports/pdf/prayer-card-public-variant.pdf",
-          "sha256": "49ad59072ffcc5b198bdf662e214127c595ca42ad30eeec7025a70eb3aa39672",
+          "sha256": "b8331ddeb6371f3ea630410863839c6ed0bcb65f07277edcc31cd07f7a82afd3",
           "pages": 2
         },
         {
           "path": "exports/pdf/prayer-card-public-variant-bleed.pdf",
-          "sha256": "c7bf05073f139d2e89b306b952c54259a902a524aeca20a9d3b1363471029339",
+          "sha256": "531023961f610a571fb63755d4aca1e8acabf26fc03a44f2cc38cc64144f38d6",
           "pages": 2
         }
       ],
@@ -274,7 +274,7 @@
         },
         {
           "path": "exports/pdf/local-ministry-welcome-and-endorsement.pdf",
-          "sha256": "78e0bb24076d351c33440e91141dc5561a5f1a22cb86fd7a361c038979b2424d",
+          "sha256": "bdff62e26611568c6748de2a369872b987945be21951d0289975979583b29df9",
           "pages": 2
         }
       ],
@@ -301,7 +301,7 @@
         },
         {
           "path": "exports/pdf/worker-prayer-letter-kit.pdf",
-          "sha256": "ed26f09c1c8e463a3f1bf47c376d7cbdd1afd7a7da5fe578f3a11c3195ecc829",
+          "sha256": "8dfdd5c1cd10376ef2abbce6763be3cff643deb95af25f3d7ec66ca83682c74a",
           "pages": 2
         }
       ],
@@ -312,7 +312,7 @@
       "id": "GF-TPL-05",
       "category": "template",
       "source": "templates/annual-report-2025-spread.html",
-      "sha256": "0f214b768eee591a88dfbe0bc3f635aa6435a762d492383b24504ebed8627c20",
+      "sha256": "ee616872934ac3c290eb6652ade9305de59cada2ff5d3ad4dd673dfa9276eb63",
       "securityTier": "public-dated-2025-composite-witness",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1; contextual documentary photo GF-PHO-02: Brooke Cagle, CC0 1.0)",
@@ -331,13 +331,13 @@
       "exports": [
         {
           "path": "exports/png/annual-report-2025-spread.png",
-          "sha256": "9fc98df57bdadf628286e8433178f7d60e57886f315461c97b2f7e8915d7200e",
+          "sha256": "456b3f6966fe0eeb26687cc589d6c1de7f4a20066dd78b8bfe6118bf22219e83",
           "width": 1800,
           "height": 4910
         },
         {
           "path": "exports/pdf/annual-report-2025-spread.pdf",
-          "sha256": "4d5ff4b8bca727caa43a740f1c933794001cd15a9a37c5a116434c5ba9ea786f",
+          "sha256": "6829fa3e43a7a826f690d321ec729ff2aefc3421d1e2066240e0821b7ad2c267",
           "pages": 2
         }
       ],
@@ -374,7 +374,7 @@
         },
         {
           "path": "exports/pdf/church-partnership-and-sunday-kit.pdf",
-          "sha256": "7926bf00670ea2aab54dbd56f90bc6d9e4e2f4f24845ca9ece2c3135f61156db",
+          "sha256": "b205228c584ac23f522d2d5310e7167b37dc1362204ed07621f80cd96df071d8",
           "pages": 2
         }
       ],
@@ -401,7 +401,7 @@
         },
         {
           "path": "exports/pdf/faith-on-the-frontlines-and-candidate-kit.pdf",
-          "sha256": "0ceff4f017ecfd1219174c0df71fedff3e1977b5f0e4a8974b7d968786f0c4c1",
+          "sha256": "2b77a8093a7158285858c47e34cf067c8f56a708646e6688c97a771e315ef6d7",
           "pages": 2
         }
       ],
@@ -464,7 +464,7 @@
       "id": "GF-TPL-09",
       "category": "template",
       "source": "templates/donor-stewardship-and-hard-news-email.html",
-      "sha256": "344f0fdfada69ff04b4578300d8757f43a8fbcc5e21b61aca0e25da62cef2185",
+      "sha256": "e4da882aa7847f171d5ee49c226fe264f5e7547e235c8f9a9104e45ab680bd14",
       "securityTier": "public-and-private-pastoral",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -474,33 +474,33 @@
       "exports": [
         {
           "path": "exports/png/donor-stewardship-and-hard-news-email.png",
-          "sha256": "2c18358b9995e19660eb63054d800c68a92da733eacb97f7a19d82931e88c5fd",
+          "sha256": "c62b8ec294c20fa9d560f9c024fc5742ca82480d3f5bd73041d8e4bbbf8677fb",
           "width": 1400,
-          "height": 4150
+          "height": 4190
         },
         {
           "path": "exports/png/donor-stewardship-email-320px.png",
-          "sha256": "4f2c8edd05bd2926c3bdf561e18c18d9d71784bae68f3391e8983051d404166c",
+          "sha256": "69a7172ef163a016638aad87a99140f351be70df83817e1e006d447dba6c32cf",
           "width": 640,
-          "height": 3490
+          "height": 3568
         },
         {
           "path": "exports/png/donor-stewardship-email-375px.png",
-          "sha256": "daa231df4c4eeb6dae645763e2a154484232ac1c2ebe1159ab48fdfb4377c820",
+          "sha256": "811b40b47207742c68b41963ca01586359810ce970f7a81383ad33f6aed04e4f",
           "width": 750,
-          "height": 3064
+          "height": 3142
         },
         {
           "path": "exports/png/donor-stewardship-email-dark.png",
-          "sha256": "2a71c862afd879bde8ed2317a4936e3cc80234b11bf6d1891407b028984327cb",
+          "sha256": "f0d2ac684fb91e0f9503fba0ba2bfc3fa026733de99fd2da80a471e1255007dc",
           "width": 750,
-          "height": 3068
+          "height": 3146
         },
         {
           "path": "exports/png/donor-stewardship-email-images-off.png",
-          "sha256": "daa231df4c4eeb6dae645763e2a154484232ac1c2ebe1159ab48fdfb4377c820",
+          "sha256": "811b40b47207742c68b41963ca01586359810ce970f7a81383ad33f6aed04e4f",
           "width": 750,
-          "height": 3064
+          "height": 3142
         },
         {
           "path": "exports/png/hard-news-email-375px.png",
@@ -522,7 +522,7 @@
       "id": "GF-TPL-10",
       "category": "template",
       "source": "templates/presentation-deck.html",
-      "sha256": "c5c10dd5cbfc09ccceaedc3f7fc543ca4e29421481907019ea24a012df9b3e9e",
+      "sha256": "bd87e10e3ceb83db207143b476291068e436f761c43c3fd9d0168bab15efae8a",
       "securityTier": "public-livestream-safe-synthetic",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1; Slide 1 contextual street photo GF-PHO-01: James Creegan, CC BY 2.0)",
@@ -541,13 +541,13 @@
       "exports": [
         {
           "path": "exports/png/presentation-deck.png",
-          "sha256": "f92f4032dac043faf3f5cc5d3441854d25e6c993a6e6dc455f3e0aaccede7d18",
+          "sha256": "5ebb07988e3379c438b5899e79c152c8d762472b127a8a881c76131f0a7f5221",
           "width": 2720,
-          "height": 13192
+          "height": 13226
         },
         {
           "path": "exports/pdf/presentation-deck.pdf",
-          "sha256": "1f1b110f3c0160da2200e2b8f790b2794324614c9fb6220776019fbed615dd17",
+          "sha256": "07e237adf2c52da998bd0941bc3b723fcf42ea1ebeaea3cdca9d5a30f9c21c87",
           "pages": 8
         }
       ],
@@ -573,7 +573,7 @@
       "id": "GF-TPL-11",
       "category": "template",
       "source": "templates/social-and-og-kit.html",
-      "sha256": "16088563d73f3f46614a4c88d281f6aed23480b8710485da275e19d2543fb7b6",
+      "sha256": "94f99d45f466bfe1915fa65c8423e09e9674dd84ed2561312136b524ffad1ac3",
       "securityTier": "public-no-restricted-social",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1; contextual street photos GF-PHO-01 James Creegan CC BY 2.0 & GF-PHO-03 James Sutton CC0 1.0)",
@@ -583,7 +583,7 @@
       "exports": [
         {
           "path": "exports/png/social-and-og-kit.png",
-          "sha256": "47a0018c6e6e70ed1199347467628522f2e9ecb23a5d4427d829f81bd274c221",
+          "sha256": "0cdd32263deeaebecae24b01cb0db474c22387e54c0c9357b4d939d23a8b2678",
           "width": 2560,
           "height": 22168
         },
@@ -596,10 +596,10 @@
         },
         {
           "path": "exports/png/social-portrait-1080x1350.png",
-          "sha256": "ac1aaf73b3d0f655b59ebbccd7a9a069c39478f5bc689868ab3c82ae58d7dd97",
+          "sha256": "b1180702b5c8ff66668b2938e84cfda839a40a4fa4dfc1434baaf40af19d082f",
           "width": 1080,
           "height": 1350,
-          "bytes": 180111
+          "bytes": 181922
         },
         {
           "path": "exports/png/social-photo-story-1080x1350.png",
@@ -682,7 +682,7 @@
         },
         {
           "path": "exports/pdf/member-care-and-stationery.pdf",
-          "sha256": "4cc3fe5dfcfc6dd744bafaef7537d7117ceeb35d12161b5c436d1f2669fa4661",
+          "sha256": "bfed00a54c7f3d8d2f0a545e56a20f019178f16e5bb2f898c1dfedcfcc5e32c6",
           "pages": 1
         }
       ],
@@ -709,7 +709,7 @@
         },
         {
           "path": "exports/pdf/support-staff-and-consent-kit.pdf",
-          "sha256": "118b97b31b15a936c54b920e71d81e8a30a0da42e4ec3b6dee416b5c6d9e8f6e",
+          "sha256": "5d61854e8875a3a14f7beb15b6386af0d5627ecc53e55d02a665c83300a94bef",
           "pages": 2
         }
       ],
@@ -727,7 +727,7 @@
       "id": "GF-TPL-14",
       "category": "template",
       "source": "templates/mobile-note-and-video-kit.html",
-      "sha256": "4b9c7eaf3fd5fbaec5dc286374b94a5e5cdc62cb436b503df4e371ec66418624",
+      "sha256": "1580bc9657768789ba2f2d00aa4b192eed9d2c08f3355ab614a69cfec0d3e1fc",
       "securityTier": "tier-3-note-and-tier-1-video",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -737,7 +737,7 @@
       "exports": [
         {
           "path": "exports/png/mobile-note-and-video-kit.png",
-          "sha256": "be14012f0e7b1c8f561834b649f3f531e6a39f4b4d0147a0b9cb5de73f901f5e",
+          "sha256": "72f7ef54aeba008c79d3862f1dce51f0e58b4f9d6dd02c908bfae4b48838e269",
           "width": 1800,
           "height": 6432
         },
@@ -779,7 +779,7 @@
         },
         {
           "path": "exports/pdf/mobile-note-and-video-kit.pdf",
-          "sha256": "51dc09dd22cd5ba81c42e97f864af1df13b3f2739be76a8b349d88534def6f04",
+          "sha256": "f0d7a05f775cff1911dfc1b4d6feed9aed4eea62cd358429060afba88f063ce3",
           "pages": 3
         }
       ],
@@ -797,7 +797,7 @@
       "id": "GF-TPL-15",
       "category": "template",
       "source": "templates/revocable-consent-form.html",
-      "sha256": "0b6394d68d68574c469e71735eef19995377e45f7d1525a0e4d0274e5357207e",
+      "sha256": "742c4a56fe483ff3c20bac3f34d998bf836620bedb27c2172b70f3ffe594e6dc",
       "securityTier": "private-consent-outside-git",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -807,13 +807,13 @@
       "exports": [
         {
           "path": "exports/png/revocable-consent-form.png",
-          "sha256": "6eb204bf2774c04fa6053e9041caf950cdb577f9c725c9519d96466876df80ee",
+          "sha256": "c5832bb1482861ca855fdd8ed0f4c416171c7df7a57972c802cb57af6813ffd0",
           "width": 1800,
           "height": 4272
         },
         {
           "path": "exports/pdf/revocable-consent-form.pdf",
-          "sha256": "6edbf6167dca9d44c8e0c7534e0491aa87e5e73f8c1d7127f3b4578dc1aa15c1",
+          "sha256": "182c735402c6f6d29183705881bdd4bfc9ea2a50bb64ed29708867eca15902f8",
           "pages": 2
         }
       ],
@@ -847,7 +847,7 @@
         },
         {
           "path": "exports/pdf/local-only-zero-attribution-sheet.pdf",
-          "sha256": "014cbb4f50463665f9660bcd80f99aa7d91c94d5165ade03d5bdf0393f08134f",
+          "sha256": "4f4572fc9884fd396ae6cd4e27050e277145539a4469dfd56e4e52d02d604027",
           "pages": 1
         }
       ],
@@ -874,7 +874,7 @@
         },
         {
           "path": "exports/pdf/sunday-bulletin-insert-half-letter.pdf",
-          "sha256": "df89f1d5d5866e05bb6449f06ddcf3b055ee62705e4a584ccfce3092379d0274",
+          "sha256": "4541c85e5feae80ed60c32975cd2f1f9279a086607c63a0847be0c46d6335028",
           "pages": 1
         }
       ],
@@ -901,7 +901,7 @@
         },
         {
           "path": "exports/pdf/member-care-journal-confidential.pdf",
-          "sha256": "07a8f330a7eb8c0376d2cd9069eadcc66c5d7dd4fe33f31e3142a7e46a79db8b",
+          "sha256": "18aa9146d59d81c61b681e678bc7150168bac187200324a1009d0ca6552ae586",
           "pages": 1
         }
       ],
@@ -928,7 +928,7 @@
         },
         {
           "path": "exports/pdf/arabic-first-local-brief.pdf",
-          "sha256": "1ea68f947590dd921ea914f3405493a44e96c1cf95b943f6194032c91d6655dc",
+          "sha256": "be8c584514c4731c404a7756567809390d35f4e1e319a6e26d71165ef02259ea",
           "pages": 1
         }
       ],
@@ -962,7 +962,7 @@
         },
         {
           "path": "exports/pdf/arabic-first-local-brief-translator-notes.pdf",
-          "sha256": "9bf03274a9e55a3cd61c7a0327eddf13d178d039d089a636c9da4f834558e952",
+          "sha256": "04cceeb483e57b801781cd9e218918729f47ae2bafd9c9047675496da37c7b48",
           "pages": 1
         }
       ],
@@ -996,7 +996,7 @@
         },
         {
           "path": "exports/pdf/bridge-kids-drawing-and-prayer-sheet.pdf",
-          "sha256": "f8d0bfdc85e3c88db5a8a387045da9e37a43915d7362579f22bb13ba9a63578b",
+          "sha256": "acd75a1282788ad44c7a8afae551360f25173b88f35951e05c65eeb6f755361c",
           "pages": 1
         }
       ],
@@ -1023,7 +1023,7 @@
         },
         {
           "path": "exports/pdf/donor-lifecycle-and-receipt-kit.pdf",
-          "sha256": "591d48fb812bb857a6941271f60a7dee0f14955d084551edcd62c1be5ed2020b",
+          "sha256": "f62f8d450cd4cc3409a26842ecda18a1931728e3595486c22a2625203351e311",
           "pages": 2
         }
       ],
@@ -1034,7 +1034,7 @@
       "id": "GF-TPL-22",
       "category": "template",
       "source": "templates/church-elders-vetting-packet.html",
-      "sha256": "c37366b9923f8a2fa8672f6fec9deeeb01cad3f8dd9dfff03a12532a5c4acfd4",
+      "sha256": "f4c5429dcf1cf10feb8554770d5573d41fdfe6164a413fdf5fbc29ec1fe5e96c",
       "securityTier": "public-livestream-safe",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -1044,13 +1044,13 @@
       "exports": [
         {
           "path": "exports/png/church-elders-vetting-packet.png",
-          "sha256": "36148c9ae17d75a9007c60693106d28acc04c12bf59f8dd92fa614ef6ce61edf",
+          "sha256": "8207822b99161041c57e9cea6fa1d40b6044dfe35c66145f4afafd14d54a5e11",
           "width": 1800,
           "height": 4272
         },
         {
           "path": "exports/pdf/church-elders-vetting-packet.pdf",
-          "sha256": "6b165c997a10efef5466e8eebeaa1acd1bb0535b2d9fbf15fc333e67fbe145b5",
+          "sha256": "5c9b0257ccb66757c46fbf4244db812baedbca0bba002b5b753d46c490126fc6",
           "pages": 2
         }
       ],
@@ -1077,7 +1077,7 @@
         },
         {
           "path": "exports/pdf/exposure-trip-host-agreement.pdf",
-          "sha256": "050cd059c2ad664ef2ffd541513bfa2c287dd75d0e7262a5595f311ffd13b2f4",
+          "sha256": "36e22ffb6800940029c34d4f94462faca797316d84d56767a69d295caccce6e9",
           "pages": 2
         }
       ],
@@ -1088,7 +1088,7 @@
       "id": "GF-TPL-24A",
       "category": "template",
       "source": "templates/candidate-and-support-raising-kit.html",
-      "sha256": "ae9345530848a19cf49f726cc6e5a9f95d8aa910505283a40385a192a4c91ffe",
+      "sha256": "0dc906f726d59f021017bde970d23867004f1cf8ade05ee687120b5e09e56307",
       "securityTier": "public",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (typefaces SIL OFL 1.1)",
@@ -1098,13 +1098,13 @@
       "exports": [
         {
           "path": "exports/png/candidate-and-support-raising-kit.png",
-          "sha256": "cfad90cb54f5b8a522f1fbd622ba1954815036ec9b25d9e6c66d7c7dc2d9614c",
+          "sha256": "83ed18307582f5b5c243af92bbee783ac4843870094b761c28489a19ff13c1f6",
           "width": 1800,
           "height": 4272
         },
         {
           "path": "exports/pdf/candidate-and-support-raising-kit.pdf",
-          "sha256": "a0358a2c5172ccdfce59af70bc920b69c81943a4b89f377fb1105c1a40564e81",
+          "sha256": "bb15cb3fb2138f7a42a96b164081655ed3496547c9ed7a0d4f50fb5a71ab304b",
           "pages": 2
         }
       ],
@@ -1131,7 +1131,7 @@
         },
         {
           "path": "exports/pdf/staff-onboarding-and-dual-tier-signatures.pdf",
-          "sha256": "d68e3b9e58a1b8f61c6a4546331f37ffaaa0201b012f024648b4c8d8d202ea22",
+          "sha256": "4d4b3393d9229bc8c70ef1e4c814d69b1b0826118157ab2eb35d5984b44ec215",
           "pages": 1
         }
       ],
@@ -1158,7 +1158,7 @@
         },
         {
           "path": "exports/pdf/bridge-matched-household-welcome-guide.pdf",
-          "sha256": "024ffebcc72ea5e0c082e05f3773dad637aafbacfc89e465fcf87e8e1a4286ec",
+          "sha256": "c06a18f974fa96038cc97589f022309f711c138939723790ec9832188e616532",
           "pages": 1
         }
       ],
@@ -1390,7 +1390,7 @@
       "id": "GF-SCR-03",
       "category": "exports/scripts",
       "source": "exports/presentation-deck-multilingual-text.txt",
-      "sha256": "0966d97b3df53830d378574148b87c9d8eb5a4d78b959a1e9f2f1f281282c2af",
+      "sha256": "5cdfd7eb42da11949672fc1bd23b4d171c320a2e5d1b3da7bae95856389240ed",
       "securityTier": "public",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship",
@@ -1400,7 +1400,7 @@
       "exports": [
         {
           "path": "exports/presentation-deck-multilingual-text.txt",
-          "sha256": "0966d97b3df53830d378574148b87c9d8eb5a4d78b959a1e9f2f1f281282c2af"
+          "sha256": "5cdfd7eb42da11949672fc1bd23b4d171c320a2e5d1b3da7bae95856389240ed"
         }
       ]
     },
@@ -2361,7 +2361,7 @@
       "id": "GF-AST-OFFICE-GLOBAL-FELLOWSHIP-DECK-STARTER-PPTX",
       "category": "office",
       "source": "office/global-fellowship-deck-starter.pptx",
-      "sha256": "17b73840e638183dd1962bb73b09eebcefcb6bbb9d9864db994e15a0e565841a",
+      "sha256": "9e29bc43a125ced3949aadce023a60fa9b447ed476a5932afab977e584372288",
       "securityTier": "public",
       "approvalStatus": "proposed-candidate",
       "license": "Original work for Global Fellowship (Slide 1 contextual street photo GF-PHO-01: James Creegan, CC BY 2.0)",
@@ -2381,7 +2381,7 @@
       "exports": [
         {
           "path": "office/global-fellowship-deck-starter.pptx",
-          "sha256": "17b73840e638183dd1962bb73b09eebcefcb6bbb9d9864db994e15a0e565841a"
+          "sha256": "9e29bc43a125ced3949aadce023a60fa9b447ed476a5932afab977e584372288"
         }
       ],
       "disclosureTier": "tier-1-public",
@@ -2476,7 +2476,7 @@
       "id": "GF-PHO-LIC",
       "category": "photography",
       "source": "photography/PHOTO-LICENSES.md",
-      "sha256": "2552d1b427c1bbb4330d5d774803fea80212cf91e392efd4ab95336256abc3ed",
+      "sha256": "11d2c4f401a327cf2ebf07455aca416a5d480c53da81840b4a655710dedfa77a",
       "securityTier": "public",
       "approvalStatus": "proposed-candidate",
       "license": "Original documentation for Global Fellowship",
@@ -2486,8 +2486,8 @@
       "exports": [
         {
           "path": "photography/PHOTO-LICENSES.md",
-          "sha256": "2552d1b427c1bbb4330d5d774803fea80212cf91e392efd4ab95336256abc3ed",
-          "bytes": 10096
+          "sha256": "11d2c4f401a327cf2ebf07455aca416a5d480c53da81840b4a655710dedfa77a",
+          "bytes": 10116
         }
       ]
     },

@@ -48,7 +48,7 @@ export interface DeckSlideData {
 
 export const CANONICAL_PILLAR_GLOSSES = {
   churchPlanting:
-    "Proclaiming Christ’s death and resurrection, making disciples, baptizing believers, and gathering healthy, multiplying local churches.",
+    "Proclaiming Christ's death and resurrection, making disciples, baptizing believers, and gathering healthy, multiplying local churches.",
   localLeadership:
     "Empowering believers who already belong to the language, culture, and community to shepherd and multiply the church.",
   unreachedPeople:
@@ -229,7 +229,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       },
     ],
     footerLeft:
-      "Tier 1 anonymous collective prayer · Zero restricted names, cities, or photos on screen",
+      "Anonymous collective prayer · No restricted names, cities, or photos on screen",
     specimenStatus: "Pre-publication specimen · awaiting approval",
     speakerNote:
       "Explain why no personal name or city appears on a livestreamed slide: guarding worker households is practical love. Invite the congregation to pray aloud or quietly through the three prompts on the right. This is an illustrative Tier 1 anonymous collective prayer specimen (not a Tier 3 household update or field report); each specific broadcast instance requires separate clearance before going live.",
@@ -279,7 +279,7 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       },
       {
         label: "Global Fellowship Entity",
-        sub: "GF standalone 501(c)(3) portion ($2.08M received)",
+        sub: "GF breakout in 2025 Statement of Activity ($2.08M in)",
         value: "$2.13M out",
         widthPct: 37.2,
         tone: "harbor-deep",
@@ -291,12 +291,12 @@ export const DECK_SLIDES: readonly DeckSlideData[] = [
       body: "Separately reported 2025 funding lines (not a reconciliation to operating expenses; Finance review open): 8% admin fee ($192.5k), Home Office & fee-coverage gifts ($40.2k), rental income ($33k), and WMN Inc ($14.5k).",
     },
     scopeNote:
-      "*Consolidated totals combine Global Fellowship with affiliated MissionStream and BOLK (full itemized bridge in our 2025 Annual Report handout; $5.9M Report summary and 8% fee scope pending Finance review). Request both statements: finance@globalfellowship.org.",
+      "*Consolidated totals combine Global Fellowship with affiliated MissionStream and BOLK ($5.9M Annual Report summary and 8% fee scope pending Finance review). Request our 2025 Statement of Activity & Statement of Financial Position: finance@globalfellowship.org.",
     footerLeft:
       "501(c)(3) EIN 68-0214543 · Candid ID 8043461 · finance@globalfellowship.org",
     specimenStatus: "Pre-publication specimen · awaiting approval",
     speakerNote:
-      "Show comparable 2025 disbursements ($5.73M Consolidated vs. $2.13M Global Fellowship standalone portion) separately from Home Office operating expenses ($251.6k, including $52.7k merchant processing) and separately reported Home Office funding lines ($192.5k 8% admin fee, $40.2k gifts, $33k rental income, $14.5k WMN Inc; explicitly not a reconciliation to operating expenses while Finance confirms entity/fund scope under OVR-01/03/16). Global Fellowship is not currently an ECFA member due to dues and lean staff size.",
+      "Show comparable 2025 disbursements ($5.73M Consolidated vs. $2.13M Global Fellowship breakout inside the 2025 Statement of Activity) separately from Home Office operating expenses ($251.6k, including $52.7k merchant processing) and separately reported Home Office funding lines ($192.5k 8% admin fee, $40.2k gifts, $33k rental income, $14.5k WMN Inc; explicitly not a reconciliation to operating expenses while Finance confirms entity/fund scope under OVR-01/03/16). Invite churches to request both published 2025 financial statements (Statement of Activity and Statement of Financial Position). Global Fellowship is not currently ECFA-accredited because annual audit costs driven by total transaction volume would draw heavily on our lean Home Office resources.",
   },
   {
     number: 8,

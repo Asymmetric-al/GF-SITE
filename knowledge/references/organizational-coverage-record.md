@@ -94,7 +94,7 @@ _Named-Owner Honesty Note:_ Publicly documented leadership names (Don Oates, Jer
 
 - `bun run okf:validate` AND official upstream Python OKF v0.3 `validate.py --strict` / `scan.py`: `55` concepts across `7` domains (`54` `draft`, `1` `deprecated`, `0` errors, `0` warnings, zero invented `stale_after` dates, zero fabricated `human:` verifications).
 - `bun run verify:brand`: `31` guides and templates, `30/30` tagged SIL OFL 1.1 PDFs (verified per-page TrimBox/BleedBox + safe-area inset + per-block logical Arabic `/ActualText`), `6/6` cohesive sRGB zero-ShareAlike EXIF/COM-stripped street photos (`brand-kit/photography/`), `6/6` OOXML Office starters (including Slide 1 embedded street photo on `.pptx`), `6/6` Release Gates (`G1`–`G6`, including Gate 1 strict ASCII byte-exact 8-article Statement of Faith parity, pixel-verified photo-scrim AAA contrast, Tier 3 media-routing & private prayer-note ID purity, reverse `SYNTH-VETO-001` drill including `"Not this spring"` and `GF-SCR-05`, and `GF-TPL-19` pure-Arabic-only check).
-- `bun run check`, `bun run check:foundation`, `bun run knip`, `bun run typecheck`, `bun run check:links`, `bun run check:prose`, `bun run test:run`, `bun run build`, `bun run test:smoke`: verified cleanly on the completion branch and again post-merge on `main`.
+- `bun run check`, `bun run check:foundation`, `bun run knip`, `bun run typecheck`, `bun run check:links`, `bun run check:prose`, `bun run test:run`, `bun run build`, `bun run test:smoke`: verified cleanly on the completion branch and scheduled for post-merge re-verification on `main`.
 
 ### Wave 1 Zero-History Fresh-Agent OKF Drills (`2026-11-22`, Prior Branding Phase)
 

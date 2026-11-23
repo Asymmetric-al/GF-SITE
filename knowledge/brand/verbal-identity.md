@@ -79,7 +79,7 @@ Small words carry trust. Standardize these strings across print, email, forms, m
 - **Datelines (tier-neutral card & mobile standard):** Use `WEEKLY PRAYER · 2026` on displayed 4x6 prayer-card fronts (`GF-TPL-01/02`) and mobile prayer notes (`GF-TPL-14`, Thai `คำอธิษฐานประจำสัปดาห์ · 2026`) so restricted surfaces carry no red-flag label; reserve explicit granularity labels (`LOCAL CONGREGATION`, `CENTRAL ASIA`, `Location withheld`) for internal records and consent forms.
 - **Field-Security Notices (calm, non-dramatic):**
   - _Restricted card back (synced verbatim with `GF-TPL-01`):_ `"Protect their household: God knows them by name. Pray at home and in small groups; do not photograph or post this card online."`
-  - _Livestream slide footer (synced verbatim with `GF-TPL-10` Slide 5):_ `"Tier 1 anonymous collective prayer · Zero restricted names, cities, or photos on screen"`
+  - _Livestream slide footer (synced verbatim with `GF-TPL-10` Slide 5; keep internal tier labels strictly in speaker notes, never on projected slides):_ `"Anonymous collective prayer · No restricted names, cities, or photos on screen"`
   - _Photo-consent caption cue:_ `"Shared with permission · [Year]. Local elders lead weekly Scripture study."`
 - **Open Books Footnotes & Donor Form Microcopy:**
   - _Tax receipt note:_ `"Global Fellowship, Inc. is a 501(c)(3) nonprofit organization (EIN 68-0214543). Mailing address: P.O. Box 1, Meadow Vista, CA 95722."`

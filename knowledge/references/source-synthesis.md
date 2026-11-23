@@ -21,8 +21,8 @@ sources:
     resource: "Global_Fellowship_Identity_and_Website_Context.md (supplied archive, 46.9 KB, prepared 2026-11-21)"
     title: Primary synthesis of S1-S17 including VVR Orientation Deck v10, Whitepaper Rev 10-24, and 2024-2026 internal role descriptions
   - id: content-master
-    resource: "Global_Fellowship_Content_Master.md (supplied archive, 2.23 MB, 670 records across S001-S010, P001-P173, D001-D043, I001-I024, E001)"
-    title: Full text and visually audited transcriptions of globalfellowship.org pages, annual reports, financial statements, prayer cards, and job descriptions
+    resource: "Global_Fellowship_Content_Master.md (supplied archive, 2.23 MB, 670 records across S001-S032, P001-P266, D001-D043, F001-F294, B001, I001-I024, E001-E009, N001)"
+    title: Full text and visually audited transcriptions of globalfellowship.org pages, forms, external handoffs, annual reports, financial statements, prayer cards, and job descriptions
   - id: content-inventory
     resource: "Global_Fellowship_Content_Inventory.csv (supplied archive, 3.90 MB, 1,808 rows, 25 columns)"
     title: Complete URL, media, document, and asset catalog reconciled against Content Master
@@ -42,7 +42,7 @@ All three supplied source files were examined in full through direct reading and
 | Source File | Scope Examined | Coverage Status |
 | --- | --- | --- |
 | `Global_Fellowship_Identity_and_Website_Context.md` | All 445 lines, sections 1 through 12, source register S1 through S17 | 100% read directly |
-| `Global_Fellowship_Content_Master.md` | All 49,846 lines, 670 structured records: shared interface (S001-S010), core and regional pages (P001-P050), 52 missionary profiles (P051-P102), 58 project designations (P103-P160), 8 field stories (P162-P169), remaining pages/errors (P170-P173, E001), 43 linked PDFs/DOCX documents (D001-D043), and 24 reviewed image records (I001-I024) | 100% covered via direct reads of core/story/financial/image/report records and complete structured digests of all 52 profiles, 58 projects, 43 linked documents, and media audit |
+| `Global_Fellowship_Content_Master.md` | All 49,846 lines, 670 unique structured records: shared interface/layout (`S001-S032`, 32 records), audited URL/page records (`P001-P266`, 266 records spanning core/regional pages, 52 missionary profiles, 58 project designations, 8 field stories, and support/utility routes), linked PDFs/DOCX documents (`D001-D043`, 43 records), captured public form & external-handoff structures (`F001-F294`, 294 records) plus rendered contact form (`B001`, 1 record), reviewed website image transcriptions (`I001-I024`, 24 records), HTTP/route error captures (`E001-E009`, 9 records), and March 2026 newsletter authentication boundary (`N001`, 1 record redirecting to HubSpot sign-in with no newsletter body recovered) | 100% covered via direct reads of core/story/financial/image/report/form/auth records and structured digests across all 670 records |
 | `Global_Fellowship_Content_Inventory.csv` | All 1,808 inventory rows across 25 columns, cross-reconciled against Content Master IDs (9 ID differences explained by part-1/part-2 splits and the `OVERVIEW` header) | 100% parsed and reconciled |
 | Supplied current Logo PNG & `GF Brand Kit.pdf` | Official Cross-in-Oval logo silhouette (`1795x792`), legacy colors (`#007AC3`, `#FFE11D`, `#231F20`, `#FFFFFF`), legacy fonts (`Gilam Bold`, `Aileron`, `Montserrat`), and 5 real documentary photography examples (pastor teaching, river/tub baptisms, village congregation in bamboo shelter) | 100% inspected visually; logo shape preserved per explicit user instruction; colors and fonts upgraded[^legacy-brand-kit] |
 

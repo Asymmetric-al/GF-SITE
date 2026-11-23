@@ -40,21 +40,23 @@ sources:
 
 # Plain-English Staff Publishing and CMS Editor Field Guide
 
-This guide prepares **Global Fellowship staff, regional coordinators, and content editors** for authoring pages, ministry projects, cleared worker support profiles, and field updates through Global Fellowship's planned content management integration (Payload CMS v4 in `Asymmetric-al/core`, documented in `docs/core-integration.md` and [Website Construction Handoff](../references/website-builder-handoff.md))[^triage]. Live CMS routes and revalidation endpoints will be implemented during the upcoming website-construction phase (`OVR-21`, `OVR-24`). Everyday editorial steps are separated cleanly below from technical handoff details so non-technical staff never have to guess developer syntax.
+**Planned Target Workflow (Not Yet Built; Confirm Against `Asymmetric-al/core` During Website Construction `OVR-24`):** `GF-SITE` currently ships the clean Next.js starter scaffold (`src/`), not the public website or live Core CMS runtime. Section 1 (editorial, security, consent, and voice checks) and Section 5 (current live host emergency removal) apply **today**. Sections 2 through 4 document **planned target editorial guidance** derived from the inspected Core schema snapshot in `docs/core-integration.md` (not a mandatory sitemap, fixed route table, or built-in runtime contract); assume **no automatic CMS guardrail exists** until wired and verified during `OVR-24`.
+
+This guide prepares **Global Fellowship staff, regional coordinators, and content editors** for authoring pages, ministry projects, cleared worker support profiles, and field updates through Global Fellowship's planned content management integration (Payload CMS v4 in `Asymmetric-al/core`, documented in `docs/core-integration.md` and [Website Construction Handoff](../references/website-builder-handoff.md))[^triage]. Live CMS routes, block renderers, and withdrawal mechanisms will be confirmed and built during the upcoming website-construction phase (`OVR-21`, `OVR-24`). Everyday editorial steps are separated cleanly below from technical handoff details so non-technical staff never have to guess developer syntax.
 
 ---
 
-## 1. Before You Click "Publish" (6 Non-Negotiable Staff Checks)
+## 1. Before You Click "Publish" (6 Non-Negotiable Staff Checks, Actionable Today)
 
-Never move a draft to **Published** until all six items are confirmed:
+Never move a draft to **Published** until all six items are confirmed manually:
 
 1. **Signed Revocable Consent on File (`GF-TPL-15`):** Every identifiable field story, quote, voice clip, or photograph of a person requires current signed consent stored strictly in the private non-Git archive (`OVR-06`, `OVR-14`). Any identifiable minor also requires a parent or guardian co-signature[^consent].
 2. **Local Edit Approved:** The local elder or field worker has reviewed the exact final wording, headline, photo, and caption (translated back into their working language when needed) and holds unconditional authority to edit or decline publication[^consent].
 3. **Security Tier Checked on Both Axes (Stricter Tier Always Governs):**
-   - **Tier 1 (Open Public):** Real name, cleared broad region, and consented photo allowed.
-   - **Tier 2 (Partial / Alias):** Approved alias ONLY; opaque worker ID (never a real-name URL slug); **no** identifiable faces, city names, or landmarks; share link privately rather than posting on social media[^security].
+   - **Tier 1 (Open Public):** Cleared full public name, cleared city and/or country, and consented photo allowed[^security].
+   - **Tier 2 (Partial / Alias):** Approved alias ONLY; opaque worker ID (never a real-name URL slug); broad region only; **no** identifiable faces, city names, or landmarks; share link privately rather than posting on social media[^security].
    - **Tier 3 (Restricted) & Level 4 (Zero-Attribution):** **Never publish an individual public webpage or public update.** Use private offline channels only.
-4. **Media Scrubbed, Renamed Neutrally & Alt Text Written Manually:** Rename every photo neutrally (never `PastorName_TownName.jpg`) and strip all EXIF/GPS camera metadata before uploading. Write concise, plain, factual alt text and a consent-dated caption (`"Shared with permission · [Year]. [Local action]."`). **Important:** the website does **not** automatically reject a blank alt-text field, so editors must verify alt text manually before publishing.
+4. **Media Scrubbed, Renamed Neutrally & Alt Text Written Manually:** Rename every photo neutrally (never `PastorName_TownName.jpg`) and strip all EXIF/GPS camera metadata before uploading. Write concise, plain, factual alt text and a consent-dated caption (`"Shared with permission · [Year]. [Local action]."`). Always verify alt text manually before publishing (do not assume any CMS enforces non-empty alt text automatically).
 5. **Voice, Agency Grammar & Banned-Phrase Manual Check (CMS Does Not Run Vale):** Because Payload CMS does not run Global Fellowship's automated prose checker, scan your draft manually before publishing against [Verbal Identity](../brand/verbal-identity.md), [Editorial & AI Hygiene](../policies/editorial-and-ai-hygiene.md), [Terminology & Glossary](../messaging/terminology-and-glossary.md), and [2025 Proof Ledger](../messaging/proof-ledger-2025.md)[^editorial]:
    - Keep **God** as the actor in spiritual fruit and **local church planters** as active grammatical subjects (never `"your gift saves/rescues/transforms"` or `"native missionary"`).
    - **Zero em dashes:** Word and Google Docs automatically turn double hyphens (`--`) into a long em dash (`U+2014`). Search your draft for long em dashes and replace them with a colon, comma, parentheses, or period. Normal hyphens inside compound words (`church-planting`) and URL slugs are completely fine.
@@ -63,42 +65,39 @@ Never move a draft to **Published** until all six items are confirmed:
 
 ---
 
-## 2. The 7 Allowed Page Blocks & Rich-Text Limits
+## 2. Planned Core Schema Block Guidance (Verify During Website Phase `OVR-24`)
 
-Global Fellowship's public website renders **exactly seven approved content blocks** from the CMS (experimental blocks fail closed safely so broken layouts never publish):
+In the inspected `Asymmetric-al/core` snapshot (`docs/core-integration.md`), Core defines seven serialized public layout blocks. Final block rendering, layout placement, and automated validation will be confirmed during website construction (`OVR-24`); treat every guardrail below as a **manual editor check** (assume no automatic filtering or silent dropping exists until verified in the built site):
 
-| Block Name (CMS Label) | When to Use It | Practical Rules & Built-In Guardrails |
+| Planned Core Block | Intended Editorial Use | Manual Pre-Publish Editor Checklist |
 | --- | --- | --- |
-| **Hero** (`hero`) | Top opener of a page (eyebrow, headline, short summary, optional cleared photo, optional button). | Only the first Hero becomes the main page heading (`H1`); extra Hero blocks step down automatically. **Layout note:** an image attached to the Hero displays as a framed photo _below_ the intro text, not behind text. |
-| **Rich Text** (`rich-text`) | Everyday prose, subheadings (`H2`–`H4`), bulleted or numbered lists, block quotes, and safe links. | **Rich-text limits:** Do **not** paste inline images, tables, checklists, video embeds, custom text colors, or code blocks inside Rich Text (unsupported formatting is stripped or flattened to plain text; use **Media Feature** for photos). Always use explicit URLs on links. |
-| **Media Feature** (`media-feature`) | Pairing one cleared, EXIF-stripped photo beside a short heading, context paragraph, and caption. | Side text is **plain text only** (no bold, bullets, or links; put formatted prose in a Rich Text block). Upload photos directly into the CMS Media Library rather than external drive links, and write alt text and captions manually. |
-| **Impact Stats** (`impact-stats`) | Up to 3 dated operational or stewardship figures (e.g., `43`, `584`, `$5.73M`). | **Hard automatic guardrail:** Every individual stat item MUST include a `20xx` 4-digit year (such as `2025` or `2026`) inside **that stat item's own label or description** (putting the year only in the section heading is not enough; items without a `20xx` year inside their own text are dropped silently before rendering). |
-| **FAQ** (`faq`) | Practical recurring questions and concise plain-text answers (rendered automatically as a keyboard-accessible accordion). | Never place payment-card instructions or sensitive field locations inside FAQ answers. |
-| **Testimonial** (`testimonial`) | A cleared quote from a local pastor, church planter, or partner. | **Two practical rules:** (1) Always fill in the **attribution line** (blank attribution drops the entire block silently). (2) Do **not** type outer quotation marks around the quote text; the website adds curved quotation marks automatically. |
-| **Call to Action** (`call-to-action`) | Calm dark-ground closing invitation pointing to `/financials`, `/bridge-project`, `/pray`, or `/contact`. | Always pair giving pages with a no-cost next step (prayer, open financial records, or The Bridge Project). Never use countdowns or guilt language. |
+| **Hero** (`hero`) | Top opener of a page (eyebrow, headline, short summary, optional cleared photo, optional button). | Keep one clear page `H1` per page and verify photo framing, contrast scrim, and mobile crop once built. |
+| **Rich Text** (`rich-text`) | Everyday prose, subheadings (`H2`–`H4`), bulleted or numbered lists, block quotes, and explicit links. | Keep inline images in dedicated media blocks, avoid pasted raw tables or custom colors, and verify explicit URLs on every link. |
+| **Media Feature** (`media-feature`) | Pairing one cleared, EXIF-stripped photo beside a short heading, context paragraph, and caption. | Upload photos directly into the CMS Media Library rather than external drive links; keep side prose concise and write visible-only alt text and captions manually. |
+| **Impact Stats** (`impact-stats`) | Up to 3 dated operational or stewardship figures (e.g., `43`, `584`, `$5.73M`). | **Manual dating check:** Include a 4-digit year (such as `2025`) and source scope inside **each stat item's own label or description** (never rely only on a section heading). |
+| **FAQ** (`faq`) | Practical recurring questions and concise plain-text answers. | Keep answers plain and accessible; never place payment-card instructions or sensitive field locations inside FAQ answers. |
+| **Testimonial** (`testimonial`) | A cleared quote from a local pastor, church planter, or partner. | **Manual attribution check:** Always fill in a cleared attribution line (`GF-TPL-15` signed) and verify quotation formatting once built rather than assuming automatic quoting. |
+| **Call to Action** (`call-to-action`) | Calm closing invitation pointing to confirmed routes (planned slugs in `OVR-21` such as `/financials` or `/bridge-project`, or verified email desks until live). | Always pair giving pages with a no-cost next step (prayer, open financial records, or The Bridge Project). Never use countdowns or guilt language. |
 
 ---
 
-## 3. Publishing a Ministry Project Page (`/give/projects/[slug]`)
+## 3. Planned Ministry Project Page Checklist (Illustrative Route Pattern, Pending `OVR-21`/`OVR-24`)
 
-1. **Confirm active Finance Fund ID first:** Email `finance@globalfellowship.org` for the exact verified Fund ID (letters, numbers, hyphens, or underscores only). **Never leave the Fund ID blank or guess a code** - every project page displays a Designated Giving panel at the bottom and intentionally refuses checkout rather than redirecting silently if the Fund ID is invalid.
-2. **Choose a clean, future-safe web address (slug):** Use plain lowercase words separated by hyphens (for example, `regional-leaders-gathering`), never personal names or specific town names that could become a lingering clue if regional safety tightens.
-3. **Recommended block order for a project page:**
-   - **Hero:** Clear title and 1 to 2 sentence summary.
-   - **Rich Text:** 2 to 4 paragraphs explaining how local elders lead the work and what practical needs the fund serves.
-   - **Media Feature** _(optional)_: One cleared, EXIF-stripped field photo with manual alt text and `"Shared with permission · [Year]"` caption.
-   - **Testimonial** _(optional)_: Short consented quote from a local pastor (no outer quotation marks; cleared attribution filled in).
-   - **Impact Stats** _(optional)_: Only verified, dated figures with `20xx` inside every item's own label or description.
-   - **FAQ:** 2 to 3 answers covering U.S. 501(c)(3) tax-deductibility (`EIN 68-0214543`), 2025 financial transparency, and direct Finance contact (`finance@globalfellowship.org`).
-   - **Call to Action:** Calm closing link to `/financials`, `/bridge-project`, or `/pray`.
-4. **Review, Publish & Share Deliberately:** Because external draft preview is not yet available before publication, finish Local Edit and editorial review in a proof document before setting status to **Published**. Immediately open the live page on desktop and mobile to check every block, photo, quote, and the bottom Designated Giving button. Share the direct project link deliberately (without third-party link-shortening services or ad trackers) and log the live URL in the private non-Git consent distribution record (`OVR-14`).
+Final route paths (such as a planned `/give/projects/[slug]` pattern) and giving-checkout handoffs will be finalized during website construction (`OVR-21`, `OVR-24`). Follow these operational steps when preparing project copy:
+
+1. **Confirm active Finance Fund ID first:** Email `finance@globalfellowship.org` for the exact verified Fund ID (letters, numbers, hyphens, or underscores only). Never guess a Fund ID or leave a giving designation unverified.
+2. **Choose a clean, future-safe slug:** Use plain lowercase words separated by hyphens (for example, `regional-leaders-gathering`), never personal names or specific town names that could become a lingering clue if regional safety tightens.
+3. **Recommended content flow (adapt freely to final website design):** Clear title and 1 to 2 sentence summary; 2 to 4 paragraphs explaining how local elders lead the work and what practical needs the fund serves; optional cleared EXIF-stripped photo with manual alt text and `"Shared with permission · [Year]"` caption; optional consented local quote with cleared attribution; optional dated stats (each carrying its 4-digit year and source); 2 to 3 FAQ items covering U.S. 501(c)(3) tax-deductibility (`EIN 68-0214543`), 2025 financial transparency, and `finance@globalfellowship.org`; and a calm closing invitation to open financial statements or The Bridge Project.
+4. **Review, Publish & Share Deliberately:** Finish Local Edit and editorial review in a proof document before publishing. Immediately inspect the live page on desktop and mobile, verify every block, photo, quote, and giving link, share without third-party redirect shortening tools or ad trackers, and log the live URL in the private non-Git consent distribution record (`OVR-14`).
 
 ---
 
-## 4. Publishing a Cleared Worker Support Page (`/give/workers/[id]`)
+## 4. Planned Worker Support Page Checklist (Illustrative Route Pattern, Pending `OVR-21`/`OVR-24`)
+
+Final worker-page routes (such as an opaque `/give/workers/[id]` pattern) are confirmed during website construction (`OVR-21`, `OVR-24`), subject to these non-negotiable safety rules:
 
 1. **Use opaque worker IDs ONLY:** Never create public vanity name URLs for Tier 2 workers. Confirm the worker ID matches Finance's exact active designation code.
-2. **Keep layout tier-neutral:** Global Fellowship uses the same calm Harbor Night typographic header for Tier 1 and Tier 2 pages alike - never write `"Restricted Worker"`, `"Tier 2"`, `"Sensitive Region"`, or `"Photo Withheld for Security"` in public copy (that creates a visual security tell).
+2. **Keep layout tier-neutral:** Use the same calm typographic header for Tier 1 and Tier 2 pages alike; never write `"Restricted Worker"`, `"Tier 2"`, `"Sensitive Region"`, or `"Photo Withheld for Security"` in public copy (that creates a visual security tell).
 3. **Share privately according to tier:** Follow the [Worker Giving-Link & QR Code Safety Table](../policies/inbound-triage-and-content-ops.md#2-worker-giving-link--qr-code-sharing-guide-by-security-tier) so Tier 2 URLs stay strictly in vetted direct emails and printed church cards.
 
 ---

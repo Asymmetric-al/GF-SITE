@@ -113,11 +113,12 @@ This document describes the automated testing, accessibility, visual regression,
   1. `bun install --frozen-lockfile`
   2. `bun run check` (Ultracite: Oxlint + `tsrs` + `@shadcn/lint` + `anti-slop` + `oxlint-plugin-react-doctor` + Oxfmt)
   3. `bun run check:foundation` (zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, manifest sync)
-  4. `bun run knip`
-  5. Offline Lychee Markdown link check (`lycheeverse/lychee-action@v2`) and `gitleaks` (`8.30.1`) secret scan
-  6. `bun run test:run` (Vitest unit & component suite)
-  7. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
-  8. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
+  4. `bun run okf:validate` (strict OKF v0.3 conformance validation across `knowledge/`)
+  5. `bun run knip`
+  6. Offline Lychee Markdown link check (`lycheeverse/lychee-action@v2`), pinned Vale `3.28.1` editorial/prose check (`styles/GF/`), and `gitleaks` (`8.30.1`) secret scan
+  7. `bun run test:run` (Vitest unit & component suite, including OKF and brand-kit safety regression guards)
+  8. `bun run build` (Next.js production build + route typegen + full TypeScript 7.1 beta check)
+  9. Playwright Chromium smoke + `@seo` + `@a11y` (`bun run test:smoke`), uploading `playwright-report/` and `test-results/` on failure.
 - **Scheduled / Manual Deep Audit (`.github/workflows/nightly-audit.yml`):**
   - Full 4-project Playwright cross-engine matrix (`chromium`, `firefox`, `webkit`, `mobile-webkit`, excluding Windows-specific visual snapshots on Linux runners).
   - Isolated Lighthouse CI mobile & desktop job uploading private `artifacts/lighthouse/` reports.

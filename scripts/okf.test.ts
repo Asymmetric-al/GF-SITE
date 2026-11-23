@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
+import { DECK_SLIDES } from "./brand-deck-data";
 import { scanOkfBundle, validateOkfBundle } from "./okf";
 
 const repoRoot = path.resolve(import.meta.dirname, "..");
@@ -90,6 +91,10 @@ const isBrandManifestFile = (value: unknown): value is BrandManifestFile =>
   value.items.every((entry) => isManifestItemEntry(entry));
 
 const UNSAFE_TIER3_LIVESTREAM_RE = /tier\s*3\s+livestream/iu;
+
+const UNSAFE_LIVESTREAM_TIER3_HTML_RE =
+  /for\s+tier\s*3\s+livestreams?|livestream\s+slide\s+5.*tier\s*3|tier\s*3\s*=\s*[^.\n]*livestreams?/iu;
+
 const LINE_SPLIT_RE = /\r?\n/u;
 const QUOTED_OVR_LEAK_RE = /^>\s.*OVR-\d+/iu;
 
@@ -97,6 +102,9 @@ const UNBUILT_CMS_REVALIDATE_RE =
   /\/api\/cms\/revalidate|CMS_REVALIDATE_SECRET|CMS_TENANT_ID/u;
 
 const WORKER_COUNT_DRIFT_RE = /served\s+584|584\s+people\s+served/iu;
+const HTML_TAG_RE = /<[^>]+>/gu;
+const WHITESPACE_RE = /\s+/gu;
+const INTERNAL_TIER_LABEL_RE = /\bTier\s*[123]\b/iu;
 
 const readBrandManifestItems = (): readonly ManifestItemEntry[] => {
   const parsed: unknown = JSON.parse(
@@ -229,9 +237,13 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
       const rel = path.relative(repoRoot, filePath).replaceAll("\\", "/");
       const isHistoricalLog = HISTORICAL_AUDIT_LOGS.has(rel);
 
-      if (!isHistoricalLog && UNSAFE_TIER3_LIVESTREAM_RE.test(content)) {
+      if (
+        !isHistoricalLog &&
+        (UNSAFE_TIER3_LIVESTREAM_RE.test(content) ||
+          UNSAFE_LIVESTREAM_TIER3_HTML_RE.test(content))
+      ) {
         violations.push(
-          `${rel}: contains unsafe "Tier 3 livestream" shorthand`
+          `${rel}: contains unsafe Tier 3 livestream routing shorthand`
         );
       }
 
@@ -257,6 +269,70 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
             `${rel}: leaks internal OVR gate ID inside quoted copy block`
           );
         }
+      }
+    }
+
+    expect(violations).toStrictEqual([]);
+  });
+
+  it("blocks unsafe Tier 3 livestream wording, unsupported statement labels, and false scrim ratios in brand-kit HTML and deck data", () => {
+    const violations: string[] = [];
+
+    const htmlDirs = [
+      path.join(repoRoot, "brand-kit/templates"),
+      path.join(repoRoot, "brand-kit/guide"),
+    ];
+
+    for (const dir of htmlDirs) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (!entry.isFile() || !entry.name.endsWith(".html")) {
+          continue;
+        }
+
+        const fullPath = path.join(dir, entry.name);
+        const rel = path.relative(repoRoot, fullPath).replaceAll("\\", "/");
+
+        const plain = fs
+          .readFileSync(fullPath, "utf-8")
+          .replaceAll(HTML_TAG_RE, " ")
+          .replaceAll(WHITESPACE_RE, " ");
+
+        if (
+          UNSAFE_TIER3_LIVESTREAM_RE.test(plain) ||
+          UNSAFE_LIVESTREAM_TIER3_HTML_RE.test(plain)
+        ) {
+          violations.push(
+            `${rel}: contains unsafe Tier 3 livestream wording in rendered HTML`
+          );
+        }
+
+        if (plain.includes("2025 Standalone 501(c)(3) Statement")) {
+          violations.push(
+            `${rel}: cites unsupported "2025 Standalone 501(c)(3) Statement"`
+          );
+        }
+
+        if (plain.includes("LIVE SCRIM PROOF (10:1+")) {
+          violations.push(
+            `${rel}: prints mathematically inaccurate 10:1+ Apricot scrim claim`
+          );
+        }
+      }
+    }
+
+    for (const slide of DECK_SLIDES) {
+      const projectedFields = [
+        slide.kicker,
+        slide.headline,
+        slide.sub ?? "",
+        slide.secondaryCallout ?? "",
+        slide.footerLeft,
+      ].join(" ");
+
+      if (INTERNAL_TIER_LABEL_RE.test(projectedFields)) {
+        violations.push(
+          `scripts/brand-deck-data.ts slide ${slide.number}: leaks internal Tier label onto projected slide text`
+        );
       }
     }
 
