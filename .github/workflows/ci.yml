@@ -58,7 +58,7 @@ jobs:
       - name: Check offline Markdown documentation links (Lychee)
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md
+          args: --offline --config lychee.toml README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md brand-kit/**/*.md
           fail: true
 
       - name: Scan repository for leaked secrets (Gitleaks)

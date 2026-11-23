@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>
+      Global Fellowship: Bridge Project Responsive HTML Email &amp; First-Letter
+      Kit
+    </title>
+    <!-- Local vendored preview fonts (strip relative link in ESP; keep progressive HTTPS Google Fonts link below) -->
+    <link rel="stylesheet" href="../tokens/fonts/fonts.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Source+Serif+4:wght@400;600&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+      body {
+        margin: 0;
+        padding: 20px 10px;
+        background-color: #dbd4c9;
+        font-family:
+          "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #16191c;
+        -webkit-text-size-adjust: 100%;
+      }
+      .gf-email-slug {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 14px;
+        background-color: #e9f2f3;
+        border-left: 4px solid #0c525c;
+        padding: 10px 14px;
+        font-size: 12px;
+        line-height: 1.48;
+        color: #16191c;
+        box-sizing: border-box;
+      }
+      .gf-nowrap {
+        white-space: nowrap;
+      }
+      @media only screen and (max-width: 600px) {
+        body {
+          padding: 8px 0 !important;
+        }
+        .email-pad {
+          padding: 20px 18px !important;
+        }
+        .email-h1 {
+          font-size: 25px !important;
+          line-height: 1.14 !important;
+        }
+      }
+      @media only screen and (max-width: 440px) {
+        .stack-cell {
+          display: block !important;
+          width: 100% !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          text-align: center !important;
+        }
+        .stack-spacer {
+          display: block !important;
+          width: 100% !important;
+          height: 10px !important;
+        }
+        .cta-btn {
+          display: block !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          text-align: center !important;
+        }
+      }
+      /* Canonical v15.0 Harbor Night dark-mode hexes ONLY (#0B272E, #12353E, #19434E, #6EAAB2, #FAF7F2, #CDE2E6, #F2B488, #8CE0E5, #16191C) */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0b272e !important;
+          color: #faf7f2 !important;
+        }
+        .gf-email-slug {
+          background-color: #12353e !important;
+          border-left-color: #f2b488 !important;
+          color: #faf7f2 !important;
+        }
+        .gf-email-slug strong {
+          color: #f2b488 !important;
+        }
+        .email-shell {
+          background-color: #0b272e !important;
+          color: #faf7f2 !important;
+          border: 1px solid #19434e !important;
+        }
+        .email-body-text {
+          color: #faf7f2 !important;
+        }
+        .email-muted-text {
+          color: #cde2e6 !important;
+        }
+        .email-heading-accent {
+          color: #8ce0e5 !important;
+        }
+        .email-divider {
+          border-top-color: #6eaab2 !important;
+        }
+        .email-kids-box {
+          background-color: #12353e !important;
+          border-left-color: #f2b488 !important;
+          color: #faf7f2 !important;
+        }
+        .email-notice-box {
+          background-color: #19434e !important;
+          border-left-color: #8ce0e5 !important;
+          color: #faf7f2 !important;
+        }
+        .cta-btn {
+          background-color: #f2b488 !important;
+          color: #16191c !important;
+        }
+        .email-link {
+          color: #8ce0e5 !important;
+        }
+        .email-footer {
+          background-color: #12353e !important;
+          border-top-color: #6eaab2 !important;
+          color: #cde2e6 !important;
+        }
+        .email-footer strong {
+          color: #faf7f2 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Real Hidden Inbox Preheader -->
+    <div
+      style="
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        font-size: 1px;
+        line-height: 1px;
+        color: #faf7f2;
+        opacity: 0;
+      "
+    >
+      How to send your first letter or ask for a match, three simple prompts,
+      and two safety habits (no financial gift expected).
+    </div>
+
+    <!-- Non-Sending Review & ESP Handoff Slug -->
+    <div class="gf-email-slug" role="note">
+      <strong style="color: #0c525c">Non-Sending ESP Spec (GF-TPL-08):</strong>
+      Fluid 100% mobile-safe table (verified at 320px, 375px, images-off with
+      live-text wordmark, system-font fallback, and unified Harbor Night dark
+      mode) + MSO Outlook wrapper.<br />
+      <strong>Subject:</strong> The Bridge Project: How to write your first
+      letter (no gift expected)<br />
+      <strong>Preview:</strong> How to send your first letter or ask for a
+      match, three simple prompts, and two safety habits (no financial gift
+      expected).<br />
+      <strong>ESP Bindings:</strong> Strip local <code>fonts.css</code> and bind
+      <code>{{preferences_url}}</code> / <code>{{unsubscribe_url}}</code> before
+      sending (pure live-text HTML/CSS masthead needs zero external header image
+      downloads and shows zero broken-image icons when images are blocked).
+    </div>
+
+    <main>
+      <table
+        role="presentation"
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        border="0"
+        style="width: 100%; border-collapse: collapse"
+      >
+        <tr>
+          <td align="center" style="padding: 0">
+            <!--[if mso]>
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td>
+            <![endif]-->
+            <table
+              class="email-shell"
+              role="presentation"
+              width="100%"
+              cellpadding="0"
+              cellspacing="0"
+              border="0"
+              style="
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #faf7f2;
+                border-collapse: collapse;
+                font-family:
+                  &quot;Plus Jakarta Sans&quot;, &quot;Helvetica Neue&quot;,
+                  Helvetica, Arial, sans-serif;
+                color: #16191c;
+              "
+            >
+              <!-- Harbor Night + Candle Apricot Header Band (Flush-Left Live Wordmark + Right-Aligned Mark = Literal 0.0px Indent on Images-Off!) -->
+              <tr>
+                <td
+                  class="email-pad"
+                  style="
+                    background-color: #0b272e;
+                    padding: 24px 32px 22px;
+                    border-bottom: 4px solid #f2b488;
+                  "
+                >
+                  <table
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                      width: 100%;
+                      border-collapse: collapse;
+                      margin-bottom: 14px;
+                    "
+                  >
+                    <tr>
+                      <td
+                        align="left"
+                        style="
+                          padding: 0;
+                          vertical-align: middle;
+                          font-family:
+                            &quot;Plus Jakarta Sans&quot;,
+                            &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                            sans-serif;
+                          font-size: 17px;
+                          font-weight: 700;
+                          letter-spacing: -0.01em;
+                          color: #faf7f2;
+                        "
+                      >
+                        Global Fellowship
+                      </td>
+                      <td
+                        align="right"
+                        style="
+                          padding: 0;
+                          vertical-align: middle;
+                          font-family:
+                            &quot;Plus Jakarta Sans&quot;,
+                            &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                            sans-serif;
+                          font-size: 11px;
+                          font-weight: 700;
+                          letter-spacing: 0.08em;
+                          text-transform: uppercase;
+                          color: #f2b488;
+                        "
+                      >
+                        EST. 1989
+                      </td>
+                    </tr>
+                  </table>
+                  <div
+                    style="
+                      font-size: 11px;
+                      font-weight: 700;
+                      letter-spacing: 0.09em;
+                      text-transform: uppercase;
+                      color: #8ce0e5;
+                      margin-bottom: 7px;
+                    "
+                  >
+                    THE BRIDGE PROJECT · PRAYER &amp; LETTERS
+                  </div>
+                  <h1
+                    class="email-h1"
+                    style="
+                      margin: 0;
+                      font-family: &quot;Source Serif 4&quot;, Georgia, serif;
+                      font-size: 29px;
+                      line-height: 1.13;
+                      font-weight: 600;
+                      letter-spacing: -0.015em;
+                      color: #faf7f2;
+                    "
+                  >
+                    Exchange letters and pray with a local church planter
+                  </h1>
+                </td>
+              </tr>
+
+              <!-- Main Email Body -->
+              <tr>
+                <td class="email-pad" style="padding: 24px 32px">
+                  <p
+                    class="email-body-text"
+                    style="
+                      margin: 0 0 14px;
+                      font-family: &quot;Source Serif 4&quot;, Georgia, serif;
+                      font-size: 16px;
+                      line-height: 1.56;
+                      color: #16191c;
+                    "
+                  >
+                    Welcome to The Bridge Project and Bridge Kids. Pair with a
+                    local church planter for two-way letters, drawings, or
+                    cleared voice notes in Jesus Christ; no financial gift is
+                    ever expected. Both households set their own pace and hold
+                    equal freedom to pause whenever a season shifts.
+                  </p>
+
+                  <!-- Top-Screen Two-Path Routing -->
+                  <table
+                    class="email-divider"
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                      width: 100%;
+                      border-collapse: collapse;
+                      border-top: 2px solid #16191c;
+                      margin-bottom: 16px;
+                    "
+                  >
+                    <tr>
+                      <td style="padding: 14px 0 4px">
+                        <h2
+                          class="email-heading-accent"
+                          style="
+                            margin: 0 0 10px;
+                            font-family:
+                              &quot;Plus Jakarta Sans&quot;,
+                              &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                              sans-serif;
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: #0c525c;
+                          "
+                        >
+                          Choose your next step
+                        </h2>
+                        <table
+                          role="presentation"
+                          width="100%"
+                          cellpadding="0"
+                          cellspacing="0"
+                          border="0"
+                          style="border-collapse: collapse; margin-bottom: 13px"
+                        >
+                          <tr>
+                            <td
+                              class="stack-cell"
+                              align="left"
+                              style="padding: 0; vertical-align: middle"
+                            >
+                              <a
+                                class="cta-btn"
+                                href="mailto:info@globalfellowship.org?subject=Bridge%20Project%20match%20request"
+                                style="
+                                  display: inline-block;
+                                  background-color: #0c525c;
+                                  border-radius: 4px;
+                                  padding: 12px 20px;
+                                  font-family:
+                                    &quot;Plus Jakarta Sans&quot;,
+                                    &quot;Helvetica Neue&quot;, Helvetica,
+                                    Arial, sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 700;
+                                  color: #faf7f2;
+                                  text-decoration: none;
+                                  white-space: nowrap;
+                                "
+                                >Ask to be matched</a
+                              >
+                            </td>
+                            <td
+                              class="stack-spacer"
+                              width="16"
+                              style="font-size: 0; line-height: 0"
+                            >
+                              &nbsp;
+                            </td>
+                            <td
+                              class="stack-cell"
+                              align="left"
+                              style="padding: 0; vertical-align: middle"
+                            >
+                              <a
+                                class="email-link"
+                                href="mailto:info@globalfellowship.org?subject=Bridge%20Project%20approved%20format%20check"
+                                style="
+                                  display: inline-block;
+                                  padding: 10px 4px;
+                                  font-family:
+                                    &quot;Plus Jakarta Sans&quot;,
+                                    &quot;Helvetica Neue&quot;, Helvetica,
+                                    Arial, sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 700;
+                                  color: #0c525c;
+                                  text-decoration: underline;
+                                "
+                                >Ask which format to use</a
+                              >
+                            </td>
+                          </tr>
+                        </table>
+                        <p
+                          class="email-body-text"
+                          style="
+                            margin: 0 0 8px;
+                            font-size: 14px;
+                            line-height: 1.54;
+                            color: #16191c;
+                          "
+                        >
+                          <strong>Need a match?</strong> Write with your name
+                          and whether you join individually, as a family, or as
+                          a small group (Subject:
+                          <em>Bridge Project match request</em>); our
+                          coordinator checks regional readiness first and
+                          replies personally. If pairing takes extra time while
+                          a host church is in a busy or sensitive season, your
+                          coordinator will let you know what you can pray for
+                          meanwhile.
+                        </p>
+                        <p
+                          class="email-body-text"
+                          style="
+                            margin: 0;
+                            font-size: 14px;
+                            line-height: 1.54;
+                            color: #16191c;
+                          "
+                        >
+                          <strong
+                            >Already matched? Check your approved format first,
+                            then send:</strong
+                          >
+                          Confirm whether text, a child&rsquo;s drawing photo,
+                          or a 20-second voice note is cleared for your match;
+                          for restricted households, use private encrypted chat
+                          or text-only routing. Send cleared messages to
+                          <a
+                            class="email-link"
+                            href="mailto:info@globalfellowship.org?subject=Bridge%20Project%20approved%20format%20check"
+                            style="color: #0c525c; text-decoration: underline"
+                            >info@globalfellowship.org</a
+                          >
+                          (Subject:
+                          <em>Bridge Project approved format check</em>), or
+                          mail physical letters to
+                          <strong
+                            >Global Fellowship, Attn: The Bridge Project, P.O.
+                            Box 1, Meadow Vista, CA 95722</strong
+                          >
+                          (regional staff coordinate translation and privacy
+                          care).
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Three Prompts -->
+                  <table
+                    class="email-divider"
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                      width: 100%;
+                      border-collapse: collapse;
+                      border-top: 1px solid #dbd4c9;
+                      margin-bottom: 15px;
+                    "
+                  >
+                    <tr>
+                      <td style="padding: 13px 0 4px">
+                        <h2
+                          class="email-heading-accent"
+                          style="
+                            margin: 0 0 8px;
+                            font-family:
+                              &quot;Plus Jakarta Sans&quot;,
+                              &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                              sans-serif;
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: #0c525c;
+                          "
+                        >
+                          Three prompts for your first letter
+                        </h2>
+                        <ol
+                          class="email-body-text"
+                          style="
+                            margin: 0;
+                            padding-left: 20px;
+                            font-size: 14px;
+                            line-height: 1.54;
+                            color: #16191c;
+                          "
+                        >
+                          <li style="margin-bottom: 6px">
+                            <strong>Introduce yourself or your group:</strong>
+                            Share first names and an ordinary snapshot from your
+                            week (a meal, a study group, or a child&rsquo;s
+                            drawing).
+                          </li>
+                          <li style="margin-bottom: 6px">
+                            <strong
+                              >Share Scripture &amp; invite prayer:</strong
+                            >
+                            Name one verse strengthening you lately and ask how
+                            you can pray for them this month.
+                          </li>
+                          <li style="margin-bottom: 0">
+                            <strong>Ask a neighborly question:</strong> Ask
+                            about a favorite meal, a psalm they return to, or
+                            how their congregation gathers.
+                          </li>
+                        </ol>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Bridge Kids Dinner-Table Prompt -->
+                  <table
+                    class="email-kids-box"
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                      width: 100%;
+                      border-collapse: collapse;
+                      border-left: 4px solid #7e3119;
+                      background-color: #f1ece3;
+                      margin-bottom: 14px;
+                    "
+                  >
+                    <tr>
+                      <td
+                        class="email-body-text"
+                        style="
+                          padding: 12px 15px;
+                          font-size: 13.4px;
+                          line-height: 1.5;
+                          color: #16191c;
+                        "
+                      >
+                        <strong
+                          class="email-heading-accent"
+                          style="color: #7e3119"
+                          >Writing with kids? Bridge Kids table prompts:</strong
+                        ><br />
+                        1. Draw your dinner table or favorite outdoor game and
+                        snap a quick phone photo.<br />
+                        2. Write one question for a friend in another
+                        country.<br />
+                        3. Pray one short sentence together for their household
+                        before sending.
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Harbor Mist Safety Notice -->
+                  <table
+                    class="email-notice-box"
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                      width: 100%;
+                      border-collapse: collapse;
+                      background-color: #e9f2f3;
+                      border-left: 4px solid #0c525c;
+                      margin-bottom: 18px;
+                    "
+                  >
+                    <tr>
+                      <td
+                        class="email-body-text"
+                        style="
+                          padding: 12px 15px;
+                          font-size: 13.4px;
+                          line-height: 1.5;
+                          color: #16191c;
+                        "
+                      >
+                        <strong
+                          class="email-heading-accent"
+                          style="color: #0c525c"
+                          >Two safety habits before you send:</strong
+                        ><br />
+                        1. <strong>Keep letters private:</strong> Never post
+                        letters, names, photos, or return addresses on social
+                        media or church livestreams.<br />
+                        2. <strong>Avoid sensitive questions:</strong> Do not
+                        ask for street addresses, local politics, or names of
+                        new believers in restricted areas.
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Bottom Action Row -->
+                  <table
+                    role="presentation"
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="border-collapse: collapse"
+                  >
+                    <tr>
+                      <td
+                        class="stack-cell"
+                        align="left"
+                        style="padding: 0; vertical-align: middle"
+                      >
+                        <a
+                          class="cta-btn"
+                          href="mailto:info@globalfellowship.org?subject=Bridge%20Project%20match%20request"
+                          style="
+                            display: inline-block;
+                            background-color: #0c525c;
+                            border-radius: 4px;
+                            padding: 12px 20px;
+                            font-family:
+                              &quot;Plus Jakarta Sans&quot;,
+                              &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                              sans-serif;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #faf7f2;
+                            text-decoration: none;
+                            white-space: nowrap;
+                          "
+                          >Ask to be matched</a
+                        >
+                      </td>
+                      <td
+                        class="stack-spacer"
+                        width="16"
+                        style="font-size: 0; line-height: 0"
+                      >
+                        &nbsp;
+                      </td>
+                      <td
+                        class="stack-cell"
+                        align="left"
+                        style="padding: 0; vertical-align: middle"
+                      >
+                        <a
+                          class="email-link"
+                          href="mailto:info@globalfellowship.org?subject=Bridge%20Project%20approved%20format%20check"
+                          style="
+                            display: inline-block;
+                            padding: 10px 4px;
+                            font-family:
+                              &quot;Plus Jakarta Sans&quot;,
+                              &quot;Helvetica Neue&quot;, Helvetica, Arial,
+                              sans-serif;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #0c525c;
+                            text-decoration: underline;
+                          "
+                          >Ask which format to use</a
+                        >
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Compliance Footer -->
+              <tr>
+                <td
+                  class="email-pad email-footer"
+                  style="
+                    background-color: #f1ece3;
+                    border-top: 1px solid #dbd4c9;
+                    padding: 16px 32px;
+                    font-size: 12px;
+                    line-height: 1.55;
+                    color: #4b5357;
+                  "
+                >
+                  <strong style="color: #16191c"
+                    >Global Fellowship, Inc.</strong
+                  >
+                  · 501(c)(3) Nonprofit (<span class="gf-nowrap"
+                    >EIN 68-0214543</span
+                  >)<br />
+                  P.O. Box 1, Meadow Vista, CA 95722 ·
+                  <span class="gf-nowrap">1 866 984 5622</span>
+                  ·
+                  <a
+                    class="email-link gf-nowrap"
+                    href="mailto:info@globalfellowship.org?subject=Bridge%20Project"
+                    style="color: #0c525c; text-decoration: underline"
+                    >info@globalfellowship.org</a
+                  ><br />
+                  You are receiving this email because you joined The Bridge
+                  Project.
+                  <a
+                    class="email-link"
+                    href="{{preferences_url}}"
+                    style="color: #0c525c; text-decoration: underline"
+                    >Manage email preferences</a
+                  >
+                  |
+                  <a
+                    class="email-link"
+                    href="{{unsubscribe_url}}"
+                    style="color: #0c525c; text-decoration: underline"
+                    >Unsubscribe</a
+                  ><br />
+                  <span
+                    class="email-specimen-hold"
+                    style="
+                      display: inline-block;
+                      margin-top: 6px;
+                      font-size: 11px;
+                      font-weight: 700;
+                      letter-spacing: 0.04em;
+                      text-transform: uppercase;
+                    "
+                    >Illustrative specimen · replace before sending</span
+                  >
+                </td>
+              </tr>
+            </table>
+            <!--[if mso]></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>

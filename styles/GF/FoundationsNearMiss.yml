@@ -1,0 +1,10 @@
+extends: existence
+message: "Possible near-miss alteration of Global Fellowship's locked Protected Foundations ('%s'). Preserve verbatim Mission, Vision, and exact Three Pillars."
+level: error
+ignorecase: true
+tokens:
+  - 'within thirty minutes of'
+  - 'within 30 minutes of every person'
+  - 'four pillars'
+  - '4 pillars'
+  - 'our three pillars[^.\n]{0,60}unreached regions'

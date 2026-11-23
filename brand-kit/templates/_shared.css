@@ -1,0 +1,486 @@
+/* Global Fellowship Brand Kit: Living Nearness Contemporary Editorial Stylesheet (v15.0 Candidate) */
+@import url("../tokens/brand-tokens.css");
+@import url("../tokens/fonts/fonts.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--gf-paper);
+  color: var(--gf-ink);
+  font-family: var(--gf-font-sans);
+  font-size: 16px;
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gf-harbor);
+  outline-offset: 2px;
+}
+
+.gf-dark-surface :focus-visible,
+.cover-sheet :focus-visible,
+.slide.dark :focus-visible {
+  outline-color: var(--gf-apricot);
+}
+
+/* Contemporary Type Tension: Source Serif 4 Optical Display for Witness/Editorial H1s vs Plus Jakarta Sans for Open Books, Data & UI */
+h1,
+.gf-serif-display {
+  font-family: var(--gf-font-serif);
+  color: var(--gf-ink);
+  font-weight: 600;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin-top: 0;
+}
+
+.gf-display,
+.gf-sans-display,
+h2,
+h3,
+.gf-heading {
+  font-family: var(--gf-font-display);
+  color: var(--gf-ink);
+  font-weight: 800;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1;
+  letter-spacing: -0.012em;
+  word-spacing: 0.02em;
+  text-wrap: balance;
+  margin-top: 0;
+}
+
+.gf-serif {
+  font-family: var(--gf-font-serif);
+}
+
+.gf-sans {
+  font-family: var(--gf-font-sans);
+}
+
+.gf-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.gf-nowrap {
+  white-space: nowrap;
+}
+
+/* Single Primary Page Cue */
+.gf-dateline {
+  font-family: var(--gf-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gf-harbor);
+  line-height: 1.35;
+}
+
+.gf-kicker {
+  font-family: var(--gf-font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gf-clay);
+  line-height: 1.35;
+}
+
+p {
+  margin-top: 0;
+}
+
+code,
+.code-token {
+  font-family: var(--gf-font-sans);
+  font-weight: 700;
+  font-size: 0.92em;
+  color: var(--gf-harbor);
+}
+
+.gf-dark-surface code,
+.beat-card.dark code,
+.car-slide.s1 code {
+  color: var(--gf-apricot);
+}
+
+a {
+  color: var(--gf-harbor);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Pre-Publication Review Slug (screen-only editorial header; .gf-print-status persists inside detached PDFs!) */
+.gf-specimen-bar {
+  max-width: 816px;
+  margin: 14px auto 12px;
+  background: var(--gf-notice-surface);
+  border-inline-start: 4px solid var(--gf-harbor);
+  padding: 9px 14px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--gf-ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.gf-specimen-bar strong {
+  color: var(--gf-harbor);
+}
+
+/* Quiet Edge Specimen / Hold Slug (ALWAYS visible on detached PDFs for G2 at >= 8.5pt without banner clutter!) */
+.gf-print-status {
+  font-family: var(--gf-font-display);
+  font-size: 11.3px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--gf-slate);
+  border-top: 1px solid var(--gf-rule);
+  padding: 5px 0 0;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.gf-print-status.on-dark {
+  border-top-color: var(--gf-border-dark);
+  color: var(--gf-mist-text);
+}
+
+.gf-print-status span:last-child,
+.gf-footer-bar span:last-child {
+  white-space: nowrap;
+}
+
+.gf-copy-measure {
+  max-width: 66ch;
+}
+
+/* Unboxed Top-Ruled Editorial Note */
+.gf-editorial-note {
+  border-top: 2px solid var(--gf-harbor);
+  padding-top: 10px;
+  font-size: 12.6px;
+  line-height: 1.54;
+  color: var(--gf-ink);
+}
+
+/* Reserved Locked Foundation Seal Frame (STRICTLY for verbatim Mission & Vision ONLY: distinct double-rule border + Warm Linen used by NOTHING else!) */
+.gf-locked-foundation {
+  border-top: 2px solid var(--gf-harbor);
+  border-bottom: 2px solid var(--gf-harbor);
+  border-inline-start: 5px solid var(--gf-harbor);
+  background: var(--gf-paper-subtle);
+  padding: 15px 22px;
+  position: relative;
+}
+
+.gf-locked-foundation::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -5px;
+  top: -2px;
+  width: 5px;
+  height: 40%;
+  background: var(--gf-clay);
+}
+
+.gf-locked-label {
+  font-family: var(--gf-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gf-clay);
+  margin-bottom: 6px;
+}
+
+.gf-locked-quote {
+  font-family: var(--gf-font-serif);
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--gf-ink);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Restrained Candle Apricot Warm Band (Charcoal Ink text = 9.80:1 AAA!) */
+.gf-apricot-band {
+  background: var(--gf-apricot);
+  color: var(--gf-ink);
+  padding: 20px 26px;
+}
+
+.gf-apricot-band h1,
+.gf-apricot-band h2,
+.gf-apricot-band h3,
+.gf-apricot-band p {
+  color: var(--gf-ink);
+}
+
+/* Harbor Night Full-Bleed Architectural Band (Warm Paper + Candle Apricot) */
+.gf-harbor-band {
+  background: var(--gf-harbor-deep);
+  color: var(--gf-paper);
+  padding: 26px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gf-harbor-band h1,
+.gf-harbor-band h2,
+.gf-harbor-band h3,
+.gf-harbor-band p {
+  color: var(--gf-paper);
+}
+
+/* 45-Degree Chamfered Frame (Reserved strictly for optional consented Tier 1 photography frames) */
+.gf-chamfer {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+/* Calm Pastoral Security Notice (Harbor Mist: distinct from Warm Linen Locked Foundation!) */
+.gf-notice {
+  background: var(--gf-notice-surface);
+  border-inline-start: 3px solid var(--gf-harbor);
+  padding: 12px 16px;
+  font-size: 12.6px;
+  line-height: 1.5;
+  color: var(--gf-ink);
+}
+
+.gf-notice strong {
+  color: var(--gf-harbor);
+}
+
+/* Editorial Asymmetric Split Grids */
+.gf-split-editorial {
+  display: grid;
+  grid-template-columns: 0.36fr 0.64fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.gf-rule-item {
+  border-top: 2px solid var(--gf-ink);
+  padding-top: 10px;
+}
+
+.gf-rule-light {
+  border-top: 1px solid var(--gf-rule);
+  padding-top: 10px;
+}
+
+/* Accessible Checkbox Styling */
+.gf-check {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--gf-harbor);
+  border-radius: 2px;
+  vertical-align: -2px;
+  margin-inline-end: 8px;
+  background: var(--gf-surface-card);
+  flex-shrink: 0;
+}
+
+/* Editorial Sheets: Exact US Letter 8.5in x 11in (816px x 1056px at 96dpi) */
+.gf-sheet {
+  width: 816px;
+  height: 1056px;
+  margin: 0 auto 24px;
+  background: var(--gf-paper);
+  padding: 40px 48px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  break-after: page;
+  page-break-after: always;
+}
+
+.gf-sheet:last-child {
+  margin-bottom: 0;
+  break-after: auto;
+  page-break-after: auto;
+}
+
+/* Duplex 4x6in Prayer Cards (384px x 576px at 96dpi; side-by-side stage on screen, exact duplex pages in print) */
+.gf-card-stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 12px 24px 28px;
+}
+
+.gf-prayer-card {
+  width: 384px;
+  height: 576px;
+  background: var(--gf-paper);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(22, 25, 28, 0.12);
+}
+
+.gf-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 13px;
+  border-bottom: 1.5px solid var(--gf-ink);
+  margin-bottom: 22px;
+}
+
+.gf-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--gf-rule);
+  margin-top: 12px;
+  font-size: 11.3px;
+  color: var(--gf-slate);
+}
+
+/* Open Books Ledger Tables */
+table.gf-ledger {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+table.gf-ledger th {
+  text-align: start;
+  font-family: var(--gf-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gf-harbor);
+  border-bottom: 2px solid var(--gf-ink);
+  padding: 8px 10px 8px 0;
+}
+
+table.gf-ledger td {
+  padding: 8px 10px 8px 0;
+  border-bottom: 1px solid var(--gf-rule);
+  vertical-align: top;
+}
+
+table.gf-ledger tbody tr:nth-child(even) td {
+  background: var(--gf-paper-subtle);
+}
+
+table.gf-ledger .num {
+  text-align: end;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Print Pagination & Reading-Order Integrity */
+@media print {
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: var(--gf-paper) !important;
+    word-spacing: 0.05em !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  .gf-display,
+  .gf-heading,
+  .gf-serif-display {
+    letter-spacing: 0 !important;
+    word-spacing: 0.08em !important;
+  }
+
+  .gf-specimen-bar,
+  .no-print {
+    display: none !important;
+  }
+
+  .gf-sheet {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .gf-locked-foundation::before {
+    display: none !important;
+  }
+
+  .gf-locked-foundation {
+    position: static !important;
+    border-inline-start: 4px solid var(--gf-harbor) !important;
+    background-image: linear-gradient(
+      to bottom,
+      var(--gf-clay) 0%,
+      var(--gf-clay) 36%,
+      var(--gf-harbor) 36%,
+      var(--gf-harbor) 100%
+    ) !important;
+    background-size: 4px 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: left top !important;
+  }
+
+  [dir="rtl"] .gf-locked-foundation,
+  .gf-locked-foundation[dir="rtl"] {
+    background-position: right top !important;
+  }
+
+  .gf-header-bar,
+  .gf-footer-bar,
+  .gf-print-status,
+  .gf-harbor-band {
+    position: static !important;
+  }
+
+  .gf-notice,
+  .gf-apricot-band,
+  .gf-harbor-band,
+  table.gf-ledger tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

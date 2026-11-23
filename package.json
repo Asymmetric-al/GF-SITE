@@ -15,6 +15,7 @@
     "check:foundation": "bun scripts/check-foundation.ts",
     "okf:validate": "bun scripts/okf-validate.ts --strict",
     "okf:scan": "bun scripts/okf-scan.ts",
+    "verify:brand": "bun scripts/verify-brand.ts",
     "fix": "ultracite fix",
     "knip": "knip",
     "test": "vitest",
@@ -30,8 +31,8 @@
     "perf:lhci": "bun run perf:lhci:mobile && bun run perf:lhci:desktop",
     "analyze": "next analyze --output",
     "analyze:export": "next analyze export",
-    "check:links": "lychee --offline README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md",
-    "check:prose": "vale README.md DESIGN.md docs knowledge"
+    "check:links": "lychee --offline README.md AGENTS.md CLAUDE.md DESIGN.md specs/README.md docs/**/*.md knowledge/**/*.md brand-kit/**/*.md",
+    "check:prose": "vale README.md DESIGN.md docs knowledge brand-kit"
   },
   "dependencies": {
     "@base-ui/react": "1.9.0",

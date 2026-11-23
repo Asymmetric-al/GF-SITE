@@ -1,0 +1,6 @@
+extends: existence
+message: "Do not use em dashes in Global Fellowship public copy or brand documentation. Rewrite with a colon, comma, parentheses, or period."
+level: error
+nonword: true
+tokens:
+  - '—'

@@ -1,0 +1,12 @@
+extends: existence
+message: "Avoid internal brand-system jargon ('%s') in public or governance copy."
+level: error
+ignorecase: true
+tokens:
+  - 'typographic hush'
+  - 'coverage boast'
+  - 'NEVER EDIT A SINGLE WORD'
+  - 'ENCODE BRIDGE URL QR'
+  - 'distinctive signature'
+  - 'ownable'
+  - 'placeholder specimen'

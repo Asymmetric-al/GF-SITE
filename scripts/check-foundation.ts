@@ -334,6 +334,7 @@ const checkPublicRepoPrivacy = (): void => {
     "agent-toolkit-manifest.json",
     ...collectMarkdownFilesRecursive("docs"),
     ...collectMarkdownFilesRecursive("knowledge"),
+    ...collectMarkdownFilesRecursive("brand-kit"),
   ];
 
   for (const filePath of publicFiles) {

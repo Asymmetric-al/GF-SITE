@@ -1,0 +1,20 @@
+extends: existence
+message: "Avoid AI-tell rhetorical cadence or generic missions filler ('%s'); write direct, concrete, grounded prose."
+level: error
+ignorecase: true
+tokens:
+  - '\bit''s not [^,.]+, it''s\b'
+  - '\bnot just [^,.]+, but\b'
+  - '\bno\s+\w+,\s+no\s+\w+,\s+no\s+\w+\b'
+  - '\beffortlessly\s+cohesive\b'
+  - '\bproven\s+outside\s+the\s+design\s+studio\b'
+  - '\bdelve into\b'
+  - '\bin today''s (world|landscape|rapidly changing)\b'
+  - '\bgame[- ]chang(er|ing)\b'
+  - '\bunlocking? potential\b'
+  - '\bseamless\b'
+  - '\bseamlessly\b'
+  - '\bimpacting lives\b'
+  - '\btransforming nations\b'
+  - '\bmaking an eternal difference\b'
+  - '\breaching the unreached\b'

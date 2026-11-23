@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "15.0",
+  "verifiedAtUtc": "2026-11-23T03:31:21.657Z",
+  "allGatesPassed": true,
+  "gates": {
+    "G1_protected_foundations": true,
+    "G2_truthfulness_and_open_register": true,
+    "G3_field_security_zero_mosaic": true,
+    "G4_mechanical_hygiene": true,
+    "G5_wcag22_accessibility": true,
+    "G6_licensing_and_manifest": true
+  },
+  "details": {
+    "templatesRendered": 31,
+    "manifestAssets": 103,
+    "syntheticWithdrawalDrill": {
+      "mode": "synthetic-traceability-dry-run-no-real-identities",
+      "storyRefsChecked": {
+        "SYNTH-VETO-001": [
+          "GF-AST-OFFICE-GLOBAL-FELLOWSHIP-DECK-STARTER-PPTX",
+          "GF-GDE-01",
+          "GF-SCR-03",
+          "GF-SCR-05",
+          "GF-TPL-10",
+          "GF-TPL-11",
+          "GF-TPL-14",
+          "GF-VID-01"
+        ],
+        "SYNTH-VETO-002": ["GF-TPL-03"]
+      },
+      "notes": "Verifies manifest storyRefs lookup across all synthetic Local Edit derivatives (Deck/Carousel/Video vs. Welcome Brief); separate from live consent withdrawal in private archive (OVR-14)."
+    },
+    "contrastPairsPassed": "40/40",
+    "g1Failures": [],
+    "g2Failures": [],
+    "g3Failures": [],
+    "svgoFailures": [],
+    "tokenSyncFailures": [],
+    "staleHexFailures": [],
+    "valePositiveFailures": [],
+    "g5MobileAndTagFailures": [],
+    "hashMismatches": [],
+    "exportFailures": [],
+    "axeFailures": [],
+    "valeTemplatesOk": true,
+    "valeTemplatesOutput": "✔ 0 errors, 0 warnings and 0 suggestions in 2 files.",
+    "okfOk": true,
+    "foundationOk": true,
+    "linksOk": true,
+    "proseOk": true,
+    "proseOutput": "PASS"
+  }
+}

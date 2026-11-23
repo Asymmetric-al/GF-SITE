@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weekly Prayer Card</title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      body {
+        background: #e5e0d7;
+      }
+      /* Warm architectural header: cross-free Harbor Night + Candle Apricot hairline so Warm Paper & Scripture lead (~70% of card) */
+      .card-hero {
+        background:
+          url("../patterns/architectural-frame-dark.svg") right -5px / cover
+            no-repeat,
+          var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        border-top: 5px solid var(--gf-apricot);
+        padding: 19px 26px 20px;
+        min-height: 178px;
+        border-bottom: 3px solid var(--gf-apricot);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-cue {
+        font-family: var(--gf-font-display);
+        font-size: 10.6px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+      }
+      .worker-name {
+        font-family: var(--gf-font-serif);
+        font-size: 32px;
+        line-height: 1.06;
+        font-weight: 600;
+        letter-spacing: -0.016em;
+        color: var(--gf-paper);
+        margin: 8px 0 6px;
+        max-width: 280px;
+      }
+      .worker-role {
+        font-size: 13px;
+        color: var(--gf-mist-text);
+        font-weight: 500;
+        margin: 0;
+        max-width: 280px;
+        line-height: 1.42;
+      }
+      .card-lower {
+        padding: 22px 26px 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--gf-paper);
+      }
+      .scripture-line {
+        font-family: var(--gf-font-serif);
+        font-size: 15.2px;
+        line-height: 1.56;
+        color: var(--gf-ink);
+        margin: 0 0 16px;
+        padding-inline-start: 13px;
+        border-inline-start: 3px solid var(--gf-clay);
+      }
+      .scripture-ref {
+        display: block;
+        font-family: var(--gf-font-display);
+        font-size: 10.8px;
+        font-weight: 700;
+        color: var(--gf-harbor);
+        margin-top: 5px;
+        letter-spacing: 0.05em;
+      }
+      /* Shared exact top border across BOTH Tier 3 and Tier 1 backs (zero tier tell, clean PDF order) */
+      .back-wrap {
+        padding: 18px 26px 15px;
+        border-top: 5px solid var(--gf-harbor);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--gf-paper);
+      }
+      .pray-list {
+        margin: 8px 0 0;
+        padding-inline-start: 18px;
+        font-size: 13.4px;
+        line-height: 1.46;
+        color: var(--gf-ink);
+      }
+      .pray-list li {
+        margin-bottom: 7px;
+      }
+      .reciprocal-line {
+        margin: 8px 0 0;
+        font-family: var(--gf-font-serif);
+        font-style: italic;
+        font-size: 13px;
+        line-height: 1.44;
+        color: var(--gf-slate);
+      }
+      .card-safety {
+        margin-top: 10px;
+        padding: 9px 12px;
+        font-size: 12.8px;
+        line-height: 1.44;
+        background: var(--gf-notice-surface);
+        border-inline-start: 3px solid var(--gf-harbor);
+        color: var(--gf-ink);
+      }
+      .card-safety strong {
+        color: var(--gf-harbor);
+      }
+      .card-foot {
+        font-size: 11.4px;
+        color: var(--gf-slate);
+        padding-top: 8px;
+        border-top: 1px solid var(--gf-rule);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .card-specimen-micro {
+        font-family: var(--gf-font-display);
+        font-size: 11.4px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--gf-harbor);
+        margin-top: 5px;
+      }
+      @page {
+        size: 4in 6in;
+        margin: 0;
+      }
+      @media print {
+        body {
+          background: var(--gf-surface-card);
+        }
+        .gf-card-stage {
+          display: block;
+          padding: 0;
+          background: var(--gf-surface-card);
+        }
+        .gf-prayer-card {
+          width: 4in;
+          height: 6in;
+          margin: 0;
+          box-shadow: none;
+          break-after: page;
+          page-break-after: always;
+        }
+        .gf-prayer-card:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gf-specimen-bar" role="note">
+      <span
+        ><strong>Illustrative Tier 3 Master:</strong> Synthetic collective
+        specimen sharing identical 4x6 geometry, tier-neutral
+        <code>WEEKLY PRAYER · 2026</code> front header, cross-free architectural
+        Harbor Night band, and back rule with Tier 1 Public Variant.
+        Cross-in-Oval mark and privacy notice sit on the back only per
+        field-security policy (where even back-side org attribution carries
+        travel or postal risk, omit the GF lockup and EIN for a zero-org back);
+        a 0.125in print-bleed PDF twin ships alongside the exact 4x6 trim
+        PDF.</span
+      >
+      <span>Duplex 4in x 6in PDF</span>
+    </div>
+
+    <main
+      class="gf-card-stage"
+      aria-label="Two-sided 4x6 restricted prayer card master specimen"
+    >
+      <!-- FRONT SIDE (4x6 in): Warm paper leads; zero GF mark, zero cross-derived geometry, tier-neutral header & footer -->
+      <article class="gf-prayer-card" aria-label="Prayer card front">
+        <div class="card-hero gf-dark-surface">
+          <div class="card-cue">WEEKLY PRAYER · 2026</div>
+          <div>
+            <h1 class="worker-name">Local Church Planters</h1>
+            <p class="worker-role">
+              Gathering neighbors in Christ in their own&nbsp;tongue
+            </p>
+          </div>
+        </div>
+
+        <div class="card-lower">
+          <div>
+            <p class="scripture-line">
+              &ldquo;The
+              <span style="font-variant: small-caps">Lord</span> will keep you
+              from all evil; he will keep your life. The
+              <span style="font-variant: small-caps">Lord</span> will keep your
+              going out and your coming in from this time forth and
+              forevermore.&rdquo;
+              <span class="scripture-ref">Psalm 121:7&ndash;8 (ESV)</span>
+            </p>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-size: 14px;
+                line-height: 1.56;
+                color: var(--gf-ink);
+                margin: 0;
+              "
+            >
+              Friends who live and work in their own neighborhood gather
+              households over evening tea and shepherd new believers toward
+              healthy, multiplying local churches. Pray for them as fellow
+              believers in Jesus Christ.
+            </p>
+          </div>
+
+          <div>
+            <div class="card-foot">
+              <span style="font-weight: 700; color: var(--gf-harbor)"
+                >Pray in fellowship</span
+              >
+              <span>Turn for 3 prayers</span>
+            </div>
+            <div class="card-specimen-micro">
+              SYNTHETIC SPECIMEN · REPLACE BEFORE PRINT
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BACK SIDE (4x6 in): Mark sits on Home-side back at >= 124px width -->
+      <article class="gf-prayer-card" aria-label="Prayer card back">
+        <div class="back-wrap">
+          <div>
+            <div class="gf-dateline" style="margin-bottom: 4px">
+              PRAY WITH THESE CHURCH PLANTERS
+            </div>
+            <h2
+              class="gf-serif-display"
+              style="font-size: 21px; line-height: 1.15; margin: 0 0 8px"
+            >
+              Three ways to pray this month
+            </h2>
+            <ol class="pray-list">
+              <li>
+                <strong>Courage in Christ:</strong> Strengthen new believers
+                facing neighborhood pressure.
+              </li>
+              <li>
+                <strong>Local elders:</strong> Give wisdom as planters mentor
+                shepherds for home churches.
+              </li>
+              <li>
+                <strong>Rest and peace:</strong> Guard single workers and
+                families with unhurried rest and friendship.
+              </li>
+            </ol>
+
+            <p class="reciprocal-line">
+              How can our church pray for your household this month? Send a note
+              through your church contact.
+            </p>
+
+            <div class="card-safety">
+              <strong>Protect their household:</strong> God knows them by name.
+              Pray at home and in small groups; do not photograph or post this
+              card online.
+            </div>
+          </div>
+
+          <div style="padding: 12px 4px; text-align: center">
+            <div
+              style="
+                width: 34px;
+                height: 2px;
+                background: var(--gf-clay);
+                margin: 0 auto 8px;
+              "
+            ></div>
+            <p
+              style="
+                font-family: var(--gf-font-serif);
+                font-style: italic;
+                font-size: 12.6px;
+                line-height: 1.44;
+                color: var(--gf-slate);
+                margin: 0;
+              "
+            >
+              Lord of the harvest, guard these households and build your church.
+            </p>
+          </div>
+
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                padding-top: 6px;
+                border-top: 1px solid var(--gf-rule);
+              "
+            >
+              <img
+                src="../logos/svg/gf-lockup-horizontal.svg"
+                alt="Global Fellowship"
+                style="height: 24px; width: auto; display: block"
+              />
+              <span
+                class="gf-nowrap"
+                style="font-size: 11.2px; color: var(--gf-slate)"
+                >EIN 68-0214543</span
+              >
+            </div>
+            <div
+              style="
+                font-size: 11.2px;
+                line-height: 1.4;
+                color: var(--gf-slate);
+                margin-bottom: 4px;
+              "
+            >
+              P.O. Box 1, Meadow Vista, CA 95722 ·
+              <span class="gf-nowrap">1 866 984 5622</span> ·
+              <span class="gf-nowrap">globalfellowship.org</span>
+            </div>
+            <div
+              style="font-size: 11.2px; font-weight: 700; color: var(--gf-ink)"
+            >
+              Church Planting · Local Leadership · Unreached People
+            </div>
+            <div class="card-specimen-micro">
+              SYNTHETIC SPECIMEN · DO NOT POST ONLINE
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

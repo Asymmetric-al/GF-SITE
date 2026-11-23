@@ -50,6 +50,7 @@ Open [http://localhost:3000](http://localhost:3000). No external services, Core 
 | `bun run check:foundation` | Verify zero Radix, zero `oxlint-tsgolint`, skill parity, managed markers, CSS layer order, and manifest integrity |
 | `bun run okf:validate` | Validate the `knowledge/` OKF v0.3 bundle strictly against conformance and field-shape rules |
 | `bun run okf:scan` | Scan concepts in `knowledge/` with trust tiers, statuses, and freshness signals |
+| `bun run verify:brand` | Run end-to-end `brand-kit/` export and 6-gate verification (`G1`–`G6`, TrimBox, WCAG, axe-core, Vale, OKF, manifest SHA-256) |
 | `bun run fix` | Apply safe Ultracite auto-fixes and Oxfmt formatting |
 | `bun run knip` | Detect unused files, exports, and dependencies |
 | `bun run test` / `bun run test:run` | Run Vitest unit and component tests (watch mode / bounded run) |
@@ -84,8 +85,9 @@ Private developer credentials for licensed UI catalogs and external service CLIs
 ## Documentation Map
 
 - [AGENTS.md](./AGENTS.md) (and [CLAUDE.md](./CLAUDE.md) bridge) — Concise repository rules and task routing for coding agents.
-- [DESIGN.md](./DESIGN.md) — Canonical design setup reference (established constraints, implementation observations, undecided creative areas, and review process).
-- [`knowledge/index.md`](./knowledge/index.md) and [`docs/okf.md`](./docs/okf.md) — Generic Open Knowledge Format (OKF v0.3) knowledge bundle scaffold, authoring guide, and templates (`docs/okf-templates/`) for brand identity, audiences, messaging, offerings, marketing playbooks, and editorial policies.
+- [DESIGN.md](./DESIGN.md) — Canonical design setup reference (established UI/engineering constraints, starter scaffold state, brand proposal reference, website-handoff boundary, and verification process).
+- [`knowledge/index.md`](./knowledge/index.md) and [`docs/okf.md`](./docs/okf.md) — Populated Global Fellowship Open Knowledge Format (OKF v0.3) knowledge bundle (`55` concepts: protected foundations, brand strategy, voice, visual identity, 7 audiences, messaging, offerings, copy playbooks, security/editorial policies, source/decision records, coverage ledger, and [Website Construction Handoff](./knowledge/references/website-builder-handoff.md)), plus copy-ready templates in `docs/okf-templates/`.
+- [`brand-kit/README.md`](./brand-kit/README.md) — Complete editable brand kit (`Living Nearness v15.0`: W3C DTCG tokens, 76 SIL OFL 1.1 fonts, 15 SVG marks & 19 PNGs, 6 zero-ShareAlike sRGB documentary street photographs, 31 guides/templates, 6 OOXML Office starters, Tier 1 vertical video + VTT, and SHA-256 `manifest.json`).
 - [docs/testing.md](./docs/testing.md) — Unit, E2E, accessibility, visual regression, Lighthouse CI baselines, bundle analysis, technical SEO, and CI cadence.
 - [docs/agent-toolkit.md](./docs/agent-toolkit.md) — Sanitized agent toolkit architecture, skill/MCP scopes, credential roles, and restore commands.
 - [docs/agent-toolkit-validation.md](./docs/agent-toolkit-validation.md) — Recorded validation runs, measured baselines, live MCP/registry checks, and remaining human actions.

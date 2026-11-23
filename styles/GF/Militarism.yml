@@ -1,0 +1,17 @@
+extends: existence
+message: "Avoid militaristic or adversarial-triggering language ('%s') in public Global Fellowship copy."
+level: error
+ignorecase: true
+tokens:
+  - '\bspiritual battleground\b'
+  - '\bspiritual arm(y|ies)\b'
+  - '\btargeted regions?\b'
+  - '\btargets? areas?\b'
+  - '\btarget(ed|ing)?\s+(unreached|people|villages?)\b'
+  - '\bbehind enemy lines\b'
+  - '\binfiltrat(e|ing|ion)\b'
+  - '\bpenetrat(e|ing|ion)\b'
+  - '\bconquer(ing|ed)?\b'
+  - '\bcrusad(e|es|ing)\b'
+  - '\bcovert\s+(workers?|agents?|missionaries|operatives?)\b'
+  - '\bunderground\s+operatives?\b'

@@ -17,6 +17,7 @@
 /blob-report/
 /playwright/.cache/
 /.playwright-cli/
+/.playwright-mcp/
 /artifacts/
 /.lighthouseci/
 /playwright/.auth/

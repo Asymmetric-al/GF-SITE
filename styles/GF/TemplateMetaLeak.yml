@@ -1,0 +1,15 @@
+extends: existence
+message: "Avoid internal brand-system jargon or raw repository filenames ('%s') in outward-facing public templates and Office starters."
+level: error
+ignorecase: true
+tokens:
+  - '\bLiving Nearness\b'
+  - '\bOrbit [1-4]\b'
+  - '\bagency grammar\b'
+  - '\bbrand candidate\b'
+  - '\bvoice by subtraction\b'
+  - '\bNote Register\b'
+  - '\bbridge-voice-note-script\.txt\b'
+  - '\bcandidate-first-call-message\.txt\b'
+  - '\bmobile-prayer-note-(?:thai-|arabic-)?twin\.txt\b'
+  - '\bships in the companion\b'

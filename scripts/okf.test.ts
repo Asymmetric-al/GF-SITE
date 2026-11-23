@@ -41,6 +41,62 @@ const createFixtureSuite = (): OkfFixtureSuite => {
   };
 };
 
+interface ManifestExportEntry {
+  readonly path: string;
+}
+
+interface ManifestItemEntry {
+  readonly id: string;
+  readonly source: string;
+  readonly exports?: readonly ManifestExportEntry[];
+  readonly storyRefs?: readonly string[];
+}
+
+interface BrandManifestFile {
+  readonly items: readonly ManifestItemEntry[];
+}
+
+const isString = (value: unknown): value is string => typeof value === "string";
+
+const isStringArray = (value: unknown): value is readonly string[] =>
+  Array.isArray(value) && value.every((entry) => isString(entry));
+
+const isManifestExportEntry = (value: unknown): value is ManifestExportEntry =>
+  typeof value === "object" &&
+  value !== null &&
+  "path" in value &&
+  typeof value.path === "string";
+
+const isManifestItemEntry = (value: unknown): value is ManifestItemEntry =>
+  typeof value === "object" &&
+  value !== null &&
+  "id" in value &&
+  typeof value.id === "string" &&
+  "source" in value &&
+  typeof value.source === "string" &&
+  (!("exports" in value) ||
+    value.exports === undefined ||
+    (Array.isArray(value.exports) &&
+      value.exports.every((entry) => isManifestExportEntry(entry)))) &&
+  (!("storyRefs" in value) ||
+    value.storyRefs === undefined ||
+    isStringArray(value.storyRefs));
+
+const isBrandManifestFile = (value: unknown): value is BrandManifestFile =>
+  typeof value === "object" &&
+  value !== null &&
+  "items" in value &&
+  Array.isArray(value.items) &&
+  value.items.every((entry) => isManifestItemEntry(entry));
+
+const readBrandManifestItems = (): readonly ManifestItemEntry[] => {
+  const parsed: unknown = JSON.parse(
+    fs.readFileSync(path.join(repoRoot, "brand-kit/manifest.json"), "utf-8")
+  );
+
+  return isBrandManifestFile(parsed) ? parsed.items : [];
+};
+
 describe("repository knowledge/ OKF v0.3 scaffold", () => {
   it("validates cleanly with zero errors and zero warnings", () => {
     const report = validateOkfBundle(path.join(repoRoot, "knowledge"));
@@ -51,14 +107,82 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
     expect(report.filesChecked).toBeGreaterThanOrEqual(9);
   });
 
-  it("scans as an empty generic bundle until domain concepts are authored", () => {
+  it("scans the populated Global Fellowship knowledge bundle cleanly", () => {
     const report = scanOkfBundle(path.join(repoRoot, "knowledge"));
 
     expect(report.okfVersion).toBe("0.3");
-    expect(report.summary.concepts).toBe(0);
+    expect(report.summary.concepts).toBeGreaterThanOrEqual(55);
     expect(report.summary.notConcepts).toBe(0);
     expect(report.bundle.title).toBeTruthy();
     expect(report.bundle.description).toBeTruthy();
+  });
+
+  it("preserves protected foundations and honest unverified OKF metadata", () => {
+    const foundations = fs.readFileSync(
+      path.join(repoRoot, "knowledge/brand/foundations.md"),
+      "utf-8"
+    );
+
+    const requiredFoundations = [
+      "We make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people.",
+      "To make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people.",
+      "It is our vision to plant a Gospel witness within 30 minutes of everyone.",
+      "Church Planting",
+      "Local Leadership",
+      "Unreached People",
+      "1. We believe that the writings of both Old and New Testaments were breathed out by God",
+      "8. We believe in the resurrection of the dead, the eternal punishment of the wicked, and the eternal blessedness of the redeemed.",
+    ];
+
+    const missingFoundations = requiredFoundations.filter(
+      (phrase) => !foundations.includes(phrase)
+    );
+
+    const requiredDocs = [
+      "knowledge/references/source-coverage-and-decisions.md",
+      "knowledge/references/organizational-coverage-record.md",
+      "knowledge/references/website-builder-handoff.md",
+      "brand-kit/manifest.json",
+    ];
+
+    const missingDocs = requiredDocs.filter(
+      (relPath) => !fs.existsSync(path.join(repoRoot, relPath))
+    );
+
+    const scan = scanOkfBundle(path.join(repoRoot, "knowledge"));
+
+    expect(missingFoundations).toStrictEqual([]);
+    expect(missingDocs).toStrictEqual([]);
+    expect(scan.summary.trust["human-reviewed"]).toBe(0);
+    expect(scan.summary.stale).toBe(0);
+  });
+
+  it("verifies brand-kit manifest files and SYNTH-VETO-001 withdrawal coverage", () => {
+    const items = readBrandManifestItems();
+    const missingPaths: string[] = [];
+
+    for (const item of items) {
+      const srcAbs = path.join(repoRoot, "brand-kit", item.source);
+
+      if (!fs.existsSync(srcAbs)) {
+        missingPaths.push(item.source);
+      }
+
+      for (const exp of item.exports ?? []) {
+        const expAbs = path.join(repoRoot, "brand-kit", exp.path);
+
+        if (!fs.existsSync(expAbs)) {
+          missingPaths.push(exp.path);
+        }
+      }
+    }
+
+    const scr05 = items.find((item) => item.id === "GF-SCR-05");
+    const scr05Refs = scr05?.storyRefs ?? [];
+
+    expect(items.length).toBeGreaterThanOrEqual(100);
+    expect(missingPaths).toStrictEqual([]);
+    expect(scr05Refs).toContain("SYNTH-VETO-001");
   });
 });
 

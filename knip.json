@@ -7,7 +7,7 @@
     "scripts/**/*.ts",
     "*.{ts,mts,mjs}"
   ],
-  "ignoreBinaries": ["lychee", "vale"],
+  "ignoreBinaries": ["lychee", "vale", "ffmpeg"],
   "ignoreDependencies": [
     "@lhci/cli",
     "@tiptap/core",
@@ -16,7 +16,6 @@
     "@tiptap/starter-kit",
     "@tiptap/static-renderer",
     "lighthouse",
-    "svgo",
     "tsrs"
   ]
 }

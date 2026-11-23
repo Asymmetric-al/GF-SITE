@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global Fellowship: Four-Environment Real-World Survival Proof</title>
+    <link rel="stylesheet" href="../templates/_shared.css" />
+    <style>
+      .env-block {
+        border-top: 2px solid var(--gf-ink);
+        padding-top: 5px;
+        margin-bottom: 6px;
+      }
+      .env-block h2 {
+        font-family: var(--gf-font-display);
+        font-size: 14.8px;
+        font-weight: 800;
+        color: var(--gf-ink);
+        margin: 1px 0 3px;
+      }
+      .accent-rule-bar {
+        display: flex;
+        height: 4px;
+        margin-bottom: 6px;
+      }
+      /* Zero CSS filter so Chromium preserves 100% crisp selectable vector text in PDF export */
+      .copier-sim {
+        background: #ffffff;
+        border: 2px solid #000000;
+        color: #000000;
+        padding: 8px 13px;
+        margin-top: 4px;
+      }
+      .stepdown-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 5px;
+      }
+      .mini-card {
+        background: var(--gf-paper);
+        border-top: 4px solid var(--gf-harbor-deep);
+        border-bottom: 1px solid var(--gf-rule);
+        overflow: hidden;
+      }
+      .mini-hero {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 7px 12px;
+        border-bottom: 2px solid var(--gf-apricot);
+      }
+      .mini-body {
+        padding: 7px 12px;
+        font-size: 11px;
+        line-height: 1.38;
+      }
+      .neutral-proof {
+        margin-top: 5px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+      .neutral-card {
+        background: #faf7f2;
+        border: 1.5px solid #16191c;
+        border-top: 5px solid #16191c;
+        padding: 8px 12px;
+        color: #16191c;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .neutral-note {
+        background: #f1ece3;
+        border-inline-start: 3px solid #16191c;
+        padding: 7px 11px;
+        font-size: 10.6px;
+        line-height: 1.36;
+        color: #16191c;
+      }
+      .script-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .script-card {
+        background: var(--gf-paper-subtle);
+        padding: 7px 10px;
+        border-top: 2px solid var(--gf-harbor);
+      }
+      .script-tag {
+        font-family: var(--gf-font-display);
+        font-size: 9.4px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--gf-harbor);
+        margin-bottom: 3px;
+      }
+      .expand-box {
+        width: 100%;
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+        align-items: stretch;
+      }
+      .expand-card {
+        background: var(--gf-surface-card);
+        border-top: 3px solid var(--gf-harbor);
+        border-bottom: 1px solid var(--gf-rule);
+        padding: 9px 11px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .expand-btn {
+        display: inline-block;
+        margin-top: 6px;
+        background: var(--gf-harbor);
+        color: var(--gf-paper);
+        font-family: var(--gf-font-display);
+        font-size: 10.2px;
+        font-weight: 700;
+        padding: 5px 10px;
+        border-radius: 3px;
+        align-self: flex-start;
+      }
+      .rtl-and-hub {
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 13px;
+        align-items: stretch;
+      }
+      .rtl-locked-proof {
+        border-inline-start: 4px solid var(--gf-harbor);
+        background: var(--gf-paper-subtle);
+        padding: 8px 12px;
+      }
+      .hub-lockup-proof {
+        background: var(--gf-surface-card);
+        border-top: 3px solid var(--gf-clay);
+        border-bottom: 1px solid var(--gf-rule);
+        padding: 8px 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      /* Zero CSS clip-path so Chromium paints Environment 4 strictly BEFORE Page 2 footer in PDF text stream */
+      .office-strip {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+        border-inline-start: 6px solid var(--gf-ink);
+        padding: 10px 14px;
+        margin-top: 6px;
+        display: grid;
+        grid-template-columns: 1.16fr 0.84fr;
+        gap: 14px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- PAGE 1: ENVIRONMENTS 1, 2A & 2B -->
+      <section
+        class="gf-sheet"
+        style="padding: 20px 42px 16px"
+        aria-label="Page 1: Monochrome Copier Simulation, Synthetic Security Step-Down Parity, and Ink-Neutral Fallback"
+      >
+        <div>
+          <div
+            class="gf-header-bar"
+            style="margin-bottom: 10px; padding-bottom: 9px"
+          >
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >FOUR-ENVIRONMENT SURVIVAL PROOF (1 OF 2)</span
+            >
+          </div>
+
+          <h1
+            class="gf-serif-display"
+            style="font-size: 28px; line-height: 1.08; margin-bottom: 6px"
+          >
+            Digital production proofs for four real environments
+          </h1>
+          <p
+            style="
+              font-size: 12.2px;
+              color: var(--gf-slate);
+              margin-bottom: 9px;
+              line-height: 1.46;
+            "
+          >
+            Global Fellowship&rsquo;s identity must hold up on black-and-white
+            church copiers, sudden security step-downs, local contexts calling
+            for an ink-neutral fallback, six global script families with full
+            RTL mirroring, and everyday Office or Google Workspace tools.
+          </p>
+
+          <div class="accent-rule-bar" aria-hidden="true">
+            <div style="flex: 0.72; background: var(--gf-harbor)"></div>
+            <div style="flex: 0.28; background: var(--gf-clay)"></div>
+          </div>
+
+          <div class="env-block">
+            <div class="gf-kicker">
+              Environment 1 · 1-Color Pure Black Church Copier Simulation
+            </div>
+            <h2>
+              Pure #000000 lockup and sharp contrast without heavy toner floods
+            </h2>
+            <p
+              style="
+                font-size: 11.6px;
+                color: var(--gf-slate);
+                margin-bottom: 4px;
+              "
+            >
+              Digital monochrome check using our pure-black copier lockup
+              (<code>gf-lockup-horizontal-black.svg</code>). Physical 300dpi
+              laser copier proofing is required before press or bulletin print
+              runs (OVR-18).
+            </p>
+            <div class="copier-sim">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  border-bottom: 2px solid #000000;
+                  padding-bottom: 7px;
+                  margin-bottom: 8px;
+                "
+              >
+                <img
+                  src="../logos/svg/gf-lockup-horizontal-black.svg"
+                  alt="Global Fellowship pure black copier lockup"
+                  style="height: 24px; width: auto"
+                />
+                <span
+                  style="
+                    font-family: var(--gf-font-display);
+                    font-size: 10px;
+                    font-weight: 800;
+                    letter-spacing: 0.06em;
+                  "
+                  >SUNDAY PRAYER INSERT · 1-COLOR PURE BLACK</span
+                >
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 19px;
+                  font-weight: 600;
+                  margin-bottom: 5px;
+                "
+              >
+                When a cross-cultural missionary arrives, the local leader still
+                leads
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 12.2px;
+                  line-height: 1.48;
+                "
+              >
+                In 2025, 584 workers served across 43 countries (2025 Annual
+                Report), planting local churches in Jesus Christ. Our prayerful
+                vision: &ldquo;It is our vision to plant a Gospel witness within
+                30 minutes of everyone.&rdquo; Join The Bridge Project: email
+                <strong class="gf-nowrap">info@globalfellowship.org</strong>
+                (Subject: <em>Bridge Project match request</em>; no financial
+                gift expected).
+              </div>
+            </div>
+          </div>
+
+          <div class="env-block">
+            <div class="gf-kicker">
+              Environment 2A · 60-Second Security Step-Down Parity (100%
+              Synthetic)
+            </div>
+            <h2>
+              Shared architectural header across both public and restricted
+              cards
+            </h2>
+            <p
+              style="
+                font-size: 11.6px;
+                color: var(--gf-slate);
+                margin-bottom: 4px;
+              "
+            >
+              Both panels use synthetic examples so no real worker is linked to
+              a security shift. Both fronts share the exact cross-free Harbor
+              Night header band, Candle Apricot hairline, and tier-neutral
+              <em>WEEKLY PRAYER · 2026</em> cue with zero silhouettes or blurs.
+            </p>
+            <div class="stepdown-pair">
+              <div class="mini-card">
+                <div class="mini-hero gf-dark-surface">
+                  <div
+                    style="
+                      font-size: 10px;
+                      font-weight: 700;
+                      letter-spacing: 0.08em;
+                      color: var(--gf-apricot);
+                      margin-bottom: 4px;
+                    "
+                  >
+                    WEEKLY PRAYER · 2026 (TIER 1 SPECIMEN)
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 18px;
+                      font-weight: 600;
+                      line-height: 1.14;
+                    "
+                  >
+                    Cedar Lane Fellowship
+                  </div>
+                </div>
+                <div class="mini-body">
+                  <p style="margin: 0 0 6px">
+                    Consented local congregation name, approved greeting, and
+                    optional eye-level photo when written consent is filed, or
+                    finished photo-free parity.
+                  </p>
+                  <div
+                    style="
+                      font-size: 10.6px;
+                      font-weight: 700;
+                      color: var(--gf-harbor);
+                    "
+                  >
+                    Synthetic Tier 1 · Cleared Public Print
+                  </div>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-hero gf-dark-surface">
+                  <div
+                    style="
+                      font-size: 10px;
+                      font-weight: 700;
+                      letter-spacing: 0.08em;
+                      color: var(--gf-apricot);
+                      margin-bottom: 4px;
+                    "
+                  >
+                    WEEKLY PRAYER · 2026 (TIER 3 SPECIMEN)
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 18px;
+                      font-weight: 600;
+                      line-height: 1.14;
+                    "
+                  >
+                    Local Church Planters
+                  </div>
+                </div>
+                <div class="mini-body">
+                  <p style="font-family: var(--gf-font-serif); margin: 0 0 6px">
+                    &ldquo;The
+                    <span style="font-variant: small-caps">Lord</span>
+                    will keep your going out and your coming in.&rdquo; (Psalm
+                    121:8, ESV)
+                  </p>
+                  <div
+                    style="
+                      background: var(--gf-notice-surface);
+                      padding: 6px 8px;
+                      font-size: 10.6px;
+                    "
+                  >
+                    Details stay private for household care. Mark on back only;
+                    pray at home and do not post online.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="env-block" style="margin-bottom: 0">
+            <div class="gf-kicker">
+              Environment 2B · Ink-Neutral Regional Fallback (OVR-11 Escape
+              Hatch)
+            </div>
+            <h2>
+              Complete neutral token mapping when any regional hue requires
+              restraint
+            </h2>
+            <div class="neutral-proof">
+              <div class="neutral-card">
+                <div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-display);
+                      font-size: 10px;
+                      font-weight: 800;
+                      letter-spacing: 0.07em;
+                      text-transform: uppercase;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    WEEKLY PRAYER · 2026 (INK-NEUTRAL EDITION)
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 18px;
+                      font-weight: 600;
+                      line-height: 1.18;
+                      margin-bottom: 7px;
+                    "
+                  >
+                    Pray for two urban apartment fellowships opening Scripture
+                    this week
+                  </div>
+                  <p
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 11.8px;
+                      line-height: 1.44;
+                      margin: 0 0 7px;
+                    "
+                  >
+                    Ask God to strengthen two emerging elders gathering shift
+                    workers around the Gospel of Mark in their mother tongue.
+                  </p>
+                  <div
+                    style="
+                      border: 1.5px solid #16191c;
+                      background: #f1ece3;
+                      padding: 4px 8px;
+                      font-size: 10px;
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Caution: Private group only · do not post names online
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 5px;
+                    border-top: 1px solid #16191c;
+                    padding-top: 7px;
+                    font-size: 10.4px;
+                    font-weight: 700;
+                  "
+                >
+                  <span
+                    style="
+                      background: #16191c;
+                      color: #faf7f2;
+                      padding: 4px 11px;
+                      white-space: nowrap;
+                      display: inline-block;
+                    "
+                    >Reply in private group</span
+                  >
+                  <span style="color: #4b5357; font-size: 10.2px"
+                    >Primary CTA + Caution · Zero chromatic hue</span
+                  >
+                </div>
+              </div>
+              <div class="neutral-note">
+                <strong style="display: block; margin-bottom: 5px"
+                  >Complete Ink-Neutral Token Mapping (OVR-11):</strong
+                >
+                <div style="margin-bottom: 3px">
+                  <strong>Ground:</strong> Warm Paper (<code>#FAF7F2</code>) or
+                  Pure White (<code>#FFFFFF</code>)
+                </div>
+                <div style="margin-bottom: 3px">
+                  <strong>Primary Actions &amp; Rules:</strong> Solid Charcoal
+                  Ink (<code>#16191C</code>) with <code>#FAF7F2</code> text
+                  (16.51:1 AAA)
+                </div>
+                <div style="margin-bottom: 3px">
+                  <strong>Caution / Private Notice:</strong> Warm Linen
+                  (<code>#F1ECE3</code>) + crisp 1.5px <code>#16191C</code>
+                  outline
+                </div>
+                <div style="margin-bottom: 4px">
+                  <strong>Secondary Labels:</strong> Warm Slate (<code
+                    >#4B5357</code
+                  >
+                  · 7.35:1 AAA) with zero rogue hues.
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid #16191c;
+                    padding-top: 4px;
+                    font-size: 9.6px;
+                    font-variant-numeric: tabular-nums;
+                  "
+                >
+                  <strong style="display: block; margin-bottom: 4px"
+                    >Ink-Neutral Open Books Chart Proof (Zero Chroma):</strong
+                  >
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: 98px 1fr 56px;
+                      gap: 6px;
+                      align-items: center;
+                      margin-bottom: 3px;
+                    "
+                  >
+                    <span>Consolidated*</span>
+                    <span
+                      style="
+                        display: block;
+                        height: 8px;
+                        background: #16191c;
+                        width: 100%;
+                      "
+                    ></span>
+                    <strong style="text-align: end">$5.73M</strong>
+                  </div>
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: 98px 1fr 56px;
+                      gap: 6px;
+                      align-items: center;
+                    "
+                  >
+                    <span>GF Standalone</span>
+                    <span
+                      style="
+                        display: block;
+                        height: 8px;
+                        border: 1.5px solid #16191c;
+                        background: #f1ece3;
+                        width: 37.2%;
+                      "
+                    ></span>
+                    <strong style="text-align: end">$2.13M</strong>
+                  </div>
+                  <div
+                    style="font-size: 8.6px; color: #4b5357; margin-top: 2px"
+                  >
+                    *Consolidated = GF + affiliated MissionStream &amp; BOLK.
+                  </div>
+                  <div
+                    style="
+                      margin-top: 5px;
+                      padding: 5px 8px;
+                      background: #f1ece3;
+                      border-inline-start: 2.5px solid #16191c;
+                      font-size: 9.2px;
+                      line-height: 1.32;
+                    "
+                  >
+                    <strong>Ink-Neutral Local Edit:</strong>
+                    <span style="text-decoration: line-through; color: #4b5357"
+                      >&ldquo;We launched a group&rdquo;</span
+                    >
+                    revised to &ldquo;Our church gathered neighbors in our own
+                    language.&rdquo;
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >SYNTHETIC SPECIMENS · PHYSICAL COPIER PROOF PENDING OVR-18 ·
+              CONSENT PENDING OVR-06</span
+            >
+            <span>PAGE 1 OF 2</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span>Global Fellowship · Real-World Survival Proof</span>
+            <span>Environments 1, 2A &amp; 2B</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: ENVIRONMENTS 3 & 4 -->
+      <section
+        class="gf-sheet"
+        style="padding: 22px 42px 18px"
+        aria-label="Page 2: Six-Script Multilingual Proof, Full Arabic RTL Card Stress Test, Non-Latin Hub Lockup, Spanish +35% Full Micro-Brief, and Office Starters"
+      >
+        <div>
+          <div
+            class="gf-header-bar"
+            style="margin-bottom: 8px; padding-bottom: 7px"
+          >
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 24px; width: auto"
+            />
+            <span class="gf-dateline"
+              >FOUR-ENVIRONMENT SURVIVAL PROOF (2 OF 2)</span
+            >
+          </div>
+
+          <div class="env-block" style="margin-bottom: 8px; padding-top: 6px">
+            <div class="gf-kicker">
+              Environment 3 · Six Global Scripts, Arabic RTL, Thai Hub &amp;
+              Spanish +35% Full Micro-Brief
+            </div>
+            <h2 style="font-size: 15.8px; margin-bottom: 4px">
+              Vendored SIL OFL scripts, logical Arabic PDF tagging &amp; full
+              bilingual expansion
+            </h2>
+            <p
+              style="
+                font-size: 10.6px;
+                color: var(--gf-slate);
+                margin-bottom: 5px;
+                line-height: 1.38;
+              "
+            >
+              <strong>Technical typesetting proof:</strong> Verifies diacritic
+              line-heights (Thai 1.82, Devanagari 1.80, Bengali 1.78, Arabic
+              1.78, Chinese 1.72), logical Arabic PDF ActualText extraction, and
+              full +35% layout resilience. Native regional wording review is
+              tracked under OVR-11.
+            </p>
+
+            <div class="script-grid">
+              <div class="script-card">
+                <div class="script-tag">Thai · Noto Sans Thai (lh 1.82)</div>
+                <div
+                  lang="th"
+                  style="
+                    font-family: var(--gf-font-thai);
+                    font-size: 12.2px;
+                    line-height: 1.82;
+                    font-weight: 700;
+                  "
+                >
+                  ผู้นำคริสตจักรท้องถิ่นเข้าใจภาษาของเพื่อนบ้านอย่างแท้จริง
+                </div>
+              </div>
+
+              <div class="script-card">
+                <div class="script-tag">
+                  Arabic RTL + Bidi · Noto Sans Arabic (lh 1.78)
+                </div>
+                <div
+                  dir="rtl"
+                  lang="ar"
+                  style="
+                    font-family: var(--gf-font-arabic);
+                    font-size: 12.6px;
+                    line-height: 1.78;
+                    font-weight: 700;
+                  "
+                >
+                  منذ عام <bdi dir="ltr">1989</bdi> يتشارك قادة الكنائس المحلية
+                  في الصلاة وقراءة الكتاب المقدس بسلام.
+                </div>
+              </div>
+
+              <div class="script-card">
+                <div class="script-tag">
+                  Bengali · Noto Serif Bengali (lh 1.78)
+                </div>
+                <div
+                  lang="bn"
+                  style="
+                    font-family: var(--gf-font-bengali);
+                    font-size: 12.2px;
+                    line-height: 1.78;
+                    font-weight: 700;
+                  "
+                >
+                  স্থানীয় মণ্ডলী স্থাপনকারীরা ইতিমধ্যেই প্রতিবেশীদের ভাষা জানেন।
+                </div>
+              </div>
+
+              <div class="script-card">
+                <div class="script-tag">
+                  Cyrillic (Russian) · Source Serif + Noto
+                </div>
+                <div
+                  lang="ru"
+                  style="
+                    font-family: var(--gf-font-serif);
+                    font-size: 12.2px;
+                    line-height: 1.48;
+                    font-weight: 600;
+                  "
+                >
+                  Местные пасторы уже знают язык, культуру и жизнь своих
+                  соседей.
+                </div>
+              </div>
+
+              <div class="script-card">
+                <div class="script-tag">
+                  Devanagari · Noto Sans Dev. (lh 1.80)
+                </div>
+                <div
+                  lang="hi"
+                  style="
+                    font-family: var(--gf-font-devanagari);
+                    font-size: 12px;
+                    line-height: 1.8;
+                    font-weight: 700;
+                  "
+                >
+                  स्थानीय कलीसिया अगुवे अपने पड़ोसियों की भाषा और जीवन को जानते हैं।
+                </div>
+              </div>
+
+              <div class="script-card">
+                <div class="script-tag">
+                  Simplified Chinese · Noto SC (lh 1.72)
+                </div>
+                <div
+                  lang="zh"
+                  style="
+                    font-family: var(--gf-font-cjk);
+                    font-size: 12px;
+                    line-height: 1.72;
+                    font-weight: 700;
+                  "
+                >
+                  本地教会植堂者熟悉邻舍的语言与文化，在基督里带领本地群体。
+                </div>
+              </div>
+            </div>
+
+            <!-- Mirrored Arabic RTL Local-Welcome Clause + Single-Line Thai Regional Hub Lockup -->
+            <div class="rtl-and-hub">
+              <div class="rtl-locked-proof" dir="rtl">
+                <p
+                  lang="ar"
+                  style="
+                    font-family: var(--gf-font-arabic);
+                    font-size: 10.4px;
+                    font-weight: 700;
+                    color: var(--gf-harbor);
+                    margin: 0 0 3px;
+                  "
+                >
+                  ترحيب بالكنيسة المحلية · نسخة تقنية للمراجعة
+                </p>
+                <p
+                  lang="ar"
+                  style="
+                    font-family: var(--gf-font-arabic);
+                    font-size: 12.2px;
+                    line-height: 1.72;
+                    color: var(--gf-ink);
+                    font-weight: 700;
+                    margin: 0 0 3px;
+                  "
+                >
+                  تحتفظ كنيستكم المحلية باسمها وصوتها وقيادتها في المسيح؛ يخدم
+                  الزملاء بجانب القادة المحليين وتحت قيادتهم.
+                </p>
+                <p
+                  lang="ar"
+                  style="
+                    font-family: var(--gf-font-arabic);
+                    font-size: 11.2px;
+                    line-height: 1.66;
+                    color: var(--gf-ink);
+                    margin: 0 0 3px;
+                  "
+                >
+                  &laquo;الرَّبُّ يَحْفَظُ خُرُوجَكَ وَدُخُولَكَ مِنَ الآنَ وَإِلَى الدَّهْرِ.&raquo; (مزمور
+                  <bdi dir="ltr">121:8</bdi> · ترجمة فاندايك)
+                </p>
+                <p
+                  lang="ar"
+                  style="
+                    font-family: var(--gf-font-arabic);
+                    font-size: 10px;
+                    line-height: 1.56;
+                    color: var(--gf-slate);
+                    margin: 0;
+                  "
+                >
+                  نموذج فني لاختبار القراءة من اليمين إلى اليسار والتدقيق اللغوي
+                  قبل النشر
+                </p>
+              </div>
+
+              <div class="hub-lockup-proof">
+                <div class="script-tag">
+                  Level 2 Hub &amp; Level 3 Non-Latin Endorsed (OVR-11)
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin: 5px 0 6px;
+                    white-space: nowrap;
+                  "
+                >
+                  <img
+                    src="../logos/svg/gf-lockup-horizontal.svg"
+                    alt="Global Fellowship"
+                    style="height: 18px; width: auto; flex-shrink: 0"
+                  />
+                  <span
+                    style="
+                      width: 2px;
+                      height: 18px;
+                      background: var(--gf-clay);
+                      display: inline-block;
+                      flex-shrink: 0;
+                    "
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    lang="th"
+                    style="
+                      font-family: var(--gf-font-thai);
+                      font-size: 11px;
+                      font-weight: 700;
+                      color: var(--gf-ink);
+                      line-height: 1.4;
+                      white-space: nowrap;
+                    "
+                    >เอเชียตะวันออกเฉียงใต้</span
+                  >
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid var(--gf-rule);
+                    padding-top: 5px;
+                    margin-top: 4px;
+                  "
+                >
+                  <div
+                    lang="th"
+                    style="
+                      font-family: var(--gf-font-thai);
+                      font-size: 12.6px;
+                      font-weight: 700;
+                      color: var(--gf-ink);
+                      line-height: 1.45;
+                    "
+                  >
+                    คริสตจักรบ้านแสงเทียน
+                  </div>
+                  <div
+                    style="
+                      font-size: 9.2px;
+                      font-weight: 700;
+                      color: var(--gf-slate);
+                    "
+                  >
+                    Level 3 Endorsed · In fellowship with Global Fellowship
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Full Bilingual Micro-Brief Expansion Stress Test (English vs Complete Spanish +36%) -->
+            <div class="expand-box">
+              <div class="expand-card">
+                <div>
+                  <div class="script-tag" style="font-size: 10.4px">
+                    English Micro-Brief (50% Width · Baseline)
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 14.4px;
+                      font-weight: 600;
+                      line-height: 1.24;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    When a cross-cultural missionary arrives, the local leader
+                    still leads
+                  </div>
+                  <div style="font-size: 11.6px; line-height: 1.44">
+                    Pray this week for two emerging elders opening Scripture
+                    with neighboring households in their mother tongue.
+                  </div>
+                  <div
+                    style="
+                      font-size: 10.4px;
+                      color: var(--gf-slate);
+                      margin-top: 5px;
+                      border-top: 1px solid var(--gf-rule);
+                      padding-top: 4px;
+                    "
+                  >
+                    Private fellowship note · Do not post names online · No gift
+                    expected.
+                  </div>
+                </div>
+                <span class="expand-btn">Write a first letter</span>
+              </div>
+
+              <div class="expand-card" style="border-top-color: var(--gf-clay)">
+                <div>
+                  <div
+                    class="script-tag"
+                    style="color: var(--gf-clay); font-size: 10.4px"
+                  >
+                    Spanish Faithful Translation · +15% Overall / +30% CTA Proof
+                  </div>
+                  <div
+                    lang="es"
+                    style="
+                      font-family: var(--gf-font-serif);
+                      font-size: 14px;
+                      font-weight: 600;
+                      line-height: 1.24;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    Cuando llega un misionero transcultural, el líder local
+                    sigue dirigiendo
+                  </div>
+                  <div lang="es" style="font-size: 11.4px; line-height: 1.42">
+                    Oren esta semana por dos ancianos en formación que abren las
+                    Escrituras con las familias vecinas en su lengua materna.
+                  </div>
+                  <div
+                    lang="es"
+                    style="
+                      font-size: 10.4px;
+                      color: var(--gf-slate);
+                      margin-top: 5px;
+                      border-top: 1px solid var(--gf-rule);
+                      padding-top: 4px;
+                    "
+                  >
+                    Nota privada de comunión · No publiquen nombres en internet
+                    · No se espera ninguna donación.
+                  </div>
+                </div>
+                <span lang="es" class="expand-btn"
+                  >Escribir una primera carta</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="env-block" style="margin-bottom: 0; padding-top: 6px">
+            <div class="gf-kicker">
+              Environment 4 · Production Office Starters (Word, PowerPoint,
+              Google Docs &amp; Slides)
+            </div>
+            <h2 style="font-size: 15.2px; margin-bottom: 4px">
+              Six editable native Office files ready in brand-kit/office/
+            </h2>
+            <div class="office-strip">
+              <div>
+                <div
+                  style="
+                    font-size: 11.4px;
+                    font-weight: 800;
+                    margin-bottom: 3px;
+                  "
+                >
+                  Public, Restricted, Level 4 EN &amp; AR, Finance Receipts
+                  &amp; Deck
+                </div>
+                <p style="font-size: 9.6px; line-height: 1.33; margin: 0">
+                  1. <strong>Public Word (.docx):</strong> Tier 1 open
+                  letterhead, Georgia/Calibri fallbacks.<br />
+                  2. <strong>Restricted Word (.docx):</strong> Tier 2/3
+                  zero-logo safe default (no GF name/EIN).<br />
+                  3.
+                  <strong>Level 4 Local-Only EN (.docx):</strong>
+                  Zero-attribution local meeting sheet.<br />
+                  4. <strong>Level 4 Arabic RTL (.docx):</strong>
+                  Zero-attribution Arabic brief (native
+                  <code>&lt;w:bidi/&gt;</code>).<br />
+                  5. <strong>Finance Donor Receipt (.docx):</strong> Manual
+                  fill-in receipt, PCI care &amp; re-designation templates.<br />
+                  6. <strong>16:9 PowerPoint (.pptx):</strong> All 8 slides
+                  synced 100% with HTML deck &amp; per-script fonts.
+                </p>
+              </div>
+              <div
+                style="
+                  background: var(--gf-surface-card);
+                  padding: 8px 11px;
+                  font-size: 10.1px;
+                  line-height: 1.42;
+                "
+              >
+                <strong style="color: var(--gf-harbor); display: block"
+                  >Google Workspace &amp; Script Font Mapping</strong
+                >
+                1. Upload .docx or .pptx to Google Drive; add free
+                <em>Source Serif 4</em> &amp; <em>Plus Jakarta Sans</em>.<br />
+                2. <strong>Non-Latin scripts:</strong> Enable free
+                <em>Noto Sans Arabic</em>, <em>Noto Sans Thai</em>,
+                <em>Noto Serif Bengali</em>, <em>Noto Sans Devanagari</em>, and
+                <em>Noto Sans SC</em> (Latin offline: Georgia/Calibri).<br />
+                3. Keep HEX: <strong>#16191C</strong> ·
+                <strong>#0C525C</strong> · <strong>#7E3119</strong> ·
+                <strong>#F2B488</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >TECHNICAL TYPESETTING PROOF · NATIVE REVIEW PENDING OVR-11 ·
+              STAFF TIMED TEST PENDING OVR-13</span
+            >
+            <span>PAGE 2 OF 2</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span>Global Fellowship · Six-Script &amp; Lean-Staff Proof</span>
+            <span>Environments 3 &amp; 4</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

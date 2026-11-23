@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Global Fellowship: Mobile Prayer Notes, Video Storyboard &amp; Carousel
+      Kit
+    </title>
+    <link rel="stylesheet" href="_shared.css" />
+    <style>
+      .note-split {
+        display: grid;
+        grid-template-columns: 375px 1fr;
+        gap: 20px;
+        align-items: start;
+        margin-top: 8px;
+      }
+      .phone-frame {
+        width: 375px;
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        padding: 20px 22px 18px;
+        position: relative;
+        overflow: hidden;
+        border: 0;
+        border-top: 5px solid var(--gf-apricot);
+      }
+      .phone-kicker {
+        font-family: var(--gf-font-display);
+        font-size: 10.4px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gf-apricot);
+        margin-bottom: 8px;
+      }
+      .phone-headline {
+        font-family: var(--gf-font-serif);
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.18;
+        letter-spacing: -0.012em;
+        color: var(--gf-paper);
+        margin: 0 0 10px;
+      }
+      .phone-verse {
+        font-family: var(--gf-font-serif);
+        font-style: italic;
+        font-size: 12.6px;
+        line-height: 1.46;
+        color: var(--gf-mist-text);
+        border-inline-start: 3px solid var(--gf-apricot);
+        padding-inline-start: 10px;
+        margin: 0 0 10px;
+      }
+      .phone-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 11px;
+        font-size: 12px;
+        line-height: 1.44;
+        color: var(--gf-paper);
+      }
+      .phone-list li {
+        margin-bottom: 4.5px;
+        padding-inline-start: 12px;
+        position: relative;
+      }
+      .phone-list li::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 6px;
+        width: 5px;
+        height: 5px;
+        background: var(--gf-apricot);
+      }
+      .phone-foot {
+        border-top: 1px solid var(--gf-border-dark);
+        padding-top: 7px;
+        font-size: 9.6px;
+        color: var(--gf-mist-text);
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+      }
+      .phone-specimen {
+        margin-top: 5px;
+        font-family: var(--gf-font-display);
+        font-size: 9.4px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--gf-sea-mist);
+      }
+      .phone-frame.thai {
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        margin-top: 15px;
+        padding: 19px 21px 17px;
+      }
+      .phone-frame.thai .phone-kicker,
+      .phone-frame.thai .phone-foot,
+      .phone-frame.thai .phone-specimen {
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        letter-spacing: 0.02em;
+      }
+      .phone-frame.thai .phone-headline {
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        font-size: 16.5px;
+        font-weight: 700;
+        line-height: 1.44;
+        letter-spacing: 0;
+        margin-bottom: 7px;
+      }
+      .phone-frame.thai .phone-verse {
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        font-style: normal;
+        font-size: 11.4px;
+        line-height: 1.56;
+        margin-bottom: 8px;
+      }
+      .phone-frame.thai .phone-list {
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        font-size: 11.5px;
+        line-height: 1.56;
+        margin-bottom: 7px;
+      }
+      .chat-twin {
+        background: var(--gf-surface-card);
+        border-inline-start: 4px solid var(--gf-harbor);
+        padding: 13px 15px;
+        font-size: 11.6px;
+        line-height: 1.5;
+        color: var(--gf-ink);
+        margin-bottom: 13px;
+      }
+      .chat-twin.thai {
+        border-inline-start-color: var(--gf-clay);
+        font-family: "Noto Sans Thai", "Noto Sans", sans-serif;
+        font-size: 11.4px;
+        line-height: 1.6;
+      }
+      .arabic-stage-grid {
+        display: grid;
+        grid-template-columns: 375px 1fr;
+        gap: 22px;
+        align-items: start;
+        margin-top: 12px;
+      }
+      .phone-frame.arabic {
+        font-family: var(--gf-font-arabic);
+        padding: 20px 22px 18px;
+      }
+      .phone-frame.arabic .phone-kicker,
+      .phone-frame.arabic .phone-foot,
+      .phone-frame.arabic .phone-specimen {
+        font-family: var(--gf-font-arabic);
+        letter-spacing: 0;
+      }
+      .phone-frame.arabic .phone-headline {
+        font-family: var(--gf-font-arabic);
+        font-size: 17.5px;
+        font-weight: 700;
+        line-height: 1.56;
+        letter-spacing: 0;
+        margin-bottom: 8px;
+      }
+      .phone-frame.arabic .phone-verse {
+        font-family: var(--gf-font-arabic);
+        font-style: normal;
+        font-size: 13px;
+        line-height: 1.72;
+        margin-bottom: 9px;
+      }
+      .phone-frame.arabic .phone-list {
+        font-family: var(--gf-font-arabic);
+        font-size: 12.2px;
+        line-height: 1.68;
+        margin-bottom: 9px;
+      }
+      .chat-twin p {
+        margin-bottom: 6px;
+      }
+      .chat-twin p:last-child {
+        margin-bottom: 0;
+      }
+      .beats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .beat-card {
+        border-top: 3px solid var(--gf-harbor);
+        background: var(--gf-surface-card);
+        padding: 14px 12px;
+        min-height: 236px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .beat-card.apricot {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+        border-top-color: var(--gf-ink);
+      }
+      .beat-card.dark {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+        border-top-color: var(--gf-apricot);
+      }
+      .beat-time {
+        font-family: var(--gf-font-display);
+        font-size: 9.6px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--gf-harbor);
+        margin-bottom: 4px;
+      }
+      .beat-card.apricot .beat-time {
+        color: var(--gf-ink);
+      }
+      .beat-card.dark .beat-time {
+        color: var(--gf-sea-mist);
+      }
+      .beat-card h3 {
+        font-family: var(--gf-font-display);
+        font-size: 12.4px;
+        font-weight: 800;
+        line-height: 1.24;
+        margin-bottom: 4px;
+      }
+      .beat-card.dark h3 {
+        color: var(--gf-paper);
+      }
+      .beat-card p {
+        font-size: 10.5px;
+        line-height: 1.42;
+        margin: 0;
+      }
+      .beat-card.dark p {
+        color: var(--gf-mist-text);
+      }
+      .caption-bar {
+        margin-top: 7px;
+        background: var(--gf-ink);
+        color: var(--gf-paper);
+        font-size: 9.4px;
+        padding: 4px 6px;
+        line-height: 1.3;
+      }
+      .beat-card.dark .caption-bar {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+        font-weight: 700;
+      }
+      .carousel-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .car-slide {
+        min-height: 230px;
+        padding: 16px 17px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .car-slide.s1 {
+        background: var(--gf-harbor-deep);
+        color: var(--gf-paper);
+      }
+      .car-slide.s2 {
+        background: var(--gf-apricot);
+        color: var(--gf-ink);
+      }
+      .car-slide.s3 {
+        background: var(--gf-surface-card);
+        color: var(--gf-ink);
+        border: 1.5px solid var(--gf-harbor);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- PAGE 1: MOBILE PRAYER NOTES (ALIGNED 2026 + PSALM 121:8 ACROSS EN/TH/AR + 1-TO-1 TWINS) -->
+      <section
+        class="gf-sheet"
+        style="padding: 30px 42px 22px"
+        aria-label="Page 1: Mobile Prayer Notes for WhatsApp, Signal, and LINE"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 10px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >MOBILE PRAYER NOTES · WHATSAPP, SIGNAL &amp; LINE</span
+            >
+          </div>
+
+          <h1
+            class="gf-serif-display"
+            style="font-size: 27px; line-height: 1.1; margin-bottom: 5px"
+          >
+            Built for phones, 3G links, and encrypted prayer groups
+          </h1>
+          <p
+            style="
+              font-family: var(--gf-font-serif);
+              font-size: 13px;
+              line-height: 1.48;
+              color: var(--gf-slate);
+              margin-bottom: 6px;
+            "
+          >
+            Short phone prayer notes keep every update under 60 words, pairing
+            3x Retina standalone cards (under 150 KB) with exact English, Thai,
+            and Arabic plain-text twins united on Psalm 121:8 for metered mobile
+            data and encrypted chats.
+          </p>
+
+          <div class="note-split">
+            <div>
+              <div class="gf-kicker" style="margin-bottom: 4px">
+                A. English 375px Encrypted Group Card (3x Retina PNG)
+              </div>
+              <div id="mobile-note-card" class="phone-frame">
+                <div class="phone-kicker">WEEKLY PRAYER · 2026</div>
+                <div class="phone-headline">
+                  Pray for two local elders shepherding an apartment fellowship
+                </div>
+                <p class="phone-verse">
+                  &ldquo;The
+                  <span style="font-variant: small-caps">Lord</span> will keep
+                  your going out and your coming in from this time forth and
+                  forevermore.&rdquo;
+                  <span class="gf-nowrap">(Psalm 121:8, ESV)</span>
+                </p>
+                <ul class="phone-list">
+                  <li>Wisdom opening Mark with neighbors.</li>
+                  <li>Rest for single workers and families.</li>
+                </ul>
+                <div class="phone-foot">
+                  <span>PRIVATE GROUP ONLY</span>
+                  <span>DO NOT POST OR FORWARD</span>
+                </div>
+                <div class="phone-specimen">
+                  SPECIMEN · REPLACE BEFORE SENDING
+                </div>
+              </div>
+
+              <div class="gf-kicker" style="margin: 8px 0 4px">
+                B. Thai-First Regional Prayer Note (3x Retina PNG · Paired Text
+                Twin)
+              </div>
+              <div id="mobile-note-thai" class="phone-frame thai">
+                <div class="phone-kicker" lang="th">
+                  คำอธิษฐานประจำสัปดาห์ · 2026
+                </div>
+                <div class="phone-headline" lang="th">
+                  ร่วมอธิษฐานเผื่อผู้นำคริสตจักรท้องถิ่นสองท่านที่กำลังดูแลกลุ่มผู้เชื่อใกล้เคียง
+                </div>
+                <p class="phone-verse" lang="th">
+                  [ใส่ข้อพระคัมภีร์ สดุดี 121:8 ฉบับที่ทีมภูมิภาครับรอง]
+                </p>
+                <ul class="phone-list">
+                  <li lang="th">
+                    ขอพระเจ้าประทานสติปัญญาแก่ครอบครัวผู้เชื่อใหม่ในการศึกษา<span
+                      style="white-space: nowrap"
+                      >พระคัมภีร์</span
+                    >
+                  </li>
+                  <li lang="th">
+                    ขอสันติสุขและการพักผ่อนที่เพียงพอแก่ผู้รับใช้ทั้งคนโสดและครอบครัว
+                  </li>
+                </ul>
+                <div class="phone-foot">
+                  <span lang="th">กลุ่มส่วนตัวเท่านั้น · ห้ามเผยแพร่หรือส่งต่อ</span>
+                </div>
+                <div class="phone-specimen" lang="th">
+                  ฉบับร่างเพื่อตรวจทานภาษา · แทนที่ด้วยคำอธิษฐานที่ผ่านการอนุญาตก่อนส่ง
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="gf-kicker" style="margin-bottom: 4px">
+                C. English Plain-Text Twin (Signal / WhatsApp · 55 Words Total)
+              </div>
+              <div class="chat-twin chat-twin-en">
+                <p>
+                  <strong>WEEKLY PRAYER · 2026</strong>
+                </p>
+                <p>
+                  Pray for two local elders shepherding an apartment fellowship.
+                  &ldquo;The Lord will keep your going out and your coming in
+                  from this time forth and forevermore.&rdquo; (Psalm 121:8,
+                  ESV)
+                </p>
+                <p>
+                  - Wisdom opening Mark with neighbors.<br />
+                  - Rest for single workers and families.
+                </p>
+                <p style="font-size: 10.6px; color: var(--gf-slate)">
+                  Private group only. Do not post or forward.<br />
+                  SPECIMEN: Replace before sending.
+                </p>
+              </div>
+
+              <div class="gf-kicker" style="margin-bottom: 4px">
+                D. Thai Plain-Text Twin (LINE / Signal · Exact Card Twin)
+              </div>
+              <div class="chat-twin chat-twin-th thai" lang="th">
+                <p>
+                  <strong>คำอธิษฐานประจำสัปดาห์ · 2026</strong>
+                </p>
+                <p>
+                  ร่วมอธิษฐานเผื่อผู้นำคริสตจักรท้องถิ่นสองท่านที่กำลังดูแลกลุ่มผู้เชื่อใกล้เคียง
+                  [ใส่ข้อพระคัมภีร์ สดุดี 121:8 ฉบับที่ทีมภูมิภาครับรอง]
+                </p>
+                <p>
+                  - ขอพระเจ้าประทานสติปัญญาแก่ครอบครัวผู้เชื่อใหม่ในการศึกษาพระคัมภีร์<br />
+                  - ขอสันติสุขและการพักผ่อนที่เพียงพอแก่ผู้รับใช้ทั้งคนโสดและครอบครัว
+                </p>
+                <p style="font-size: 10.4px; color: var(--gf-slate)">
+                  กลุ่มส่วนตัวเท่านั้น · ห้ามเผยแพร่หรือส่งต่อ<br />
+                  ฉบับร่างเพื่อตรวจทานภาษา · แทนที่ด้วยคำอธิษฐานที่ผ่านการอนุญาตก่อนส่ง
+                </p>
+              </div>
+
+              <div class="gf-rule-item" style="margin-top: 6px">
+                <h2
+                  style="
+                    font-family: var(--gf-font-display);
+                    font-size: 12.8px;
+                    font-weight: 800;
+                    color: var(--gf-harbor);
+                    margin-bottom: 4px;
+                  "
+                >
+                  Three Rules for Mobile Prayer Notes
+                </h2>
+                <ul
+                  style="
+                    margin: 0;
+                    padding-inline-start: 16px;
+                    font-size: 10.8px;
+                    line-height: 1.46;
+                  "
+                >
+                  <li style="margin-bottom: 4px">
+                    <strong>Stay under 60 words &amp; tier-neutral:</strong> Use
+                    the shared <strong>WEEKLY PRAYER · 2026</strong> header with
+                    no red-flag labels, urgency hype, or tracking links.
+                  </li>
+                  <li style="margin-bottom: 4px">
+                    <strong>Matched 1-to-1 exports ready:</strong> Three 3x
+                    Retina mobile cards (English, Thai, Arabic RTL) ship with
+                    exact plain-text encrypted chat twins and phone-ready voice
+                    and first-call scripts.
+                  </li>
+                  <li>
+                    <strong>How members join safely:</strong> Church members
+                    join vetted encrypted prayer groups through their local
+                    missions contact or
+                    <strong>info@globalfellowship.org</strong>; never cross-post
+                    Tier 3 notes to Instagram Stories or public feeds.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >SYNTHETIC MOBILE SPECIMENS · 3X RETINA PNGS + 1-TO-1 EN/TH/AR
+              TEXT TWINS · NATIVE REVIEW PENDING</span
+            >
+            <span>GF-TPL-14</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span>Global Fellowship · Mobile Prayer Notes</span>
+            <span>Page 1 of 3 · WhatsApp, Signal &amp; LINE Kit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: 25-SECOND LOCAL-VOICE-FIRST 9:16 VIDEO STORYBOARD, AUDIO-FIRST SPEC & SYNCED Q&A CAROUSEL -->
+      <section
+        class="gf-sheet"
+        style="padding: 26px 42px 20px"
+        aria-label="Page 2: Vertical Video Storyboard, Audio-First Local Voice Spec, and Candidate Q&A Carousel Blueprint"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 10px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >SHORT-FORM VIDEO, AUDIO-FIRST SPEC &amp; Q&amp;A CAROUSEL</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 19px; margin-bottom: 4px"
+          >
+            1. Tier 1 Public 9:16 Vertical Video Spec (25-Second Motion Cut +
+            Ambient Bed + Captions)
+          </h2>
+          <p
+            style="
+              font-size: 11.2px;
+              color: var(--gf-slate);
+              margin-bottom: 5px;
+              line-height: 1.42;
+            "
+          >
+            <strong>Tier Routing Rule:</strong>
+            <code>living-nearness-prayer-vertical.mp4</code> is strictly a
+            <strong>Tier 1 public social &amp; lobby specimen</strong> (embeds
+            contextual street photography <code>GF-PHO-01</code>, Global
+            Fellowship mark, gentle stereo ambient bed, and 10-cue synced
+            captions). Never route it to Tier 3 restricted channels: for Tier 3
+            livestreams use photo-free <code>GF-TPL-10</code> Slide 5, and for
+            private groups use photo-free <code>GF-TPL-01</code> and the plain
+            text twins on Pages 1 &amp; 3.
+          </p>
+
+          <div class="beats-grid" style="margin-top: 8px">
+            <div
+              class="beat-card dark"
+              style="min-height: 192px; padding: 11px 11px"
+            >
+              <div>
+                <div class="beat-time">BEAT 1 · 0:00 TO 0:07.6</div>
+                <h3>Kinetic Local Edit</h3>
+                <p>
+                  Outsider draft opens centered at 0:00, gets struck in Candle
+                  Apricot, and glides down cleanly while local elders&rsquo;
+                  accepted wording (&ldquo;Our church gathered neighboring
+                  households to read Mark in our own language.&rdquo;) rises
+                  into center stage.
+                </p>
+              </div>
+              <div class="caption-bar">
+                [Draft struck] Local elders&rsquo; wording leads
+              </div>
+            </div>
+
+            <div
+              class="beat-card dark"
+              style="min-height: 192px; padding: 11px 11px"
+            >
+              <div>
+                <div class="beat-time">BEAT 2 · 0:07.6 TO 0:13.6</div>
+                <h3>Street Photo &amp; Host Veto</h3>
+                <p>
+                  Bright-top contextual street photograph
+                  (<code>GF-PHO-01</code>, James Creegan CC BY 2.0) over an
+                  opaque Harbor Night panel framing the Host Stop-Authority
+                  decision: &ldquo;Not this spring. Our congregation is
+                  grieving.&rdquo; April visit postponed without penalty.
+                </p>
+              </div>
+              <div class="caption-bar">
+                Local host says &ldquo;not this spring&rdquo; · Visit postponed
+              </div>
+            </div>
+
+            <div
+              class="beat-card apricot"
+              style="min-height: 192px; padding: 11px 11px"
+            >
+              <div>
+                <div class="beat-time">BEAT 3 · 0:13.6 TO 0:20.8</div>
+                <h3>OUR VISION · Candle Apricot</h3>
+                <p>
+                  Warm Candle Apricot (#F2B488, 9.80:1 AAA Charcoal Ink) reveals
+                  the verbatim prayerful Vision under a calm
+                  <strong>OUR VISION</strong> header above all Three Pillars
+                  spoken and captioned in full.
+                </p>
+              </div>
+              <div class="caption-bar">
+                Church Planting · Local Leadership · Unreached People
+              </div>
+            </div>
+
+            <div
+              class="beat-card dark"
+              style="min-height: 192px; padding: 11px 11px"
+            >
+              <div>
+                <div class="beat-time">BEAT 4 · 0:20.8 TO 0:25.0</div>
+                <h3>Request a Bridge Match</h3>
+                <p>
+                  Single focused Bridge Project card lifted cleanly above the
+                  bottom 20% UI band: request a match via
+                  <strong>info@globalfellowship.org</strong>; coordinator
+                  confirms safe formats first (link-in-bio URL activates after
+                  portal confirmation).
+                </p>
+              </div>
+              <div class="caption-bar">
+                Request a Bridge Project match · Safe format first
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 9px;
+              background: var(--gf-paper-subtle);
+              border-inline-start: 4px solid var(--gf-clay);
+              padding: 8px 13px;
+              display: grid;
+              grid-template-columns: 1.32fr 0.68fr;
+              gap: 14px;
+              align-items: center;
+              font-size: 10.6px;
+              line-height: 1.42;
+              color: var(--gf-ink);
+            "
+          >
+            <div>
+              <strong style="color: var(--gf-clay)"
+                >Tier 1 Audio-First 30-Second Local Voice Spec (Field Production
+                Ready):</strong
+              >
+              Record a consented local elder speaking for 20&ndash;30 seconds in
+              their mother tongue over natural courtyard room tone (-14 LUFS),
+              paired with a vetted street detail frame, verbatim mother-tongue +
+              English captions, signed standalone Revocable Consent with Public
+              Social checked, and local-elder final-cut veto.
+            </div>
+            <div
+              style="
+                background: var(--gf-harbor-deep);
+                color: var(--gf-paper);
+                padding: 8px 10px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-family: var(--gf-font-display);
+                  font-size: 8.6px;
+                  font-weight: 800;
+                  letter-spacing: 0.08em;
+                  color: var(--gf-apricot);
+                  margin-bottom: 5px;
+                "
+              >
+                <span>AUDIO-FIRST 30S SPEC</span>
+                <span>-14 LUFS · VTT</span>
+              </div>
+              <svg
+                viewBox="0 0 216 26"
+                width="100%"
+                height="24"
+                role="img"
+                aria-label="30-second audio-first waveform showing 3s room tone, 21s local elder voice, and 6s closing prayer"
+                style="display: block"
+              >
+                <rect x="2" y="10" width="4" height="6" rx="1" fill="#8CE0E5" />
+                <rect x="10" y="9" width="4" height="8" rx="1" fill="#8CE0E5" />
+                <rect
+                  x="18"
+                  y="8"
+                  width="4"
+                  height="10"
+                  rx="1"
+                  fill="#8CE0E5"
+                />
+                <rect
+                  x="28"
+                  y="5"
+                  width="4"
+                  height="16"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="36"
+                  y="3"
+                  width="4"
+                  height="20"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="44"
+                  y="6"
+                  width="4"
+                  height="14"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="52"
+                  y="2"
+                  width="4"
+                  height="22"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="60"
+                  y="5"
+                  width="4"
+                  height="16"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="68"
+                  y="4"
+                  width="4"
+                  height="18"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="76"
+                  y="7"
+                  width="4"
+                  height="12"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="84"
+                  y="3"
+                  width="4"
+                  height="20"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="92"
+                  y="6"
+                  width="4"
+                  height="14"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="100"
+                  y="2"
+                  width="4"
+                  height="22"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="108"
+                  y="5"
+                  width="4"
+                  height="16"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="116"
+                  y="4"
+                  width="4"
+                  height="18"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="124"
+                  y="7"
+                  width="4"
+                  height="12"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="132"
+                  y="4"
+                  width="4"
+                  height="18"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="140"
+                  y="6"
+                  width="4"
+                  height="14"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="148"
+                  y="3"
+                  width="4"
+                  height="20"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="156"
+                  y="6"
+                  width="4"
+                  height="14"
+                  rx="1"
+                  fill="#F2B488"
+                />
+                <rect
+                  x="166"
+                  y="7"
+                  width="4"
+                  height="12"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+                <rect
+                  x="174"
+                  y="5"
+                  width="4"
+                  height="16"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+                <rect
+                  x="182"
+                  y="8"
+                  width="4"
+                  height="10"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+                <rect
+                  x="190"
+                  y="6"
+                  width="4"
+                  height="14"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+                <rect
+                  x="198"
+                  y="9"
+                  width="4"
+                  height="8"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+                <rect
+                  x="206"
+                  y="10"
+                  width="4"
+                  height="6"
+                  rx="1"
+                  fill="#CDE2E6"
+                />
+              </svg>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 8.2px;
+                  color: var(--gf-mist-text);
+                  margin-top: 3px;
+                "
+              >
+                <span>0:00 Room</span>
+                <span>0:03 Local Elder</span>
+                <span>0:24 Prayer</span>
+                <span>0:30</span>
+              </div>
+            </div>
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 19px; margin: 10px 0 3px"
+          >
+            2. Phone-First Candidate &amp; Skeptic Q&amp;A Carousel (3
+            Standalone 1080x1350 PNGs)
+          </h2>
+          <p
+            style="
+              font-size: 11px;
+              color: var(--gf-slate);
+              margin-bottom: 5px;
+              line-height: 1.4;
+            "
+          >
+            Three standalone 1080x1350 production PNGs ship in the Brand Kit
+            exports folder with phone-native typography synchronized verbatim
+            below.
+          </p>
+
+          <div class="carousel-grid" style="margin-top: 6px">
+            <div
+              class="car-slide s1"
+              style="min-height: 176px; padding: 12px 14px"
+            >
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 9.4px;
+                  font-weight: 800;
+                  letter-spacing: 0.1em;
+                  color: var(--gf-sea-mist);
+                "
+              >
+                HONEST QUESTIONS · 1 OF 3
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 16.5px;
+                  font-weight: 600;
+                  line-height: 1.18;
+                "
+              >
+                How is this different from colonial missions?
+              </div>
+              <div
+                style="
+                  font-size: 10.2px;
+                  line-height: 1.4;
+                  color: var(--gf-mist-text);
+                "
+              >
+                Leads with the Monumental <strong>Local Edit</strong>, our 1989
+                Liberia posture, and the host-veto safeguard: elders call or
+                message our regional care team directly if a visiting team ever
+                ignores &ldquo;no.&rdquo;
+              </div>
+            </div>
+
+            <div
+              class="car-slide s2"
+              style="min-height: 176px; padding: 12px 14px"
+            >
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 9.4px;
+                  font-weight: 800;
+                  letter-spacing: 0.1em;
+                  color: var(--gf-ink);
+                "
+              >
+                HONEST QUESTIONS · 2 OF 3
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 16.5px;
+                  font-weight: 600;
+                  line-height: 1.18;
+                "
+              >
+                Why plant local churches, not only relief aid?
+              </div>
+              <div style="font-size: 10.2px; line-height: 1.4">
+                Thanks God for faithful relief teams while contrasting urgent
+                mercy with self-governing local churches where Jesus Christ
+                builds his church across generations.
+              </div>
+            </div>
+
+            <div
+              class="car-slide s3"
+              style="min-height: 176px; padding: 12px 14px"
+            >
+              <div
+                style="
+                  font-family: var(--gf-font-display);
+                  font-size: 9.4px;
+                  font-weight: 800;
+                  letter-spacing: 0.1em;
+                  color: var(--gf-harbor);
+                "
+              >
+                HONEST QUESTIONS · 3 OF 3
+              </div>
+              <div
+                style="
+                  font-family: var(--gf-font-serif);
+                  font-size: 16.5px;
+                  font-weight: 600;
+                  line-height: 1.18;
+                  color: var(--gf-ink);
+                "
+              >
+                What actually happens in a first call?
+              </div>
+              <div
+                style="
+                  font-size: 10.2px;
+                  line-height: 1.4;
+                  color: var(--gf-slate);
+                "
+              >
+                Walks through the three real steps of a 30-minute exploratory
+                call (listening, open numbers, no pressure) with one destination
+                (<strong style="color: var(--gf-harbor)"
+                  >info@globalfellowship.org</strong
+                >) and a clean copyable opener.
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="gf-notice"
+            style="margin-top: 10px; padding: 9px 14px; font-size: 11px"
+          >
+            <strong>Consent Before Publishing:</strong> Every identifiable face
+            or voice in public video or audio requires a signed standalone
+            Revocable Consent Form with Public Social Media explicitly checked
+            and local-leader translation sign-off completed.
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >PRE-PUBLICATION SPECIMEN · 25S VERTICAL MP4, 10-CUE SYNCED VTT,
+              TRANSCRIPT, AUDIO SPEC &amp; 3 CAROUSEL PNGS</span
+            >
+            <span>GF-TPL-14</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span
+              >Global Fellowship · Short-Form Video &amp; Carousel Guide</span
+            >
+            <span>Page 2 of 3 · Digital &amp; Mobile Kit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 3: STANDALONE 3X RETINA ARABIC RTL PHONE CARD & 1-TO-1 PLAIN-TEXT TWIN -->
+      <section
+        class="gf-sheet"
+        style="padding: 26px 42px 20px"
+        aria-label="Page 3: Arabic RTL Mobile Prayer Card and Exact Plain-Text Encrypted Chat Twin"
+      >
+        <div>
+          <div class="gf-header-bar" style="margin-bottom: 10px">
+            <img
+              src="../logos/svg/gf-lockup-horizontal.svg"
+              alt="Global Fellowship"
+              style="height: 25px; width: auto"
+            />
+            <span class="gf-dateline"
+              >ARABIC RTL MOBILE NOTE · ZERO OUTSIDE ATTRIBUTION</span
+            >
+          </div>
+
+          <h2
+            class="gf-serif-display"
+            style="font-size: 24px; margin-bottom: 6px"
+          >
+            Arabic RTL encrypted prayer card &amp; exact 1-to-1 chat twin
+          </h2>
+          <p
+            style="
+              font-size: 11.4px;
+              color: var(--gf-slate);
+              line-height: 1.46;
+              margin: 0 0 10px;
+            "
+          >
+            Matches the English and Thai mobile prayer notes on Page 1 with zero
+            Global Fellowship names, URLs, or email addresses inside either the
+            card or plain-text twin. Ready for Signal, WhatsApp, and offline
+            Arabic PDF sharing with logical UTF-16BE text tags.
+          </p>
+
+          <div class="arabic-stage-grid">
+            <article
+              id="mobile-note-arabic"
+              class="phone-frame arabic"
+              dir="rtl"
+              aria-label="Arabic RTL mobile prayer card"
+            >
+              <div class="phone-kicker" lang="ar" dir="rtl">
+                صلاة أسبوعية · <bdi dir="ltr">2026</bdi> · نسخة تقنية للمراجعة
+              </div>
+              <div class="phone-headline" lang="ar" dir="rtl">
+                صلّوا لأجل قادة الكنائس المحلية الذين يجتمعون مع جيرانهم لقراءة
+                الكتاب المقدس بلغتهم الأم
+              </div>
+              <p class="phone-verse" lang="ar" dir="rtl">
+                &laquo;الرَّبُّ يَحْفَظُ خُرُوجَكَ وَدُخُولَكَ مِنَ الآنَ وَإِلَى الدَّهْرِ.&raquo;
+                <span style="white-space: nowrap"
+                  >(مزمور <bdi dir="ltr">121:8</bdi> · ترجمة فاندايك)</span
+                >
+              </p>
+              <ul class="phone-list">
+                <li lang="ar" dir="rtl">
+                  اطلبوا لهم الحكمة وهم يرعون العائلات الجديدة في الإيمان.
+                </li>
+                <li lang="ar" dir="rtl">
+                  صلّوا لأجل الراحة والسلام للعاملين العزّاب والعائلات.
+                </li>
+              </ul>
+              <p
+                class="phone-foot"
+                lang="ar"
+                dir="rtl"
+                style="display: block; margin: 0"
+              >
+                مجموعة خاصة فقط · لا تنشروا أو تعيدوا توجيه هذه الرسالة
+              </p>
+              <div class="phone-specimen" lang="ar" dir="rtl">
+                استبدل هذا النموذج بطلب معتمد قبل الإرسال
+              </div>
+            </article>
+
+            <div>
+              <div class="gf-kicker" style="margin-bottom: 5px">
+                E. Exact 1-to-1 Arabic RTL Plain-Text Twin (Signal / WhatsApp)
+              </div>
+              <article
+                class="chat-twin chat-twin-ar"
+                dir="rtl"
+                aria-label="Arabic RTL plain-text encrypted chat twin"
+                style="
+                  font-family: var(--gf-font-arabic);
+                  font-size: 12px;
+                  line-height: 1.72;
+                  border-inline-start: 4px solid var(--gf-harbor);
+                  margin-bottom: 12px;
+                "
+              >
+                <p lang="ar" dir="rtl">
+                  <strong
+                    >صلاة أسبوعية · <bdi dir="ltr">2026</bdi> · نسخة تقنية
+                    للمراجعة</strong
+                  >
+                </p>
+                <p lang="ar" dir="rtl">
+                  صلّوا لأجل قادة الكنائس المحلية الذين يجتمعون مع جيرانهم لقراءة
+                  الكتاب المقدس بلغتهم الأم. &laquo;الرَّبُّ يَحْفَظُ خُرُوجَكَ وَدُخُولَكَ مِنَ الآنَ
+                  وَإِلَى الدَّهْرِ.&raquo; (مزمور
+                  <bdi dir="ltr">121:8</bdi> · ترجمة فاندايك)
+                </p>
+                <p lang="ar" dir="rtl">
+                  - اطلبوا لهم الحكمة وهم يرعون العائلات الجديدة في الإيمان.<br />
+                  - صلّوا لأجل الراحة والسلام للعاملين العزّاب والعائلات.
+                </p>
+                <p
+                  lang="ar"
+                  dir="rtl"
+                  style="font-size: 10.6px; color: var(--gf-slate)"
+                >
+                  مجموعة خاصة فقط · لا تنشروا أو تعيدوا توجيه هذه الرسالة<br />
+                  استبدل هذا النموذج بطلب معتمد قبل الإرسال
+                </p>
+              </article>
+
+              <div class="gf-rule-item">
+                <h3
+                  style="
+                    font-family: var(--gf-font-display);
+                    font-size: 12.6px;
+                    font-weight: 800;
+                    color: var(--gf-harbor);
+                    margin: 0 0 5px;
+                  "
+                >
+                  Arabic RTL Mobile Distribution Safeguards
+                </h3>
+                <ul
+                  style="
+                    margin: 0;
+                    padding-inline-start: 16px;
+                    font-size: 10.8px;
+                    line-height: 1.48;
+                    color: var(--gf-ink);
+                  "
+                >
+                  <li style="margin-bottom: 4px">
+                    <strong>Zero outside identifiers:</strong> Never add
+                    organization names, URLs, or email addresses inside either
+                    the Arabic image or UTF-8 text twin.
+                  </li>
+                  <li style="margin-bottom: 4px">
+                    <strong>Logical RTL copy-paste:</strong> Use the companion
+                    UTF-8 plain-text twin for encrypted chat apps so Arabic word
+                    order and Western numerals (<code>2026</code>,
+                    <code>121:8</code>) paste cleanly across iOS and Android.
+                  </li>
+                  <li>
+                    <strong>Native regional sign-off:</strong> Have a fluent
+                    Arabic church leader review phrasing and swap to the
+                    congregation&rsquo;s preferred Arabic Scripture translation
+                    before live distribution.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 18px;
+              border-top: 2px solid var(--gf-ink);
+              padding-top: 14px;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 18px;
+            "
+          >
+            <div
+              style="
+                background: var(--gf-paper-subtle);
+                border-inline-start: 4px solid var(--gf-clay);
+                padding: 13px 15px;
+              "
+            >
+              <div class="gf-kicker" style="margin-bottom: 5px">
+                F. Bridge Project Voice-Note Rhythm (20-Second Greeting)
+              </div>
+              <p
+                style="
+                  font-size: 11.2px;
+                  line-height: 1.48;
+                  color: var(--gf-ink);
+                  margin: 0 0 8px;
+                "
+              >
+                Before recording, confirm your household&rsquo;s cleared format
+                on your Bridge match card. Keep voice greetings around 20
+                seconds (matching our companion voice-note script), use first
+                names only, ask one neighborly question, and close with a short
+                spoken prayer.
+              </p>
+              <p
+                style="
+                  font-size: 10.8px;
+                  line-height: 1.44;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                <strong>Recipient pacing:</strong> The receiving household holds
+                equal freedom to reply by voice, switch to a short text note, or
+                pause for a season with no guilt or financial expectation.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: var(--gf-paper-subtle);
+                border-inline-start: 4px solid var(--gf-harbor);
+                padding: 13px 15px;
+              "
+            >
+              <div class="gf-kicker" style="margin-bottom: 5px">
+                G. Low-Bandwidth Delivery &amp; File Size Standard
+              </div>
+              <p
+                style="
+                  font-size: 11.2px;
+                  line-height: 1.48;
+                  color: var(--gf-ink);
+                  margin: 0 0 8px;
+                "
+              >
+                Every standalone 3x Retina mobile card stays well under 150 KB
+                for metered 3G/4G connections, paired 1-to-1 with an unwrapped
+                UTF-8 plain-text twin for Signal, WhatsApp, or LINE when
+                recipients turn off image downloads.
+              </p>
+              <p
+                style="
+                  font-size: 10.8px;
+                  line-height: 1.44;
+                  color: var(--gf-slate);
+                  margin: 0;
+                "
+              >
+                <strong>Routing check:</strong> Match requests use
+                <strong>Subject: Bridge Project match request</strong>; approved
+                replies use
+                <strong>Subject: Bridge Project letter or voice note</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="gf-notice"
+            style="margin-top: 14px; padding: 11px 14px; font-size: 11.2px"
+          >
+            <strong>Print &amp; Mobile Parity:</strong> Page 3 keeps Arabic RTL
+            prayer notes inside the exact paginated PDF kit alongside English
+            and Thai (Page 1), while exporting the standalone 3x Retina PNG and
+            logical-order UTF-8 text twin for zero-friction encrypted sharing.
+          </div>
+        </div>
+
+        <div>
+          <div class="gf-print-status">
+            <span
+              >ARABIC RTL TECHNICAL PROOF · ZERO OUTSIDE ATTRIBUTION INSIDE CARD
+              · NATIVE REVIEW PENDING</span
+            >
+            <span>GF-TPL-14</span>
+          </div>
+          <div class="gf-footer-bar" style="margin-top: 6px; padding-top: 6px">
+            <span>Global Fellowship · Arabic RTL Mobile Prayer Kit</span>
+            <span>Page 3 of 3 · Signal &amp; WhatsApp Safe Twin</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
