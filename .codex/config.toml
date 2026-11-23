@@ -1,11 +1,11 @@
 [mcp_servers.next-devtools]
 command = "bunx"
 args = ["next-devtools-mcp@0.4.0"]
+startup_timeout_sec = 60
 
 [mcp_servers.shadcn]
 command = "bunx"
 args = ["--no-install", "shadcn", "mcp"]
-cwd = "."
 env_vars = [
   "REACTBITS_LICENSE_KEY",
   "REUI_LICENSE_KEY",
@@ -15,6 +15,7 @@ env_vars = [
   "SHADCN_STUDIO_LICENSE_KEY",
   "EFFERD_REGISTRY_TOKEN",
 ]
+startup_timeout_sec = 60
 
 [mcp_servers.reactbits_pro]
 url = "https://mcp.reactbits.dev/mcp"
@@ -26,15 +27,18 @@ bearer_token_env_var = "SHADCNUIKIT_API_KEY"
 
 [mcp_servers.reui]
 url = "https://mcp.reui.io"
+bearer_token_env_var = "REUI_LICENSE_KEY"
+http_headers = { "X-Reui-Style" = "base-maia" }
 
 [mcp_servers.shadcn_studio]
 command = "bun"
 args = ["scripts/shadcn-studio-mcp.ts"]
-cwd = "."
 env_vars = ["SHADCN_STUDIO_EMAIL", "SHADCN_STUDIO_LICENSE_KEY"]
+startup_timeout_sec = 60
 
 [mcp_servers.shadcn_space]
 url = "https://mcp.shadcnspace.com/mcp"
+startup_timeout_sec = 60
 
 [mcp_servers.vercel]
 url = "https://mcp.vercel.com"
