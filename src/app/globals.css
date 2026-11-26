@@ -1224,28 +1224,6 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   }
 }
 
-@keyframes gf-vt-chip-in {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes gf-vt-chip-out {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-}
-
 ::view-transition-group(.vt-card-move) {
   animation-duration: 240ms;
   animation-timing-function: var(--gf-ease-out);
@@ -1262,14 +1240,6 @@ details.gf-disclosure[open] .gf-disclosure-plus {
 
 ::view-transition-old(.vt-card-out) {
   animation: gf-vt-card-out 140ms var(--gf-ease-out) both;
-}
-
-::view-transition-new(.vt-chip-in) {
-  animation: gf-vt-chip-in 160ms var(--gf-ease-out) both;
-}
-
-::view-transition-old(.vt-chip-out) {
-  animation: gf-vt-chip-out 110ms var(--gf-ease-out) both;
 }
 
 @keyframes gf-vt-enter-forward {

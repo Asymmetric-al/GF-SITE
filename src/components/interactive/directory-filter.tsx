@@ -7,6 +7,8 @@ import {
 import {
   startTransition,
   useDeferredValue,
+  useEffect,
+  useEffectEvent,
   useId,
   useMemo,
   useOptimistic,
@@ -125,49 +127,75 @@ const DirectorySearchField = ({
   placeholder,
   query,
   searchLabel,
-}: DirectorySearchFieldProps) => (
-  <div className="relative flex w-full items-center sm:max-w-xs">
-    <label className="sr-only" htmlFor={inputId}>
-      {searchLabel}
-    </label>
-    <svg
-      aria-hidden="true"
-      className="text-muted-foreground pointer-events-none absolute left-3.5 size-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.75"
-      viewBox="0 0 24 24"
-    >
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-3.5-3.5" />
-    </svg>
-    <input
-      className="gf-control-motion border-input bg-card text-foreground placeholder:text-muted-foreground focus-visible:outline-ring focus-visible:border-primary min-h-11 w-full rounded-full border py-2 pr-16 pl-10 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
-      id={inputId}
-      name="q"
-      onChange={(event) => {
-        onChangeQuery(event.currentTarget.value);
-      }}
-      onKeyDown={onKeyDown}
-      placeholder={placeholder}
-      ref={inputRef}
-      type="search"
-      value={query}
-    />
-    {query.length > 0 ? (
-      <button
-        aria-label="Clear search"
-        className="gf-control-motion text-muted-foreground hover:text-foreground focus-visible:outline-ring absolute right-1 inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.96] motion-reduce:active:scale-100"
-        onClick={onClearQuery}
-        type="button"
+}: DirectorySearchFieldProps) => {
+  const syncQueryFromDom = useEffectEvent((value: string) => {
+    onChangeQuery(value);
+  });
+
+  // React 19.3 disables synthetic events (`_enabled = false`) between
+  // `prepareForCommit` and `document.startViewTransition`'s `update()` callback.
+  // Listening natively on the input ensures typed characters during a
+  // View Transition snapshot capture are never dropped.
+  useEffect(() => {
+    const input = inputRef.current;
+
+    const syncFromDom = () => {
+      if (input !== null) {
+        syncQueryFromDom(input.value);
+      }
+    };
+
+    input?.addEventListener("input", syncFromDom);
+
+    return () => {
+      input?.removeEventListener("input", syncFromDom);
+    };
+  }, [inputRef]);
+
+  return (
+    <div className="relative flex w-full items-center sm:max-w-xs">
+      <label className="sr-only" htmlFor={inputId}>
+        {searchLabel}
+      </label>
+      <svg
+        aria-hidden="true"
+        className="text-muted-foreground pointer-events-none absolute left-3.5 size-4"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
       >
-        Clear
-      </button>
-    ) : null}
-  </div>
-);
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </svg>
+      <input
+        className="gf-control-motion border-input bg-card text-foreground placeholder:text-muted-foreground focus-visible:outline-ring focus-visible:border-primary min-h-11 w-full rounded-full border py-2 pr-16 pl-10 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+        id={inputId}
+        name="q"
+        onChange={(event) => {
+          onChangeQuery(event.currentTarget.value);
+        }}
+        onKeyDown={onKeyDown}
+        placeholder={placeholder}
+        ref={inputRef}
+        type="search"
+        value={query}
+      />
+      {query.length > 0 ? (
+        <button
+          aria-label="Clear search"
+          className="gf-control-motion text-muted-foreground hover:text-foreground focus-visible:outline-ring absolute right-1 inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.96] motion-reduce:active:scale-100"
+          onClick={onClearQuery}
+          type="button"
+        >
+          Clear
+        </button>
+      ) : null}
+    </div>
+  );
+};
 
 interface DirectoryActiveFiltersProps {
   readonly countLabel: string;
@@ -202,44 +230,38 @@ const DirectoryActiveFilters = ({
       </p>
 
       {selectedCategory === ALL_CATEGORIES ? null : (
-        <ViewTransition default="none" enter="vt-chip-in" exit="vt-chip-out">
-          <button
-            aria-label={`Remove ${selectedCategory} filter`}
-            className={FILTER_CHIP_CLASS}
-            onClick={onClearCategory}
-            type="button"
-          >
-            <span>{selectedCategory}</span>
-            <span aria-hidden="true">×</span>
-          </button>
-        </ViewTransition>
+        <button
+          aria-label={`Remove ${selectedCategory} filter`}
+          className={FILTER_CHIP_CLASS}
+          onClick={onClearCategory}
+          type="button"
+        >
+          <span>{selectedCategory}</span>
+          <span aria-hidden="true">×</span>
+        </button>
       )}
 
       {trimmedDeferredQuery.length === 0 ? null : (
-        <ViewTransition default="none" enter="vt-chip-in" exit="vt-chip-out">
-          <button
-            aria-label={`Remove search term ${trimmedDeferredQuery}`}
-            className={FILTER_CHIP_CLASS}
-            onClick={onClearQuery}
-            type="button"
-          >
-            <span>&ldquo;{trimmedDeferredQuery}&rdquo;</span>
-            <span aria-hidden="true">×</span>
-          </button>
-        </ViewTransition>
+        <button
+          aria-label={`Remove search term ${trimmedDeferredQuery}`}
+          className={FILTER_CHIP_CLASS}
+          onClick={onClearQuery}
+          type="button"
+        >
+          <span>&ldquo;{trimmedDeferredQuery}&rdquo;</span>
+          <span aria-hidden="true">×</span>
+        </button>
       )}
     </div>
 
     {hasActiveFilters ? (
-      <ViewTransition default="none" enter="vt-chip-in" exit="vt-chip-out">
-        <button
-          className="gf-control-motion text-primary focus-visible:outline-ring min-h-11 cursor-pointer rounded-full px-3 text-sm font-semibold underline underline-offset-4 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.97] motion-reduce:active:scale-100"
-          onClick={onResetAll}
-          type="button"
-        >
-          Reset filters
-        </button>
-      </ViewTransition>
+      <button
+        className="gf-control-motion text-primary focus-visible:outline-ring min-h-11 cursor-pointer rounded-full px-3 text-sm font-semibold underline underline-offset-4 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.97] motion-reduce:active:scale-100"
+        onClick={onResetAll}
+        type="button"
+      >
+        Reset filters
+      </button>
     ) : null}
   </div>
 );
@@ -361,6 +383,13 @@ export const DirectoryFilter = ({
     selectedCategory !== ALL_CATEGORIES || trimmedDeferredQuery.length > 0;
 
   const selectCategory = (nextCategory: string) => {
+    if (
+      nextCategory === selectedCategory &&
+      nextCategory === optimisticCategory
+    ) {
+      return;
+    }
+
     startTransition(() => {
       setOptimisticCategory(nextCategory);
       setSelectedCategory(nextCategory);
