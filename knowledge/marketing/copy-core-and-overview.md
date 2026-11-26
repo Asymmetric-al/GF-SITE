@@ -86,10 +86,8 @@ Global Fellowship is one worldwide family made up of local church planters, regi
 
 ---
 
-## Block `COPY-CORE-05`: Dated Snapshot & Open Books Transparency Strip
+## Block `COPY-CORE-05`: Dated 2025 Snapshot
 
-**Headline:** **Open 2025 books. Dated field counts.**  
-**Body:**  
-In our 2025 Annual Report, **584 workers served** (reported as `"workers mobilized"`) across **43 countries**, with self-reported tallies of **25,000+ unreached people** who heard the Gospel, **8,000+ Bibles** distributed, **1,000+ baptisms**, and **230 churches planted**. Our 2025 Consolidated Statement of Activity reports **$5.82M received** and **$5.73M disbursed** across Global Fellowship (`$2.08M` received / `$2.13M` disbursed) and affiliated entities MissionStream and BOLK, alongside a `$5.9M` field giving summary in the 2025 Annual Report[^proof-2025]. Looking ahead, we are praying toward a 2030 strategic aspiration of serving in **63 countries** (an aspiration, not a current footprint).
+**Headline:** **2025 at a glance.** **Body:** In our 2025 Annual Report, **584 workers served** (reported as `"workers mobilized"`) across **43 countries**, with field reports of **25,000+ unreached people** who heard the Gospel, **8,000+ Bibles** distributed, **1,000+ baptisms**, and **230 churches planted**. Our 2025 consolidated Statement of Activity reports **$5.82M received** and **$5.73M distributed** combined across every ministry account our Home Office administers (`$2.08M` received / `$2.13M` distributed directly through Global Fellowship, Inc.)[^proof-2025]. Looking ahead, we are praying toward a 2030 strategic aspiration of serving in **63 countries** (an aspiration, not a current footprint).
 
-God alone brings spiritual fruit, so numbers never tell the whole story. Read our complete 2025 Annual Report alongside our published Statements of Financial Position and Activity (planned at `globalfellowship.org/financials`; request current statements via `finance@globalfellowship.org`) before deciding how to join us.
+God alone brings spiritual fruit, so numbers never tell the whole story. Read our 2025 Annual Report alongside our published Statement of Activity and Statement of Financial Position at `globalfellowship.org/financials` (or email `finance@globalfellowship.org`) before deciding how to join us.

@@ -1,6 +1,6 @@
 ---
 title: Usable Copy Library - Donor Lifecycle, Tax Receipts, and Gift Re-Designation
-description: Complete operational donor-care copy library covering first-gift thank-you, recurring gift confirmation, PCI-safe failed or expired card notices, annual 501(c)(3) tax receipt cover letter, stock/DAF/IRA acknowledgments, worker-transition and fund-closure re-designation notices, God-and-local-church-centered year-end stewardship appeals, and MissionStream/BOLK public reporting explanation.
+description: Operational Finance and Donor Care copy for tax receipts, recurring and PCI-safe card care, non-cash gifts, gift re-designation, MissionStream/BOLK explanation, and year-end appeals.
 type: Playbook
 status: draft
 tags:
@@ -145,7 +145,7 @@ Thank you for standing with local church planters and cross-cultural missionarie
 
 **Required IRS substantiation notice:** Global Fellowship, Inc. confirms that no goods or services were provided in whole or in part in consideration for any contribution listed on this statement, other than intangible religious benefits. Contributions are tax-deductible to the extent allowed by United States law. Please retain this document for your `[Year]` tax records.
 
-**Open books before and after you give:** Our annual Statements of Activity and Candid profile (`ID 8043461`) are open to every giver and church. If you notice any discrepancy on this statement, need a separate breakdown by designation, or have questions about our financial reporting, please email `finance@globalfellowship.org` or call `1 866 984 5622`.
+**Annual financial statements and receipts:** Our annual Statements of Activity and Candid profile (`ID 8043461`) are published for every giver and church. If you notice any discrepancy on this statement, need a separate breakdown by designation, or have questions about our financial reporting, please email `finance@globalfellowship.org` or call `1 866 984 5622`.
 
 With sincere thanks,  
 `[Co-Executive Director / Finance Director Name]`  
@@ -213,11 +213,11 @@ Global Fellowship Finance & Donor Care
 
 ---
 
-## 7. MissionStream & BOLK Plain-English Public Explainer (`COPY-DONOR-ENTITIES-01`)
+## 7. Consolidated Statement Finance Desk Reference (`COPY-DONOR-ENTITIES-01`, Internal Finance Q&A Only)
 
-Until Finance finalizes the exact legal footnote under `OVR-03` and clarifies the entity scope of `Admin Fees - 8%` under `OVR-01`, use this honest, plain-language explanation whenever a church elder, CPA, or donor asks about consolidated statements[^proof-2025][^open-verification]:
+_(Internal Finance reference only; per Stakeholder Public-Copy Directive 2026-11-25, do **not** publish affiliated entity names on the public website or in mass mailings. Use this calm direct reply only when a church elder, treasurer, or CPA writes `finance@globalfellowship.org` asking specifically about consolidated scope while `OVR-01` and `OVR-03` remain open[^proof-2025][^open-verification]:)_
 
-> _"Global Fellowship's 2025 Consolidated Statement of Activity (`$5.82M` received / `$5.73M` disbursed) reports Global Fellowship, Inc. (`$2.08M` received / `$2.13M` disbursed) alongside two affiliated ministry entities, MissionStream (`$3.08M` received / `$2.92M` disbursed) and BOLK (`$660k` received / `$683k` disbursed). Contributions made directly to Global Fellowship, Inc. (`EIN 68-0214543`) are receipted by Global Fellowship, Inc. Home Office operating expenses (`$251.6k`) are reported alongside separate funding lines (including `$192.5k` in 8% admin fees; not a line-item reconciliation while Finance confirms scope). If your church or advisor wants to inspect entity-level breakdowns before giving, write directly to `finance@globalfellowship.org`."_
+> _"Global Fellowship's 2025 consolidated Statement of Activity (`$5.82M` received / `$5.73M` distributed) combines every ministry account administered by our Home Office, including Global Fellowship, Inc.'s own contributions (`$2.08M` received / `$2.13M` distributed). Contributions made directly to Global Fellowship, Inc. (`EIN 68-0214543`) are receipted by Global Fellowship, Inc. Home Office operating expenses totaled `$251,610.11` in 2025, and the statement records an 8% administrative fee (`$192,504.66`) on applicable funds. If your church treasurer or advisor needs additional supporting records before giving, reply directly to `finance@globalfellowship.org`."_
 
 ---
 

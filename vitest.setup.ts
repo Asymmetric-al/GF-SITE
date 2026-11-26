@@ -12,6 +12,27 @@ if (!("getAnimations" in Element.prototype)) {
   });
 }
 
+// jsdom does not implement `window.matchMedia`, which scroll-linked primitives
+// query to honor `prefers-reduced-motion: reduce`.
+if (window.matchMedia === undefined) {
+  Object.defineProperty(window, "matchMedia", {
+    configurable: true,
+    value: (query: string) => ({
+      addEventListener: () => {
+        // Static jsdom media query stub.
+      },
+      dispatchEvent: () => false,
+      matches: query.includes("prefers-reduced-motion: reduce"),
+      media: query,
+      onchange: null,
+      removeEventListener: () => {
+        // Static jsdom media query stub.
+      },
+    }),
+    writable: true,
+  });
+}
+
 afterEach(() => {
   cleanup();
 });

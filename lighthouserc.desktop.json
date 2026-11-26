@@ -15,7 +15,12 @@
       "startServerCommand": "bun run start -- --hostname 127.0.0.1 --port 3200",
       "startServerReadyPattern": "Ready in",
       "startServerReadyTimeout": 120000,
-      "url": ["http://127.0.0.1:3200/"]
+      "url": [
+        "http://127.0.0.1:3200/",
+        "http://127.0.0.1:3200/financials",
+        "http://127.0.0.1:3200/give",
+        "http://127.0.0.1:3200/bridge-project"
+      ]
     },
     "assert": {
       "assertions": {

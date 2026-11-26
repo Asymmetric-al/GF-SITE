@@ -1,171 +1,1512 @@
 @layer ui-sdk;
-
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@source not "../../brand-kit";
+@source not "../../docs";
+@source not "../../knowledge";
+@source not "../../scripts";
+@source not "../../artifacts";
+@source not "../../tests";
+@source not "../../playwright-report";
+@source not "../../test-results";
+@source not "../../.agents";
+@source not "../../.claude";
+@source not "../../.codex";
 
-@custom-variant dark (&:is(.dark *));
+@layer ui-sdk {
+  @media screen and (scripting: enabled) {
+    :where([data-slot][hidden]:not([hidden="until-found"])) {
+      display: none !important;
+    }
+  }
+
+  @media (scripting: none) {
+    [role="tabpanel"][hidden],
+    [data-slot="accordion-panel"][hidden] {
+      display: block !important;
+      content-visibility: visible !important;
+      height: auto !important;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    [data-slot="accordion-panel"][hidden] {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  @media print {
+    [role="tabpanel"][hidden],
+    [data-slot="accordion-panel"][hidden] {
+      display: block !important;
+      margin-top: 1.5rem;
+    }
+
+    [data-slot="accordion-panel"][hidden] {
+      margin-top: 0;
+    }
+  }
+}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(
-    --font-figtree,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    sans-serif
-  );
-  --font-mono: var(
-    --font-geist-mono,
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace
-  );
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Global Fellowship semantic editorial tokens (2026 Marketing Brand Kit) */
+  --color-linen: var(--gf-linen);
+  --color-clay: var(--gf-clay-token);
+  --color-gold-rule: var(--gf-gold-rule);
+  --color-apricot: var(--gf-apricot-token);
+  --color-sea-mist: var(--gf-sea-mist-token);
+  --color-structural: var(--gf-structural-accent);
+  --color-notice: var(--gf-notice-token);
+  --color-bronze-plate: var(--gf-bronze-plate);
+  --color-night: var(--gf-night-bg);
+  --color-night-elevated: var(--gf-night-card);
+  --color-night-surface: var(--gf-night-mid);
+  --color-night-foreground: var(--gf-night-fg);
+  --color-night-muted: var(--gf-night-muted-fg);
+  --color-night-border: var(--gf-night-rule);
+
+  --font-sans:
+    "GFNunito", var(--font-gf-sans), "Nunito", system-ui, -apple-system,
+    sans-serif;
+  --font-serif:
+    "GFSourceSerif4", var(--font-gf-serif), "Source Serif 4", Georgia, serif;
+  --font-heading:
+    "GFSourceSerif4", var(--font-gf-serif), "Source Serif 4", Georgia, serif;
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Global Fellowship 2026 Brand Kit palette: luminous Alabaster Ivory (#FCFAF6), Gallery White (#FFFFFF), Warm Cream (#F3EDE3), Deep Navy & Petrol Blue, Muted Gold / Dark Bronze */
+  --background: #fcfaf6;
+  --foreground: #122a3b;
+  --card: #ffffff;
+  --card-foreground: #122a3b;
+  --popover: #ffffff;
+  --popover-foreground: #122a3b;
+  --primary: #08354d;
+  --primary-foreground: #f0e7db;
+  --secondary: #efe9df;
+  --secondary-foreground: #122a3b;
+  --muted: #efe9df;
+  --muted-foreground: #445664;
+  --accent: #e5e9ea;
+  --accent-foreground: #08354d;
+  --destructive: #8f3016;
+  --destructive-foreground: #ffffff;
+  --border: #e5ded2;
+  --input: #5a6b78;
+  --ring: #08354d;
+  --radius: 0.5rem;
+
+  /* Editorial extended roles (Warm Cream chapter surface, Dark Bronze WCAG AA+ small text, Muted Gold flat rules, Warm Deep Bronze care plate) */
+  --gf-linen: #f3ede3;
+  --gf-clay-token: #614d29;
+  --gf-gold-rule: #b28b61;
+  --gf-apricot-token: #d5b082;
+  --gf-sea-mist-token: #e8d5b7;
+  --gf-structural-accent: #08354d;
+  --gf-notice-token: #f3ede3;
+  --gf-bronze-plate: #47361d;
+
+  /* Deep Navy & Petrol Blue dark panel constants (independent of OS theme so sanctuaries & footer stay AAA) */
+  --gf-night-bg: #122a3b;
+  --gf-night-card: #08354d;
+  --gf-night-mid: #19374c;
+  --gf-night-fg: #f0e7db;
+  --gf-night-muted-fg: #d4ccc0;
+  --gf-night-rule: #2b4a5e;
+
+  /* Adaptive inline Cross-in-Oval mark & restrained twin-arc motif tokens */
+  --gf-mark-frame: #122a3b;
+  --gf-mark-arc: #b28b61;
+  --gf-arc-primary: rgb(18 42 59 / 0.08);
+  --gf-arc-warm: rgb(178 139 97 / 0.22);
+
+  /* Custom UI easing curves */
+  --gf-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --gf-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --gf-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.74 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* Unified Deep Navy OS dark mode preserving Soft Ivory & Warm Gold polarity (screen-only so print stays pure B&W) */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a1822;
+    --foreground: #f0e7db;
+    --card: #122a3b;
+    --card-foreground: #f0e7db;
+    --popover: #122a3b;
+    --popover-foreground: #f0e7db;
+    --primary: #e8d5b7;
+    --primary-foreground: #122a3b;
+    --secondary: #163346;
+    --secondary-foreground: #f0e7db;
+    --muted: #163346;
+    --muted-foreground: #cbc3b7;
+    --accent: #183a50;
+    --accent-foreground: #e8d5b7;
+    --destructive: #e59379;
+    --destructive-foreground: #122a3b;
+    --border: #274457;
+    --input: #8fa3b1;
+    --ring: #e8d5b7;
+    --gf-linen: #132c3d;
+    --gf-clay-token: #d5b082;
+    --gf-gold-rule: #b28b61;
+    --gf-structural-accent: #e8d5b7;
+    --gf-notice-token: #132c3d;
+    --gf-mark-frame: #f0e7db;
+    --gf-mark-arc: #d5b082;
+    --gf-arc-primary: rgb(240 231 219 / 0.07);
+    --gf-arc-warm: rgb(213 176 130 / 0.24);
+  }
+}
+
+/* Explicit Deep Navy scoped surface (Prayer, Scripture, Vision, first-contact safety, and Footer) */
+.gf-night {
+  --background: #122a3b;
+  --foreground: #f0e7db;
+  --card: #08354d;
+  --card-foreground: #f0e7db;
+  --popover: #08354d;
+  --popover-foreground: #f0e7db;
+  --primary: #e8d5b7;
+  --primary-foreground: #122a3b;
+  --secondary: #19374c;
+  --secondary-foreground: #f0e7db;
+  --muted: #19374c;
+  --muted-foreground: #d4ccc0;
+  --accent: #19374c;
+  --accent-foreground: #e8d5b7;
+  --border: #2b4a5e;
+  --input: #8fa3b1;
+  --ring: #e8d5b7;
+  --gf-clay-token: #d5b082;
+  --gf-gold-rule: #b28b61;
+  --gf-structural-accent: #d5b082;
+  --gf-mark-frame: #f0e7db;
+  --gf-mark-arc: #d5b082;
+  --gf-arc-primary: rgb(240 231 219 / 0.08);
+  --gf-arc-warm: rgb(213 176 130 / 0.3);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Distinct nocturnal sanctuary depth in OS dark mode */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not(.light) .gf-night {
+    --background: #08151f;
+    --card: #0e2536;
+    --border: #33556b;
+    --gf-night-bg: #08151f;
+    --gf-night-card: #0e2536;
+    --gf-night-mid: #163346;
+    --gf-night-rule: #33556b;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/70;
   }
 
   html {
-    @apply font-sans;
+    @apply bg-background text-foreground font-sans;
+    scroll-padding-top: 6rem;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    overflow-wrap: break-word;
   }
+}
 
-  button,
-  a,
-  input,
-  select,
-  textarea {
-    touch-action: manipulation;
-  }
-
-  h1,
-  h2,
-  h3 {
+@layer components {
+  /* Expressive contemporary editorial serif display scale (2026 Brand Kit, 320px-safe) */
+  .gf-display-hero {
+    font-family: var(--font-serif);
+    font-size: clamp(2.45rem, 1.55rem + 3.4vw, 4.55rem);
+    font-weight: 400;
+    line-height: 1.03;
+    letter-spacing: -0.033em;
+    font-optical-sizing: auto;
     text-wrap: balance;
   }
+
+  /* Editorial serif page titles for poised 2-to-3 line compositions */
+  .gf-display-split {
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 1.35rem + 2.4vw, 3.45rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.026em;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  /* Unified optical Source Serif 4 editorial section headings (2-voice contemporary hierarchy) */
+  .gf-display-section {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 1.3rem + 1.45vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.09;
+    letter-spacing: -0.026em;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  /* Sacred editorial serif reserved for Locked Mission/Vision, Scripture, Prayers & Letters */
+  .gf-display-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 1.12rem + 1.05vw, 2rem);
+    font-weight: 400;
+    line-height: 1.36;
+    letter-spacing: -0.016em;
+    font-optical-sizing: auto;
+  }
+
+  /* Calm contemporary sentence-case section kicker (replaces dated ALL-CAPS eyebrow clutter) */
+  .gf-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+
+  /* Brand Kit architectural colophon caps (reserved strictly for formal three-pillar footer colophon) */
+  .gf-colophon-caps {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    line-height: 1.35;
+  }
+
+  /* Brand Kit signature short flat Muted Gold rule above major chapter titles */
+  .gf-gold-rule {
+    width: 2.5rem;
+    height: 2.5px;
+    border-radius: 9999px;
+    background-color: var(--gf-gold-rule);
+  }
+
+  /* Contemporary 2026 flat hairline surface with whisper-soft hover depth */
+  .gf-surface {
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+  }
+
+  .gf-surface-interactive {
+    position: relative;
+    isolation: isolate;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    transition:
+      border-color 180ms var(--gf-ease-out),
+      background-color 180ms var(--gf-ease-out),
+      transform 200ms var(--gf-ease-out);
+  }
+
+  .gf-surface-interactive::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      0 1px 2px rgb(18 42 59 / 0.05),
+      0 16px 34px -18px rgb(18 42 59 / 0.2);
+    opacity: 0;
+    transition: opacity 200ms var(--gf-ease-out);
+    z-index: -1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .gf-surface-interactive:hover {
+      border-color: color-mix(in srgb, var(--primary) 36%, var(--border));
+      transform: translateY(-2px);
+    }
+
+    .gf-surface-interactive:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .gf-surface-interactive:has(> a:active),
+  .gf-surface-interactive:has([data-card-primary-link]:active) {
+    transform: translateY(0) scale(0.992);
+    transition-duration: 100ms;
+  }
+
+  /* Concentric inner radius matching 1rem outer surface minus 1px border */
+  .gf-surface-top-media {
+    border-top-left-radius: calc(1rem - 1px);
+    border-top-right-radius: calc(1rem - 1px);
+  }
+
+  .gf-surface-split-media {
+    border-top-left-radius: calc(1rem - 1px);
+    border-top-right-radius: calc(1rem - 1px);
+  }
+
+  @media (min-width: 1024px) {
+    .gf-surface-split-media {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: calc(1rem - 1px);
+    }
+  }
+
+  /* Explicit non-layout control transition curve (never transitions box-shadow or all) */
+  .gf-ease {
+    transition-timing-function: var(--gf-ease-out);
+  }
+
+  .gf-control-motion {
+    transition-property:
+      color, background-color, border-color, opacity, transform;
+    transition-duration: 150ms;
+    transition-timing-function: var(--gf-ease-out);
+  }
+
+  /* Clean archival-plate photography frame with whisper-thin inset hairline ring painted over the image */
+  .gf-photo-frame {
+    position: relative;
+    border-radius: 1rem;
+    background-color: var(--gf-linen);
+  }
+
+  .gf-photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgb(18 42 59 / 0.1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Subtle atmospheric warmth for Deep Navy prayer sanctuaries */
+  .gf-sanctuary-glow {
+    background-image: radial-gradient(
+      circle at 88% 14%,
+      rgb(178 139 97 / 0.14),
+      transparent 48%
+    );
+  }
+
+  /* Full-bleed photography plates with restrained Deep Navy (#122A3B) directional scrims (> 10:1 AAA contrast) */
+  .gf-cinema-frame {
+    border-color: var(--gf-night-rule);
+  }
+
+  .gf-cinema-scrim-left {
+    background-image:
+      linear-gradient(
+        104deg,
+        rgb(18 42 59 / 0.92) 0%,
+        rgb(18 42 59 / 0.8) 42%,
+        rgb(18 42 59 / 0.36) 70%,
+        rgb(18 42 59 / 0.14) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(18 42 59 / 0.16) 0%,
+        transparent 34%,
+        rgb(18 42 59 / 0.44) 100%
+      );
+  }
+
+  .gf-cinema-scrim-bottom {
+    background-image: linear-gradient(
+      180deg,
+      rgb(18 42 59 / 0.08) 0%,
+      rgb(18 42 59 / 0.28) 28%,
+      rgb(18 42 59 / 0.84) 46%,
+      rgb(18 42 59 / 0.95) 70%,
+      rgb(18 42 59 / 0.98) 100%
+    );
+  }
+
+  /* Clean unboxed editorial kicker over directional dark photo scrims (>= 4.5:1 verified via pixel-contrast checks) */
+  .gf-banner-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 0.375rem;
+    background-color: rgb(18 42 59 / 0.92);
+    border: 1px solid rgb(240 231 219 / 0.14);
+    padding: 0.25rem 0.65rem;
+  }
+
+  .gf-cinema-frame .gf-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    text-shadow: 0 1px 12px rgb(8 20 30 / 0.68);
+  }
+
+  /* Calibrated 3-layer foreground-masking atmospheric veils (sit at z-10 strictly behind Layer 2 cutouts so subjects stay vivid & sunlit) */
+  .gf-depth-veil-twilight {
+    background-image: linear-gradient(
+      180deg,
+      rgb(10 24 34 / 0.54) 0%,
+      rgb(12 28 42 / 0.32) 24%,
+      rgb(12 28 42 / 0.06) 38%,
+      transparent 54%
+    );
+  }
+
+  .gf-depth-veil-sky-deep {
+    background-image: linear-gradient(
+      180deg,
+      rgb(8 22 33 / 0.9) 0%,
+      rgb(8 22 33 / 0.82) 30%,
+      rgb(10 26 38 / 0.62) 48%,
+      rgb(12 30 44 / 0.22) 66%,
+      transparent 78%
+    );
+  }
+
+  /* High-canopy portrait veil: fades out above the gathered family so ivory display text clears WCAG AA+/AAA over lush palms while every face below stays 100% sunlit */
+  .gf-depth-veil-portrait-top {
+    background-image: linear-gradient(
+      180deg,
+      rgb(8 22 33 / 0.84) 0%,
+      rgb(8 22 33 / 0.66) 20%,
+      rgb(8 22 33 / 0.28) 33%,
+      transparent 44%
+    );
+  }
+
+  .gf-depth-veil-water {
+    background-image: linear-gradient(
+      180deg,
+      rgb(12 30 44 / 0.74) 0%,
+      rgb(12 30 44 / 0.36) 30%,
+      rgb(12 30 44 / 0.08) 52%,
+      transparent 68%
+    );
+  }
+
+  .gf-depth-veil-canopy {
+    background-image: linear-gradient(
+      180deg,
+      rgb(14 34 32 / 0.68) 0%,
+      rgb(14 34 32 / 0.28) 32%,
+      transparent 56%
+    );
+  }
+
+  .gf-depth-bottom-dock {
+    background-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgb(10 24 34 / 0.68) 38%,
+      rgb(10 24 34 / 0.92) 100%
+    );
+  }
+
+  /* Monumental editorial typography set inside foreground-masked photographic frames (paints immediately at frame 0 for fast LCP) */
+  .gf-display-cinema {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    letter-spacing: -0.034em;
+    line-height: 1.02;
+    font-size: clamp(2.05rem, 1.25rem + 3.2vw, 4.35rem);
+    text-wrap: balance;
+    text-shadow: 0 4px 28px rgb(8 20 30 / 0.46);
+  }
+
+  .gf-display-cinema-word {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    font-size: clamp(3.25rem, 1.8rem + 7vw, 8rem);
+    text-shadow: 0 4px 32px rgb(8 20 30 / 0.42);
+  }
+
+  .gf-depth-title {
+    opacity: 1;
+  }
+
+  /* Continuous vw-coupled Home hero offset tracking the Himalayan cutout gable apex (minY=205/1200*w)
+     minus the 3-line display heading height so the roof stays cleanly within the empty descender band
+     below "local leader still leads." with 0% stem occlusion across every width from 1024px to 1920px. */
+  .gf-home-hero-offset {
+    padding-top: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .gf-home-hero-offset {
+      padding-top: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gf-home-hero-offset {
+      padding-top: clamp(1.7rem, calc(7.3vw - 2.95rem), 4.65rem);
+    }
+  }
+
+  /* Zero-dependency rolling tabular USD counter reel (React Bits Counter adaptation) */
+  .gf-counter-slot {
+    display: inline-flex;
+    align-items: flex-start;
+    height: 1em;
+    overflow: hidden;
+    vertical-align: baseline;
+  }
+
+  .gf-counter-strip {
+    display: flex;
+    flex-direction: column;
+    height: 10em;
+    transition: transform 280ms var(--gf-ease-out);
+  }
+
+  .gf-counter-strip[data-digit="0"] {
+    transform: translateY(0);
+  }
+  .gf-counter-strip[data-digit="1"] {
+    transform: translateY(-1em);
+  }
+  .gf-counter-strip[data-digit="2"] {
+    transform: translateY(-2em);
+  }
+  .gf-counter-strip[data-digit="3"] {
+    transform: translateY(-3em);
+  }
+  .gf-counter-strip[data-digit="4"] {
+    transform: translateY(-4em);
+  }
+  .gf-counter-strip[data-digit="5"] {
+    transform: translateY(-5em);
+  }
+  .gf-counter-strip[data-digit="6"] {
+    transform: translateY(-6em);
+  }
+  .gf-counter-strip[data-digit="7"] {
+    transform: translateY(-7em);
+  }
+  .gf-counter-strip[data-digit="8"] {
+    transform: translateY(-8em);
+  }
+  .gf-counter-strip[data-digit="9"] {
+    transform: translateY(-9em);
+  }
+
+  .gf-counter-digit {
+    display: inline-flex;
+    flex-shrink: 0;
+    height: 1em;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Whisper-subtle warm gold hairline spotlight on pointer-capable devices (isolated leaf overlay avoids CSS custom-property inheritance across children) */
+  .gf-spotlight-surface {
+    position: relative;
+    border-radius: 1rem;
+  }
+
+  .gf-spotlight-glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    z-index: 1;
+    --gf-spot-x: 50%;
+    --gf-spot-y: 50%;
+    --gf-spot-color: rgb(178 139 97 / 0.12);
+    background: radial-gradient(
+      340px circle at var(--gf-spot-x) var(--gf-spot-y),
+      var(--gf-spot-color),
+      transparent 72%
+    );
+    transition: opacity 220ms var(--gf-ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .gf-spotlight-surface:hover > .gf-spotlight-glow {
+      opacity: 1;
+    }
+  }
+
+  /* Compositor-only below-the-fold architectural clip reveal (React Bits ScrollExpand adaptation) */
+  .gf-scroll-expand {
+    clip-path: inset(0% 0% round 1.5rem);
+  }
+
+  @media (prefers-reduced-motion: reduce), (scripting: none) {
+    .gf-scroll-expand {
+      clip-path: none !important;
+    }
+  }
+
+  /* Scroll-drawn architectural timeline spine fill (ShadBlocks timeline4 + React Bits Pro timeline-1 adaptation) */
+  .gf-timeline-spine-fill {
+    transform: scaleY(1);
+    transition: transform 80ms linear;
+  }
+
+  /* Whisper-thin editorial reading progress hairline */
+  .gf-reading-progress-fill {
+    transform: scaleX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce), (scripting: none) {
+    .gf-timeline-spine-fill {
+      transform: scaleY(1);
+      transition: none;
+    }
+
+    .gf-reading-progress-track {
+      display: none !important;
+    }
+  }
+
+  /* Searchable FAQ accordion & Collapsible animations (@ui-sdk/react) */
+  .gf-accordion-panel {
+    height: var(--accordion-panel-height);
+    overflow: hidden;
+    transition: height 200ms var(--gf-ease-out);
+  }
+
+  .gf-accordion-panel[data-starting-style],
+  .gf-accordion-panel[data-ending-style] {
+    height: 0;
+  }
+
+  .gf-collapsible-panel {
+    height: var(--collapsible-panel-height);
+    overflow: hidden;
+    transition: height 180ms var(--gf-ease-out);
+  }
+
+  .gf-collapsible-panel[data-starting-style],
+  .gf-collapsible-panel[data-ending-style] {
+    height: 0;
+  }
+
+  [data-slot="accordion-trigger"][data-open] .gf-faq-plus {
+    transform: rotate(45deg);
+    color: var(--primary);
+  }
+
+  .gf-search-mark {
+    border-radius: 0.25rem;
+    background-color: color-mix(in srgb, var(--gf-gold-rule) 32%, transparent);
+    color: var(--foreground);
+    padding-inline: 0.15em;
+  }
+
+  /* ReUI Frame-inspired double-bordered architectural container for financial schedules */
+  .gf-ledger-frame {
+    border-radius: 1.5rem;
+    border: 1px solid var(--border);
+    background-color: var(--gf-linen);
+    padding: 0.375rem;
+  }
+
+  .gf-ledger-frame-inner {
+    border-radius: 1.125rem;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    overflow: hidden;
+  }
+
+  /* React Bits Pro stats-23 inspired 100-square stewardship waffle tiles */
+  .gf-waffle-tile {
+    display: block;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not(.light) .gf-waffle-tile-clay,
+    :root:not(.light) .gf-waffle-swatch-clay {
+      background-color: var(--gf-gold-rule);
+    }
+  }
+
+  /* ShadBlocks gallery2 + Shadcn Studio team-section-18 expanding photo panels */
+  .gf-photo-accordion-panel {
+    flex-grow: 1;
+    transition:
+      flex-grow 500ms var(--gf-ease-out),
+      border-color 200ms var(--gf-ease-out);
+  }
+
+  .gf-photo-accordion-panel[data-active="true"] {
+    flex-grow: 4.5;
+  }
+
+  /* Progressive no-JS fallback for EditorialPhotoAccordion so all four circles render unclipped */
+  @media (scripting: none) {
+    .gf-photo-accordion-desktop {
+      display: none !important;
+    }
+
+    .gf-photo-accordion-fallback {
+      display: grid !important;
+    }
+  }
+
+  /* Soft vertical edge fade so Cross-in-Oval twin arcs never clip sharply */
+  .gf-arc-fade {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+  }
+
+  /* Zero-network architectural bronze-navy editorial numeral fill (instant LCP, high legibility in light & dark mode) */
+  .gf-photo-text-mask-daylight {
+    color: var(--foreground);
+    background-color: var(--foreground);
+    background-image: linear-gradient(
+      128deg,
+      #122a3b 0%,
+      #08354d 42%,
+      #614d29 82%,
+      #8b6b3e 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gf-photo-text-mask-night {
+    color: var(--gf-sea-mist-token);
+    background-color: var(--gf-sea-mist-token);
+    background-image: linear-gradient(
+      128deg,
+      #f8f2e8 0%,
+      #e8d5b7 48%,
+      #d5b082 88%,
+      #b28b61 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not(.light) .gf-photo-text-mask-daylight {
+      color: var(--gf-sea-mist-token);
+      background-color: var(--gf-sea-mist-token);
+      background-image: linear-gradient(
+        128deg,
+        #f8f2e8 0%,
+        #e8d5b7 48%,
+        #d5b082 88%,
+        #b28b61 100%
+      );
+    }
+  }
+
+  @media (forced-colors: active) {
+    .gf-photo-text-mask-daylight,
+    .gf-photo-text-mask-night {
+      background-image: none;
+      background-color: transparent;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-text-fill-color: currentColor;
+      color: CanvasText;
+    }
+  }
+
+  /* Clean warm-sand segmented track for UI SDK Tabs (2x2 clean grid on narrow mobile) */
+  .gf-segmented-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background-color: var(--muted);
+    padding: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .gf-segmented-track {
+      display: inline-flex;
+      width: fit-content;
+      flex-wrap: nowrap;
+      border-radius: 9999px;
+    }
+  }
+
+  /* Single-row mobile sub-navigation scroll rail without clunky scrollbar chrome */
+  .gf-subnav-rail {
+    scrollbar-width: none;
+    scroll-padding-inline: 2rem;
+  }
+
+  .gf-subnav-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gf-subnav-wrap::before,
+  .gf-subnav-wrap::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset-block: 0;
+    z-index: 10;
+    width: 2.25rem;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+
+  .gf-subnav-wrap::before {
+    inset-inline-start: 0;
+    background: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--gf-linen) 94%, var(--background)),
+      transparent
+    );
+  }
+
+  .gf-subnav-wrap::after {
+    inset-inline-end: 0;
+    background: linear-gradient(
+      to left,
+      color-mix(in oklab, var(--gf-linen) 94%, var(--background)),
+      transparent
+    );
+  }
+
+  .gf-subnav-wrap[data-fade-left="true"]::before,
+  .gf-subnav-wrap[data-fade-right="true"]::after {
+    opacity: 1;
+  }
+
+  /* Subtle tactile primary button edge (zero heavy drop shadow) */
+  .gf-btn-primary-depth {
+    box-shadow: 0 1px 2px rgb(18 42 59 / 0.14);
+  }
+
+  .gf-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Font-metric-invariant reading measures (rem prevents ch-unit font-swap line-count CLS) */
+  .gf-measure {
+    max-width: 40rem;
+  }
+
+  .gf-measure-lead {
+    max-width: 34rem;
+  }
+
+  /* Reserved Locked Foundation paired full-height vertical rule (Mission & Vision only) */
+  .gf-locked-frame {
+    position: relative;
+    border-inline-start: 3px solid var(--gf-structural-accent);
+    padding-inline-start: 1.5rem;
+  }
+
+  .gf-locked-frame::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 5px;
+    inline-size: 1px;
+    background-color: var(--gf-gold-rule);
+    opacity: 0.9;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not(.light) .gf-surface,
+    :root:not(.light) .gf-surface-interactive {
+      box-shadow: 0 1px 0 rgb(240 231 219 / 0.04) inset;
+    }
+
+    :root:not(.light) .gf-sanctuary-glow {
+      background-image: radial-gradient(
+        circle at 88% 14%,
+        rgb(213 176 130 / 0.18),
+        transparent 52%
+      );
+      box-shadow: 0 1px 0 rgb(232 213 183 / 0.14) inset;
+    }
+
+    :root:not(.light) .gf-surface-interactive::before {
+      box-shadow:
+        0 2px 4px rgb(4 12 18 / 0.24),
+        0 18px 36px -16px rgb(4 12 18 / 0.56);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      :root:not(.light) .gf-surface-interactive:hover {
+        border-color: color-mix(in srgb, var(--primary) 50%, var(--border));
+      }
+    }
+  }
+}
+
+/* Native <details> editorial disclosure styling with smooth progressive height reveal (works 100% with JS disabled) */
+details.gf-disclosure {
+  interpolate-size: allow-keywords;
+}
+
+details.gf-disclosure > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details.gf-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.gf-disclosure::details-content {
+  block-size: 0;
+  opacity: 0;
+  overflow: clip;
+  transition:
+    block-size 200ms var(--gf-ease-out),
+    opacity 180ms ease,
+    content-visibility 200ms allow-discrete;
+}
+
+details.gf-disclosure[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+
+details.gf-disclosure[open] .gf-disclosure-chevron {
+  transform: rotate(180deg);
+}
+
+details.gf-disclosure[open] .gf-disclosure-plus {
+  transform: rotate(45deg);
+}
+
+/* Progressive enhancement: toggle JS-only controls and no-JS anchors cleanly in CSS */
+.gf-js-tabs-list {
+  display: grid;
+}
+
+@media (min-width: 640px) {
+  .gf-js-tabs-list {
+    display: inline-flex;
+  }
+}
+
+.gf-js-only {
+  display: inline-flex;
+}
+
+.gf-no-js-only {
+  display: none;
+}
+
+.gf-print-only {
+  display: none;
+}
+
+@media (scripting: none) {
+  .gf-js-tabs-list,
+  .gf-js-only,
+  .gf-js-block,
+  .gf-jump-links-mobile {
+    display: none !important;
+  }
+
+  .gf-no-js-only {
+    display: inline-flex !important;
+  }
+
+  .gf-jump-links-desktop {
+    display: flex !important;
+  }
+}
+
+/* Calm architectural motion for mobile drawer, backdrop, and giving tab panels */
+@keyframes gf-drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gf-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gf-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gf-drawer-panel {
+  animation: gf-drawer-in 220ms var(--gf-ease-drawer);
+}
+
+.gf-drawer-backdrop {
+  animation: gf-backdrop-in 180ms ease-out;
+}
+
+.gf-tab-panel:not([hidden]) {
+  animation: gf-panel-enter 160ms var(--gf-ease-out);
+}
+
+/* Accessible skip link */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 70;
+  transform: translateY(-220%);
+  border-radius: 9999px;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 150ms var(--gf-ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Native React 19.3 + Next.js 16 View Transitions choreography (header isolation, shared-element photo morphs, directional navigation) */
+.gf-site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+/* Keep the live document responsive during in-page filter/tab transitions */
+::view-transition-old(root) {
+  display: none;
+}
+
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(site-header) {
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@keyframes gf-vt-via-blur {
+  50% {
+    filter: blur(2px);
+  }
+}
+
+::view-transition-group(.vt-morph) {
+  z-index: 20;
+  animation-duration: 280ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-image-pair(.vt-morph) {
+  overflow: clip;
+  border-radius: 1rem;
+  animation: gf-vt-via-blur 280ms var(--gf-ease-out);
+}
+
+::view-transition-group(.vt-text-morph) {
+  z-index: 20;
+  animation-duration: 280ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-old(.vt-text-morph) {
+  display: none;
+}
+
+::view-transition-new(.vt-text-morph) {
+  animation: none;
+  object-fit: none;
+  object-position: left top;
+  height: auto;
+}
+
+::view-transition-group(.vt-pill) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-old(.vt-pill),
+::view-transition-new(.vt-pill) {
+  animation: none;
+  height: 100%;
+}
+
+@keyframes gf-vt-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gf-vt-card-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes gf-vt-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gf-vt-chip-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+::view-transition-group(.vt-card-move) {
+  animation-duration: 240ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-old(.vt-card-move),
+::view-transition-new(.vt-card-move) {
+  height: 100%;
+}
+
+::view-transition-new(.vt-card-in) {
+  animation: gf-vt-card-in 210ms var(--gf-ease-out) both;
+}
+
+::view-transition-old(.vt-card-out) {
+  animation: gf-vt-card-out 140ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-chip-in) {
+  animation: gf-vt-chip-in 160ms var(--gf-ease-out) both;
+}
+
+::view-transition-old(.vt-chip-out) {
+  animation: gf-vt-chip-out 110ms var(--gf-ease-out) both;
+}
+
+@keyframes gf-vt-enter-forward {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gf-vt-exit-forward {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+}
+
+@keyframes gf-vt-enter-back {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gf-vt-exit-back {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+::view-transition-new(.vt-enter-forward) {
+  animation: gf-vt-enter-forward 220ms var(--gf-ease-out) both;
+}
+
+::view-transition-old(.vt-exit-forward) {
+  animation: gf-vt-exit-forward 160ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-enter-back) {
+  animation: gf-vt-enter-back 220ms var(--gf-ease-out) both;
+}
+
+::view-transition-old(.vt-exit-back) {
+  animation: gf-vt-exit-back 160ms var(--gf-ease-out) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  *::after,
+  details.gf-disclosure::details-content {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gf-surface-interactive:hover,
+  .gf-surface-interactive:has(> a:active),
+  .gf-surface-interactive:has([data-card-primary-link]:active) {
+    transform: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* B&W church copier print stylesheet (high specificity so OS dark mode never leaks to paper) */
+@media print {
+  :root,
+  :root:not(.light),
+  .gf-night,
+  :root:not(.light) .gf-night {
+    --background: #ffffff;
+    --foreground: #000000;
+    --card: #ffffff;
+    --card-foreground: #000000;
+    --muted: #ffffff;
+    --muted-foreground: #1a1a1a;
+    --border: #000000;
+    --input: #000000;
+    --primary: #000000;
+    --primary-foreground: #ffffff;
+    --gf-linen: #ffffff;
+    --gf-clay-token: #000000;
+    --gf-gold-rule: #000000;
+    --gf-apricot-token: #000000;
+    --gf-sea-mist-token: #000000;
+    --gf-structural-accent: #000000;
+    --gf-bronze-plate: #ffffff;
+    --gf-night-bg: #ffffff;
+    --gf-night-card: #ffffff;
+    --gf-night-mid: #ffffff;
+    --gf-night-fg: #000000;
+    --gf-night-muted-fg: #1a1a1a;
+    --gf-night-rule: #000000;
+    --gf-mark-frame: #000000;
+    --gf-mark-arc: #000000;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  header {
+    position: static !important;
+    border-bottom: 1px solid #000000 !important;
+  }
+
+  .gf-surface,
+  .gf-surface-interactive,
+  .gf-photo-frame,
+  .gf-cinema-frame,
+  .gf-btn-primary-depth,
+  .gf-sanctuary-glow,
+  .gf-spotlight-surface,
+  .gf-scroll-expand {
+    box-shadow: none !important;
+    background-image: none !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .gf-surface-interactive::before,
+  .gf-spotlight-glow {
+    display: none !important;
+  }
+
+  .gf-cinema-photo {
+    display: none !important;
+  }
+
+  .gf-photo-text-mask-daylight,
+  .gf-photo-text-mask-night {
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+  }
+
+  .gf-no-print,
+  header nav,
+  .skip-link,
+  [role="tablist"] {
+    display: none !important;
+  }
+
+  .gf-print-only {
+    display: block !important;
+  }
+
+  .gf-photo-accordion-desktop {
+    display: none !important;
+  }
+
+  .gf-photo-accordion-fallback {
+    display: grid !important;
+  }
+
+  .gf-waffle-tile-primary {
+    background-color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+
+  .gf-waffle-tile-clay {
+    background-color: #888888 !important;
+    border: 1px solid #000000 !important;
+  }
+
+  .gf-waffle-tile-muted {
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+  }
+
+  .gf-ledger-frame {
+    padding: 0 !important;
+    border: 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  .gf-ledger-frame-inner {
+    border-radius: 0 !important;
+    border-color: #000000 !important;
+  }
+
+  [role="tabpanel"][hidden],
+  [data-slot="accordion-panel"][hidden] {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+    margin-top: 1.5rem;
+  }
+
+  [data-slot="accordion-panel"][hidden] {
+    margin-top: 0;
+  }
+
+  details.gf-disclosure::details-content {
+    content-visibility: visible !important;
+    display: block !important;
+  }
+
+  details.gf-disclosure > *:not(summary) {
+    display: block !important;
+  }
+
+  article,
+  blockquote,
+  tr,
+  details.gf-disclosure,
+  .gf-print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
   }
 }

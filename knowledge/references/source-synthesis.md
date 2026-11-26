@@ -1,12 +1,13 @@
 ---
-title: Global Fellowship Source Synthesis and Archive Coverage
-description: Complete accounting of all supplied Global Fellowship source archives, separating primary organizational statements, existing website copy, dated metrics, aspirations, and open factual items.
+title: Global Fellowship Source Synthesis and Decision Log
+description: Complete archive coverage and disposition table for all supplied Global Fellowship sources, verified organizational facts, and enduring executive decisions.
 type: Reference
 status: draft
 tags:
   - sources
   - archive
-  - verification
+  - provenance
+  - decisions
   - financials
   - history
 x-gf-kind: source-synthesis
@@ -14,80 +15,70 @@ x-gf-approval-state: source-record
 x-gf-disclosure: public
 generated:
   by: antigravity/gemini-4-neon
-  at: "2026-11-21T12:25:00Z"
+  at: "2026-11-23T06:55:00Z"
 verified: []
 sources:
   - id: identity-context
-    resource: "Global_Fellowship_Identity_and_Website_Context.md (supplied archive, 46.9 KB, prepared 2026-11-21)"
-    title: Primary synthesis of S1-S17 including VVR Orientation Deck v10, Whitepaper Rev 10-24, and 2024-2026 internal role descriptions
+    resource: "Global_Fellowship_Identity_and_Website_Context.md (supplied archive, 46.9 KB, 445 lines, S1-S17)"
+    title: Primary synthesis of VVR Orientation Deck v10, Whitepaper Rev 10-24, Core Values Master List, and 2024-2026 role descriptions
   - id: content-master
-    resource: "Global_Fellowship_Content_Master.md (supplied archive, 2.23 MB, 670 records across S001-S032, P001-P266, D001-D043, F001-F294, B001, I001-I024, E001-E009, N001)"
-    title: Full text and visually audited transcriptions of globalfellowship.org pages, forms, external handoffs, annual reports, financial statements, prayer cards, and job descriptions
+    resource: "Global_Fellowship_Content_Master.md (supplied archive, 2.23 MB, 670 unique records: S001-S032, P001-P266, D001-D043, F001-F294, B001, I001-I024, E001-E009, N001)"
+    title: Audited transcriptions of globalfellowship.org pages, forms, linked PDFs/DOCX, annual reports, financial statements, and image audits
   - id: content-inventory
     resource: "Global_Fellowship_Content_Inventory.csv (supplied archive, 3.90 MB, 1,808 rows, 25 columns)"
     title: Complete URL, media, document, and asset catalog reconciled against Content Master
   - id: legacy-brand-kit
-    resource: "Global Fellowship Logo - color (no padding) (5).png (1795x792 RGBA) and Fonts, Colors, Picture Examples - GF Brand Kit.pdf (supplied 2026-11-21)"
-    title: Current official Cross-in-Oval logo silhouette, legacy brand colors/fonts, and 5 documentary photo examples
+    resource: "Global Fellowship Logo - color (no padding) (5).png (1795x792) and Fonts, Colors, Picture Examples - GF Brand Kit.pdf (supplied 2026-11-21)"
+    title: Official Cross-in-Oval logo silhouette, legacy colors/fonts, and 5 documentary field photo examples
 ---
 
-# Global Fellowship Source Synthesis and Archive Coverage
+# Global Fellowship Source Synthesis and Decision Log
 
-This reference accounts for the complete Global Fellowship source set examined prior to brand creation and separates verified primary organizational facts from legacy website copy, historical aspirations, and open factual items awaiting owner confirmation.
+**Purpose & Authority:** Single audit trail covering every supplied Global Fellowship archive, what was incorporated vs. retired or excluded, verified organizational facts, and enduring executive decisions shaping the brand system (`status: draft`, `x-gf-approval-state: source-record`).
 
-## Complete Archive Coverage Accounting
+---
 
-All three supplied source files were examined in full through direct reading and structured programmatic parsing[^identity-context][^content-master][^content-inventory]:
+## 1. Complete Source Coverage & Disposition Table
 
-| Source File | Scope Examined | Coverage Status |
-| --- | --- | --- |
-| `Global_Fellowship_Identity_and_Website_Context.md` | All 445 lines, sections 1 through 12, source register S1 through S17 | 100% read directly |
-| `Global_Fellowship_Content_Master.md` | All 49,846 lines, 670 unique structured records: shared interface/layout (`S001-S032`, 32 records), audited URL/page records (`P001-P266`, 266 records spanning core/regional pages, 52 missionary profiles, 58 project designations, 8 field stories, and support/utility routes), linked PDFs/DOCX documents (`D001-D043`, 43 records), captured public form & external-handoff structures (`F001-F294`, 294 records) plus rendered contact form (`B001`, 1 record), reviewed website image transcriptions (`I001-I024`, 24 records), HTTP/route error captures (`E001-E009`, 9 records), and March 2026 newsletter authentication boundary (`N001`, 1 record redirecting to HubSpot sign-in with no newsletter body recovered) | 100% covered via direct reads of core/story/financial/image/report/form/auth records and structured digests across all 670 records |
-| `Global_Fellowship_Content_Inventory.csv` | All 1,808 inventory rows across 25 columns, cross-reconciled against Content Master IDs (9 ID differences explained by part-1/part-2 splits and the `OVERVIEW` header) | 100% parsed and reconciled |
-| Supplied current Logo PNG & `GF Brand Kit.pdf` | Official Cross-in-Oval logo silhouette (`1795x792`), legacy colors (`#007AC3`, `#FFE11D`, `#231F20`, `#FFFFFF`), legacy fonts (`Gilam Bold`, `Aileron`, `Montserrat`), and 5 real documentary photography examples (pastor teaching, river/tub baptisms, village congregation in bamboo shelter) | 100% inspected visually; logo shape preserved per explicit user instruction; colors and fonts upgraded[^legacy-brand-kit] |
+| Source / Artifact | Scope Examined | Disposition | Where Represented / Exclusion Reason |
+| --- | --- | --- | --- |
+| `Global_Fellowship_Identity_and_Website_Context.md` (`S1`-`S17`, 445 lines) | VVR Orientation Deck v10, Whitepaper Rev 10-24, Core Values Master List, role descriptions, Bridge Project, Exposure Trips, Faith on the Frontlines, Member Care, 2024/2025 metrics[^identity-context]. | **Incorporated** (private Google Drive URLs & raw originals excluded from public Git) | [Protected Foundations](../brand/foundations.md), [Strategy](../brand/strategy-and-positioning.md), [Character & Values](../brand/character-and-values.md), `audiences/`, `offerings/`. |
+| `Global_Fellowship_Content_Master.md` (`670` unique records, 49,846 lines) | Shared chrome (`S001`-`S032`, 32), URL records (`P001`-`P266`, 266: core/regional pages, 52 worker profiles incl. 12 protected, 58 projects, 8 articles), linked PDFs/DOCX (`D001`-`D043`, 43 incl. 2024/2025 Annual Reports & financial statements), forms/handoffs (`F001`-`F294`, 294 + `B001`, 1), image audits (`I001`-`I024`, 24), error captures (`E001`-`E009`, 9), and March 2026 HubSpot login-gated newsletter (`N001`, 1; body not recovered)[^content-master]. | **Incorporated** (raw archive & restricted worker identifiers excluded per `OVR-14`; archived stories/profiles held per `OVR-06`; retired claims logged; `F001`-`F294`/`B001` carried forward as web inputs; `E001`-`E009` retired; `N001` gated behind HubSpot sign-in) | [2025 Proof Ledger](../messaging/proof-ledger-2025.md), [2024 Historical Context](../messaging/proof-ledger-2024.md), [Retired Claims](../messaging/retired-claims.md), [Website Construction Handoff](website-builder-handoff.md). |
+| `Global_Fellowship_Content_Inventory.csv` (`1,808` rows, 25 cols) | Complete URL, media, document, and asset catalog reconciled against `Content_Master.md` (199 sitemap URLs, 184 uncurated stock files)[^content-inventory]. | **Incorporated** (184 legacy stock files **Retired**) | Migration rules in [Website Construction Handoff](website-builder-handoff.md). |
+| Official Logo PNG (`1795x792`) & Legacy Brand Kit PDF | `140:101` Cross-in-Oval mark; legacy colors (`#007AC3`, `#FFE11D`, `#231F20`) and fonts (`Gilam Bold`, `Aileron`, `Montserrat`); 5 real documentary field photos[^legacy-brand-kit]. | **Logo silhouette preserved verbatim; legacy colors/fonts retired; archived PDF photos held for fresh `GF-TPL-15` consent (`OVR-06`)** | [Visual Identity](../brand/visual-identity.md), `brand-kit/logos/`, Three-Path Photography Sourcing Rule. |
+| Curated Street Photography Vault (`brand-kit/photography/`, `GF-PHO-01`-`06`) | 6 sRGB-normalized, EXIF-stripped, zero-ShareAlike (`4 CC0 1.0` + `2 CC BY 2.0`) street photographs replacing generic illustrations and superseded ShareAlike frames. | **Incorporated** (superseded frames & 6 rejected prototype photos logged in `PHOTO-LICENSES.md`) | `brand-kit/photography/PHOTO-LICENSES.md`, `brand-kit/manifest.json`. |
+| Earlier Exploratory Website Prototype (`web-v1`/`web-v2`) | Premature Next.js pages in `src/` and 6 rejected unconsented `public/photos/*.jpg` files created before the 2026-11-22 branding-only pause. | **Excluded from `main`** (preserved only on local archival branch `archive/paused-web-v2-preview`) | `src/` and `public/` stay on the clean starter scaffold until `OVR-24`. |
+| Brand Council History (`docs/brand-council/`) & Upstream OKF v0.3 Spec | 15 scored council rounds, independent 3-model completion review, and OKF v0.3 `SPEC.md` (`open-knowledge-format/open-knowledge-format` commit `527e81aff55992be21507e97004286789126f88c`, `2026-11-18`). | **Retained outside `knowledge/` as history / verified spec parity** | `docs/brand-council/`, `docs/okf.md`. |
 
-**Inaccessible private originals & public-Git archive boundary noted transparently:** Private internal Google Drive documents cited in S1 through S9 and S15 through S16 (`Identity_and_Website_Context.md` section 12) were not downloaded directly, and private Drive URLs plus the raw supplied archive files (`Global_Fellowship_Content_Master.md`, `Global_Fellowship_Identity_and_Website_Context.md`, `Global_Fellowship_Content_Inventory.csv`, and linked PDFs) are intentionally excluded from this public repository because they contain restricted worker names/codes (`OVR-14`) and non-public internal records. This system relies on the verified excerpts and syntheses in `Global_Fellowship_Identity_and_Website_Context.md` and the full audited transcriptions in `Global_Fellowship_Content_Master.md`[^identity-context][^content-master].
+**Public-Git Privacy Boundary (`OVR-14`):** Raw supplied archive files and private Google Drive URLs are intentionally kept outside this public repository because they contain restricted worker names/codes and non-public records.
 
-## Verified Organizational Substance
+---
 
-### Founding and Leadership Continuity
+## 2. Verified Organizational Substance
 
-- **Founded:** 1989 in Auburn, California by Don and Kathy Oates after serving in Liberia under a local church leader and reflecting on conventional agency limitations[^identity-context].
-- **Expansion into cross-cultural sending:** 2012, sending North American cross-cultural workers to serve alongside and under local leaders[^identity-context].
-- **Leadership documented in sources:** Co-Executive Directors Jeremy Beaumont and Conrad O'Brien; Founder and President Don Oates; Board Chair Eric Bergen; Southeast Asia regional hub in Chiang Mai opened in 2024[^content-master].
-- **Legal and contact identity:** Global Fellowship, Inc., 501(c)(3) nonprofit, EIN `68-0214543`, mailing address `P.O. Box 1, Meadow Vista, CA 95722`, toll-free phone `1-866-98GLOBAL` (`1-866-984-5622`), primary email `info@globalfellowship.org` (functional addresses observed: `finance@`, `development@`, `prayer@`, `support@`, `executivedirectors@`), Candid profile `8043461`[^content-master].
+- **Founding & Continuity:** Founded in 1989 in Auburn, California by Don and Kathy Oates after serving in Liberia under a local church leader; expanded into North American cross-cultural sending in 2012; opened the Southeast Asia regional hub in Chiang Mai in 2024[^identity-context][^content-master].
+- **Documented Leadership:** Founder & President Don Oates; Co-Executive Directors Jeremy Beaumont and Conrad O'Brien; Board Chair Eric Bergen[^content-master].
+- **Legal & Contact Identity:** Global Fellowship, Inc., 501(c)(3) nonprofit, `EIN 68-0214543`, Candid ID `8043461`, mailing address `P.O. Box 1, Meadow Vista, CA 95722` (street address on `P041` tracked in `OVR-07`), toll-free phone `1-866-98GLOBAL` (`1 866 984 5622`, Pacific business hours), standardized public emails `info@`, `finance@`, `prayer@`, and `executivedirectors@globalfellowship.org` (legacy internal aliases `development@`, `support@`)[^content-master].
+- **Operating Model & Culture:** `"Global coordinates. Regional contextualizes. Local leads."` Broad definition of missionary encompassing both near-culture (indigenous) and cross-cultural church planters (most workers come from the regions where they serve); **integration without assimilation**; seven core values (Gospel first, Relationships, Local leadership, Humility, Health above results, Biblical principle over policy, Trust and transparency); active polycentric and South-to-South sending[^identity-context][^content-master].
+- **Core Ministry Expressions:** Regional church planting (Central/East/South/Southeast Asia, Europe, Middle East, North Africa, Americas), The Bridge Project & Bridge Kids (zero financial expectation), listening-first Exposure Trips, Faith on the Frontlines gatherings (`OVR-08`, `OVR-10`), and regionally led Member Care for singles and families[^identity-context][^content-master].
 
-### Operating Model and Culture
+---
 
-- **Three-tier responsibility:** `"Global coordinates. Regional contextualizes. Local leads."` Global staff remove administrative and resource barriers; regional teams provide contextual pastoral care and leadership; local church planters hold primary ministry ownership and method discretion[^identity-context].
-- **Broad definition of a missionary:** Defined by calling and frontier context rather than nationality. Includes both **near-culture** (indigenous/local) and **cross-cultural** missionaries planting churches where no self-sustaining Gospel community exists. Most workers come from the regions where they serve[^identity-context].
-- **Integration without assimilation:** Local ministries join a shared family with mutual accountability while keeping their indigenous identity, leadership, culture, and contextual methods[^identity-context].
-- **Seven core values in daily behavior:** Gospel first and infrastructure follows; Relationships are a priority; Local leadership; Humility; Health above results; Biblical principle over policy; Trust and transparency[^identity-context].
-- **Polycentric and South-to-South reality:** Public profiles document indigenous and cross-cultural collaboration across Asia, Europe, the Middle East, North Africa, and the Americas, including Latin American cross-cultural senders and multi-ethnic church-planting teams[^content-master].
+## 3. Dated Impact, Financial & Field-Security Baseline
 
-### Concrete Ministry Expressions Documented in Sources
+Canonical public wording rules live in [2025 Proof Ledger](../messaging/proof-ledger-2025.md), [2024 Historical Context](../messaging/proof-ledger-2024.md), [Retired Claims](../messaging/retired-claims.md), and [Open Verification Register](open-verification-register.md):
 
-- **Church Planting and Regional Work:** Public navigation covers six primary geographic regions (Central Asia, East Asia, South Asia, Europe, Middle East, North Africa), alongside Southeast Asia hub development and global sending from the Americas and beyond[^content-master][^identity-context].
-- **The Bridge Project (and Bridge Kids):** Reciprocal pen-pal friendship, prayer, and correspondence pairing supporters, families, or small groups with local church planters. Financial giving is explicitly not expected or required[^identity-context][^content-master].
-- **Exposure Trips:** Short-term visits focused on listening, learning, praying, encouraging local believers, and cultivating long-term church partnerships under local leader direction rather than project tourism[^identity-context][^content-master].
-- **Faith on the Frontlines:** Home and church gatherings (documented in Greater Sacramento in the July 2026 coordinator role description) where visiting church planters share firsthand stories, answer questions, invite prayer, and present giving opportunities without pressure[^identity-context].
-- **Member Care:** Regionally led relational care addressing spiritual, emotional, physical, financial, and family health, inclusive of single workers as well as couples, children, and teenagers, with explicit privacy and safeguarding accountability[^identity-context].
+- **2025 Annual Report (`D002`):** `$5.9M` given to the field, `43` countries served (VVR deck `S1` cites `47`, `OVR-04`), `584` workers mobilized (public label: `workers served`), `25,000+` heard the Gospel, `8,000+` Bibles, `1,000+` baptisms, `230` churches planted, `63 countries by 2030` strategic goal (`S1` adds `1,000 workers by 2030`)[^identity-context][^content-master].
+- **2024 Annual Report (`D001`):** `$4,953,368` given to the field, `36` countries, `525` missionaries, `23%` growth, `19,170` heard the Gospel, `9,223` Bibles, `1,700` baptisms, `1,254` churches planted (reporting scope shifted vs. 2025; never chart side by side per `OVR-05`), `$263.2k` operating expenditures (`D042`)[^content-master].
+- **2025 Statement of Activity (`D043`) & Statement of Financial Position (`P044`):** Consolidated `$5.82M` received / `$5.73M` disbursed across Global Fellowship (`$2.08M`/`$2.13M`) and affiliated ministries MissionStream (`$3.08M`/`$2.92M`) and BOLK (`$660k`/`$683k`). Home Office operating expenses totaled `$251.6k` (incl. `$52.7k` merchant fees), alongside `$280.2k` in separately reported funding lines (NOT a 1-to-1 reconciliation while Finance confirms scope under `OVR-01`/`OVR-03`): `Admin Fees - 8%` (`$192.5k`), `Home Office` gifts (`$13.6k`), `Processing Donation` (`$26.6k`), `Athena Rental Income` (`$33k`), and `WMN Inc` (`$14.5k`). **No public artifact may headline unqualified `"100%"` or standalone `"$5.9M"` until Finance closes `OVR-01`/`OVR-16`.**
+- **Field Security Reality:** `12 of 52` archived public missionary profiles (`23%`) require protective naming, initials, aliases, or ministry codes[^content-master]. All protective protocols live in [Field Security Policy](../policies/field-security-and-disclosure.md).
 
-## Dated Impact and Forensic Financial Summary
+---
 
-For canonical single-owner proof rules, reporting periods, headline eligibility, and open Finance confirmations, see [2025 Proof and Stewardship Ledger](../messaging/proof-ledger-2025.md), [2024 Historical Proof Ledger](../messaging/proof-ledger-2024.md), and [Open Verification Register](open-verification-register.md).
+## 4. Enduring Executive & Consolidation Decisions
 
-Summary of observed source boundaries:
-
-- **2025 Annual Report (D002):** `$5.9M` given to the field, `43` countries served, `584` workers mobilized, `25,000+` unreached people heard the Gospel, `8,000+` Bibles distributed, `1,000+` baptisms, `230` churches planted; strategic goal `63 countries by 2030` (VVR deck also names `1,000 workers` by 2030 and cites `47` countries)[^identity-context][^content-master].
-- **2024 Annual Report (D001):** `$4,953,368` given to the field, `36` countries, `525` missionaries, `23%` growth, `19,170` heard the Gospel, `9,223` Bibles, `1,700` baptisms, `1,254` churches planted (reporting definition shifted between 2024 and 2025; do not compare directly as a trend)[^content-master].
-- **Consolidated 2025 Statement of Activity (D043):** Spans `GF` (`$2.08M` received / `$2.13M` disbursed) and affiliated ministries MissionStream (`MS`, `$3.08M` / `$2.92M`) and `BOLK` (`$660k` / `$683k`), totaling `$5.82M` received and `$5.73M` disbursed. Home Office operating expenses were `$251.6k` (including `$52.7k` merchant processing fees), alongside separately reported 2025 funding lines totaling `$280.2k` (explicitly **not** a 1-to-1 reconciliation to operating expenses while Finance confirms entity/fund scope under `OVR-01`/`OVR-03`): `Admin Fees - 8%` (`$192.5k`), `Home Office` gifts (`$13.6k`), `Processing Donation` (`$26.6k`), `Athena Rental Income` (`$33k`), and `WMN Inc` (`$14.5k`)[^content-master].
-- **Mandatory pre-publication Finance gate:** Because the entity scope of `Admin Fees - 8%` (`$192.5k`) is not explained in the statements, **no public artifact may headline an unqualified "100%" claim** until Finance confirms its exact entity scope. See [Open Verification Register](open-verification-register.md).
-
-## Field Security Reality Observed in Sources
-
-In the archived public website, **12 of 52 public missionary profiles** (23%) already require protective naming or redaction treatments (initials, aliases, or ministry codes)[^content-master]. Because this repository is public, individual restricted worker identifiers are **intentionally not aggregated or listed here**. All protective publishing protocols live in [Field Security and Safe Disclosure Policy](../policies/field-security-and-disclosure.md).
-
-## Legacy Claims and Practices Explicitly Retired
-
-See [Retired Legacy Claims and Replacements](../messaging/retired-claims.md) for the canonical deprecated record covering `"0% overhead"`, `"we have no written policies"`, `"10-25% agency fee"`, unqualified `"24/7 prayer"`, boilerplate `"Send Me"` CTAs, and uncurated stock photography.
+1. **Strict brand-before-website separation (`OVR-24`):** Keep `src/` and `public/` on the clean Next.js starter scaffold until dedicated website construction starts from [Website Construction Handoff](website-builder-handoff.md) and `DESIGN.md`.
+2. **Honest OKF v0.3 authority separation (`OVR-15`):** Keep active concepts `status: draft` and `verified: []`, omit invented `stale_after` dates per OKF v0.3 §5.5, and distinguish authority with `x-gf-approval-state` (`locked-foundation`, `delegated-working-guidance`, `source-record`, `retired-legacy`).
+3. **Preserved mark silhouette + color freedom + zero-ShareAlike street photography:** Keep the `140:101` Cross-in-Oval mark, retire legacy blue/yellow in favor of Living Nearness `v15.0` (with Ink-Neutral fallback pending `OVR-11`), and use vetted non-ShareAlike street photography on Tier 1 public surfaces rather than generic illustrations.
+4. **Source-faithful financial & ECFA disclosures:** Name the two documented 2025 financial statements accurately (`Statement of Activity` and `Statement of Financial Position`), cite `P044`'s annual audit-cost ECFA rationale, and route donors to `finance@globalfellowship.org` while live web portals remain pending (`OVR-21`).
+5. **Human dependencies preserved honestly (`OVR-01`–`OVR-24`):** Every unresolved factual, legal, financial, consent, regional, and operational question remains explicitly tracked in [Open Verification Register](open-verification-register.md).

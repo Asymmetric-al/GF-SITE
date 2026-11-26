@@ -1,6 +1,6 @@
 ---
 title: Usable Copy Library - Official Boilerplate, Verified Leadership Bios, Press Policy, Social Moderation, Phone Scripts, Planned Giving, and Internal Memos
-description: Single-source institutional communications library providing official 25/50/100/250-word boilerplate, grant and institutional foundation boilerplate, verified leadership bio shells, livestream-safe pulpit and podcast intros, press and media inquiry policy, social profile bios and moderation scripts, Home Office phone/voicemail scripts, planned giving bequest wording, and internal staff and Board memo templates.
+description: Institutional boilerplate (25 to 250 words), verified leadership bios, livestream-safe intros, press policy, social moderation, phone scripts, bequest wording, and internal memo shells.
 type: Playbook
 status: draft
 tags:
@@ -55,7 +55,7 @@ This playbook provides ready-to-use institutional, media, external-directory, te
 
 ### 100-Word External & Partner Boilerplate (`COPY-BOIL-100`)
 
-> Global Fellowship, Inc. is a registered 501(c)(3) Christian church-planting fellowship (EIN 68-0214543, Candid ID 8043461) founded in 1989 by Don and Kathy Oates. Our mission is to make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people. Anchored in three pillars (Church Planting, Local Leadership, and Unreached People), Global Fellowship follows a simple operating order: Global coordinates, Regional contextualizes, and Local leads. In 2025, 584 workers served across 43 countries (2025 Annual Report), with $5.73M consolidated funds disbursed across Global Fellowship ($2.13M) and affiliated ministries MissionStream and BOLK.
+> Global Fellowship, Inc. is a registered 501(c)(3) Christian church-planting fellowship (EIN 68-0214543, Candid ID 8043461) founded in 1989 by Don and Kathy Oates. Our mission is to make disciples and plant new churches by empowering local leaders and sending cross-cultural missionaries to pioneer church-planting work among unreached people. Anchored in three pillars (Church Planting, Local Leadership, and Unreached People), Global Fellowship follows a simple operating order: Global coordinates, Regional contextualizes, and Local leads. In 2025, 584 workers served across 43 countries (2025 Annual Report), with $5.73M distributed on our consolidated financial statement ($2.13M directly through Global Fellowship, Inc.).
 
 ### 250-Word Institutional & Grant Foundation Boilerplate (`COPY-BOIL-GRANT-250`)
 
@@ -64,7 +64,7 @@ This playbook provides ready-to-use institutional, media, external-directory, te
 >
 > Rather than managing congregations from a Western headquarters, Global Fellowship follows this order: **Global coordinates. Regional contextualizes. Local leads.** Local church planters keep their own congregation name, language, schedule, visit veto, and editorial authority over shared stories. Cross-cultural missionaries (since 2012) learn local languages and serve alongside and under local elders, backed by regional member care (including our Chiang Mai hub opened in 2024) committed to Health Above Results for singles and families.
 >
-> In our **2025 Annual Report**, 584 workers served across 43 countries (source label "workers mobilized"). On the **2025 Statement of Activity**, combined flow across Global Fellowship ($2.08M received / $2.13M disbursed) and affiliated MissionStream ($3.08M / $2.92M) and BOLK ($660k / $683k) totaled $5.82M received and $5.73M disbursed, alongside $251.6k in Home Office operating expenses (Statement of Activity and Statement of Financial Position via `finance@globalfellowship.org`; Finance is confirming 8% admin-fee scope). Global Fellowship is not ECFA-accredited because annual audit costs would draw heavily on lean Home Office resources; we maintain board oversight and open statements.
+> In our **2025 Annual Report**, 584 workers served across 43 countries (source label "workers mobilized"). On our **2025 Statement of Activity**, consolidated contributions totaled $5.82M received and $5.73M distributed ($2.08M received and $2.13M distributed directly through Global Fellowship, Inc.), alongside $251.6k in Home Office operating expenses (Statement of Activity and Statement of Financial Position via `finance@globalfellowship.org`; Finance is confirming 8% admin-fee scope). We maintain Board oversight and publish our annual financial statements each year.
 
 _(Editorial note, omit from external pastes: Finance entity-scope confirmation for the 8% admin-fee line is tracked internally under `OVR-01`, and `COPY-BOIL-GRANT-250` stays within 250 whitespace-delimited words including its header line.)_
 

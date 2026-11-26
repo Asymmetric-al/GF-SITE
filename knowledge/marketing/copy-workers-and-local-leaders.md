@@ -1,42 +1,45 @@
 ---
-title: Usable Copy Library - Local Leaders, Missionary Candidates, and Worker Letters
-description: Publication-ready copy written directly for autonomous local church planters, cross-cultural missionary candidates (six honest questions), support staff explorers, and self-service worker newsletters.
+title: Usable Copy Library - Local Leaders, Worker Letters, Onboarding, and Furlough
+description: Ready-to-use copy for autonomous local ministries, rest-month and thanksgiving worker letters, dual-tier staff email signatures, Day-1 onboarding, and furlough visits.
 type: Playbook
 status: draft
 tags:
   - copy
   - local-leaders
-  - candidates
   - worker-letters
+  - onboarding
+  - signatures
+  - furlough
   - member-care
 x-gf-approval-state: delegated-working-guidance
 x-gf-disclosure: public
 generated:
   by: antigravity/gemini-4-neon
-  at: "2026-11-22T02:00:00Z"
+  at: "2026-11-23T06:55:00Z"
 verified: []
 sources:
   - id: local-audience
     resource: /audiences/local-church-planters.md
     title: Local church planter questions, editorial veto, and security needs
-  - id: candidate-audience
-    resource: /audiences/cross-cultural-candidates.md
-    title: Cross-cultural posture under local leadership and Health Above Results
-  - id: member-care
-    resource: /offerings/fellowship-and-member-care.md
-    title: Whole-life care inclusive of singles and families
+  - id: security
+    resource: /policies/field-security-and-disclosure.md
+    title: Two-axis disclosure tiers, anti-mosaic rules, and Tier 2/3 zero-link signature discipline
+  - id: open-verification
+    resource: /references/open-verification-register.md
+    title: Open gates OVR-14, OVR-17, and OVR-20
 ---
 
-# Usable Copy Library: Local Leaders, Missionary Candidates, and Worker Letters
+# Usable Copy Library: Local Leaders, Worker Letters, Onboarding, and Furlough
 
-Global Fellowship's brand cannot speak only to North American donors. The copy below addresses indigenous leaders, missionary candidates, and active workers directly, written in clean, translatable prose.
+Single-source copy library written for active indigenous ministry partners, field workers, and staff covering welcome briefs, seasonal letters, email signatures, Day-1 communications onboarding, and furlough church visits[^local-audience].
+
+**Paired Editable Templates:** `GF-TPL-03` (Local Ministry Welcome), `GF-TPL-04` (Worker Prayer Letters), `GF-TPL-24B` (Internal Day-1 Onboarding & Signatures), and `brand-kit/office/` Word starters.
 
 ---
 
-## Block `COPY-LOCAL-01`: Welcome Brief for Autonomous Local Ministries (Built for Translation)
+## 1. Welcome Brief for Autonomous Local Ministries (`COPY-LOCAL-01`, Built for Translation)
 
 **Headline:** **Your ministry keeps its name, its voice, and its leadership.**  
-**Body:**  
 When an indigenous church-planting ministry partners with Global Fellowship, you do not become a branch office of an American organization[^local-audience].
 
 - **You lead in your community.** You decide how to share the Gospel, train disciples, gather local churches, and care for neighbors in your own language and culture.
@@ -48,36 +51,9 @@ Partnership always begins with direct conversation and a personal visit from a r
 
 ---
 
-## Block `COPY-CAND-01`: Cross-Cultural Missionary Candidate Brief (Six Honest Questions)
+## 2. Self-Service Worker Prayer Letter: Rest-Month & Restricted Edition (`COPY-WORKER-01`)
 
-**Headline:** **Six honest questions before you explore cross-cultural service.**  
-**Body:**  
-Global Fellowship sends cross-cultural missionaries (from North America and Majority-World churches alike, including bi-vocational and professional-skills teammates) to pioneer church planting among unreached people alongside and under local leaders[^candidate-audience]:
-
-1. **Who leads when I arrive?** The local leader still leads. You come to learn language deeply and serve alongside and under indigenous believers rather than directing outside projects.
-2. **How is service funded (including bi-vocational paths)?** Workers build a personal prayer and financial partnership team, or combine local employment or bi-vocational work where visas and host context fit; lean, support-raised Home Office staff handle receipts and disbursements, and leadership reviews realistic budget norms before any departure date is set.
-3. **What does discernment to departure look like?** Start with an exploratory first call (no application wall; email `info@globalfellowship.org` with `Subject: Exploring service`, your first name, and your working language, omitting restricted cities or names, or ask for a regional-hub encrypted messaging handoff), followed by formal church-elder discernment with your sending congregation: doctrinal and calling review, regional team fit, cross-cultural and language-learning prep, and partnership building. _(Staff note: share the copyable first-call opener from the Brand Kit exports folder for social captions.)_
-4. **Who cares for me or my household?** Under _Health Above Results_, regional directors stand beside single workers, couples, children, and teenagers alike, including confidential counseling referrals[^member-care].
-5. **What happens when conflict arises?** Regional directors mediate early, and every worker has direct access to our International Member Care Facilitator outside their direct reporting line whenever an independent advocate is needed.
-6. **What happens after my first message?** A mobilization lead replies directly to schedule an exploratory first call before any formal application; when you are ready to pursue commissioning, you bring your sending pastor or elders into review of calling, language readiness, and our historic evangelical Statement of Faith (8 public articles on `globalfellowship.org`, plus the full doctrinal questionnaire reviewed candidly before candidacy).
-
----
-
-## Block `COPY-STAFF-01`: Prospective Support Staff & Support-Raising Expectations Brief (Audience #3)
-
-**Headline:** **Support-raised and Home Office roles built to serve local church planters.**  
-**Body:**  
-Local church planters and cross-cultural missionaries cannot focus on discipleship and local leadership if finance, donor care, communications, technology, and security systems falter behind them. Home Office and regional support staff serve inside Global Fellowship's operating order (`Global coordinates. Regional contextualizes. Local leads.`) so designated gifts reach local teams accurately.
-
-- **How funding works honestly:** Global Fellowship's 2025 Annual Report states that 100% of gifts designated for Global Fellowship missionaries and field projects go directly to the field; separately reported 2025 funding lines beside Home Office operations include personal partnership teams, Home Office and fee-coverage gifts (`$40.2k`), rental income (`$33k`), WMN Inc. (`$14.5k`), and an 8% administrative fee line (`$192.5k`; exact entity and fund scope pending Finance confirmation before public release). Leadership confirms upfront whether a specific Home Office or regional hub role (including Chiang Mai) is support-raised, shared, or operations-funded, alongside compensation, benefits, coaching, and realistic timelines.
-- **Whole-life care included:** Support staff share the same _Health Above Results_ care standard as field workers (for singles, couples, and families alike).
-- **Begin a direct conversation:** Email `info@globalfellowship.org` (Subject: `Operations & Support Roles`) or call `1 866 984 5622` for an unhurried first fit conversation covering current team needs (`GF-TPL-13` includes illustrative funding pathways and a 4-question pre-call checklist without implying an active vacancy).
-
----
-
-## Block `COPY-WORKER-01`: Self-Service Worker Prayer Letter (Rest-Month & Restricted Edition)
-
-_(Proves Health Above Results in practice: workers are free NOT to invent monthly wins, include photos, or disclose private struggles. For Tier 2 or Tier 3 restricted letters, open the safe-by-default zero-logo starter `brand-kit/office/worker-prayer-letter-restricted-starter.docx` directly; open-region workers use `brand-kit/office/worker-prayer-letter-public-starter.docx`. If a rest season extends beyond one month, the Regional Director coordinates local handoffs and supporter cover.)_
+_(Workers are free NOT to invent monthly wins, include photos, or disclose private struggles. Use zero-logo `worker-prayer-letter-restricted-starter.docx` for Tier 2/3 letters and `worker-prayer-letter-public-starter.docx` for Tier 1 open regions.)_
 
 **Dateline:** `PLACE WITHHELD · [MONTH YEAR]`  
 **Headline:** **A slower month of prayer, rest, and deep roots.**  
@@ -102,7 +78,7 @@ _Security reminder (include on Tier 2/3 letters): Please keep this update off so
 
 ---
 
-## Block `COPY-WORKER-02`: Self-Service Worker Prayer Letter (Joyful Thanksgiving Edition)
+## 3. Self-Service Worker Prayer Letter: Joyful Thanksgiving Edition (`COPY-WORKER-02`)
 
 **Dateline:** `CLEARED REGION · [MONTH YEAR]`  
 **Headline:** **Singing at a river baptism and an overflowing kitchen table.**  
@@ -120,3 +96,55 @@ Local elder [Cleared Name or Role] taught from Luke 15 and prayed over each hous
 3. **Remember [me / our household]:** [Share one honest personal prayer request for health, friendships, children, or deep joy.]
 
 _How can our fellowship pray for your household or church this month? Simply reply to this letter._
+
+---
+
+## 4. Dual-Tier Staff Email Signature Standard (`COPY-SIG-01` & `02`)
+
+Match every email signature strictly to the worker's assigned disclosure tier in the private non-Git directory (`OVR-14`)[^security]:
+
+### Tier 1 (Public Home Office, Mobilization & Open-Region Staff)
+
+```text
+[Full Name]
+[Role Title] | Global Fellowship
+1 866 984 5622 | [name]@globalfellowship.org
+P.O. Box 1, Meadow Vista, CA 95722
+501(c)(3) Nonprofit (EIN 68-0214543)
+```
+
+_(Keep signatures plain text without embedded logo attachments that trigger spam filters or break dark mode.)_
+
+### Tier 2 & Tier 3 (Partial-Alias & Restricted-Region Field Workers)
+
+```text
+[Approved First Name or Alias]
+[Neutral Professional or Personal Sign-Off - ZERO Global Fellowship Name, Logo, EIN, or Mission Keywords]
+[Personal or Approved Non-GF Contact Channel]
+```
+
+**Hard Tier 2/3 rules:** Never send routine local or in-country email from a `@globalfellowship.org` address, never append Global Fellowship's California address, EIN, logo, or giving link, and route supporter updates strictly through vetted channels (`GF-TPL-14` private text twins or `worker-prayer-letter-restricted-starter.docx`).
+
+---
+
+## 5. Day-1 New Worker & Staff Communications Onboarding Checklist (`COPY-ONB-01`)
+
+Complete all seven steps during onboarding week before sending external updates[^security][^open-verification]:
+
+1. **Confirm assigned disclosure tier (Tier 1, 2, 3, or Level 4) in writing** with the Regional Director and Operations Lead (`OVR-14`).
+2. **Set up the matching email signature** (Tier 1 plain-text GF signature OR Tier 2/3 zero-GF signature; never mix accounts).
+3. **Read the 1-page Brand Quick-Start (`GF-GDE-02`) and Field-Safe Checklist (`GF-GDE-03`)**.
+4. **Download the tier-matched Office starter** (`worker-prayer-letter-public-starter.docx` for Tier 1 ONLY; `worker-prayer-letter-restricted-starter.docx` for Tier 2/3; Level 4 `.docx` starters for zero-attribution).
+5. **Confirm giving-link and QR safety rules** (never post Tier 2/3 links on social media or livestreams; never use redirect link-shortening tools).
+6. **Review `GF-TPL-15` Revocable Consent and EXIF stripping** before sharing any photograph, quote, or child drawing.
+7. **Save the emergency & member-care contact sequence** (Regional Director encrypted primary; `executivedirectors@globalfellowship.org` and `1 866 984 5622` during Pacific business hours; zero invented 24/7 hotlines per `OVR-17` and `OVR-20`).
+
+---
+
+## 6. Furlough & Home-Assignment Church Visit Starter (`COPY-FURLOUGH-01`)
+
+- **Before accepting a speaking invite:** Confirm with your Regional Director whether the Sunday service is livestreamed or archived. If Tier 2 or Tier 3, request cameras off during your testimony and keep names, cities, and host ministries off slides and bulletins.
+- **Protect household rest first:** Schedule genuine rest weeks before filling Sundays.
+
+> **Subject:** `Visiting home this [Season] and hoping to see your elders`  
+> **Body:** `Dear Pastor [Name], [I / our family] will be back in [City/State] from [Month] to [Month] for rest, medical checkups, and connecting with the churches who pray for [me / us]. [I / We] would love to sit down with you and the elders over coffee to thank you in person, share what God has been teaching our local fellowship, and hear how [I / we] can pray for your congregation. Because of our regional privacy guidelines, we keep our updates offline (off livestreams and social media), so an in-person meal or small-group evening works especially well. Let [me / us] know if a morning or evening in [Month] works for you.`

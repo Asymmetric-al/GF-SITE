@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["scripts/*.ts", "src/components/ui/*.tsx", "tests/**/*.spec.ts"],
+  "entry": ["scripts/*.ts", "tests/**/*.spec.ts"],
   "project": [
     "src/**/*.{ts,tsx,css}",
     "tests/**/*.{ts,tsx}",
@@ -9,6 +9,9 @@
   ],
   "ignoreBinaries": ["lychee", "vale", "ffmpeg"],
   "ignoreDependencies": [
+    "@base-ui/react",
+    "@hugeicons/core-free-icons",
+    "@hugeicons/react",
     "@lhci/cli",
     "@tiptap/core",
     "@tiptap/pm",
@@ -16,6 +19,7 @@
     "@tiptap/starter-kit",
     "@tiptap/static-renderer",
     "lighthouse",
-    "tsrs"
+    "tsrs",
+    "tw-animate-css"
   ]
 }

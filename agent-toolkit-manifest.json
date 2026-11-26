@@ -13,8 +13,8 @@
     "Blocked"
   ],
   "summary": {
-    "totalEntries": 205,
-    "projectSkills": 124,
+    "totalEntries": 206,
+    "projectSkills": 125,
     "nonSkillEntries": 81
   },
   "items": [
@@ -1043,6 +1043,24 @@
       "result": "pass",
       "remainingBlocker": null,
       "restoreOrUpdate": "bunx skills@1.9.0 add t3dotgg/tstack --skill full-stop -a claude-code -a cursor -a codex -a antigravity --copy -y"
+    },
+    {
+      "id": "skill:gemini-frontend-design",
+      "type": "skill",
+      "purpose": "Design and build polished websites and web apps tailored to the brief. Use when creating or redesigning web interfaces, covering layout, color, typography, custom imagery, and motion.",
+      "officialSource": "google-gemini/demolab",
+      "testedVersionOrCommit": "cd0c1f8540c0186ec9592af972a0700fa20909d4",
+      "owningWorkspaceOrHost": "GF-SITE (repository-local)",
+      "activeAgentTargets": ["codex", "cursor", "antigravity", "claude-code"],
+      "installedPathOrEndpoint": ".agents/skills/gemini-frontend-design/SKILL.md & .claude/skills/gemini-frontend-design/SKILL.md",
+      "requiredEnvNames": [],
+      "configOwner": "skills-lock.json",
+      "state": "Installed, on demand",
+      "lastValidationTime": "2026-11-25T20:30:00+07:00",
+      "harmlessCheckPerformed": "Verified SKILL.md frontmatter (gemini-frontend-design) and dual-directory placement (.agents/skills & .claude/skills)",
+      "result": "pass",
+      "remainingBlocker": null,
+      "restoreOrUpdate": "bunx skills@1.9.0 add google-gemini/demolab --skill gemini-frontend-design -a claude-code -a cursor -a codex -a antigravity --copy -y"
     },
     {
       "id": "skill:gestures",

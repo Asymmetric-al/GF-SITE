@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Playwright agent seed", () => {
-  test("loads starter foundation route as agent test baseline", async ({
+  test("loads Global Fellowship home route as agent test baseline", async ({
     page,
   }) => {
     const response = await page.goto("/");
@@ -10,7 +10,7 @@ test.describe("Playwright agent seed", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Global Fellowship Website Foundation",
+        name: "Helping local leaders plant churches where Jesus is little known.",
       })
     ).toBeVisible();
   });

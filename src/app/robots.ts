@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { isSearchIndexingEnabled } from "@/lib/site";
+import { getConfiguredSiteOrigin, isSearchIndexingEnabled } from "@/lib/site";
 
 const robots = (): MetadataRoute.Robots => {
   if (!isSearchIndexingEnabled()) {
@@ -12,12 +12,20 @@ const robots = (): MetadataRoute.Robots => {
     };
   }
 
-  return {
+  const origin = getConfiguredSiteOrigin();
+
+  const config: MetadataRoute.Robots = {
     rules: {
       allow: "/",
       userAgent: "*",
     },
   };
+
+  if (origin !== null) {
+    config.sitemap = new URL("/sitemap.xml", origin).toString();
+  }
+
+  return config;
 };
 
 export default robots;

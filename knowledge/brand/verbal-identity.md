@@ -1,6 +1,6 @@
 ---
 title: Global Fellowship Verbal Identity, Voice, Tone, and Microcopy
-description: Three-register Witness, Open Books, and Note voice architecture, enforceable Agency Grammar with voice by subtraction, 7-context tone matrix, functional microcopy inventory, and Scripture quotation guidance.
+description: Three-register voice architecture (Witness, Open Books, Note), seven Agency Grammar rules, tone calibration matrix, microcopy inventory, and Scripture policy.
 type: Voice and Tone
 status: draft
 tags:
@@ -13,7 +13,7 @@ x-gf-approval-state: delegated-working-guidance
 x-gf-disclosure: public
 generated:
   by: antigravity/gemini-4-neon
-  at: "2026-11-22T02:00:00Z"
+  at: "2026-11-23T06:55:00Z"
 verified: []
 sources:
   - id: foundations
@@ -29,68 +29,62 @@ sources:
 
 # Global Fellowship Verbal Identity, Voice, Tone, and Microcopy
 
-Global Fellowship's voice sounds like a trusted friend who has lived long enough in real ministry to speak plainly about Jesus Christ, listen closely to neighbors, tell the truth about cost, and keep clear books. It achieves authority through **voice by subtraction**: concrete scenes, named decisions, and dated proof do the work instead of self-congratulatory adjectives.
+Global Fellowship sounds like a trusted friend who speaks plainly about Jesus Christ, listens closely to neighbors, tells the truth about cost, and keeps open books. Authority comes through **voice by subtraction**: concrete scenes, named decisions, and dated proof carry the weight instead of self-praising adjectives[^character].
 
-## Three Native Registers: Witness, Open Books, and Note
+## 1. Three Native Registers
 
-Rather than flattening every channel into institutional agency prose, Global Fellowship writes in three distinct registers drawn straight from real organizational life:
+| Register | How It Sounds | Primary Uses |
+| --- | --- | --- |
+| **Witness** | Specific, vivid, warm without sentimentality, candid about joy and hardship, centered on Jesus Christ | Stories, prayer cards, Bridge Project letters, Faith on the Frontlines invites, worker letters, member care, church outreach |
+| **Open Books** | Calm, unadorned, dated, footnoted, direct on money and decision rights, zero hype | Annual reports, stewardship emails, financial disclosures, FAQs, candidate expectations, policies |
+| **Note** | Brief, crisp, phone-scannable, paired with an exact plain-text twin, zero jargon | Encrypted mobile prayer cards (`GF-TPL-14`), 9:16 vertical video, 3-slide Q&A carousels, half-letter church inserts |
 
-| Register | Rooted In | How It Sounds | Where It Is Used |
-| --- | --- | --- | --- |
-| **Witness** | Firsthand local stories, The Bridge Project letters, worker prayer cards, pastoral care | Specific, vivid, warm without sentimentality, candid about joy and hardship alike, openly centered on Jesus Christ. | Homepage stories, Bridge Project kits, prayer cards, Faith on the Frontlines invitations, worker letters, member care, church outreach. |
-| **Open Books** | Annual Statements of Activity, Candid profile `8043461`, candid ECFA explanation, dated annual reports, candidate briefs | Calm, unadorned, dated, footnoted, direct on money and decision rights, no hype. | Annual reports, stewardship emails, financial disclosures, FAQ answers, candidate expectations, governance policies. |
-| **Note** | Real-time mobile messaging (WhatsApp/Signal), short 9:16 vertical motion cuts, social carousels, quick Sunday bulletins | Brief, crisp, human, immediately scannable on a phone, paired with an exact plain-text twin and no jargon or filler links. | `GF-TPL-14` mobile prayer cards & plain-text twins, 9:16 vertical prayer video, 3-slide Q&A carousels, half-letter church inserts. |
+**Mixing registers cleanly:** On annual reports and donor updates, separate **Open Books** (`Plus Jakarta Sans` tabular figures) cleanly from **Witness** (`Source Serif 4` narrative) so readers see both real ministry and sober accounting without implying a dollar buys spiritual fruit.
 
-**How the registers meet:** On an annual report spread or donor update, **Open Books** and **Witness** sit side by side cleanly separated by layout and typography (`Plus Jakarta Sans` tabular figures beside `Source Serif 4` narrative), so readers experience both the human reality of a local church and sober accounting without ever implying a dollar bought a spiritual result.
+## 2. Agency Grammar (Seven Core Rules)
 
-## Enforceable Agency Grammar (Seven Core Voice & Grammar Rules)
+Mechanical bans are enforced automatically across Markdown, templates, and OOXML starters by the nine Vale rules in `styles/GF/` (see [Editorial & AI Hygiene](../policies/editorial-and-ai-hygiene.md)); human editors enforce theology, subject positioning, and dated statistics[^editorial]:
 
-These seven sentence-level rules govern all Global Fellowship copy. All nine automated rules in `styles/GF/` (`EmDash.yml`, `Saviorism.yml`, `Militarism.yml`, `AITells.yml`, `RetiredClaims.yml`, `FoundationsNearMiss.yml`, `MetaBrandLeak.yml`, outward-scoped `TemplateMetaLeak.yml`, and `DivinePronouns.yml`) enforce mechanical bans across Markdown docs, copy libraries, OOXML starters, and HTML templates, while human editors and regional reviewers uphold theological clarity, local subject positioning, and dated statistical discipline[^editorial]:
+1. **God acts first in spiritual fruit.** Never write `"Your gift saves lives"` or `"Together we transform nations."` Write `"God gathers believers into local churches; your giving frees a church planter to stay present with neighbors."`
+2. **Local church planters act first.** Make local elders and church planters the active grammatical subjects (`"Local elders lead three weekly Scripture gatherings"` rather than `"Our donors empowered a local pastor"`).
+3. **Match verbs to roles.** GF uses _coordinate, care, connect, equip, send, listen, steward, remove barriers_. Supporters and churches use _pray, write, give, host, visit, listen, learn, encourage_.
+4. **Show, never self-praise.** Cut self-congratulatory labels (`"our humble, authentic team"`) and avoid verbal tics (`"quiet"`, `"steady"`, `"unhurried"`, `"walk with"`, `"zero"`). State concrete behavior instead (`"the local church hosting a visit can say no"`).
+5. **Name Jesus Christ clearly at every altitude.** Never let warm words like _nearness_ or _fellowship_ crowd out the Gospel, Scripture, discipleship, and the local church[^foundations].
+6. **Date and define every figure in the same sentence.** Always state year and scope (`"43 countries served in 2025 (2025 Annual Report)"`; `"584 workers served"`, footnoting source label `"workers mobilized"`).
+7. **Zero em dashes, military verbs, or AI-tell clichés.** Never use em dashes (`U+2014`), `"It's not X, it's Y"`, `"Not just X, but Y"`, `"seamless"`, `"impacting lives"`, `"transforming nations"`, `"reaching the unreached"`, `"native missionary"`, or `"target/penetrate/conquer/crusade"`.
 
-1. **God is the actor in spiritual transformation.** Never write `"Your gift saves lives"` or `"Together we transform nations."` Write `"God gathers believers into local churches; your giving frees a church planter to stay present with neighbors."`
-2. **Local church planters act first.** Whenever a story includes both a local leader and a cross-cultural worker or supporter, the local church planter is the active grammatical subject (`"Local elders lead three weekly Scripture gatherings"` rather than `"Our donors empowered a local pastor"`).
-3. **Global Fellowship's verbs serve; participants' verbs join in reciprocity.** GF uses _coordinate, care, connect, equip, send, listen, steward, remove barriers_. Churches and individuals use _pray, write, give, host, visit, listen, learn, encourage_.
-4. **Voice by subtraction (show, never self-praise).** Cut filler self-descriptions (`"our humble, quiet, authentic, respectful team"`) and avoid overusing `"quiet"`, `"steady"`, `"unhurried"`, `"walk with"`, or `"zero"` as verbal tics. Let actual behavior (`"the local church hosting a visit can say no"`, `"no financial gift expected in The Bridge Project"`) demonstrate character without announcing it.
-5. **Name Jesus Christ clearly at every altitude.** Never allow warm words like _nearness, community, or fellowship_ to crowd out the Gospel, Scripture, discipleship, and the local church[^foundations].
-6. **Date and define every statistic in the same sentence.** Never publish an orphaned number (`"43 countries"` -> `"43 countries served in 2025 (2025 Annual Report)"`; write `"584 workers served"` with source attribution `"reported as 'workers mobilized' in our 2025 Annual Report"`).
-7. **No em dashes, no military/targeting jargon, no agency or AI-tell clichés.** Never use an em dash (`U+2014`), `"It's not X, it's Y"`, `"Not just X, but Y"`, `"seamless"`, `"impacting lives"`, `"transforming nations"`, `"making an eternal difference"`, `"reaching the unreached"`, `"native missionary"`, or `"target/penetrate/conquer/crusade"`.
+## 3. Tone Calibration Across Seven Contexts
 
-## Seven-Context Tone Calibration Matrix
+| Context | Posture & Rhythm | Sample Opening |
+| --- | --- | --- |
+| **1. Joyful testimony** | Celebratory, grounded, reverent; ordinary concrete detail | _"Last Sunday morning our neighborhood fellowship gathered by the river to celebrate baptism with new believers reading Luke with local elders."_ |
+| **2. Hardship or rest month** | Honest, protective of dignity; short plain sentences; 1-sentence rest option | _"This month has been heavy, and our regional care team encouraged [me / us] to step back for two weeks of rest."_ |
+| **3. Sending churches & pastors** | Peer-to-peer, theologically serious, local-host veto upfront | _"Who decides whether a short-term visit would help? In Global Fellowship, the local church hosting it can say no."_ |
+| **4. Donor stewardship** | Calm, exact, scoped footnotes, direct questions welcomed | _"Here is what came in, what went out, and what we held at the end of 2025. If anything is unclear, our Finance team will gladly answer your questions."_ |
+| **5. Recruitment** | Direct on leadership, funding, conflict, care, and next steps | _"When a cross-cultural missionary arrives, the local leader still leads. Here are six questions people ask before applying."_ |
+| **6. Bridge Project & Notes** | Neighborly, crisp, explicitly zero financial pressure | _"Exchange letters and pray with a local church planter across ordinary weeks. No financial gift is expected."_ |
+| **7. Internal member care** | Confidential, spacious, explicitly inclusive of singles and families | _"You never need to reach crisis before asking for a conversation, a slower month, or a specialist counseling referral."_ |
 
-Global Fellowship holds **one recognizable voice** while shifting energy thoughtfully across seven real situations:
+## 4. Functional Microcopy Inventory
 
-| Context | Emotional Posture | Rhythm & Word Choice | Sample Opening Line |
-| --- | --- | --- | --- |
-| **1. Joyful field testimony** | Celebratory, grounded, reverent (never boastful) | Vivid ordinary detail, lively warmth, credit to God and local believers | _"Last Sunday morning our neighborhood fellowship gathered by the river to celebrate baptism with new believers reading Luke with local elders."_ |
-| **2. Candid hardship or rest month** | Honest, steady, protective of dignity | Short plain sentences; explicit permission to send a 1-sentence update | _"This month has been heavy, and our regional care team encouraged [me / us] to step back for two weeks of rest."_ |
-| **3. Sending church & pastor outreach** | Peer-to-peer, theologically serious, practical | Clear ecclesiology, realistic timelines, local-host veto upfront | _"Who decides whether a short-term visit would help? In Global Fellowship, the local church hosting it can say no."_ |
-| **4. Donor stewardship (Open Books)** | Calm, exact, no guilt, no exaggeration | Scoped definitions, visible footnotes, direct questions welcomed | _"Before you give a dollar, you should be able to read our books in plain English."_ |
-| **5. Missionary & staff recruitment** | Direct, transparent on cost, conflict, and care | Decision-sequence Q&A covering leadership, funding, timeline, care, conflict, and first steps | _"When a cross-cultural missionary arrives, the local leader still leads. Here are six honest questions before you explore cross-cultural service."_ |
-| **6. The Bridge Project & Note updates** | Neighborly, crisp, explicitly pressure-free | Everyday words (letters, table, prayer, names), concise mobile twin | _"Exchange letters and pray with a local church planter across ordinary weeks. No financial gift is expected."_ |
-| **7. Internal member care** | Confidential, spacious, inclusive of singles and families | Gentle questions, explicit rest permission, independent escalation route | _"You never need to reach crisis before asking for a conversation, a slower month, or a specialist counseling referral."_ |
+- **Draft nav labels:** `Our Mission`, `How We Work`, `Local Leadership`, `Ways to Join`, `The Bridge Project`, `Pray`, `Give`, `Serve`, `Financial Transparency`, `Statement of Faith`, `Contact`.
+- **Approved CTAs (retiring `"Send Me"` boilerplate):** `Pray with a church planter`, `Send your first letter`, `Request a Bridge Project match`, `Explore serving with us`, `Partner financially`, `Request 2025 statements`, `Ask Finance a question`, `Schedule a pastor conversation`.
+- **Planned canonical URLs (pending `OVR-21`; use verified email desks on print until live):** `/bridge-project`, `/financials`, `/give`, `/serve`, `/statement-of-faith`.
+- **Tier-neutral dateline (cards & mobile):** `WEEKLY PRAYER · 2026` (Thai: `คำอธิษฐานประจำสัปดาห์ · 2026`). Keep explicit granularity labels (`LOCAL CONGREGATION`, `Location withheld`) strictly on internal records and consent forms.
+- **Security notices (verbatim synced with templates):**
+  - _Restricted card back (`GF-TPL-01`):_ `"Protect their household: God knows them by name. Pray at home and in small groups; do not photograph or post this card online."`
+  - _Livestream Slide 5 footer (`GF-TPL-10`, zero internal tier labels on projected slides):_ `"Anonymous collective prayer · No restricted names, cities, or photos on screen"`
+  - _Photo caption cue:_ `"Shared with permission · [Year]. Local elders lead weekly Scripture study."`
+- **Donor & email microcopy:**
+  - _Tax entity line:_ `"Global Fellowship, Inc. is a 501(c)(3) nonprofit organization (EIN 68-0214543). Mailing address: P.O. Box 1, Meadow Vista, CA 95722."`
+  - _Fee-coverage label:_ `"Add an optional gift toward card processing and Home Office operations"`
+  - _ECFA FAQ heading (single FAQ on `/give/help` only):_ `"Is Global Fellowship accredited by ECFA?"`
+  - _Routine email subject:_ `[Initiative]: [One concrete fact or prayer need]`
+  - _Lock-screen-safe hard-news subject:_ `Praying this week with our friends in Christ`
+  - _Validation error:_ `"Please enter an email address where we can reply to you."`
 
-## Functional Microcopy Inventory (Canonical Operational Strings)
+## 5. Scripture Quotation Policy
 
-Small words carry trust. Standardize these strings across print, email, forms, mobile Notes, and the future website:
-
-- **Navigation & Section Labels (draft architecture):** `Our Mission`, `How We Work`, `Local Leadership`, `Ways to Join`, `The Bridge Project`, `Pray`, `Give`, `Serve`, `Financial Transparency`, `Statement of Faith`, `Contact`.
-- **Direct & Transitional CTAs (retiring `"Send Me"` boilerplate):** `Pray with a church planter`, `Send your first letter`, `Ask about a match`, `Explore serving with us`, `Partner financially`, `Read the 2025 Annual Report`, `Ask Finance a question`, `Schedule a pastor conversation`.
-- **Canonical URL Slugs (planned routes pending live confirmation in `OVR-21`; use verified email desks on printed pieces until confirmed):** `globalfellowship.org/bridge-project` (planned), `globalfellowship.org/financials` (planned), `globalfellowship.org/give` (planned), `globalfellowship.org/serve` (planned), `globalfellowship.org/statement-of-faith` (planned).
-- **Datelines (tier-neutral card & mobile standard):** Use `WEEKLY PRAYER · 2026` on displayed 4x6 prayer-card fronts (`GF-TPL-01/02`) and mobile prayer notes (`GF-TPL-14`, Thai `คำอธิษฐานประจำสัปดาห์ · 2026`) so restricted surfaces carry no red-flag label; reserve explicit granularity labels (`LOCAL CONGREGATION`, `CENTRAL ASIA`, `Location withheld`) for internal records and consent forms.
-- **Field-Security Notices (calm, non-dramatic):**
-  - _Restricted card back (synced verbatim with `GF-TPL-01`):_ `"Protect their household: God knows them by name. Pray at home and in small groups; do not photograph or post this card online."`
-  - _Livestream slide footer (synced verbatim with `GF-TPL-10` Slide 5; keep internal tier labels strictly in speaker notes, never on projected slides):_ `"Anonymous collective prayer · No restricted names, cities, or photos on screen"`
-  - _Photo-consent caption cue:_ `"Shared with permission · [Year]. Local elders lead weekly Scripture study."`
-- **Open Books Footnotes & Donor Form Microcopy:**
-  - _Tax receipt note:_ `"Global Fellowship, Inc. is a 501(c)(3) nonprofit organization (EIN 68-0214543). Mailing address: P.O. Box 1, Meadow Vista, CA 95722."`
-  - _Optional fee-coverage checkbox label:_ `"Add an optional gift toward card processing and Home Office operations"`
-  - _Candid ECFA link label:_ `"Why we are not currently an ECFA member (and how we stay accountable)"`
-  - _Routine email subject-line pattern:_ `[Initiative/Focus]: [One concrete fact or prayer need]` (Example: `The Bridge Project: How to write your first letter (no gift expected)`).
-  - _Sensitive pastoral hard-news email subject (neutral lock-screen default):_ `Praying this week with our friends in Christ`
-  - _Form validation error (Signal Crimson `#821818` light / Coral Alert `#FF9B93` dark):_ `"Please enter an email address where we can reply to you."`
-
-## Scripture Quotation Policy
-
-1. Always quote Scripture accurately in context rather than pulling isolated phrases as commercial taglines.
-2. Always name the Bible translation beside every quotation (for example, `Ephesians 2:13, ESV`). Use true small caps (`Lord`) where the ESV prints the covenant divine name (`Psalm 121:8`).
-3. Because primary sources do not establish a single mandatory English translation, `ESV` is used provisionally in candidate templates pending leadership confirmation (`OVR-09` in [Open Verification Register](../references/open-verification-register.md)). In non-English materials, regional leaders select the trusted vernacular Scripture translation used by local churches.
+1. Quote Scripture accurately in context rather than as commercial taglines.
+2. Name the Bible translation beside every quotation (e.g., `Ephesians 2:13, ESV`), using true small caps (`Lord`) where the ESV renders the covenant divine name.
+3. `ESV` is used provisionally in English templates pending leadership confirmation (`OVR-09`). Regional leaders select the trusted vernacular Scripture translation for non-English work.
