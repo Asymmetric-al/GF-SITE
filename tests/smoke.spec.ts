@@ -1,145 +1,1151 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Starter foundation smoke checks", () => {
-  test("renders starter route cleanly at desktop with non-indexable metadata and no runtime errors", async ({
+const PUBLIC_ROUTES = [
+  {
+    heading:
+      "Helping local leaders plant churches where Jesus is little known.",
+    path: "/",
+  },
+  {
+    heading: "Our Mission & Values",
+    path: "/mission-and-values",
+  },
+  {
+    heading: "Local leaders lead. We come alongside them.",
+    path: "/how-we-work",
+  },
+  {
+    heading: "Serving together like family since 1989.",
+    path: "/our-people",
+  },
+  {
+    heading: "Where we serve",
+    path: "/where-we-serve",
+  },
+  {
+    heading: "Give to a missionary or team.",
+    path: "/missionaries",
+  },
+  {
+    heading: "Jeremy & Anne Beaumont",
+    path: "/missionaries/beaumont",
+  },
+  {
+    heading: "The O'Brien Family",
+    path: "/missionaries/obrien",
+  },
+  {
+    heading: "Carolyn Pappy Kuzhivila",
+    path: "/missionaries/kuzhivila",
+  },
+  {
+    heading: "Give to a ministry project.",
+    path: "/projects",
+  },
+  {
+    heading: "Global Fellowship Leadership Summit",
+    path: "/projects/leadership-summit",
+  },
+  {
+    heading: "Open roles",
+    path: "/opportunities",
+  },
+  {
+    heading: "Church Planter in Slovenia",
+    path: "/opportunities/slovenia-church-planter",
+  },
+  {
+    heading: "Serve across cultures under local leaders.",
+    path: "/serve-across-cultures",
+  },
+  {
+    heading:
+      "The Bridge Project: letters and prayer with a local church planter.",
+    path: "/bridge-project",
+  },
+  {
+    heading: "Before anything else, we pray.",
+    path: "/pray",
+  },
+  {
+    heading: "Church to church, as partners.",
+    path: "/churches",
+  },
+  {
+    heading: "Your church stays yours.",
+    path: "/local-leaders",
+  },
+  {
+    heading: "Give to a missionary, a project, or our General Fund.",
+    path: "/give",
+  },
+  {
+    heading: "Help with your giving.",
+    path: "/give/help",
+  },
+  {
+    heading: "Financials",
+    path: "/financials",
+  },
+  {
+    heading: "Statement of Faith",
+    path: "/statement-of-faith",
+  },
+  {
+    heading: "Stories from more than 35 years of church planting.",
+    path: "/stories",
+  },
+  {
+    heading: "You Can Land, But Taking Off is God's Work",
+    path: "/stories/you-can-land-but-taking-off-is-gods-work",
+  },
+  {
+    heading: "Contact us.",
+    path: "/contact",
+  },
+  {
+    heading: "Donor & Website Privacy Policy",
+    path: "/donor-privacy",
+  },
+  {
+    heading: "Credits & Notices",
+    path: "/credits",
+  },
+] as const;
+
+const REGION_ROUTES = [
+  { heading: "Central Asia", path: "/where-we-serve/central-asia" },
+  { heading: "East Asia", path: "/where-we-serve/east-asia" },
+  { heading: "South Asia", path: "/where-we-serve/south-asia" },
+  { heading: "Southeast Asia", path: "/where-we-serve/southeast-asia" },
+  { heading: "Middle East", path: "/where-we-serve/middle-east" },
+  { heading: "North Africa", path: "/where-we-serve/north-africa" },
+  { heading: "Europe", path: "/where-we-serve/europe" },
+  { heading: "The Americas", path: "/where-we-serve/americas" },
+] as const;
+
+test.describe("Global Fellowship smoke and functional checks", () => {
+  for (const route of PUBLIC_ROUTES) {
+    test(`renders ${route.path} with zero runtime errors and zero overflow`, async ({
+      page,
+    }) => {
+      const consoleErrors: string[] = [];
+      const pageErrors: string[] = [];
+
+      page.on("console", (message) => {
+        if (message.type() === "error") {
+          consoleErrors.push(message.text());
+        }
+      });
+
+      page.on("pageerror", (error) => {
+        pageErrors.push(error.message);
+      });
+
+      const response = await page.goto(route.path);
+
+      expect(response?.status()).toBe(200);
+      await expect(
+        page.getByRole("heading", { level: 1, name: route.heading })
+      ).toBeVisible();
+
+      const hasOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth
+      );
+
+      expect(hasOverflow).toBe(false);
+      expect(consoleErrors).toEqual([]);
+      expect(pageErrors).toEqual([]);
+    });
+  }
+
+  for (const region of REGION_ROUTES) {
+    test(`renders uniform photo-free anti-mosaic regional route ${region.path}`, async ({
+      page,
+    }) => {
+      const response = await page.goto(region.path);
+
+      expect(response?.status()).toBe(200);
+      await expect(
+        page.getByRole("heading", { level: 1, name: region.heading })
+      ).toBeVisible();
+      await expect(page.locator("img")).toHaveCount(0);
+    });
+  }
+
+  test("marks exact primary nav links with aria-current=page and section ancestors with aria-current=true", async ({
     page,
   }) => {
-    const consoleErrors: string[] = [];
-    const pageErrors: string[] = [];
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.goto("/projects");
 
-    page.on("console", (message) => {
-      if (message.type() === "error") {
-        consoleErrors.push(message.text());
-      }
-    });
+    const nav = page.getByRole("navigation", { name: "Primary navigation" });
 
-    page.on("pageerror", (error) => {
-      pageErrors.push(error.message);
-    });
-
-    const response = await page.goto("/");
-
-    expect(response?.status()).toBe(200);
-
-    await expect(
-      page.getByRole("heading", {
-        level: 1,
-        name: "Global Fellowship Website Foundation",
-      })
-    ).toBeVisible();
-
-    const robotsMeta = page.locator('meta[name="robots"]');
-
-    await expect(robotsMeta).toHaveAttribute("content", /noindex/iu);
-    await expect(robotsMeta).toHaveAttribute("content", /nofollow/iu);
-
-    const previewImage = page.getByRole("img", {
-      name: /provisional architectural wireframe placeholder/iu,
-    });
-
-    await expect(previewImage).toBeVisible();
-
-    const hasOverflow = await page.evaluate(
-      () => document.documentElement.scrollWidth > window.innerWidth
+    await expect(nav.getByRole("link", { name: "Projects" })).toHaveAttribute(
+      "aria-current",
+      "page"
     );
 
-    expect(hasOverflow).toBe(false);
+    await page.goto("/mission-and-values");
+    await expect(
+      nav.getByRole("link", { exact: true, name: "About Us" })
+    ).toHaveAttribute("aria-current", "page");
 
-    const robotsResponse = await page.request.get("/robots.txt");
+    const expectedAboutLabels = [
+      "Our Mission & Values",
+      "How We Work",
+      "Our People",
+      "Where We Serve",
+      "Financials",
+      "Stories",
+      "Contact",
+    ];
 
-    expect(robotsResponse.status()).toBe(200);
+    const aboutSubnav = page.getByRole("navigation", {
+      name: "About Global Fellowship",
+    });
 
-    const robotsBody = await robotsResponse.text();
+    await expect(aboutSubnav.getByRole("link")).toHaveText(expectedAboutLabels);
 
-    expect(robotsBody).toContain("Disallow: /");
-    expect(consoleErrors).toEqual([]);
-    expect(pageErrors).toEqual([]);
+    const footerAboutNav = page.getByRole("navigation", {
+      name: "About Us",
+    });
+
+    await expect(footerAboutNav.getByRole("link")).toHaveText(
+      expectedAboutLabels
+    );
+
+    await page.goto("/our-people");
+    await expect(
+      nav.getByRole("link", { exact: true, name: "About Us" })
+    ).toHaveAttribute("aria-current", "true");
+
+    await page.goto("/serve-across-cultures");
+    await expect(
+      nav.getByRole("link", { name: "Opportunities" })
+    ).toHaveAttribute("aria-current", "true");
   });
 
-  test("supports keyboard navigation, focus, and pointer interaction on Vercel UI SDK tabs", async ({
+  test("filters Projects and Opportunities interactively, routes inline card quick-give + Learn more into Asymmetric.al checkout, and switches GivingHandoffWidget presets", async ({
     page,
   }) => {
-    await page.goto("/");
-
-    const tablist = page.getByRole("tablist", { name: "Architecture areas" });
-
-    await expect(tablist).toBeVisible();
-
-    const frontendTab = page.getByRole("tab", { name: "Frontend Runtime" });
-    const uiTab = page.getByRole("tab", { name: "UI Architecture" });
-    const contentTab = page.getByRole("tab", { name: "Content Boundary" });
-
-    await expect(frontendTab).toHaveAttribute("aria-selected", "true");
+    await page.goto("/projects", { waitUntil: "networkidle" });
+    await expect(page.locator("[data-gf-projects-shell]")).toHaveCount(0);
     await expect(
-      page.getByRole("heading", {
-        level: 3,
-        name: "Next.js App Router on Node.js 24",
+      page.getByRole("link", {
+        name: "Learn more about The Global Fellowship General Fund",
       })
     ).toBeVisible();
 
-    await frontendTab.focus();
-    await expect(frontendTab).toBeFocused();
+    const generalFundInput = page.getByLabel(
+      "Gift amount for The Global Fellowship General Fund in US dollars"
+    );
 
-    await page.keyboard.press("ArrowRight");
-    await expect(uiTab).toBeFocused();
-    await expect(uiTab).toHaveAttribute("aria-selected", "true");
+    await generalFundInput.fill("75");
+    await page
+      .getByRole("button", {
+        name: /^Give.*\$75.*The Global Fellowship General Fund/u,
+      })
+      .click();
+    await expect(page).toHaveURL(
+      /\/give\/checkout\?fund=general&amount=75&frequency=one-time&entry_method=public_checkout&party_kind=person/u
+    );
     await expect(
       page.getByRole("heading", {
-        level: 3,
-        name: "shadcn Tokens + Vercel UI SDK Primitives",
+        level: 2,
+        name: "The Global Fellowship General Fund",
       })
     ).toBeVisible();
+    await expect(page.getByText("$75")).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(/every\.org/iu);
 
-    await page.keyboard.press("ArrowRight");
-    await expect(contentTab).toBeFocused();
-    await expect(contentTab).toHaveAttribute("aria-selected", "true");
+    await page.goto("/projects", { waitUntil: "networkidle" });
+    await expect(page.locator("[data-gf-projects-shell]")).toHaveCount(0);
+    await page.getByRole("radio", { name: "Member Care" }).click();
     await expect(
-      page.getByRole("heading", {
-        level: 3,
-        name: "Server-Only Reader Prepared for Core",
+      page.getByRole("heading", { name: "Urgent Member Care Fund" })
+    ).toBeVisible();
+    await page
+      .getByRole("button", { name: /Remove Member Care filter/u })
+      .click();
+
+    const projectSearch = page.getByRole("searchbox", {
+      name: "Search ministry projects",
+    });
+
+    await projectSearch.fill("General Fund");
+    await expect(page.getByText(/1 ministry project matching/u)).toBeVisible();
+    await page.getByRole("button", { name: "Clear search" }).click();
+    await expect(projectSearch).toBeFocused();
+
+    await page.goto("/projects/leadership-summit", {
+      waitUntil: "networkidle",
+    });
+    await page.getByRole("button", { exact: true, name: "$500" }).click();
+
+    const summitGiveButton = page.getByRole("button", {
+      name: /Give \$500/u,
+    });
+
+    await expect(summitGiveButton).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(/every\.org/iu);
+
+    // Verify GivingHandoffWidget preserves invalid typed input and validates exact-cent bounds on blur/submit
+    const customInput = page.getByLabel("Gift amount ($1.00 to $1,000,000.00)");
+
+    await customInput.fill("abc");
+    await expect(customInput).toHaveValue("abc");
+    await customInput.blur();
+    await expect(page.locator("#give").getByRole("alert")).toContainText(
+      "Enter a dollar amount using numbers only, such as 50, 1,250, or 25.50."
+    );
+    await customInput.fill("0.50");
+    await expect(
+      page.getByText("Enter a gift amount of at least $1.00.")
+    ).toBeVisible();
+    await customInput.fill("1000001");
+    await expect(
+      page.getByText(/Online gifts are accepted up to \$1,000,000\.00/u)
+    ).toBeVisible();
+    await customInput.fill("1,250.50");
+    await page
+      .getByRole("button", {
+        name: /Give \$1,250\.50/u,
       })
+      .click();
+    await expect(page).toHaveURL(
+      /\/give\/checkout\?fund_id=leadership-summit&amount=1250\.50&frequency=one-time/u
+    );
+    await expect(page.getByText("$1,250.50")).toBeVisible();
+
+    await page.goto("/opportunities", { waitUntil: "networkidle" });
+    await page.getByRole("radio", { name: /Cross-Cultural Field/u }).click();
+    await expect(page.getByText("Church Planter in Slovenia")).toBeVisible();
+    await expect(page.getByText(/Showing 4 open roles/u)).toBeVisible();
+
+    await page
+      .getByRole("button", { name: /Remove Cross-Cultural Field filter/u })
+      .click();
+
+    const roleSearch = page.getByRole("searchbox", {
+      name: "Search open roles",
+    });
+
+    await roleSearch.fill("cybersecurity");
+    await expect(
+      page.getByRole("heading", { name: "IT Coordinator" })
+    ).toBeVisible();
+    await expect(page.getByText(/Showing 1 open role/u)).toBeVisible();
+
+    await roleSearch.fill("life coaching");
+    await expect(
+      page.getByRole("heading", { name: "Church Planter in Serbia" })
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Clear search" }).click();
+    await expect(roleSearch).toBeFocused();
+
+    await page.goto("/opportunities/it-coordinator", { waitUntil: "load" });
+    await expect(
+      page.getByRole("link", { name: "9-step onboarding process" })
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("link", { exact: true, name: "How we work" })
     ).toBeVisible();
 
-    await page.keyboard.press("Home");
-    await expect(frontendTab).toBeFocused();
-    await expect(frontendTab).toHaveAttribute("aria-selected", "true");
+    await page.goto("/opportunities", { waitUntil: "networkidle" });
 
-    await uiTab.click();
-    await expect(uiTab).toHaveAttribute("aria-selected", "true");
+    await expect(
+      page
+        .getByRole("list", {
+          name: "Eight regions welcoming local church planters",
+        })
+        .getByRole("link", { name: "Southeast Asia" })
+    ).toHaveAttribute("href", "/where-we-serve/southeast-asia");
+    await expect(
+      page
+        .getByRole("list", {
+          name: "Eight regions welcoming local church planters",
+        })
+        .getByRole("link", { name: "The Americas" })
+    ).toHaveAttribute("href", "/where-we-serve/americas");
   });
 
-  test("renders cleanly at mobile viewport without horizontal overflow", async ({
+  test("renders zero-JS local leadership standards on Local Leaders and supports keyboard navigation on Giving Method UI SDK tabs", async ({
+    page,
+  }) => {
+    await page.goto("/local-leaders");
+
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "How our written standards protect local voice",
+      })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 3, name: "Publish a Story" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 3, name: "Host a Visit" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 3, name: "Protect a Name" })
+    ).toBeVisible();
+
+    await page.goto("/give");
+    await expect(page.locator("body")).not.toContainText(/every\.org/iu);
+
+    const onlineTab = page.getByRole("tab", { name: "Online Giving" });
+
+    const checkTab = page.getByRole("tab", { name: "By Check" });
+    const stockTab = page.getByRole("tab", { name: "Stock, DAF & Wire" });
+    const churchTab = page.getByRole("tab", { name: "Church Support" });
+
+    await expect(onlineTab).toHaveAttribute("aria-selected", "true");
+
+    await onlineTab.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(checkTab).toBeFocused();
+    await expect(checkTab).toHaveAttribute("aria-selected", "true");
+    await expect(
+      page
+        .getByRole("tabpanel", { name: "By Check" })
+        .getByText("P.O. Box 1, Meadow Vista")
+        .first()
+    ).toBeVisible();
+
+    await page.keyboard.press("ArrowRight");
+    await expect(stockTab).toBeFocused();
+    await expect(stockTab).toHaveAttribute("aria-selected", "true");
+
+    await page.keyboard.press("ArrowRight");
+    await expect(churchTab).toBeFocused();
+    await expect(churchTab).toHaveAttribute("aria-selected", "true");
+  });
+
+  test("opens demand-loaded mobile UI SDK Drawer, exposes compact Give link in mobile header, and returns focus to Menu trigger on Escape", async ({
     page,
   }) => {
     await page.setViewportSize({ height: 844, width: 390 });
     await page.goto("/");
 
+    const mobileGiveLink = page
+      .locator("header")
+      .getByRole("link", { exact: true, name: "Give" });
+
+    const menuButton = page.getByRole("button", { name: "Menu" });
+
+    await expect(mobileGiveLink).toBeVisible();
+    await expect(mobileGiveLink).toHaveAttribute("href", "/give");
+    await expect(menuButton).toBeVisible();
+    await menuButton.click();
+
+    const closeButton = page.getByRole("button", { name: "Close" });
+
+    await expect(closeButton).toBeVisible();
+    await expect(closeButton).toBeFocused();
+    await expect(
+      page
+        .getByRole("navigation", { name: "Mobile site navigation" })
+        .getByRole("link", { name: "Safeguarding & Story Removal" })
+    ).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(closeButton).toBeHidden();
+    await expect(menuButton).toBeFocused();
+
+    await menuButton.click();
+    await page
+      .getByRole("navigation", { name: "Mobile site navigation" })
+      .getByRole("link", { exact: true, name: "Financials" })
+      .click();
+    await expect(page).toHaveURL(/\/financials$/u);
+    await expect(menuButton).not.toBeFocused();
+  });
+
+  test("redirects legacy PDF and parity paths cleanly, enforces 410 Gone, and provides Finance recovery on unknown project and missionary IDs", async ({
+    page,
+    request,
+  }) => {
+    const [
+      activityPdfRedirect,
+      positionRedirect,
+      missionaryRedirect,
+      aboutRedirect,
+      prayerRedirect,
+      joinRedirect,
+      serveRedirect,
+      trainingRedirect,
+      exposureTripsRedirect,
+      boardRedirect,
+      summitRedirect,
+      regionRedirect,
+      goneCheckout,
+      goneTemplate,
+    ] = await Promise.all([
+      request.get("/financials/statement-of-activity-2025.pdf", {
+        maxRedirects: 0,
+      }),
+      request.get("/StatementofFinancialPosition-2025-updated.pdf", {
+        maxRedirects: 0,
+      }),
+      request.get("/missionary/example-worker", { maxRedirects: 0 }),
+      request.get("/about", { maxRedirects: 0 }),
+      request.get("/prayer", { maxRedirects: 0 }),
+      request.get("/join", { maxRedirects: 0 }),
+      request.get("/serve", { maxRedirects: 0 }),
+      request.get("/training", { maxRedirects: 0 }),
+      request.get("/exposure-trips", { maxRedirects: 0 }),
+      request.get("/board-members", { maxRedirects: 0 }),
+      request.get("/global-fellowship-leadership-summit", { maxRedirects: 0 }),
+      request.get("/central-asia", { maxRedirects: 0 }),
+      request.get("/checkout-test", { maxRedirects: 0 }),
+      request.get("/church-plantertemplate", { maxRedirects: 0 }),
+    ]);
+
+    expect(activityPdfRedirect.status()).toBe(308);
+    expect(activityPdfRedirect.headers().location).toBe(
+      "/financials#statement-of-activity"
+    );
+
+    expect(positionRedirect.status()).toBe(308);
+    expect(positionRedirect.headers().location).toBe(
+      "/financials#statement-of-financial-position"
+    );
+    expect(missionaryRedirect.status()).toBe(308);
+    expect(missionaryRedirect.headers().location).toBe("/missionaries");
+    expect(aboutRedirect.status()).toBe(308);
+    expect(aboutRedirect.headers().location).toBe("/mission-and-values");
+    expect(prayerRedirect.status()).toBe(308);
+    expect(prayerRedirect.headers().location).toBe("/pray");
+    expect(joinRedirect.status()).toBe(308);
+    expect(joinRedirect.headers().location).toBe("/opportunities");
+    expect(serveRedirect.status()).toBe(308);
+    expect(serveRedirect.headers().location).toBe("/serve-across-cultures");
+    expect(trainingRedirect.status()).toBe(308);
+    expect(trainingRedirect.headers().location).toBe(
+      "/serve-across-cultures#training"
+    );
+    expect(exposureTripsRedirect.status()).toBe(308);
+    expect(exposureTripsRedirect.headers().location).toBe(
+      "/churches#exposure-trips"
+    );
+    expect(boardRedirect.status()).toBe(308);
+    expect(boardRedirect.headers().location).toBe("/our-people#board");
+    expect(summitRedirect.status()).toBe(308);
+    expect(summitRedirect.headers().location).toBe(
+      "/projects/leadership-summit"
+    );
+    expect(regionRedirect.status()).toBe(308);
+    expect(regionRedirect.headers().location).toBe(
+      "/where-we-serve/central-asia"
+    );
+
+    expect(goneCheckout.status()).toBe(410);
+    expect(goneCheckout.headers()["x-robots-tag"]).toBe("noindex, nofollow");
+    expect(goneTemplate.status()).toBe(410);
+    expect(goneTemplate.headers()["x-robots-tag"]).toBe("noindex, nofollow");
+
+    const projectRecovery = await page.goto(
+      "/projects/older-mailed-project-code"
+    );
+
+    expect(projectRecovery?.status()).toBe(404);
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Global Fellowship Website Foundation",
+        name: "That ministry project is not currently published online.",
       })
     ).toBeVisible();
 
-    const hasOverflow = await page.evaluate(
-      () => document.documentElement.scrollWidth > window.innerWidth
+    const missionaryRecovery = await page.goto(
+      "/missionaries/unlisted-worker-check"
     );
 
-    expect(hasOverflow).toBe(false);
-  });
-
-  test("renders custom 404 page with navigation back to starter route", async ({
-    page,
-  }) => {
-    const response = await page.goto("/non-existent-route-smoke-check");
-
-    expect(response?.status()).toBe(404);
-
+    expect(missionaryRecovery?.status()).toBe(404);
     await expect(
-      page.getByRole("heading", { level: 1, name: "Page not found" })
+      page.getByRole("heading", {
+        level: 1,
+        name: "That missionary page is not currently published online.",
+      })
     ).toBeVisible();
 
-    await page.getByRole("link", { name: "Back to starter page" }).click();
-    await expect(page).toHaveURL("/");
+    const notFoundResponse = await page.goto("/non-existent-route-smoke-check");
+
+    expect(notFoundResponse?.status()).toBe(404);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "We could not find that page.",
+      })
+    ).toBeVisible();
+  });
+
+  test("expands closed disclosures in print media, avoids duplicating /give sidebar, and hides footer nav", async ({
+    page,
+  }) => {
+    await page.goto("/financials");
+    await page.emulateMedia({ media: "print" });
+
+    await expect(
+      page.locator(".gf-print-only").getByText("Global Fellowship, Inc.")
+    ).toBeVisible();
+
+    await page.goto("/give");
+    await page.emulateMedia({ media: "print" });
+    await expect(page.getByText("Receipting & Finance desk")).toHaveCount(1);
+  });
+
+  test("serves verbatim Accounting App legal routes isolated from marketing chrome", async ({
+    page,
+  }) => {
+    const eulaResponse = await page.goto("/eula");
+
+    expect(eulaResponse?.status()).toBe(200);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "End-User License Agreement (EULA)",
+      })
+    ).toBeVisible();
+
+    const privacyResponse = await page.goto("/privacypolicy");
+
+    expect(privacyResponse?.status()).toBe(200);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Privacy Policy" })
+    ).toBeVisible();
+    await expect(page.getByText("Google Firebase")).toBeVisible();
+  });
+
+  test("rejects unauthenticated requests to /api/cms/revalidate cleanly and serves genuine HTTP 503 on outage routes", async ({
+    request,
+  }) => {
+    const [response, projectOutage, missionaryOutage] = await Promise.all([
+      request.post("/api/cms/revalidate", {
+        data: {
+          mode: "withdraw",
+          tags: ["public-cms:tenant:gf"],
+        },
+      }),
+      request.get("/projects/unavailable/outage"),
+      request.get("/missionaries/unavailable/outage"),
+    ]);
+
+    expect([401, 503]).toContain(response.status());
+    expect(response.headers()["x-robots-tag"]).toBe("noindex, nofollow");
+    expect(await response.json()).toHaveProperty("error");
+
+    for (const outageResponse of [projectOutage, missionaryOutage]) {
+      expect(outageResponse.status()).toBe(503);
+      expect(outageResponse.headers()["retry-after"]).toBe("60");
+      expect(outageResponse.headers()["cache-control"]).toContain("no-store");
+      expect(outageResponse.headers()["x-robots-tag"]).toBe(
+        "noindex, nofollow"
+      );
+    }
+  });
+
+  test("personalizes the zero-PII Bridge starter note in browser and expands full /financials ledger disclosures", async ({
+    page,
+  }) => {
+    await page.goto("/bridge-project", { waitUntil: "networkidle" });
+    await page.getByLabel("Your name or family (optional)").fill("Hannah");
+    await page
+      .getByLabel("City, church, or language (optional)")
+      .fill("Boise, ID");
+
+    await expect(
+      page.getByRole("link", { name: "Open in email app" })
+    ).toHaveAttribute("href", /Boise%2C%20ID[\s\S]*Hannah/u);
+
+    await page.goto("/financials");
+
+    await Promise.all(
+      [
+        "$482,612.59",
+        "$251,610.11",
+        "\u2212$65,886.40",
+        "$165,116.08",
+        "$1,887,540.53",
+        "$22,876.27",
+        "$1,864,664.26",
+      ].map(async (canonicalTotal) => {
+        await expect(page.getByText(canonicalTotal).first()).toBeVisible();
+      })
+    );
+
+    await expect(
+      page.locator("#statement-notes").getByText("Cash basis", { exact: true })
+    ).toBeVisible();
+
+    await page
+      .getByText("Show grouped 2025 revenue and expense summary")
+      .click();
+    await expect(page.getByText("$192,504.66", { exact: true })).toBeVisible();
+  });
+
+  test("routes safeguarding mailto distinctly, states 24-hour removal target, names Board Chair, and shows formatted phone on /give", async ({
+    page,
+  }) => {
+    await page.goto("/contact");
+    await expect(
+      page.locator("#safeguarding").getByRole("link", {
+        exact: true,
+        name: "Request story or photo removal",
+      })
+    ).toHaveAttribute("href", /subject=Story%20or%20Photo%20Removal/iu);
+    await expect(
+      page.getByRole("link", { name: "Contact Co-Executive Directors" })
+    ).toHaveAttribute("href", /subject=Safeguarding%20or%20Accountability/iu);
+    await expect(
+      page.getByText(/within 24 hours, including weekends/iu).first()
+    ).toBeVisible();
+    await expect(page.getByText(/Eric Bergen/u).first()).toBeVisible();
+
+    await page.goto("/give");
+    await expect(page.getByText("1-866-984-5622").first()).toBeVisible();
+  });
+
+  test("verifies all 7-catalog interactive upgrades across Financials, Our People, How We Work, Give Help, Opportunities, and Projects", async ({
+    page,
+  }) => {
+    // 1. /financials: 100-square StewardshipWaffle + SectionScrollspy + ReadingProgressBar
+    await page.goto("/financials", { waitUntil: "networkidle" });
+    await expect(page.locator(".gf-waffle-tile")).toHaveCount(100);
+
+    const leaseBtn = page.getByRole("button", {
+      name: /Office lease/u,
+    });
+
+    await leaseBtn.click();
+    await expect(leaseBtn).toHaveAttribute("aria-pressed", "true");
+    await expect(
+      page.locator('.gf-waffle-tile[data-dimmed="true"]')
+    ).toHaveCount(80);
+    await page.getByRole("button", { name: "Clear selection" }).click();
+    await expect(
+      page.locator('.gf-waffle-tile[data-dimmed="true"]')
+    ).toHaveCount(0);
+
+    const scrollspyNav = page.getByRole("navigation", {
+      name: "Jump to financial section",
+    });
+
+    await expect(scrollspyNav).toBeVisible();
+    await scrollspyNav
+      .getByRole("link", { name: "Statement of Activity" })
+      .click();
+    await expect(
+      scrollspyNav.getByRole("link", { name: "Statement of Activity" })
+    ).toHaveAttribute("aria-current", "location");
+
+    // 2. /our-people: 4-panel EditorialPhotoAccordion desktop click + Arrow key navigation
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.goto("/our-people", { waitUntil: "networkidle" });
+
+    const missionariesPanel = page.getByRole("button", {
+      name: /01.*Our Missionaries/u,
+    });
+
+    const boardPanel = page.getByRole("button", { name: /04.*Our Board/u });
+
+    await expect(missionariesPanel).toHaveAttribute("aria-expanded", "true");
+    await boardPanel.click();
+    await expect(boardPanel).toHaveAttribute("aria-expanded", "true");
+    await expect(missionariesPanel).toHaveAttribute("aria-expanded", "false");
+
+    // 3. /how-we-work: StrategyPhaseExplorer (@ui-sdk/react/tabs) + EditorialTimeline (@ui-sdk/react/timeline)
+    await page.goto("/how-we-work", { waitUntil: "networkidle" });
+
+    const gatherTab = page.getByRole("tab", { name: /Gather & Disciple/u });
+
+    await gatherTab.click();
+    await expect(gatherTab).toHaveAttribute("aria-selected", "true");
+    await expect(page.getByText("Make Friends")).toBeVisible();
+
+    await page.getByRole("button", { name: "Show all 9 steps" }).click();
+    await expect(page.getByText("Transfer to Local Elders")).toBeVisible();
+    await page.getByRole("button", { name: "Explore phase by phase" }).click();
+    await expect(
+      page.getByRole("list", { name: "Global Fellowship history since 1989" })
+    ).toBeVisible();
+
+    // 4. /give/help: SearchableFaq (@ui-sdk/react/accordion + live filter + highlight + expand/collapse)
+    await page.goto("/give/help", { waitUntil: "networkidle" });
+
+    const faqSearch = page.getByRole("searchbox", {
+      name: "Search giving questions",
+    });
+
+    await faqSearch.fill("ECFA");
+    await expect(page.locator(".gf-search-mark").first()).toBeVisible();
+    await expect(
+      page.getByText(/You can read our 2025 financial statements/u)
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Clear search" }).click();
+    await expect(faqSearch).toHaveValue("");
+
+    // 5. /opportunities & /serve-across-cultures: faceted count pills + removable chip + onboarding timeline
+    await page.goto("/opportunities", { waitUntil: "networkidle" });
+    await page.getByRole("radio", { name: /Home Office/u }).click();
+    await expect(
+      page.getByRole("button", { name: /Remove Home Office.*filter/u })
+    ).toBeVisible();
+    await page
+      .getByRole("button", { name: /Remove Home Office.*filter/u })
+      .click();
+
+    await page.goto("/serve-across-cultures", { waitUntil: "networkidle" });
+    await expect(
+      page.getByRole("list", {
+        name: "Nine-step missionary application and onboarding process",
+      })
+    ).toBeVisible();
+
+    // 6. /projects: ReUI-inspired faceted search + removable chip
+    await page.goto("/projects", { waitUntil: "networkidle" });
+    await page.getByRole("radio", { name: /Member Care/u }).click();
+    await expect(
+      page.getByRole("button", { name: /Remove Member Care filter/u })
+    ).toBeVisible();
+  });
+
+  test("renders Rector Medium vector logos, tucks typeface and ESV credits on /credits instead of every footer, and shows the group photo on /our-people", async ({
+    page,
+  }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    const headerBrand = page
+      .locator("header")
+      .getByRole("link", { name: "Global Fellowship home" });
+
+    await expect(headerBrand).toBeVisible();
+    await expect(headerBrand.locator("svg")).toHaveCount(2);
+
+    const footer = page.locator("#site-directory");
+
+    const footerBrand = footer.getByRole("link", {
+      name: "Global Fellowship home",
+    });
+
+    await expect(footerBrand.locator("svg")).toHaveCount(2);
+    await expect(footer).not.toContainText("English Standard Version");
+
+    const creditsLink = footer.getByRole("link", {
+      exact: true,
+      name: "Credits",
+    });
+
+    await expect(creditsLink).toHaveAttribute("href", "/credits");
+    await creditsLink.click();
+    await expect(page).toHaveURL(/\/credits$/u);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Credits & Notices" })
+    ).toBeVisible();
+    await expect(page.getByText(/Hrvoje Živčić/u)).toBeVisible();
+    await expect(page.getByText(/Production Type/u)).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: /Web Fonts/u })
+    ).toHaveAttribute("href", "https://www.onlinewebfonts.com");
+    await expect(
+      page.getByText(/English Standard Version.*Crossway/u)
+    ).toBeVisible();
+
+    await page.goto("/our-people", { waitUntil: "networkidle" });
+    await expect(
+      page.locator('[data-gf-layered-hero="GF-LIVE-27"]')
+    ).toBeVisible();
+  });
+
+  test("renders Missionaries in 3-column desktop rows matching Projects, keeps stable column widths while searching, and navigates cleanly to detail and back", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 900, width: 1280 });
+
+    await page.goto("/projects", { waitUntil: "networkidle" });
+
+    const projectCardWidth = await page
+      .locator('[data-slot="directory-grid"] [data-slot="directory-card"]')
+      .first()
+      .evaluate((el) => Math.round(el.getBoundingClientRect().width));
+
+    await page.goto("/missionaries", { waitUntil: "networkidle" });
+
+    const cards = page.locator(
+      '[data-slot="directory-grid"] [data-slot="directory-card"]'
+    );
+
+    await expect(cards).toHaveCount(4);
+
+    const boxes = await cards.evaluateAll((elements) =>
+      elements.map((el) => {
+        const rect = el.getBoundingClientRect();
+
+        return {
+          width: Math.round(rect.width),
+          x: Math.round(rect.x),
+          y: Math.round(rect.y),
+        };
+      })
+    );
+
+    // Row 1 holds 3 missionaries at identical width to /projects; card 4 starts Row 2 in Column 1
+    expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThanOrEqual(2);
+    expect(Math.abs(boxes[0].y - boxes[2].y)).toBeLessThanOrEqual(2);
+    expect(boxes[3].y).toBeGreaterThan(boxes[0].y + 100);
+    expect(Math.abs(boxes[3].x - boxes[0].x)).toBeLessThanOrEqual(2);
+    expect(Math.abs(boxes[0].width - projectCardWidth)).toBeLessThanOrEqual(2);
+
+    // Searching preserves stable 3-column card width (zero column-jump resize)
+    const searchInput = page.getByRole("searchbox", {
+      name: "Search missionaries",
+    });
+
+    await searchInput.fill("Oates");
+    await expect(cards).toHaveCount(1);
+
+    const filteredWidth = await cards
+      .first()
+      .evaluate((el) => Math.round(el.getBoundingClientRect().width));
+
+    expect(Math.abs(filteredWidth - boxes[0].width)).toBeLessThanOrEqual(2);
+
+    await page.getByRole("button", { name: "Clear search" }).click();
+    await expect(cards).toHaveCount(4);
+    await expect(searchInput).toBeFocused();
+
+    // Forward detail navigation and breadcrumb return
+    await page
+      .getByRole("link", { name: "Learn more about Jeremy & Anne Beaumont" })
+      .click();
+    await expect(page).toHaveURL(/\/missionaries\/beaumont$/u);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Jeremy & Anne Beaumont" })
+    ).toBeVisible();
+
+    await page
+      .getByRole("navigation", { name: "Breadcrumb" })
+      .getByRole("link", { name: "Missionaries" })
+      .click();
+    await expect(page).toHaveURL(/\/missionaries$/u);
+    await expect(cards).toHaveCount(4);
+  });
+});
+
+test.describe("Progressive enhancement with JavaScript disabled", () => {
+  test.use({ javaScriptEnabled: false });
+
+  test("delivers full navigation, safeguarding footer link, 2025 stewardship summary, local standards, and Bridge mailto without JS", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 844, width: 390 });
+    await page.goto("/");
+
+    const menuAnchor = page.getByRole("link", { name: "Menu" });
+
+    await expect(menuAnchor).toBeVisible();
+    await expect(menuAnchor).toHaveAttribute("href", "#site-directory");
+
+    await expect(
+      page
+        .locator("#site-directory")
+        .getByRole("link", { name: "Safeguarding & Story Removal" })
+        .first()
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole("link", { name: "View Financials" })
+    ).toHaveAttribute("href", "/financials");
+
+    await page.goto("/local-leaders");
+    await expect(
+      page.getByText("Asking local hosts whether a small listening visit")
+    ).toBeVisible();
+
+    await page.goto("/statement-of-faith");
+    await expect(page.locator("article ol > li")).toHaveCount(8);
+
+    await page.goto("/bridge-project");
+    await expect(
+      page.getByRole("link", { name: "Open in email app" })
+    ).toHaveAttribute("href", /^mailto:info@globalfellowship\.org/u);
+
+    await page.setViewportSize({ height: 640, width: 320 });
+    await page.goto("/");
+    await expect(
+      page
+        .locator("#site-directory")
+        .getByRole("link", { exact: true, name: "Ways to Give" })
+    ).toHaveAttribute("href", "/give");
+    await expect(
+      page
+        .locator("#site-directory")
+        .getByRole("link", { exact: true, name: "Ministry Projects" })
+    ).toHaveAttribute("href", "/projects");
+
+    // Verify /missionaries renders all 4 standing leader cards natively inside <main> before <footer> without JS
+    await page.goto("/missionaries");
+    await expect(
+      page
+        .locator("main#main-content")
+        .getByRole("heading", { level: 3, name: "Don & Kathy Oates" })
+    ).toBeVisible();
+    await expect(
+      page
+        .locator("main#main-content")
+        .getByRole("heading", { level: 3, name: "Jeremy & Anne Beaumont" })
+    ).toBeVisible();
+    await expect(
+      page
+        .locator("main#main-content")
+        .getByRole("heading", { level: 3, name: "The O'Brien Family" })
+    ).toBeVisible();
+    await expect(
+      page.locator("main#main-content").getByRole("heading", {
+        level: 3,
+        name: "Carolyn Pappy Kuzhivila",
+      })
+    ).toBeVisible();
+
+    // Verify native GET QuickGiveInput form submission works with JavaScript disabled
+    await page.goto("/projects");
+    await page
+      .getByLabel(
+        "Gift amount for The Global Fellowship General Fund in US dollars"
+      )
+      .fill("75");
+    await page
+      .getByRole("button", {
+        name: /^Give to The Global Fellowship General Fund$/u,
+      })
+      .click();
+    await expect(page).toHaveURL(/\/checkout\?.*fund=general.*amount=75/u);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Arrange your designated gift",
+      })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "The Global Fellowship General Fund",
+      })
+    ).toBeVisible();
+    await expect(page.getByText("$75")).toBeVisible();
+
+    const assertMainBeforeFooter = async () => {
+      const order = await page.evaluate(() => {
+        const main = document.querySelector("main#main-content");
+        const footer = document.querySelector("footer");
+        const h1 = document.querySelector("h1");
+
+        if (!(main && footer && h1)) {
+          return {
+            h1InHiddenTemplate: true,
+            h1InMain: false,
+            mainBeforeFooter: false,
+          };
+        }
+
+        const landmarks = [
+          ...document.querySelectorAll("main#main-content, footer"),
+        ];
+
+        return {
+          h1InHiddenTemplate: h1.closest('div[hidden][id^="S:"]') !== null,
+          h1InMain: main.contains(h1),
+          mainBeforeFooter:
+            landmarks.includes(main) &&
+            landmarks.indexOf(footer) > landmarks.indexOf(main),
+        };
+      });
+
+      expect(order).toStrictEqual({
+        h1InHiddenTemplate: false,
+        h1InMain: true,
+        mainBeforeFooter: true,
+      });
+    };
+
+    // Verify semantic DOM order (<main> containing <h1> and <form> strictly before <footer>) on detail routes without JS
+    await page.goto("/missionaries/beaumont");
+    await assertMainBeforeFooter();
+    await expect(
+      page
+        .locator("main#main-content")
+        .getByRole("heading", { level: 1, name: "Jeremy & Anne Beaumont" })
+    ).toBeVisible();
+    await expect(
+      page
+        .locator("main#main-content")
+        .getByRole("button", { exact: true, name: "Give" })
+    ).toBeVisible();
+
+    // Verify native GET detail-page giving works with JS disabled (valid + HTTP 400 error identification)
+    await page.goto("/projects/leadership-summit");
+    await assertMainBeforeFooter();
+    await expect(
+      page.getByRole("button", { exact: true, name: "$100" })
+    ).toBeHidden();
+    await page
+      .getByLabel("Gift amount ($1.00 to $1,000,000.00)")
+      .fill("125.50");
+    await page.getByRole("button", { exact: true, name: "Give" }).click();
+    await expect(page).toHaveURL(
+      /\/checkout\?.*fund_id=leadership-summit.*amount=125\.50/u
+    );
+    await assertMainBeforeFooter();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Global Fellowship Leadership Summit",
+      })
+    ).toBeVisible();
+    await expect(page.getByText("$125.50")).toBeVisible();
+
+    await page.goto(
+      "/give/checkout?fund_id=leadership-summit&amount=125.50&frequency=one-time"
+    );
+    await assertMainBeforeFooter();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Global Fellowship Leadership Summit",
+      })
+    ).toBeVisible();
+
+    const invalidResponse = await page.goto(
+      "/checkout?via=form&fund_id=leadership-summit&amount=0.50"
+    );
+
+    expect(invalidResponse?.status()).toBe(400);
+    await assertMainBeforeFooter();
+    await expect(page.getByRole("alert")).toContainText(
+      "Enter a gift amount of at least $1.00."
+    );
+    await expect(page.getByRole("alert")).toContainText(
+      /You entered [“"]0\.50[”"]\./u
+    );
+    await expect(
+      page.getByLabel("Gift amount in US dollars ($1.00 to $1,000,000.00)")
+    ).toHaveValue("0.50");
+
+    // Verify all 7-catalog interactive components remain fully readable when JS is disabled
+    await page.goto("/our-people");
+    await expect(page.locator(".gf-photo-accordion-fallback")).toBeVisible();
+    await expect(
+      page
+        .locator(".gf-photo-accordion-fallback")
+        .getByRole("heading", { name: "Our Board" })
+    ).toBeVisible();
+
+    await page.goto("/give/help");
+    await expect(
+      page.getByText(/You can read our 2025 financial statements/u)
+    ).toBeVisible();
+
+    await page.goto("/how-we-work");
+    await expect(page.getByText("Transfer to Local Elders")).toBeVisible();
   });
 });

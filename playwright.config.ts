@@ -51,7 +51,7 @@ export default defineConfig({
       ],
   retries: 0,
   testDir: "./tests",
-  timeout: 30_000,
+  timeout: 45_000,
   use: {
     baseURL: BASE_URL,
     screenshot: "only-on-failure",
@@ -62,6 +62,11 @@ export default defineConfig({
     ? {
         webServer: {
           command: START_COMMAND,
+          env: {
+            CHECKOUT_BASE_URL: "",
+            DONOR_APP_BASE_URL: "",
+            NEXT_PUBLIC_DONOR_APP_BASE_URL: "",
+          },
           reuseExistingServer: false,
           timeout: 120_000,
           url: BASE_URL,

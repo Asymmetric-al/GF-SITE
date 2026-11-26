@@ -16,7 +16,10 @@ describe(ErrorPage, () => {
     render(<ErrorPage error={errorWithDigest} retry={retry} />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+      screen.getByRole("heading", {
+        level: 1,
+        name: "This page could not load right now.",
+      })
     ).toBeVisible();
     expect(screen.getByText("Reference: err-digest-123")).toBeVisible();
 
@@ -37,7 +40,10 @@ describe(ErrorPage, () => {
     rerender(<ErrorPage error={null} retry={retry} />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+      screen.getByRole("heading", {
+        level: 1,
+        name: "This page could not load right now.",
+      })
     ).toBeVisible();
 
     rerender(<ErrorPage error="string-thrown-value" retry={retry} />);

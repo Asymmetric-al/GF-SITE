@@ -15,19 +15,24 @@ describe("site origin and metadata helpers", () => {
     vi.unstubAllEnvs();
   });
 
-  it("omits metadataBase outside development when NEXT_PUBLIC_SITE_URL is unset", () => {
+  it("omits metadataBase on deployed production without NEXT_PUBLIC_SITE_URL or VERCEL_URL, and falls back locally", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "");
-    vi.stubEnv("VERCEL_ENV", "");
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("VERCEL_URL", "");
     vi.stubEnv("NODE_ENV", "production");
 
     expect(getConfiguredSiteOrigin()).toBeNull();
     expect(getMetadataBase()).toBeUndefined();
     expect(getCanonicalUrl("/")).toBeUndefined();
+
+    vi.stubEnv("VERCEL_ENV", "");
+    expect(getMetadataBase()?.toString()).toBe("http://localhost:3000/");
   });
 
   it("falls back to localhost metadataBase in development when NEXT_PUBLIC_SITE_URL is unset", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "");
     vi.stubEnv("VERCEL_ENV", "");
+    vi.stubEnv("VERCEL_URL", "");
     vi.stubEnv("NODE_ENV", "development");
 
     expect(getConfiguredSiteOrigin()).toBeNull();
@@ -35,8 +40,9 @@ describe("site origin and metadata helpers", () => {
     expect(getCanonicalUrl("/")).toBeUndefined();
   });
 
-  it("suppresses canonicals and origin in Vercel preview deployments even if NEXT_PUBLIC_SITE_URL is set", () => {
+  it("suppresses canonicals in Vercel preview deployments while resolving VERCEL_URL for social image assets only", () => {
     vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("VERCEL_URL", "gf-site-git-preview.vercel.app");
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv(
       "NEXT_PUBLIC_SITE_URL",
@@ -45,7 +51,9 @@ describe("site origin and metadata helpers", () => {
 
     expect(isPreviewDeployment()).toBeTruthy();
     expect(getConfiguredSiteOrigin()).toBeNull();
-    expect(getMetadataBase()).toBeUndefined();
+    expect(getMetadataBase()?.toString()).toBe(
+      "https://gf-site-git-preview.vercel.app/"
+    );
     expect(getCanonicalUrl("/")).toBeUndefined();
   });
 
@@ -77,12 +85,33 @@ describe("site origin and metadata helpers", () => {
     expect(getConfiguredSiteOrigin()).toBeNull();
   });
 
-  it("keeps search indexing disabled and exposes shared Open Graph defaults", () => {
-    expect(isSearchIndexingEnabled()).toBeFalsy();
-    expect(SITE_DEFAULTS.name).toContain("Development Scaffold");
+  it("enables search indexing outside Vercel previews, disables it in previews, and exposes shared Open Graph defaults", () => {
+    vi.stubEnv("VERCEL_ENV", "production");
+    const prodEnabled = isSearchIndexingEnabled();
+
+    vi.stubEnv("VERCEL_ENV", "");
+    const localEnabled = isSearchIndexingEnabled();
+
+    vi.stubEnv("VERCEL_ENV", "preview");
+    const previewEnabled = isSearchIndexingEnabled();
+
+    expect({ localEnabled, previewEnabled, prodEnabled }).toStrictEqual({
+      localEnabled: true,
+      previewEnabled: false,
+      prodEnabled: true,
+    });
+    expect(SITE_DEFAULTS.name).toBe("Global Fellowship");
     expect(SITE_DEFAULTS.description.length).toBeGreaterThan(0);
     expect(SITE_OPEN_GRAPH).toStrictEqual({
       description: SITE_DEFAULTS.description,
+      images: [
+        {
+          alt: SITE_DEFAULTS.ogImageAlt,
+          height: 630,
+          url: SITE_DEFAULTS.ogImagePath,
+          width: 1200,
+        },
+      ],
       siteName: SITE_DEFAULTS.name,
       title: SITE_DEFAULTS.name,
       type: "website",

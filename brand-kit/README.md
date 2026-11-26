@@ -1,7 +1,7 @@
 # Global Fellowship Brand Kit (`brand-kit/`)
 
 **Approval Status:** Completed Brand System & Knowledge Release Candidate (`v15.0`, Living Nearness; delegated organizational completion ready for human leadership approval under `OVR-15`). Public website construction remains strictly separated into the next phase (see [Website Construction Handoff](../knowledge/references/website-builder-handoff.md) and `OVR-24`).  
-**Canonical Brand Rules:** Read [knowledge/brand/brand-on-a-page.md](../knowledge/brand/brand-on-a-page.md), [knowledge/brand/foundations.md](../knowledge/brand/foundations.md), and [knowledge/references/source-coverage-and-decisions.md](../knowledge/references/source-coverage-and-decisions.md) (or run `bun run okf:scan`).
+**Canonical Brand Rules:** Read [knowledge/brand/brand-on-a-page.md](../knowledge/brand/brand-on-a-page.md), [knowledge/brand/foundations.md](../knowledge/brand/foundations.md), and [knowledge/references/source-synthesis.md](../knowledge/references/source-synthesis.md) (or run `bun run okf:scan -- --current`).
 
 ## 5 Common Everyday Tasks (Default Starter + Safety Rule)
 

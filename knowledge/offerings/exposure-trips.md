@@ -37,5 +37,3 @@ Under Global Fellowship's Global Engagement model, **local church planters and r
 2. **Pray and encourage** church planters and families personally, bearing witness that they are remembered by the wider body of Christ.
 3. **Serve practically as invited** by the local host, leaving outside agendas at home.
 4. **Return committed for the long term** to pray, advocate, correspond, and walk with the regional fellowship for years after the flight home.
-
-_(Legacy rewrite note: An ambiguous sentence on the old website about project-based trips has been retired cleanly in favor of verified local-host leadership intent.)_

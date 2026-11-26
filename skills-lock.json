@@ -417,6 +417,14 @@
       "computedHash": "97cd08646e1f9bbb89bf18bf131982ee66df7834cce071bc5385e8fc4f5a60a9",
       "installMode": "copy"
     },
+    "gemini-frontend-design": {
+      "source": "google-gemini/demolab",
+      "commit": "cd0c1f8540c0186ec9592af972a0700fa20909d4",
+      "sourceType": "github",
+      "skillPath": "skills/gemini-frontend-design/SKILL.md",
+      "computedHash": "9a0cfd9094b4e4c762c4a218b0da34178453004bbf350baef81f3f31800dfd36",
+      "installMode": "copy"
+    },
     "gestures": {
       "source": "emilkowalski/skills",
       "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",

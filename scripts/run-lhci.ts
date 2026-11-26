@@ -48,6 +48,14 @@ if (chromePath !== undefined) {
 }
 
 const configPath = path.join(repoRoot, `lighthouserc.${profile}.json`);
+const outputDir = path.join(repoRoot, "artifacts", "lighthouse", profile);
+
+// Always wipe stale Lighthouse JSON reports before collecting fresh runs so
+// every audit directory reflects exclusively the current build's runs.
+fs.rmSync(outputDir, { force: true, recursive: true });
+
+fs.mkdirSync(outputDir, { recursive: true });
+
 const bin = process.platform === "win32" ? "bunx.exe" : "bunx";
 
 const result = spawnSync(

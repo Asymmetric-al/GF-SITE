@@ -55,3 +55,14 @@ Every material defect across all three reviewers was verified directly against t
 2. **Asset Integrity & Licensing (`G6`):** All `271/271` files under `brand-kit/` (`103` manifest items, `192` source+export paths, `76` locally vendored SIL OFL 1.1 WOFF2 binaries, `6` zero-ShareAlike sRGB EXIF-free street photos, `6` valid XML-checked OOXML Office starters, `25.00s` BT.709 H.264 + 48kHz stereo AAC MP4 + 10-cue WebVTT) verified intact with zero SHA-256 mismatches.
 3. **OKF v0.3 Conformance & Authority Honesty:** `55` concepts (`54` `draft`, `1` `deprecated`, `verified: []`, zero invented `stale_after` dates), `0` errors / `0` warnings across local TypeScript and upstream Python strict validators, zero restricted worker PII or codes in public Git.
 4. **Strict Phase Boundary & CI Safety:** Zero diffs against `origin/main` across `src/`, `public/`, `tests/`, `next.config.ts`, `oxlint.config.ts`, and `docs/core-integration.md`; zero Radix dependencies; full automated checks verified on the final pre-PR commit.
+
+---
+
+## 5. Archived Fresh-Agent Consumption Test History (Waves 1 & 2)
+
+Retained here outside the active `knowledge/` bundle so historical QA runs stay accessible without adding noise to daily OKF scans:
+
+- **Wave 1 Zero-History Drills (`2026-11-22`, 4 task-only subagents):** Tested Donor Thank-You & Tier 2 re-designation, Sending Church Elders' Vetting Briefing, Friday 5:30 PM PT Tier 3 Consent Withdrawal, and Core Payload CMS project authoring. Surfaced and closed 1-hop `consent-withdrawal-runbook.md`, `$250+` IRC §170(f)(8) wording, `General Field Fund` vs. `Where Most Needed` separation, byte-exact Statement of Faith parity on `GF-TPL-22`, non-future UTC `generated.at` validation, and Part A/B CMS separation.
+- **Wave 2 Clean-Checkout Suites (`2026-11-23`, isolated `git archive HEAD` of `2b1925f`, zero `.git`, zero prior context):**
+  - **Suite 1 (Retrieval & Understanding, `Claude Opus 5.5`, `xhigh`):** Answered 11/11 retrieval tasks accurately; surfaced unbuilt `/api/cms/revalidate` instructions (replaced with Today vs. Planned Future CMS runbook), phone business-hours wording, `"584 workers served"` / `"2030 strategic goal"` phrasing, non-reconciliation finance wording, `/serve` in `OVR-21`, split `OVR-15A/B/C`, and broken doc references.
+  - **Suite 2 (Cross-Channel Creation, `GPT 6.2 Astra`, `xhigh`):** Produced 6/6 multi-channel drafts with SHA-256 verification; surfaced unsafe `"Tier 3 livestream"` shorthand, recording-rule precedence, `OVR-*` leaks in quoted blocks, `COPY-BOIL-GRANT-250` word count, and broken file pointers. All findings were repaired prior to Section 13 review and locked with regression assertions in `scripts/okf.test.ts`.

@@ -1,32 +1,43 @@
 ---
 okf_version: "0.3"
 title: Global Fellowship Brand, Messaging, and Knowledge Repository
-description: Open Knowledge Format (OKF v0.3) canonical knowledge bundle for Global Fellowship's Living Nearness v15.0 delegated working brand candidate, protected foundations, audiences, messaging, offerings, copy playbooks, editorial/security policies, zero-ShareAlike documentary street photography vault, and open verification gates.
+description: Canonical OKF v0.3 knowledge bundle for Global Fellowship's Living Nearness v15.0 brand system, protected foundations, audiences, messaging, offerings, copy libraries, security/editorial policies, and website-builder handoff.
 ---
 
 # Global Fellowship Brand, Messaging, and Knowledge Repository
 
-**Release Status:** Completed and automated-check-verified Version 15 (`v15.0`, Living Nearness) organization-wide brand system and OKF v0.3 knowledge repository (`55` concepts across `7` domains: `54` `draft`, `1` `deprecated`, `verified: []`, meaning unverified by human leadership in OKF terms; GF `x-gf-approval-state` separates `locked-foundation`, `delegated-working-guidance`, `source-record`, and `retired-legacy`), synced with `brand-kit/manifest.json` (`schemaVersion: "15.0"`), awaiting explicit human leadership approval (`OVR-15`). Run `bun run okf:scan` to inspect trust tiers, status, and freshness, and run `bun run okf:validate` after every edit.
+**Authority & Status:** Living Nearness `v15.0` delegated working brand system and OKF v0.3 bundle (`52` concepts across `7` domains: `51` `draft`, `1` `deprecated`, `verified: []` / unverified by human leadership pending `OVR-15A/B/C`). Check `x-gf-approval-state` (`locked-foundation`, `delegated-working-guidance`, `source-record`, `retired-legacy`) and [Open Verification Register](references/open-verification-register.md) before quoting facts or claiming approvals. Run `bun run okf:scan -- --current` to browse active concepts and `bun run okf:validate` after edits.
 
-## Fast Start Routes (Read First)
+---
 
-1. **Start here in 2 minutes:** [Brand on a Page](brand/brand-on-a-page.md)
-2. **Permanent locked wording (never alter):** [Protected Foundations](brand/foundations.md)
-3. **What can and cannot be claimed (2025, 2024 comparisons & live URL/contact OVR gates):** [2025 Proof and Stewardship Ledger](messaging/proof-ledger-2025.md), [2024 Historical Context](messaging/proof-ledger-2024.md), [Retired Legacy Claims](messaging/retired-claims.md), and [Open Verification Register](references/open-verification-register.md) (check `OVR-01` to `OVR-24` before citing any portal URL, admin-fee scope, external count, or launch-gated item)
-4. **What can and cannot be shown, crisis & 1-hop emergency removal:** [On-Call Consent Withdrawal Runbook](policies/consent-withdrawal-runbook.md), [Field Security and Safe Disclosure Policy](policies/field-security-and-disclosure.md), [Ethical Storytelling and Consent](policies/ethical-storytelling-and-consent.md), [Crisis & Safeguarding Playbook](policies/crisis-and-safeguarding-comms.md), and [Inbound Triage & Content Ops](policies/inbound-triage-and-content-ops.md)
-5. **Editable assets, documentary photography vault, tokens, video, Office starters, CMS & templates:** [Brand Kit Asset Index](references/asset-index.md) (`brand-kit/` & `brand-kit/photography/PHOTO-LICENSES.md` in repository root) and [CMS Editor Field Guide](marketing/cms-editor-field-guide.md)
-6. **Provenance, coverage & website-builder handoff:** [Source Coverage and Delegated Decisions](references/source-coverage-and-decisions.md), [Organizational Communication Coverage Record](references/organizational-coverage-record.md), and [Website Construction Handoff](references/website-builder-handoff.md)
+## Task-First Fast Start (Read Only What Your Task Needs)
 
-## Domains
+| If you are... | Start here |
+| --- | --- |
+| **Getting a 2-minute overview of the brand** | [Brand on a Page](brand/brand-on-a-page.md) |
+| **Quoting Mission, Vision, Three Pillars, or Statement of Faith** | [Protected Foundations](brand/foundations.md) _(locked; never alter)_ |
+| **Checking 2025 metrics, finances, ECFA, or what cannot be claimed** | [2025 Proof Ledger](messaging/proof-ledger-2025.md), [Open Verification Register](references/open-verification-register.md), [Retired Claims](messaging/retired-claims.md) |
+| **Writing or editing public copy** | [Verbal Identity](brand/verbal-identity.md), [Editorial & AI Hygiene](policies/editorial-and-ai-hygiene.md), [Terminology & Glossary](messaging/terminology-and-glossary.md), then the matching playbook in [Marketing](marketing/index.md) |
+| **Handling field security, consent, crisis, or urgent content removal** | [On-Call Consent Withdrawal Runbook](policies/consent-withdrawal-runbook.md), [Field Security Policy](policies/field-security-and-disclosure.md), [Ethical Storytelling](policies/ethical-storytelling-and-consent.md), [Crisis & Safeguarding Playbook](policies/crisis-and-safeguarding-comms.md) |
+| **Using logos, color tokens, fonts, photography, Office starters, or templates** | [Visual Identity](brand/visual-identity.md), [Asset Index](references/asset-index.md), and `brand-kit/README.md` |
+| **Building or auditing the public website and Core CMS publishing** | [Website Implementation Record](references/website-implementation-record.md), [Website Construction Handoff](references/website-builder-handoff.md), [CMS Editor Field Guide](marketing/cms-editor-field-guide.md), `DESIGN.md`, and `docs/core-integration.md` |
 
-- [Brand](brand/index.md) - Protected foundations, Brand on a Page, strategy and positioning ("Brought Near, Led Locally"), character and values, brand architecture, verbal identity (Witness, Open Books & Note), visual identity (Preserved Cross-in-Oval Mark & Living Nearness v15.0 Harbor Teal + Kiln Clay + Non-ShareAlike Documentary Street Photography), and creative decision record.
-- [Audiences](audiences/index.md) - Seven dedicated profiles covering local church planters, cross-cultural candidates, support staff, sending churches/pastors, individual givers/prayers, families/newcomers, and existing workers/supporters.
-- [Messaging](messaging/index.md) - Core narrative (four-lens journey), altitude ladder (5s/30s/2m/deep), audience messaging matrix, 2025 & 2024 proof ledgers, deprecated retired claims, plain-language glossary, and participation pathways.
+---
+
+## Current Working Guidance (7 Domains)
+
+- [Brand](brand/index.md) - Brand on a Page, locked foundations, "Brought Near, Led Locally" strategy, values, 4-level partner architecture, three-register voice, Living Nearness v15.0 visual system, and creative rationale.
+- [Audiences](audiences/index.md) - Seven profiles: local church planters, cross-cultural candidates, support staff, sending churches/pastors, individual givers/prayers, families/newcomers, and existing workers/supporters.
+- [Messaging](messaging/index.md) - Core narrative, 5s/30s/2m/deep message hierarchy, audience messaging matrix, participation pathways, 2025 proof ledger, and plain-language glossary (plus separated historical 2024 ledger and deprecated retired claims).
 - [Offerings](offerings/index.md) - Church planting & local leadership model, regionally led member care, Bridge Project & Bridge Kids, listening-first Exposure Trips, Faith on the Frontlines, and equipping/giving designations.
-- [Marketing](marketing/index.md) - Task-split usable copy libraries (core, churches/events, elders vetting & host agreement, donors/Bridge, donor lifecycle & receipts, local leaders/workers, candidate/support-raising/onboarding, boilerplate/media/memos, CMS editor field guide), Living Nearness channel playbooks, and cross-cultural translation governance.
-- [Policies](policies/index.md) - Executable editorial/AI-hygiene rules (`styles/GF/`), 1-hop on-call consent withdrawal runbook, dignity-first consent & withdrawal policy, two-axis field security protocol, crisis/safeguarding playbook, inbound triage & legacy migration policy, and brand governance/maintenance.
-- [References](references/index.md) - Complete 3-archive source synthesis, source coverage and delegated completion decision log, contemporary missions & 11-peer sector research, ethically adapted branding frameworks, open human verification register (`OVR-01` to `OVR-24`), `brand-kit/` asset index, organizational communication coverage record, and website construction handoff.
+- [Marketing](marketing/index.md) - Seven task-split copy libraries (core, churches/elders/trips/events, donors/Bridge, donor lifecycle/receipts, candidates/support-raising, local leaders/workers/onboarding, institutional boilerplate/media/memos), channel playbooks, translation governance, and planned CMS editor guide.
+- [Policies](policies/index.md) - Executable Vale editorial standards (`styles/GF/`), two-axis field security, ethical storytelling/consent, single 1-hop consent withdrawal runbook, crisis/safeguarding playbook, inbox/giving-link ops, and brand governance.
+- [References](references/index.md) - Open verification gates (`OVR-01` to `OVR-24`), `brand-kit/` asset index, website construction handoff, consolidated source synthesis/decisions, and contemporary missions context.
 
-## Bundle History
+## Historical & Supporting Context (Keep Separate From Active Guidance)
 
-- [Log](log.md) - Chronological history of bundle initialization and updates.
+- [2024 Historical Proof Ledger](messaging/proof-ledger-2024.md) - Archived prior-year metrics (do not compare directly with 2025 church-plant counts).
+- [Retired Legacy Claims](messaging/retired-claims.md) - Deprecated legacy phrases (`status: deprecated`) with current replacements.
+- [Creative Direction Decision Record](brand/creative-direction-record.md) - Creative alternatives evaluated, stakeholder directives, framework adaptations, and accepted tradeoffs.
+- [Source Synthesis and Decision Log](references/source-synthesis.md) - Archive coverage accounting (`670` records, `1,808` CSV rows) and enduring executive decisions.
+- [Bundle History Log](log.md) - Concise chronological record of bundle milestones (full council evaluation archives live outside `knowledge/` in `docs/brand-council/`).

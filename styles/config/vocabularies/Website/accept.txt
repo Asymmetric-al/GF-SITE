@@ -1,5 +1,6 @@
 Abu
 [Aa]ffordances?
+Afrah
 Ahrefs
 Alegreya
 App Router
@@ -80,6 +81,7 @@ Kanghu
 Knip
 [Kk]oinonia
 Kowalski
+Kuzhivila
 Landmines
 Leonardo
 Lexical
@@ -104,6 +106,7 @@ Nathalie
 Next\.js
 [Nn]onessentials
 Noto
+Nunito
 Nyetta
 OCBA
 OKF
@@ -198,5 +201,6 @@ WhatsApp
 Wikimedia
 [Ww]ireframe
 [Ww]ordmarks?
+Woodroof
 xHigh
 Ymblanter

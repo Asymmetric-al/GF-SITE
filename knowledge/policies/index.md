@@ -1,11 +1,11 @@
 # Policies
 
-Enforceable editorial standards, dignity-first storytelling and consent rules, two-axis field security protocols, and brand maintenance governance (`type: Policy`).
+Enforceable editorial standards, field security, dignity-first consent, 1-hop emergency removal, crisis protocols, inbox triage, and brand governance (`type: Policy`).
 
-- [Editorial Standards, Agency Grammar, and Executable AI-Hygiene Policy](editorial-and-ai-hygiene.md) - Executable `styles/GF/` Vale ruleset, zero em dashes, Agency Grammar, and human editorial checklist.
-- [Ethical Storytelling, Dignity, and Revocable Consent Policy](ethical-storytelling-and-consent.md) - Dignity-first standards, plain-language revocable consent checklist, local editorial veto, and 5-step withdrawal trace.
-- [Field Security and Safe Disclosure Policy](field-security-and-disclosure.md) - Two-axis Identity x Location matrix, anti-mosaic rules, metadata stripping, and 60-second security step-down protocol.
-- [Crisis, Security Incident, Consent Withdrawal, and Safeguarding Communications Playbook](crisis-and-safeguarding-comms.md) - Detention/evacuation silence protocol, medical/bereavement care, 5-step consent-withdrawal propagation with honest removal limits, data-breach notice, safeguarding reporting, and media non-comment holding statements.
-- [On-Call Consent Withdrawal and Emergency Removal Runbook](consent-withdrawal-runbook.md) - One-hop 15-minute triage, direct CMS/print/social removal, partner retirement limits, and written closure log.
-- [Inbound Triage, Worker Giving-Link Safety, Web Content Ops, and Legacy Migration Policy](inbound-triage-and-content-ops.md) - Public inbox/phone triage routing, tier-by-tier worker giving-link and QR code safety rules, annual ledger/CMS runbook, and legacy globalfellowship.org migration decision table.
-- [Brand Governance, Adoption, Maintenance, and Approval Policy](brand-governance-and-maintenance.md) - Verification vs approval lifecycle, single-source update rules, zero-Figma staff adoption, and OKF cadence.
+- [Editorial Standards, Agency Grammar, and Executable AI-Hygiene Policy](editorial-and-ai-hygiene.md) - Automated `styles/GF/` Vale ruleset, zero em dashes, OVR leak ban, and human editorial checklist.
+- [Field Security and Safe Disclosure Policy](field-security-and-disclosure.md) - Two-axis Identity x Location matrix, livestream vs. recording rules, six anti-mosaic rules, and 60-second step-down protocol.
+- [Ethical Storytelling, Dignity, and Revocable Consent Policy](ethical-storytelling-and-consent.md) - Dignity-first standards, local editorial veto, and plain-language Revocable Consent (`GF-TPL-15`) checklist.
+- [On-Call Consent Withdrawal and Emergency Removal Runbook](consent-withdrawal-runbook.md) - Single canonical 1-hop 4-stage runbook for urgent and routine consent withdrawals, including `COPY-WITHDRAW-01` and `COPY-RETIRE-01` scripts.
+- [Crisis, Security Incident, and Safeguarding Communications Playbook](crisis-and-safeguarding-comms.md) - Detention/evacuation silence protocol, medical/bereavement care, data-breach notice, safeguarding reporting, and media holding statements.
+- [Inbound Triage, Worker Giving-Link Safety, and Web Content Ops Policy](inbound-triage-and-content-ops.md) - Public inbox/phone triage routing, tier-by-tier worker giving-link and QR safety rules, and annual ledger/web ops cadence.
+- [Brand Governance, Adoption, Maintenance, and Approval Policy](brand-governance-and-maintenance.md) - Authority vs. human-approval states, single-source propagation rules, accountable roles, lean-staff Office adoption, and OKF maintenance cadence.

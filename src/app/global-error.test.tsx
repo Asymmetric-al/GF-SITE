@@ -18,7 +18,10 @@ describe(GlobalErrorPage, () => {
     });
 
     expect(
-      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+      screen.getByRole("heading", {
+        level: 1,
+        name: "Something interrupted loading Global Fellowship.",
+      })
     ).toBeVisible();
     expect(screen.getByText("Reference: global-digest-456")).toBeVisible();
 
@@ -35,7 +38,10 @@ describe(GlobalErrorPage, () => {
     });
 
     expect(
-      screen.getByRole("heading", { level: 1, name: "Something went wrong" })
+      screen.getByRole("heading", {
+        level: 1,
+        name: "Something interrupted loading Global Fellowship.",
+      })
     ).toBeVisible();
     expect(screen.queryByText(/Reference:/u)).not.toBeInTheDocument();
   });

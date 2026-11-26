@@ -22,12 +22,23 @@ const parseOrigin = (rawValue: string | undefined): URL | null => {
 
 export const SITE_DEFAULTS = {
   description:
-    "Provisional frontend foundation for the Global Fellowship website.",
-  name: "Global Fellowship (Development Scaffold)",
+    "A Christian fellowship helping local believers plant churches where Jesus is little known, alongside cross-cultural missionaries who serve under their leadership.",
+  name: "Global Fellowship",
+  ogImageAlt:
+    "Global Fellowship: Helping local believers plant churches where Jesus is little known.",
+  ogImagePath: "/brand/og-link-preview-1200x630.png",
 } as const;
 
 export const SITE_OPEN_GRAPH = {
   description: SITE_DEFAULTS.description,
+  images: [
+    {
+      alt: SITE_DEFAULTS.ogImageAlt,
+      height: 630,
+      url: SITE_DEFAULTS.ogImagePath,
+      width: 1200,
+    },
+  ],
   siteName: SITE_DEFAULTS.name,
   title: SITE_DEFAULTS.name,
   type: "website",
@@ -54,10 +65,31 @@ export const getConfiguredSiteOrigin = (): URL | null => {
   return parseOrigin(process.env.NEXT_PUBLIC_SITE_URL);
 };
 
+const resolvePreviewAssetOrigin = (): URL | null => {
+  const rawVercelUrl = process.env.VERCEL_URL?.trim();
+
+  if (rawVercelUrl === undefined || rawVercelUrl.length === 0) {
+    return null;
+  }
+
+  const withProtocol =
+    rawVercelUrl.startsWith("https://") || rawVercelUrl.startsWith("http://")
+      ? rawVercelUrl
+      : `https://${rawVercelUrl}`;
+
+  return parseOrigin(withProtocol);
+};
+
 /**
- * Resolves `metadataBase` for Next.js metadata generation. Falls back to the
- * local development origin only in development so preview/production builds
- * never emit `http://localhost:3000` in relative metadata URLs.
+ * Resolves `metadataBase` strictly for social-image asset URL resolution
+ * (separate from `getCanonicalUrl()`). Uses:
+ * 1. Confirmed production `NEXT_PUBLIC_SITE_URL` outside previews.
+ * 2. Preview deployment `VERCEL_URL` on Vercel previews so OG images resolve
+ *    without emitting a production canonical.
+ * 3. `http://localhost:3000` only when running locally (non-Vercel builds/dev)
+ *    so local production builds never emit a Next.js missing-`metadataBase`
+ *    warning while deployed production builds without a configured origin stay
+ *    honestly unset.
  */
 export const getMetadataBase = (): URL | undefined => {
   const configured = getConfiguredSiteOrigin();
@@ -66,15 +98,27 @@ export const getMetadataBase = (): URL | undefined => {
     return configured;
   }
 
-  return process.env.NODE_ENV === "development"
-    ? new URL(LOCAL_FALLBACK_ORIGIN)
-    : undefined;
+  const previewAssetOrigin = resolvePreviewAssetOrigin();
+
+  if (previewAssetOrigin !== null) {
+    return previewAssetOrigin;
+  }
+
+  if (
+    process.env.NODE_ENV === "development" ||
+    process.env.VERCEL_ENV === undefined ||
+    process.env.VERCEL_ENV.length === 0
+  ) {
+    return new URL(LOCAL_FALLBACK_ORIGIN);
+  }
+
+  return undefined;
 };
 
 /**
  * Builds a canonical URL only when a confirmed non-preview site origin is
- * explicitly set. Returns `undefined` while running as an unconfigured scaffold
- * or preview deployment.
+ * explicitly set. Returns `undefined` while running as an unconfigured preview
+ * or staging deployment.
  */
 export const getCanonicalUrl = (pathname: string): string | undefined => {
   const origin = getConfiguredSiteOrigin();
@@ -87,8 +131,51 @@ export const getCanonicalUrl = (pathname: string): string | undefined => {
 };
 
 /**
- * Provisional scaffold and previews must remain non-indexable regardless of
- * deployment environment label. Indexing stays disabled until explicitly
- * enabled for launch once the real domain and content are ready.
+ * Builds page metadata without conditional empty-object spreads so canonical
+ * URLs are emitted only when an explicit non-preview site origin is set.
  */
-export const isSearchIndexingEnabled = (): boolean => false;
+export const buildPageMetadata = (input: {
+  readonly title: string;
+  readonly description?: string | null;
+  readonly pathname: string;
+}): Metadata => {
+  const resolvedDescription = input.description ?? SITE_DEFAULTS.description;
+  const fullTitle = `${input.title} | ${SITE_DEFAULTS.name}`;
+
+  const metadata: Metadata = {
+    description: resolvedDescription,
+    openGraph: {
+      ...SITE_OPEN_GRAPH,
+      description: resolvedDescription,
+      title: fullTitle,
+    },
+    title: input.title,
+    twitter: {
+      card: "summary_large_image",
+      description: resolvedDescription,
+      images: [SITE_DEFAULTS.ogImagePath],
+      title: fullTitle,
+    },
+  };
+
+  const canonical = getCanonicalUrl(input.pathname);
+
+  if (canonical !== undefined) {
+    metadata.alternates = { canonical };
+    metadata.openGraph = {
+      ...metadata.openGraph,
+      url: canonical,
+    };
+  }
+
+  return metadata;
+};
+
+/**
+ * Enables search-engine crawlability on production and local builds while
+ * keeping Vercel preview deployments (`VERCEL_ENV === "preview"`) strictly
+ * non-indexable (`noindex, nofollow`, `Disallow: /`, empty sitemap).
+ * Standalone legal/error/outage/checkout routes enforce explicit `noindex`
+ * independently.
+ */
+export const isSearchIndexingEnabled = (): boolean => !isPreviewDeployment();

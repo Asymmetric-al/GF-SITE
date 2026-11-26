@@ -43,5 +43,5 @@ Global Fellowship, Inc. is a registered 501(c)(3) nonprofit (`EIN 68-0214543`) s
 
 - **Online & Investment Giving:** Online portal and stock/investment giving via Every.org (confirmed in archived financial pages).
 - **Mail:** Checks payable to `Global Fellowship`, mailed to `P.O. Box 1, Meadow Vista, CA 95722` (write the missionary code or project designation on a separate enclosed note rather than on the check memo line so bank-imaged checks stay private and clear).
-- **Questions:** Direct access to Finance at `finance@globalfellowship.org` or `1 866 984 5622`.
+- **Questions:** Direct access to Finance at `finance@globalfellowship.org` or `1 866 984 5622` (Pacific business hours).
 - **Mandatory stewardship wording:** Follow [2025 Proof and Stewardship Ledger](../messaging/proof-ledger-2025.md) verbatim until Finance confirms `OVR-01`[^proof-2025].

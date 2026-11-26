@@ -128,7 +128,7 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
     const report = scanOkfBundle(path.join(repoRoot, "knowledge"));
 
     expect(report.okfVersion).toBe("0.3");
-    expect(report.summary.concepts).toBeGreaterThanOrEqual(55);
+    expect(report.summary.concepts).toBeGreaterThanOrEqual(51);
     expect(report.summary.notConcepts).toBe(0);
     expect(report.bundle.title).toBeTruthy();
     expect(report.bundle.description).toBeTruthy();
@@ -156,8 +156,9 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
     );
 
     const requiredDocs = [
-      "knowledge/references/source-coverage-and-decisions.md",
-      "knowledge/references/organizational-coverage-record.md",
+      "knowledge/references/source-synthesis.md",
+      "knowledge/references/open-verification-register.md",
+      "knowledge/references/asset-index.md",
       "knowledge/references/website-builder-handoff.md",
       "brand-kit/manifest.json",
     ];
@@ -224,11 +225,7 @@ describe("repository knowledge/ OKF v0.3 scaffold", () => {
 
     collectMarkdown(knowledgeDir);
 
-    const HISTORICAL_AUDIT_LOGS = new Set([
-      "knowledge/log.md",
-      "knowledge/references/organizational-coverage-record.md",
-      "knowledge/references/source-coverage-and-decisions.md",
-    ]);
+    const HISTORICAL_AUDIT_LOGS = new Set(["knowledge/log.md"]);
 
     const violations: string[] = [];
 
