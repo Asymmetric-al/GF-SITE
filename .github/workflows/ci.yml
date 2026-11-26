@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies (frozen lockfile)
         run: bun install --frozen-lockfile
 
+      - name: Generate Next.js route types
+        run: bun run typegen
+
       - name: Run Ultracite lint and format checks
         run: bun run check
 
