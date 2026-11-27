@@ -2,6 +2,11 @@
 
 Concise chronological milestones for `knowledge/` (OKF v0.3). Full per-round brand council scorecards and independent review adjudications live outside the OKF bundle in `docs/brand-council/council-review-record.md` and `docs/brand-council/completion-review-record.md`.
 
+## 2026-11-27
+
+- **Website UX Polish, `/our-people` Privacy Blur, Footer Three Pillars Elevation, and `/local-leaders` Headline Refinement (`52` concepts: `51` `draft`, `1` `deprecated`, `verified: []`):**
+  - Updated [Public Website Implementation Record](references/website-implementation-record.md), [Visual Identity](brand/visual-identity.md), and [Open Verification Register](references/open-verification-register.md) to reflect stakeholder website refinements: prominent centered `Source Serif 4` Three Pillars band (`Church Planting · Local Leadership · Unreached People`) in the footer, `/local-leaders` hero headline refined to `"Your ministry stays yours."`, subtle footer Light / System / Dark theme switcher (`FooterThemeSwitcher`), demand-loaded Lenis smooth anchor navigation and React 19 View Transitions, `/llms.txt` Agentic Browsing support, pre-encoded static AVIF heroes and Latin-core font subsets, irreversible `sigma = 14` pixel blur with full-frame opaque atmospheric veil on `/our-people` hero `GF-LIVE-27` (with prior original blobs purged from `origin/main` and deleted branch `website/build-hillclimb`), and updated `OVR-24` pre-launch indexing status.
+
 ## 2026-11-26
 
 - **Rector Medium Website Wordmark, Tucked-Away `/credits`, and `/our-people` Group Portrait (`52` concepts: `51` `draft`, `1` `deprecated`, `verified: []`):**

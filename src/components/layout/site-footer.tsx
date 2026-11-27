@@ -158,10 +158,22 @@ export const SiteFooter = () => (
         </div>
       </div>
 
-      <div className="border-night-border text-night-muted flex flex-col gap-3 border-t pt-5 text-sm leading-relaxed">
-        <p className="text-apricot font-medium">
-          Church Planting · Local Leadership · Unreached People
+      <div className="border-night-border flex flex-col items-center gap-3 border-t pt-7 pb-1 text-center">
+        <div aria-hidden="true" className="gf-gold-rule" />
+        <p className="text-night-foreground font-serif text-xl font-normal tracking-tight sm:text-2xl">
+          <span className="whitespace-nowrap">Church Planting</span>{" "}
+          <span aria-hidden="true" className="text-apricot mx-1.5 sm:mx-2.5">
+            ·
+          </span>{" "}
+          <span className="whitespace-nowrap">Local Leadership</span>{" "}
+          <span aria-hidden="true" className="text-apricot mx-1.5 sm:mx-2.5">
+            ·
+          </span>{" "}
+          <span className="whitespace-nowrap">Unreached People</span>
         </p>
+      </div>
+
+      <div className="border-night-border text-night-muted flex flex-col gap-3 border-t pt-5 text-sm leading-relaxed">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <p className="text-night-foreground font-medium">
             © {VERIFIED_ORGANIZATION.legalName} · Founded 1989 in Auburn,

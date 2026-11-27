@@ -225,7 +225,7 @@ const LocalLeadersPage = () => (
           <div className="flex flex-col gap-5 lg:col-span-7">
             <div aria-hidden="true" className="gf-gold-rule" />
             <h1 className="gf-display-split text-foreground">
-              Your church stays yours.
+              Your ministry stays yours.
             </h1>
             <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
               Most workers in Global Fellowship are local pastors and church

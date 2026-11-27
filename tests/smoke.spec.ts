@@ -72,7 +72,7 @@ const PUBLIC_ROUTES = [
     path: "/churches",
   },
   {
-    heading: "Your church stays yours.",
+    heading: "Your ministry stays yours.",
     path: "/local-leaders",
   },
   {
