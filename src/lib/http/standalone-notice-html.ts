@@ -3,6 +3,7 @@ import {
   RECTOR_WORDMARK_PATH,
   RECTOR_WORDMARK_VIEWBOX,
 } from "@/lib/brand/rector-wordmark";
+import { THEME_COLORS, THEME_INIT_SCRIPT } from "@/lib/theme";
 
 interface StandaloneNoticeAction {
   readonly href: string;
@@ -124,11 +125,15 @@ export const renderStandaloneNoticeHtml = ({
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="${THEME_COLORS.light}" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="${THEME_COLORS.dark}" media="(prefers-color-scheme: dark)" />
   <meta name="robots" content="noindex, nofollow" />
   <title>${escapeHtml(title)} | Global Fellowship</title>
   <link rel="icon" href="/brand/gf-mark-favicon-16.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
   <link rel="icon" href="/brand/gf-mark-favicon-16-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="/brand/gf-favicon-32.png" type="image/png" sizes="32x32" />
+  <script data-gf-theme-init>${THEME_INIT_SCRIPT}</script>
   <style>${STANDALONE_BRAND_FONTS_CSS}
 
     :root {
@@ -149,8 +154,29 @@ export const renderStandaloneNoticeHtml = ({
       --mark-arc: #b28b61;
     }
 
+    @media screen {
+      :root.light { color-scheme: light; }
+      :root.dark {
+        color-scheme: dark;
+        --bg: #0a1822;
+        --surface: #122a3b;
+        --fg: #f0e7db;
+        --muted: #cbc3b7;
+        --border: #2b485b;
+        --input: #8fa3b1;
+        --primary: #e8d5b7;
+        --primary-fg: #122a3b;
+        --kicker: #d5b082;
+        --gold-rule: #b28b61;
+        --link: #e8d5b7;
+        --ring: #e8d5b7;
+        --mark-frame: #f0e7db;
+        --mark-arc: #d5b082;
+      }
+    }
+
     @media screen and (prefers-color-scheme: dark) {
-      :root {
+      :root:not(.light) {
         --bg: #0a1822;
         --surface: #122a3b;
         --fg: #f0e7db;
@@ -418,7 +444,11 @@ export const renderStandaloneNoticeHtml = ({
     }
 
     @media print {
-      :root {
+      :root,
+      :root.light,
+      :root.dark,
+      :root:not(.light) {
+        color-scheme: light !important;
         --bg: #ffffff;
         --surface: #ffffff;
         --fg: #000000;

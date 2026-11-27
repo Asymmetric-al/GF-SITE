@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LivingArcMotif } from "@/components/brand/living-arc";
+import { PageTransition } from "@/components/brand/page-transition";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { LOCAL_EDIT_EXAMPLES } from "@/components/interactive/local-edit-data";
+import { ReadingProgressBar } from "@/components/interactive/reading-progress-bar";
 import { SectionScrollspy } from "@/components/interactive/section-scrollspy";
 import type { ScrollspySection } from "@/components/interactive/section-scrollspy";
 import { SectionSubnav } from "@/components/layout/section-subnav";
@@ -210,163 +212,170 @@ const LocalLeadersFirstContactSection = () => {
 
 const LocalLeadersPage = () => (
   <div className="flex flex-col">
+    <ReadingProgressBar />
     <SectionSubnav
       currentHref="/local-leaders"
       items={OPPORTUNITIES_SUBNAV_ITEMS}
       label="Opportunities and church partnerships"
     />
 
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
-      <header className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
-        <div className="flex flex-col gap-5 lg:col-span-7">
-          <div aria-hidden="true" className="gf-gold-rule" />
-          <h1 className="gf-display-split text-foreground">
-            Your church stays yours.
-          </h1>
-          <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-            Most workers in Global Fellowship are local pastors and church
-            planters serving in their own nations across Asia, Europe, the
-            Middle East, North Africa, and the Americas. You lead the church
-            where God placed you; we support you with regional care, training,
-            and prayer.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
-            <a
-              className={buttonVariants({ size: "lg", variant: "default" })}
-              href="#before-you-write"
-            >
-              Request a regional introduction
-            </a>
-            <Link
-              className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-              href="/statement-of-faith"
-            >
-              <span>Statement of Faith</span>
-              <ArrowRightIcon />
-            </Link>
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
+        <header className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
+          <div className="flex flex-col gap-5 lg:col-span-7">
+            <div aria-hidden="true" className="gf-gold-rule" />
+            <h1 className="gf-display-split text-foreground">
+              Your ministry stays yours.
+            </h1>
+            <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+              Most workers in Global Fellowship are local pastors and church
+              planters serving in their own nations across Asia, Europe, the
+              Middle East, North Africa, and the Americas. You lead the church
+              where God placed you; we support you with regional care, training,
+              and prayer.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+              <a
+                className={buttonVariants({ size: "lg", variant: "default" })}
+                href="#before-you-write"
+              >
+                Request a regional introduction
+              </a>
+              <Link
+                className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                href="/statement-of-faith"
+              >
+                <span>Statement of Faith</span>
+                <ArrowRightIcon />
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <aside
-          aria-label="Local leadership summary"
-          className="bg-linen border-border flex flex-col gap-3 rounded-3xl border p-6 sm:p-7 lg:col-span-5 lg:mt-6"
+          <aside
+            aria-label="Local leadership summary"
+            className="bg-linen border-border flex flex-col gap-3 rounded-3xl border p-6 sm:p-7 lg:col-span-5 lg:mt-6"
+          >
+            <h2 className="text-foreground font-sans text-base font-semibold tracking-tight">
+              At a glance
+            </h2>
+            <dl className="divide-border divide-y text-sm">
+              <div className="flex items-baseline justify-between gap-4 py-3 first:pt-0">
+                <dt className="text-muted-foreground shrink-0">Governance</dt>
+                <dd className="text-foreground text-right font-semibold">
+                  Local elders stay in charge
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-muted-foreground shrink-0">Consent</dt>
+                <dd className="text-foreground text-right font-semibold">
+                  Reviewed in your language; revocable
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-muted-foreground shrink-0">First step</dt>
+                <dd className="text-foreground text-right font-semibold">
+                  Personal Regional Director visit
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3 last:pb-0">
+                <dt className="text-muted-foreground shrink-0">
+                  Branding required
+                </dt>
+                <dd className="text-foreground text-right font-semibold">
+                  None; safety comes first
+                </dd>
+              </div>
+            </dl>
+          </aside>
+        </header>
+
+        <SectionScrollspy
+          ariaLabel="Sections on this page"
+          className="-mt-4"
+          sections={JUMP_SECTIONS}
+        />
+
+        <section
+          aria-labelledby="commitments-heading"
+          className="flex scroll-mt-24 flex-col gap-6"
+          id="commitments"
         >
-          <h2 className="text-foreground font-sans text-base font-semibold tracking-tight">
-            At a glance
+          <h2
+            className="gf-display-section text-foreground"
+            id="commitments-heading"
+          >
+            Four commitments to every local church leader
           </h2>
-          <dl className="divide-border divide-y text-sm">
-            <div className="flex items-baseline justify-between gap-4 py-3 first:pt-0">
-              <dt className="text-muted-foreground shrink-0">Governance</dt>
-              <dd className="text-foreground text-right font-semibold">
-                Local elders stay in charge
-              </dd>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 py-3">
-              <dt className="text-muted-foreground shrink-0">Consent</dt>
-              <dd className="text-foreground text-right font-semibold">
-                Reviewed in your language; revocable
-              </dd>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 py-3">
-              <dt className="text-muted-foreground shrink-0">First step</dt>
-              <dd className="text-foreground text-right font-semibold">
-                Personal Regional Director visit
-              </dd>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 py-3 last:pb-0">
-              <dt className="text-muted-foreground shrink-0">
-                Branding required
-              </dt>
-              <dd className="text-foreground text-right font-semibold">
-                None; safety comes first
-              </dd>
-            </div>
-          </dl>
-        </aside>
-      </header>
-
-      <SectionScrollspy
-        ariaLabel="Sections on this page"
-        className="-mt-4"
-        sections={JUMP_SECTIONS}
-      />
-
-      <section
-        aria-labelledby="commitments-heading"
-        className="flex scroll-mt-24 flex-col gap-6"
-        id="commitments"
-      >
-        <h2
-          className="gf-display-section text-foreground"
-          id="commitments-heading"
-        >
-          Four commitments to every local church leader
-        </h2>
-        <ul className="border-border divide-border grid grid-cols-1 divide-y border-y md:grid-cols-2 md:gap-x-10 md:divide-y-0">
-          {LOCAL_LEADER_COMMITMENTS.map((item, index) => (
-            <li
-              className={`flex flex-col gap-2 py-6 ${
-                index >= 2 ? "md:border-border md:border-t" : ""
-              }`}
-              key={item.title}
-            >
-              <h3 className="text-foreground font-sans text-lg font-semibold tracking-tight">
-                {item.title}
-              </h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                {item.detail}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section
-        aria-labelledby="local-standards-heading"
-        className="flex scroll-mt-24 flex-col gap-6"
-        id="local-standards"
-      >
-        <h2
-          className="gf-display-section text-foreground"
-          id="local-standards-heading"
-        >
-          How our written standards protect local voice
-        </h2>
-
-        <ul className="border-border divide-border divide-y border-y">
-          {LOCAL_EDIT_EXAMPLES.map((item) => (
-            <li
-              className="grid grid-cols-1 gap-6 py-7 lg:grid-cols-12 lg:gap-10"
-              key={item.id}
-            >
-              <div className="flex flex-col gap-1.5 lg:col-span-3">
-                <h3 className="text-foreground font-sans text-base font-semibold tracking-tight">
-                  {item.tabLabel}
+          <ul className="border-border divide-border grid grid-cols-1 divide-y border-y md:grid-cols-2 md:gap-x-10 md:divide-y-0">
+            {LOCAL_LEADER_COMMITMENTS.map((item, index) => (
+              <li
+                className={`flex flex-col gap-2 py-6 ${
+                  index >= 2 ? "md:border-border md:border-t" : ""
+                }`}
+                key={item.title}
+              >
+                <h3 className="text-foreground font-sans text-lg font-semibold tracking-tight">
+                  {item.title}
                 </h3>
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  {item.context}
+                  {item.detail}
                 </p>
-              </div>
-              <div className="border-structural flex flex-col gap-1.5 border-l-2 pl-4 lg:col-span-5">
-                <p className="text-primary text-sm font-semibold">What we do</p>
-                <p className="text-foreground text-base leading-relaxed">
-                  {item.standardPractice}
-                </p>
-              </div>
-              <div className="flex flex-col gap-1.5 lg:col-span-4">
-                <p className="text-clay text-sm font-semibold">What we avoid</p>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  {item.outsideHabitDeclined}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <LocalLeadersTrainingSection />
-      <LocalLeadersFirstContactSection />
-    </div>
+        <section
+          aria-labelledby="local-standards-heading"
+          className="flex scroll-mt-24 flex-col gap-6"
+          id="local-standards"
+        >
+          <h2
+            className="gf-display-section text-foreground"
+            id="local-standards-heading"
+          >
+            How our written standards protect local voice
+          </h2>
+
+          <ul className="border-border divide-border divide-y border-y">
+            {LOCAL_EDIT_EXAMPLES.map((item) => (
+              <li
+                className="grid grid-cols-1 gap-6 py-7 lg:grid-cols-12 lg:gap-10"
+                key={item.id}
+              >
+                <div className="flex flex-col gap-1.5 lg:col-span-3">
+                  <h3 className="text-foreground font-sans text-base font-semibold tracking-tight">
+                    {item.tabLabel}
+                  </h3>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {item.context}
+                  </p>
+                </div>
+                <div className="border-structural flex flex-col gap-1.5 border-l-2 pl-4 lg:col-span-5">
+                  <p className="text-primary text-sm font-semibold">
+                    What we do
+                  </p>
+                  <p className="text-foreground text-base leading-relaxed">
+                    {item.standardPractice}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1.5 lg:col-span-4">
+                  <p className="text-clay text-sm font-semibold">
+                    What we avoid
+                  </p>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {item.outsideHabitDeclined}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <LocalLeadersTrainingSection />
+        <LocalLeadersFirstContactSection />
+      </div>
+    </PageTransition>
   </div>
 );
 

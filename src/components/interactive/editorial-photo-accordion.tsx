@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
 import type { GfPhoto } from "@/lib/brand/gf-photos";
 import { cx } from "@/lib/cx";
 
@@ -91,19 +91,20 @@ export const EditorialPhotoAccordion = ({
               }}
               type="button"
             >
-              <Image
+              <StaticHeroAvifPicture
                 alt={isActive ? panel.photo.alt : ""}
-                aria-hidden={isActive ? undefined : true}
+                ariaHidden={isActive ? undefined : true}
                 className={cx(
-                  "gf-cinema-photo absolute inset-0 h-full w-full object-cover transition duration-700 motion-reduce:transition-none",
+                  "gf-cinema-photo h-full w-full object-cover transition duration-700 motion-reduce:transition-none",
                   panel.photo.objectPosition ?? "object-top",
                   !isActive &&
                     "opacity-75 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-105 [@media(hover:hover)_and_(pointer:fine)]:group-hover:opacity-90"
                 )}
+                fallbackSrc={panel.photo.src}
                 height={panel.photo.height}
-                quality={75}
-                sizes="(max-width: 1280px) 52vw, 640px"
-                src={panel.photo.src}
+                heroAvif={panel.photo.heroAvif}
+                pictureClassName="pointer-events-none absolute inset-0 block h-full w-full"
+                preload={false}
                 width={panel.photo.width}
               />
 
@@ -152,16 +153,16 @@ export const EditorialPhotoAccordion = ({
             key={panel.id}
           >
             <div className="bg-linen relative aspect-3/2 w-full overflow-hidden print:hidden">
-              <Image
+              <StaticHeroAvifPicture
                 alt={panel.photo.alt}
                 className={cx(
                   "h-full w-full object-cover",
                   panel.photo.objectPosition ?? "object-top"
                 )}
+                fallbackSrc={panel.photo.src}
                 height={panel.photo.height}
-                quality={75}
-                sizes="(max-width: 768px) calc(100vw - 2.5rem), 46vw"
-                src={panel.photo.src}
+                heroAvif={panel.photo.heroAvif}
+                preload={false}
                 width={panel.photo.width}
               />
             </div>

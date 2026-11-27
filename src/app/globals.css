@@ -1,5 +1,16 @@
 @layer ui-sdk;
 @import "tailwindcss";
+@custom-variant dark {
+  &:where(:root.dark, :root.dark *) {
+    @slot;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    &:where(:root:not(.light), :root:not(.light) *) {
+      @slot;
+    }
+  }
+}
 @source not "../../brand-kit";
 @source not "../../docs";
 @source not "../../knowledge";
@@ -102,6 +113,7 @@
 }
 
 :root {
+  color-scheme: light dark;
   /* Global Fellowship 2026 Brand Kit palette: luminous Alabaster Ivory (#FCFAF6), Gallery White (#FFFFFF), Warm Cream (#F3EDE3), Deep Navy & Petrol Blue, Muted Gold / Dark Bronze */
   --background: #fcfaf6;
   --foreground: #122a3b;
@@ -154,7 +166,45 @@
   --gf-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-/* Unified Deep Navy OS dark mode preserving Soft Ivory & Warm Gold polarity (screen-only so print stays pure B&W) */
+/* Unified Deep Navy dark mode (explicit .dark or OS dark unless .light; screen-only so print stays pure B&W) */
+@media screen {
+  :root.light {
+    color-scheme: light;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+    --background: #0a1822;
+    --foreground: #f0e7db;
+    --card: #122a3b;
+    --card-foreground: #f0e7db;
+    --popover: #122a3b;
+    --popover-foreground: #f0e7db;
+    --primary: #e8d5b7;
+    --primary-foreground: #122a3b;
+    --secondary: #163346;
+    --secondary-foreground: #f0e7db;
+    --muted: #163346;
+    --muted-foreground: #cbc3b7;
+    --accent: #183a50;
+    --accent-foreground: #e8d5b7;
+    --destructive: #e59379;
+    --destructive-foreground: #122a3b;
+    --border: #274457;
+    --input: #8fa3b1;
+    --ring: #e8d5b7;
+    --gf-linen: #132c3d;
+    --gf-clay-token: #d5b082;
+    --gf-gold-rule: #b28b61;
+    --gf-structural-accent: #e8d5b7;
+    --gf-notice-token: #132c3d;
+    --gf-mark-frame: #f0e7db;
+    --gf-mark-arc: #d5b082;
+    --gf-arc-primary: rgb(240 231 219 / 0.07);
+    --gf-arc-warm: rgb(213 176 130 / 0.24);
+  }
+}
+
 @media screen and (prefers-color-scheme: dark) {
   :root:not(.light) {
     --background: #0a1822;
@@ -218,7 +268,19 @@
   color: var(--foreground);
 }
 
-/* Distinct nocturnal sanctuary depth in OS dark mode */
+/* Distinct nocturnal sanctuary depth in dark mode */
+@media screen {
+  :root.dark .gf-night {
+    --background: #08151f;
+    --card: #0e2536;
+    --border: #33556b;
+    --gf-night-bg: #08151f;
+    --gf-night-card: #0e2536;
+    --gf-night-mid: #163346;
+    --gf-night-rule: #33556b;
+  }
+}
+
 @media screen and (prefers-color-scheme: dark) {
   :root:not(.light) .gf-night {
     --background: #08151f;
@@ -245,6 +307,71 @@
   body {
     @apply bg-background text-foreground antialiased;
     overflow-wrap: break-word;
+  }
+
+  ::selection {
+    background-color: color-mix(
+      in srgb,
+      var(--gf-sea-mist-token) 68%,
+      transparent
+    );
+    color: var(--foreground);
+  }
+
+  .gf-night ::selection {
+    background-color: color-mix(in srgb, var(--gf-gold-rule) 38%, transparent);
+    color: var(--gf-night-fg);
+  }
+
+  @media screen {
+    :root.dark ::selection {
+      background-color: color-mix(
+        in srgb,
+        var(--gf-gold-rule) 38%,
+        transparent
+      );
+      color: var(--foreground);
+    }
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not(.light) ::selection {
+      background-color: color-mix(
+        in srgb,
+        var(--gf-gold-rule) 38%,
+        transparent
+      );
+      color: var(--foreground);
+    }
+  }
+
+  /* Prevent mismatched color-transition smear when switching light/dark themes */
+  html.gf-theme-switching *:not(.gf-theme-switcher-indicator),
+  html.gf-theme-switching *::before,
+  html.gf-theme-switching *::after {
+    transition: none !important;
+  }
+
+  /* Recommended Lenis root & nested-scroll containment rules */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+  }
+
+  .lenis [data-lenis-prevent],
+  .lenis [data-lenis-prevent-wheel],
+  .lenis [data-lenis-prevent-touch],
+  .lenis [data-lenis-prevent-vertical],
+  .lenis [data-lenis-prevent-horizontal] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
 }
 
@@ -496,14 +623,14 @@
     );
   }
 
-  /* High-canopy portrait veil: fades out above the gathered family so ivory display text clears WCAG AA+/AAA over lush palms while every face below stays 100% sunlit */
+  /* Opaque atmospheric veil over the privacy-blurred family gathering: keeps ivory display text well above WCAG AA+/AAA while giving the full frame a cohesive frosted finish */
   .gf-depth-veil-portrait-top {
     background-image: linear-gradient(
       180deg,
       rgb(8 22 33 / 0.84) 0%,
-      rgb(8 22 33 / 0.66) 20%,
-      rgb(8 22 33 / 0.28) 33%,
-      transparent 44%
+      rgb(8 22 33 / 0.68) 26%,
+      rgb(8 22 33 / 0.42) 60%,
+      rgb(8 22 33 / 0.5) 100%
     );
   }
 
@@ -754,6 +881,13 @@
     display: block;
   }
 
+  @media screen {
+    :root.dark .gf-waffle-tile-clay,
+    :root.dark .gf-waffle-swatch-clay {
+      background-color: var(--gf-gold-rule);
+    }
+  }
+
   @media screen and (prefers-color-scheme: dark) {
     :root:not(.light) .gf-waffle-tile-clay,
     :root:not(.light) .gf-waffle-swatch-clay {
@@ -824,6 +958,20 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  @media screen {
+    :root.dark .gf-photo-text-mask-daylight {
+      color: var(--gf-sea-mist-token);
+      background-color: var(--gf-sea-mist-token);
+      background-image: linear-gradient(
+        128deg,
+        #f8f2e8 0%,
+        #e8d5b7 48%,
+        #d5b082 88%,
+        #b28b61 100%
+      );
+    }
   }
 
   @media screen and (prefers-color-scheme: dark) {
@@ -953,10 +1101,115 @@
     opacity: 0.9;
   }
 
+  /* Subtle footer theme switcher harmonized from Efferd footer-9 on @ui-sdk/react/segmented-control */
+  .gf-theme-switcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    isolation: isolate;
+    border-radius: 9999px;
+    border: 1px solid var(--gf-night-rule);
+    background-color: color-mix(in srgb, var(--gf-night-mid) 55%, transparent);
+    padding: 0.125rem;
+  }
+
+  .gf-theme-switcher-indicator {
+    position: absolute;
+    z-index: -1;
+    top: var(--segmented-control-indicator-top);
+    left: var(--segmented-control-indicator-left);
+    width: var(--segmented-control-indicator-width);
+    height: var(--segmented-control-indicator-height);
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--gf-gold-rule) 55%, transparent);
+    background-color: var(--gf-night-card);
+    transition-property: top, left, width, height;
+    transition-duration: 180ms;
+    transition-timing-function: var(--gf-ease-out);
+  }
+
+  .gf-theme-switcher-indicator[data-activation-direction="none"] {
+    transition: none;
+  }
+
+  .gf-theme-switcher-shell [data-checked] {
+    border: 1px solid color-mix(in srgb, var(--gf-gold-rule) 55%, transparent);
+    background-color: var(--gf-night-card);
+  }
+
+  @media (forced-colors: active) {
+    .gf-theme-switcher-indicator {
+      display: none;
+    }
+
+    .gf-theme-switcher [data-checked] {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+      outline: 1px solid CanvasText;
+    }
+  }
+
+  @media screen {
+    :root.dark .gf-surface,
+    :root.dark .gf-surface-interactive {
+      box-shadow: 0 1px 0 rgb(240 231 219 / 0.04) inset;
+    }
+
+    :root.dark .gf-photo-frame::after {
+      box-shadow: inset 0 0 0 1px rgb(240 231 219 / 0.12);
+    }
+
+    :root.dark .gf-btn-primary-depth {
+      box-shadow:
+        0 1px 2px rgb(4 12 18 / 0.4),
+        inset 0 1px 0 rgb(255 255 255 / 0.35);
+    }
+
+    :root.dark .gf-drawer-backdrop {
+      background-color: rgb(4 10 15 / 0.72);
+    }
+
+    :root.dark .gf-sanctuary-glow {
+      background-image: radial-gradient(
+        circle at 88% 14%,
+        rgb(213 176 130 / 0.18),
+        transparent 52%
+      );
+      box-shadow: 0 1px 0 rgb(232 213 183 / 0.14) inset;
+    }
+
+    :root.dark .gf-surface-interactive::before {
+      box-shadow:
+        0 2px 4px rgb(4 12 18 / 0.24),
+        0 18px 36px -16px rgb(4 12 18 / 0.56);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      :root.dark .gf-surface-interactive:hover {
+        border-color: color-mix(in srgb, var(--primary) 50%, var(--border));
+      }
+    }
+  }
+
   @media screen and (prefers-color-scheme: dark) {
     :root:not(.light) .gf-surface,
     :root:not(.light) .gf-surface-interactive {
       box-shadow: 0 1px 0 rgb(240 231 219 / 0.04) inset;
+    }
+
+    :root:not(.light) .gf-photo-frame::after {
+      box-shadow: inset 0 0 0 1px rgb(240 231 219 / 0.12);
+    }
+
+    :root:not(.light) .gf-btn-primary-depth {
+      box-shadow:
+        0 1px 2px rgb(4 12 18 / 0.4),
+        inset 0 1px 0 rgb(255 255 255 / 0.35);
+    }
+
+    :root:not(.light) .gf-drawer-backdrop {
+      background-color: rgb(4 10 15 / 0.72);
     }
 
     :root:not(.light) .gf-sanctuary-glow {
@@ -1126,9 +1379,34 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   outline-offset: 2px;
 }
 
-/* Native React 19.3 + Next.js 16 View Transitions choreography (header isolation, shared-element photo morphs, directional navigation) */
+/* Native React 19.3 + Next.js 16 View Transitions choreography
+   Layer stack:
+   - z-index 10: directional & lateral page content transitions
+   - z-index 25: shared-element photo/title morphs & in-page segmented pill
+   - z-index 30: crisp stationary segmented pill labels (above gliding capsule)
+   - z-index 40: pinned section subnav bar across same-section peers
+   - z-index 45: gliding section subnav Deep Navy architectural underline
+   - z-index 100: pinned sticky site header (zero drift, zero backdrop flash)
+   - z-index 105: gliding primary nav warm-cream pill
+   - z-index 110: crisp stationary primary nav labels (above gliding pill)
+   - z-index 115: pinned reading progress hairline
+   - z-index 200: floating toast notifications
+*/
 .gf-site-header {
   view-transition-name: site-header;
+  transition: border-color 180ms var(--gf-ease-out);
+}
+
+.gf-site-header[data-scrolled="true"] {
+  border-bottom-color: color-mix(in srgb, var(--foreground) 12%, var(--border));
+}
+
+.gf-reading-progress-track {
+  view-transition-name: reading-progress;
+}
+
+.gf-site-toast-region {
+  view-transition-name: site-toast;
 }
 
 ::view-transition {
@@ -1144,7 +1422,9 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   animation: none;
 }
 
+/* Persistent chrome isolation: zero geometry drift, zero backdrop-blur flicker */
 ::view-transition-group(site-header) {
+  animation: none;
   z-index: 100;
 }
 
@@ -1156,14 +1436,143 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   animation: none;
 }
 
+::view-transition-group(reading-progress) {
+  animation: none;
+  z-index: 115;
+}
+
+::view-transition-old(reading-progress) {
+  display: none;
+}
+
+::view-transition-new(reading-progress) {
+  animation: none;
+}
+
+::view-transition-group(site-toast) {
+  animation: none;
+  z-index: 200;
+}
+
+::view-transition-old(site-toast) {
+  display: none;
+}
+
+::view-transition-new(site-toast) {
+  animation: none;
+}
+
+/* Primary navigation gliding warm-cream indicator + stationary crisp labels */
+::view-transition-group(.vt-nav-pill) {
+  z-index: 105;
+  animation-duration: 230ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-old(.vt-nav-pill) {
+  display: none;
+}
+
+::view-transition-new(.vt-nav-pill) {
+  animation: none;
+  height: 100%;
+}
+
+::view-transition-group(.vt-nav-pill-fade) {
+  z-index: 105;
+  animation: none;
+}
+
+::view-transition-old(.vt-nav-pill-fade) {
+  animation: gf-vt-fade-out 130ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-nav-pill-fade) {
+  animation: gf-vt-fade-in 170ms var(--gf-ease-out) both;
+}
+
+::view-transition-group(.vt-nav-label) {
+  animation: none;
+  z-index: 110;
+}
+
+::view-transition-old(.vt-nav-label) {
+  display: none;
+}
+
+::view-transition-new(.vt-nav-label) {
+  animation: none;
+}
+
+/* Section subnav bar pinning + gliding architectural bottom underline */
+::view-transition-group(.vt-subnav-static) {
+  animation: none;
+  z-index: 40;
+}
+
+::view-transition-old(.vt-subnav-static) {
+  display: none;
+}
+
+::view-transition-new(.vt-subnav-static) {
+  animation: none;
+}
+
+::view-transition-group(.vt-nav-underline) {
+  z-index: 45;
+  animation-duration: 230ms;
+  animation-timing-function: var(--gf-ease-out);
+}
+
+::view-transition-old(.vt-nav-underline) {
+  display: none;
+}
+
+::view-transition-new(.vt-nav-underline) {
+  animation: none;
+  height: 100%;
+}
+
+::view-transition-group(.vt-nav-underline-fade) {
+  z-index: 45;
+  animation: none;
+}
+
+::view-transition-old(.vt-nav-underline-fade) {
+  animation: gf-vt-fade-out 120ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-nav-underline-fade) {
+  animation: gf-vt-fade-in 160ms var(--gf-ease-out) both;
+}
+
 @keyframes gf-vt-via-blur {
   50% {
-    filter: blur(2px);
+    filter: blur(1.5px);
   }
 }
 
+@keyframes gf-vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gf-vt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Shared-element photography morph: cover-fit prevents mid-flight aspect stretch */
 ::view-transition-group(.vt-morph) {
-  z-index: 20;
+  z-index: 25;
   animation-duration: 280ms;
   animation-timing-function: var(--gf-ease-out);
 }
@@ -1174,32 +1583,63 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   animation: gf-vt-via-blur 280ms var(--gf-ease-out);
 }
 
+::view-transition-old(.vt-morph),
+::view-transition-new(.vt-morph) {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Shared-element title morph: smooth scale-aware sans-to-serif typographic bridge */
 ::view-transition-group(.vt-text-morph) {
-  z-index: 20;
+  z-index: 25;
   animation-duration: 280ms;
   animation-timing-function: var(--gf-ease-out);
 }
 
 ::view-transition-old(.vt-text-morph) {
-  display: none;
+  animation: gf-vt-fade-out 130ms var(--gf-ease-out) both;
+  object-fit: contain;
+  object-position: left top;
+  height: 100%;
+  width: auto;
 }
 
 ::view-transition-new(.vt-text-morph) {
-  animation: none;
-  object-fit: none;
+  animation: gf-vt-fade-in 220ms var(--gf-ease-out) 30ms both;
+  object-fit: contain;
   object-position: left top;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
+/* In-page segmented filter capsule + stationary crisp labels */
 ::view-transition-group(.vt-pill) {
+  z-index: 25;
   animation-duration: 220ms;
   animation-timing-function: var(--gf-ease-out);
 }
 
-::view-transition-old(.vt-pill),
+::view-transition-old(.vt-pill) {
+  display: none;
+}
+
 ::view-transition-new(.vt-pill) {
   animation: none;
   height: 100%;
+}
+
+::view-transition-group(.vt-pill-label) {
+  animation: none;
+  z-index: 30;
+}
+
+::view-transition-old(.vt-pill-label) {
+  display: none;
+}
+
+::view-transition-new(.vt-pill-label) {
+  animation: none;
 }
 
 @keyframes gf-vt-card-in {
@@ -1242,10 +1682,11 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   animation: gf-vt-card-out 140ms var(--gf-ease-out) both;
 }
 
+/* Staged hierarchical directional page navigation (synchronized to 280ms total) */
 @keyframes gf-vt-enter-forward {
   from {
     opacity: 0;
-    transform: translateX(18px);
+    transform: translateX(24px);
   }
   to {
     opacity: 1;
@@ -1260,14 +1701,14 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   }
   to {
     opacity: 0;
-    transform: translateX(-14px);
+    transform: translateX(-20px);
   }
 }
 
 @keyframes gf-vt-enter-back {
   from {
     opacity: 0;
-    transform: translateX(-18px);
+    transform: translateX(-24px);
   }
   to {
     opacity: 1;
@@ -1282,24 +1723,82 @@ details.gf-disclosure[open] .gf-disclosure-plus {
   }
   to {
     opacity: 0;
-    transform: translateX(14px);
+    transform: translateX(20px);
   }
 }
 
+@keyframes gf-vt-suspense-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::view-transition-group(.vt-enter-forward),
+::view-transition-group(.vt-exit-forward),
+::view-transition-group(.vt-enter-back),
+::view-transition-group(.vt-exit-back),
+::view-transition-group(.vt-lateral-in),
+::view-transition-group(.vt-lateral-out) {
+  z-index: 10;
+}
+
 ::view-transition-new(.vt-enter-forward) {
-  animation: gf-vt-enter-forward 220ms var(--gf-ease-out) both;
+  animation: gf-vt-enter-forward 240ms var(--gf-ease-out) 40ms both;
 }
 
 ::view-transition-old(.vt-exit-forward) {
-  animation: gf-vt-exit-forward 160ms var(--gf-ease-out) both;
+  animation: gf-vt-exit-forward 140ms var(--gf-ease-out) both;
 }
 
 ::view-transition-new(.vt-enter-back) {
-  animation: gf-vt-enter-back 220ms var(--gf-ease-out) both;
+  animation: gf-vt-enter-back 240ms var(--gf-ease-out) 40ms both;
 }
 
 ::view-transition-old(.vt-exit-back) {
-  animation: gf-vt-exit-back 160ms var(--gf-ease-out) both;
+  animation: gf-vt-exit-back 140ms var(--gf-ease-out) both;
+}
+
+/* Serene opacity-only lateral navigation crossfade (zero false sideways motion) */
+::view-transition-old(.vt-lateral-out) {
+  animation: gf-vt-fade-out 120ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-lateral-in) {
+  animation: gf-vt-fade-in 180ms var(--gf-ease-out) 30ms both;
+}
+
+/* Same-route dynamic segment crossfade (no height stretch between varying lengths) */
+::view-transition-group(.vt-crossfade) {
+  animation: none;
+  z-index: 10;
+}
+
+::view-transition-old(.vt-crossfade) {
+  animation: gf-vt-fade-out 130ms var(--gf-ease-out) both;
+  object-fit: none;
+  object-position: left top;
+  height: auto;
+}
+
+::view-transition-new(.vt-crossfade) {
+  animation: gf-vt-fade-in 190ms var(--gf-ease-out) 35ms both;
+  object-fit: none;
+  object-position: left top;
+  height: auto;
+}
+
+/* Gentle Suspense streaming reveal for live CMS routes */
+::view-transition-old(.vt-suspense-out) {
+  animation: gf-vt-fade-out 120ms var(--gf-ease-out) both;
+}
+
+::view-transition-new(.vt-suspense-in) {
+  animation: gf-vt-suspense-in 200ms var(--gf-ease-out) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1331,9 +1830,13 @@ details.gf-disclosure[open] .gf-disclosure-plus {
 /* B&W church copier print stylesheet (high specificity so OS dark mode never leaks to paper) */
 @media print {
   :root,
+  :root.light,
+  :root.dark,
   :root:not(.light),
   .gf-night,
+  :root.dark .gf-night,
   :root:not(.light) .gf-night {
+    color-scheme: light !important;
     --background: #ffffff;
     --foreground: #000000;
     --card: #ffffff;
@@ -1361,6 +1864,12 @@ details.gf-disclosure[open] .gf-disclosure-plus {
     --gf-mark-arc: #000000;
     background-color: #ffffff !important;
     color: #000000 !important;
+  }
+
+  html.lenis,
+  html.lenis body {
+    overflow: visible !important;
+    height: auto !important;
   }
 
   header {

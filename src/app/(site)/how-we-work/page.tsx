@@ -3,7 +3,9 @@ import Link from "next/link";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
 import { LayeredPhotoHero } from "@/components/brand/layered-photo-hero";
+import { PageTransition } from "@/components/brand/page-transition";
 import { PhotoMaskedWord } from "@/components/brand/photo-masked-word";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { EditorialTimeline } from "@/components/interactive/editorial-timeline";
 import type { EditorialTimelineMilestone } from "@/components/interactive/editorial-timeline";
@@ -313,118 +315,127 @@ const HowWeWorkPage = () => (
       label="About Global Fellowship"
     />
 
-    <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-8 pb-10 sm:px-8 lg:gap-10 lg:pt-12">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
-        <div className="flex flex-col gap-4 lg:col-span-7">
-          <div aria-hidden="true" className="gf-gold-rule" />
-          <h1 className="gf-display-hero text-foreground" id="how-hero-heading">
-            Local leaders lead. We come alongside them.
-          </h1>
-        </div>
+    <PageTransition>
+      <div className="flex flex-col">
+        <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-8 pb-10 sm:px-8 lg:gap-10 lg:pt-12">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="flex flex-col gap-4 lg:col-span-7">
+              <div aria-hidden="true" className="gf-gold-rule" />
+              <h1
+                className="gf-display-hero text-foreground"
+                id="how-hero-heading"
+              >
+                Local leaders lead. We come alongside them.
+              </h1>
+            </div>
 
-        <div className="flex flex-col gap-5 lg:col-span-5">
-          <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-            Global Fellowship unites local church planters and cross-cultural
-            missionaries in one Christian family. Our Home Office coordinates,
-            regional teams adapt the work to each culture, and local leaders
-            lead the church.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
-            <Link
-              className={buttonVariants({ size: "lg", variant: "default" })}
-              href="/our-people"
-            >
-              Meet our people
-            </Link>
-            <a
-              className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-              href="#strategy"
-            >
-              <span>9-step strategy</span>
-              <ArrowRightIcon />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <GfPhotoFrame
-        aspect="16/10"
-        objectPositionClass="object-[50%_36%]"
-        photo={GF_PHOTOS.bibleStudy}
-        preload
-        sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
-      />
-    </header>
-
-    <section
-      aria-labelledby="operating-order-heading"
-      className="mx-auto w-full max-w-6xl px-5 py-4 sm:px-8 lg:py-6"
-      id="operating-order"
-    >
-      <div className="bg-linen border-border flex flex-col gap-8 rounded-3xl border px-6 py-10 sm:px-10 lg:px-14 lg:py-12">
-        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-          <div className="flex flex-col gap-2">
-            <h2
-              className="gf-display-section text-foreground"
-              id="operating-order-heading"
-            >
-              {MESSAGE_HIERARCHY.operatingOrder}
-            </h2>
-            <p className="text-muted-foreground gf-measure text-base leading-relaxed">
-              Our structure puts decision-making closest to the local church
-              while keeping financial oversight and worker care dependable
-              across borders.
-            </p>
-          </div>
-          <Link
-            className="group text-primary inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-            href="/mission-and-values"
-          >
-            <span>Our Mission, Vision &amp; Values</span>
-            <ArrowRightIcon />
-          </Link>
-        </div>
-
-        <ul className="border-border divide-border grid grid-cols-1 divide-y border-t md:grid-cols-3 md:divide-x md:divide-y-0">
-          {OPERATING_LEVELS.map((tier) => (
-            <li
-              className="flex flex-col gap-2 py-6 md:px-7 md:py-0 md:pt-7 md:first:pl-0 md:last:pr-0"
-              key={tier.level}
-            >
-              <h3 className="text-foreground font-serif text-xl font-normal tracking-tight">
-                {tier.level}
-              </h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                {tier.detail}
+            <div className="flex flex-col gap-5 lg:col-span-5">
+              <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+                Global Fellowship unites local church planters and
+                cross-cultural missionaries in one Christian family. Our Home
+                Office coordinates, regional teams adapt the work to each
+                culture, and local leaders lead the church.
               </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+                <TransitionLink
+                  className={buttonVariants({ size: "lg", variant: "default" })}
+                  direction="lateral"
+                  href="/our-people"
+                  prefetchMode="intent-shell"
+                >
+                  Meet our people
+                </TransitionLink>
+                <a
+                  className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                  href="#strategy"
+                >
+                  <span>9-step strategy</span>
+                  <ArrowRightIcon />
+                </a>
+              </div>
+            </div>
+          </div>
 
-    <StrategySection />
+          <GfPhotoFrame
+            aspect="16/10"
+            objectPositionClass="object-[50%_36%]"
+            photo={GF_PHOTOS.bibleStudy}
+            preload
+            sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
+          />
+        </header>
 
-    <LayeredPhotoHero
-      className="py-4"
-      frameHeightClass="min-h-85 sm:min-h-115 lg:min-h-130"
-      fullBleed
-      integratedTitle={
-        <p
-          aria-hidden="true"
-          className="text-night-foreground ml-auto max-w-2xl text-right font-serif text-4xl leading-none font-normal tracking-tighter drop-shadow-md sm:text-7xl lg:pr-12 lg:text-8xl"
+        <section
+          aria-labelledby="operating-order-heading"
+          className="mx-auto w-full max-w-6xl px-5 py-4 sm:px-8 lg:py-6"
+          id="operating-order"
         >
-          Everyday life.
-        </p>
-      }
-      objectPositionClass="object-center"
-      photo={GF_PHOTOS.teaHarvest}
-      titlePositionClass="pt-4 sm:pt-8 lg:pt-10"
-      veilTone="canopy"
-    />
+          <div className="bg-linen border-border flex flex-col gap-8 rounded-3xl border px-6 py-10 sm:px-10 lg:px-14 lg:py-12">
+            <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+              <div className="flex flex-col gap-2">
+                <h2
+                  className="gf-display-section text-foreground"
+                  id="operating-order-heading"
+                >
+                  {MESSAGE_HIERARCHY.operatingOrder}
+                </h2>
+                <p className="text-muted-foreground gf-measure text-base leading-relaxed">
+                  Our structure puts decision-making closest to the local church
+                  while keeping financial oversight and worker care dependable
+                  across borders.
+                </p>
+              </div>
+              <Link
+                className="group text-primary inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                href="/mission-and-values"
+              >
+                <span>Our Mission, Vision &amp; Values</span>
+                <ArrowRightIcon />
+              </Link>
+            </div>
 
-    <HistoryTimelineSection />
-    <MemberCareSection />
+            <ul className="border-border divide-border grid grid-cols-1 divide-y border-t md:grid-cols-3 md:divide-x md:divide-y-0">
+              {OPERATING_LEVELS.map((tier) => (
+                <li
+                  className="flex flex-col gap-2 py-6 md:px-7 md:py-0 md:pt-7 md:first:pl-0 md:last:pr-0"
+                  key={tier.level}
+                >
+                  <h3 className="text-foreground font-serif text-xl font-normal tracking-tight">
+                    {tier.level}
+                  </h3>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {tier.detail}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <StrategySection />
+
+        <LayeredPhotoHero
+          className="py-4"
+          frameHeightClass="min-h-85 sm:min-h-115 lg:min-h-130"
+          fullBleed
+          integratedTitle={
+            <p
+              aria-hidden="true"
+              className="text-night-foreground ml-auto max-w-2xl text-right font-serif text-4xl leading-none font-normal tracking-tighter drop-shadow-md sm:text-7xl lg:pr-12 lg:text-8xl"
+            >
+              Everyday life.
+            </p>
+          }
+          objectPositionClass="object-center"
+          photo={GF_PHOTOS.teaHarvest}
+          titlePositionClass="pt-4 sm:pt-8 lg:pt-10"
+          veilTone="canopy"
+        />
+
+        <HistoryTimelineSection />
+        <MemberCareSection />
+      </div>
+    </PageTransition>
   </div>
 );
 

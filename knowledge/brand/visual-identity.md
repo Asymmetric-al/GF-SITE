@@ -13,7 +13,7 @@ x-gf-approval-state: delegated-working-guidance
 x-gf-disclosure: public
 generated:
   by: antigravity/gemini-4-neon
-  at: "2026-11-26T08:05:00Z"
+  at: "2026-11-27T15:40:00Z"
 verified: []
 sources:
   - id: foundations
@@ -82,7 +82,7 @@ Anchored in **2 Corinthians 4:7** ("treasure in jars of clay"), the palette is d
 <!-- END:GENERATED-PALETTE-TABLE -->
 
 - **Grayscale & CMYK print rule:** Harbor Teal (`oklch(0.4035 ...)`) and Kiln Clay (`oklch(0.4183 ...)`) share similar luminance; never rely on hue alone to encode separate meaning on monochrome printers. Derive commercial CMYK separations from the printer's ICC profile with physical proofs (`OVR-18`).
-- **November 2026 Marketing Brand Kit web palette adaptation (`GF-SITE`, pending `OVR-15`):** Following direct stakeholder adoption of the November 2026 Marketing Brand Kit and contemporary web refinement (`DESIGN.md`), `GF-SITE` adapts the daylight and nocturnal surface palette to luminous Alabaster Ivory (`#FCFAF6`), Gallery White (`#FFFFFF`), Warm Cream (`#F3EDE3`), Deep Navy (`#122A3B`), Petrol Blue (`#08354D`), Muted Gold (`#B28B61`), Dark Bronze (`#614D29`), Warm Deep Bronze (`#47361D`) Member Care plates, and unified `#0A1822` OS dark mode while preserving Living Nearness tokens in the print/Office brand-kit bundle until leadership harmonizes both channels under `OVR-15`.
+- **November 2026 Marketing Brand Kit web palette adaptation (`GF-SITE`, pending `OVR-15`):** Following direct stakeholder adoption of the November 2026 Marketing Brand Kit and contemporary web refinement (`DESIGN.md`), `GF-SITE` adapts the daylight and nocturnal surface palette to luminous Alabaster Ivory (`#FCFAF6`), Gallery White (`#FFFFFF`), Warm Cream (`#F3EDE3`), Deep Navy (`#122A3B`), Petrol Blue (`#08354D`), Muted Gold (`#B28B61`), Dark Bronze (`#614D29`), Warm Deep Bronze (`#47361D`) Member Care plates, unified `#0A1822` dark mode with a subtle footer Light / System / Dark theme switcher (preserving B&W `@media print`), and a prominent centered `Source Serif 4` Three Pillars band (`Church Planting · Local Leadership · Unreached People`) in the footer while preserving Living Nearness tokens in the print/Office brand-kit bundle until leadership harmonizes both channels under `OVR-15`.
 
 ## 3. Multilingual Typography (100% SIL OFL 1.1)
 
@@ -113,4 +113,4 @@ Every Global Fellowship surface selects strictly from three photography paths (n
 
 - **Photo scrim contrast rule:** Keep natural warm-neutral grading (no desaturated pity grading). On print and Office templates, place overlaid text inside an opaque Harbor Night panel (`rgba(11, 39, 46, 0.96)`, `>= 0.94` opacity) preserving `8.68:1` solid Candle Apricot and `14.62:1` solid Warm Paper (`contrast-report.json`), keeping both colors above WCAG 2.2 AAA (`>= 7:1`) even over worst-case white photo pixels. On the public website (`GF-SITE`, November 2026 web adaptation), full-bleed foreground-masked editorial scenes place a calibrated Deep Navy atmospheric veil (`z-10`) strictly behind pixel-aligned foreground subject cutouts (`z-30`) so subjects remain sunlit while rendered text-over-backdrop contrast is verified automatically against WCAG 2.2 AA pixel luminance thresholds (`>= 4.5:1` eyebrows and portrait canopy headers, `>= 3.5:1` large display headlines).
 - **Warm photo-optional card parity:** Public (`GF-TPL-02`) and restricted (`GF-TPL-01`) 4x6 duplex prayer cards share the exact same cross-free Harbor Night architectural header, tier-neutral `WEEKLY PRAYER · 2026` front header, and matching back rule so restricted cards never stand out at arm's length. On restricted cards, place the Cross-in-Oval mark strictly on the back.
-- **Banned visual tropes:** Gray silhouettes, blurred faces, black redaction bars, `"REDACTED"` stamps, padlocks, map pins, and region-coded restricted colors[^security].
+- **Banned visual tropes:** Gray silhouettes, blurred faces on portraits or cards, black redaction bars, `"REDACTED"` stamps, padlocks, map pins, and region-coded restricted colors[^security]. _(Narrow stakeholder exception, 2026-11-27: on the `/our-people` hero banner `GF-LIVE-27`, an irreversible whole-frame Gaussian blur paired with an opaque Deep Navy atmospheric veil was explicitly requested to protect sensitive faces in that archival group gathering photograph while retaining warm scene context.)_

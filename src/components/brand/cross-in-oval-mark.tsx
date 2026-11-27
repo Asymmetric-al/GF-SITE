@@ -42,6 +42,29 @@ const CrossInOvalMark = ({
   </svg>
 );
 
+const RECTOR_WORDMARK_SYMBOL_ID = "gf-rector-wordmark";
+
+/**
+ * Single hidden SVG symbol definition mounted once in `RootLayout` so header,
+ * footer, mobile drawer, and error boundaries reference the outlined Rector
+ * Medium wordmark via `<use>` without repeating 5.5 KB of path data across the
+ * HTML and RSC payloads.
+ */
+export const BrandWordmarkSprite = () => (
+  <svg
+    aria-hidden="true"
+    className="pointer-events-none absolute size-0 overflow-hidden"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <g id={RECTOR_WORDMARK_SYMBOL_ID}>
+        <path d={RECTOR_WORDMARK_PATH} fill="currentColor" />
+      </g>
+    </defs>
+  </svg>
+);
+
 interface RectorWordmarkProps {
   readonly className?: string;
 }
@@ -58,7 +81,7 @@ const RectorWordmark = ({ className }: RectorWordmarkProps) => (
     viewBox={RECTOR_WORDMARK_VIEWBOX}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d={RECTOR_WORDMARK_PATH} fill="currentColor" />
+    <use href={`#${RECTOR_WORDMARK_SYMBOL_ID}`} />
   </svg>
 );
 

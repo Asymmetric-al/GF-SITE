@@ -5,7 +5,11 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
 
-import { PageTransition } from "@/components/brand/page-transition";
+import {
+  PageTransition,
+  SuspenseContentTransition,
+  SuspenseFallbackTransition,
+} from "@/components/brand/page-transition";
 import { CmsPageRenderer } from "@/components/cms/cms-block-renderer";
 import { GivingHandoffWidget } from "@/components/interactive/giving-handoff-widget";
 import { getContactDesk } from "@/lib/brand/contact";
@@ -158,17 +162,23 @@ const LiveMissionaryPage = ({
   readonly params: Promise<{ id: string }>;
 }) => (
   <PageTransition>
-    <Suspense
-      fallback={
-        <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
-          <p className="text-muted-foreground text-sm">
-            Loading missionary profile...
-          </p>
-        </div>
-      }
-    >
-      <LiveCmsMissionaryDetail params={params} />
-    </Suspense>
+    <div className="flex flex-col">
+      <Suspense
+        fallback={
+          <SuspenseFallbackTransition>
+            <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+              <p className="text-muted-foreground text-sm">
+                Loading missionary profile...
+              </p>
+            </div>
+          </SuspenseFallbackTransition>
+        }
+      >
+        <SuspenseContentTransition>
+          <LiveCmsMissionaryDetail params={params} />
+        </SuspenseContentTransition>
+      </Suspense>
+    </div>
   </PageTransition>
 );
 

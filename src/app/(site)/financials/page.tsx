@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { PageTransition } from "@/components/brand/page-transition";
 import { ExternalLinkIcon } from "@/components/brand/ui-arrow";
 import { PrintButton } from "@/components/interactive/print-button";
 import { ReadingProgressBar } from "@/components/interactive/reading-progress-bar";
@@ -660,71 +661,73 @@ const FinancialsPage = () => {
         items={ABOUT_SUBNAV_ITEMS}
         label="About Global Fellowship"
       />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
-        <header className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
-            <div className="flex flex-col gap-4 lg:col-span-8">
-              <div aria-hidden="true" className="gf-gold-rule" />
-              <h1 className="gf-display-hero text-foreground">Financials</h1>
-              <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-                Annual financial summaries, Home Office operating costs, and
-                board oversight for Global Fellowship. If anything is unclear,
-                our Finance team will gladly answer your questions.
-              </p>
+      <PageTransition>
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
+          <header className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
+              <div className="flex flex-col gap-4 lg:col-span-8">
+                <div aria-hidden="true" className="gf-gold-rule" />
+                <h1 className="gf-display-hero text-foreground">Financials</h1>
+                <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+                  Annual financial summaries, Home Office operating costs, and
+                  board oversight for Global Fellowship. If anything is unclear,
+                  our Finance team will gladly answer your questions.
+                </p>
+              </div>
+
+              <dl className="bg-linen border-border divide-border divide-y rounded-2xl border px-5 py-4 text-sm lg:col-span-4 lg:mt-4">
+                <div className="flex items-baseline justify-between gap-4 py-3 first:pt-0">
+                  <dt className="text-muted-foreground">Tax status</dt>
+                  <dd className="text-foreground text-right font-semibold whitespace-nowrap">
+                    501(c)(3) · EIN {VERIFIED_ORGANIZATION.ein}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-3">
+                  <dt className="text-muted-foreground">Latest report</dt>
+                  <dd className="text-foreground text-right font-semibold">
+                    2025 (Jan to Dec)
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-3">
+                  <dt className="text-muted-foreground">Accounting basis</dt>
+                  <dd className="text-foreground text-right font-semibold">
+                    Consolidated cash basis
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-3 last:pb-0">
+                  <dt className="text-muted-foreground">Oversight</dt>
+                  <dd className="text-foreground text-right font-semibold">
+                    Board of Directors
+                  </dd>
+                </div>
+              </dl>
             </div>
 
-            <dl className="bg-linen border-border divide-border divide-y rounded-2xl border px-5 py-4 text-sm lg:col-span-4 lg:mt-4">
-              <div className="flex items-baseline justify-between gap-4 py-3 first:pt-0">
-                <dt className="text-muted-foreground">Tax status</dt>
-                <dd className="text-foreground text-right font-semibold whitespace-nowrap">
-                  501(c)(3) · EIN {VERIFIED_ORGANIZATION.ein}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="text-muted-foreground">Latest report</dt>
-                <dd className="text-foreground text-right font-semibold">
-                  2025 (Jan to Dec)
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="text-muted-foreground">Accounting basis</dt>
-                <dd className="text-foreground text-right font-semibold">
-                  Consolidated cash basis
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-3 last:pb-0">
-                <dt className="text-muted-foreground">Oversight</dt>
-                <dd className="text-foreground text-right font-semibold">
-                  Board of Directors
-                </dd>
-              </div>
-            </dl>
-          </div>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                className={buttonVariants({ size: "lg", variant: "default" })}
+                href={`mailto:${financeDesk.email}?subject=Financial%20Statements%20Question`}
+              >
+                Ask Finance a question
+              </a>
+              <PrintButton label="Print financial summary" />
+            </div>
+          </header>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            <a
-              className={buttonVariants({ size: "lg", variant: "default" })}
-              href={`mailto:${financeDesk.email}?subject=Financial%20Statements%20Question`}
-            >
-              Ask Finance a question
-            </a>
-            <PrintButton label="Print financial summary" />
-          </div>
-        </header>
+          <SectionScrollspy
+            ariaLabel="Jump to financial section"
+            className="-mt-4"
+            sections={JUMP_SECTIONS}
+          />
 
-        <SectionScrollspy
-          ariaLabel="Jump to financial section"
-          className="-mt-4"
-          sections={JUMP_SECTIONS}
-        />
-
-        <StewardshipScopeSection />
-        <OfficeCostsSection />
-        <ActivityScheduleSection />
-        <FinancialPositionSection financeEmail={financeDesk.email} />
-        <PriorYearsNoteSection financeEmail={financeDesk.email} />
-        <GovernanceSection financeEmail={financeDesk.email} />
-      </div>
+          <StewardshipScopeSection />
+          <OfficeCostsSection />
+          <ActivityScheduleSection />
+          <FinancialPositionSection financeEmail={financeDesk.email} />
+          <PriorYearsNoteSection financeEmail={financeDesk.email} />
+          <GovernanceSection financeEmail={financeDesk.email} />
+        </div>
+      </PageTransition>
     </div>
   );
 };

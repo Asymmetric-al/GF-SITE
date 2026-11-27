@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { CrossInOvalLockup } from "@/components/brand/cross-in-oval-mark";
+import {
+  BrandWordmarkSprite,
+  CrossInOvalLockup,
+} from "@/components/brand/cross-in-oval-mark";
 import { PRIMARY_NAV_ITEMS } from "@/components/layout/site-navigation";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { getContactDesk, VERIFIED_ORGANIZATION } from "@/lib/brand/contact";
@@ -16,6 +19,7 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <BrandWordmarkSprite />
       <header className="border-border bg-background border-b">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-3 sm:px-8">
           <Link

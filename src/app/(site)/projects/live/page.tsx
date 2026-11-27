@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense, ViewTransition } from "react";
 
+import {
+  SuspenseContentTransition,
+  SuspenseFallbackTransition,
+} from "@/components/brand/page-transition";
 import type {
   DirectoryCardItem,
   DirectoryCardMedia,
@@ -258,17 +262,23 @@ const PublishedProjectsFeed = async () => {
  */
 const LiveProjectsDirectoryPage = () => (
   <ProjectsDirectoryShell>
-    <Suspense
-      fallback={
-        <div className="bg-linen border-border rounded-3xl border px-6 py-8 sm:px-9">
-          <p className="text-muted-foreground text-sm">
-            Loading published ministry projects...
-          </p>
-        </div>
-      }
-    >
-      <PublishedProjectsFeed />
-    </Suspense>
+    <div>
+      <Suspense
+        fallback={
+          <SuspenseFallbackTransition>
+            <div className="bg-linen border-border rounded-3xl border px-6 py-8 sm:px-9">
+              <p className="text-muted-foreground text-sm">
+                Loading published ministry projects...
+              </p>
+            </div>
+          </SuspenseFallbackTransition>
+        }
+      >
+        <SuspenseContentTransition>
+          <PublishedProjectsFeed />
+        </SuspenseContentTransition>
+      </Suspense>
+    </div>
   </ProjectsDirectoryShell>
 );
 

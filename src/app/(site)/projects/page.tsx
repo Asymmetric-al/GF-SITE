@@ -39,6 +39,8 @@ const GENERAL_FUND_RECORD = STANDING_PROJECTS.find(
   (project) => project.slug === "general-fund"
 );
 
+// Intentionally omits `titleViewTransitionName` because `FeaturedGeneralFundCard`
+// remains mounted above the filter bar and owns `project-title-general-fund`.
 const GENERAL_FUND_SEARCH_CARD: DirectoryCardItem | undefined =
   GENERAL_FUND_RECORD === undefined
     ? undefined
@@ -52,12 +54,11 @@ const GENERAL_FUND_SEARCH_CARD: DirectoryCardItem | undefined =
         href: `/projects/${GENERAL_FUND_RECORD.slug}`,
         id: GENERAL_FUND_RECORD.slug,
         media: null,
-        prefetchDetail: true,
+        prefetchDetail: "intent",
         region: GENERAL_FUND_RECORD.region,
         subtitle: PHOTO_FREE_FUND_SUBTITLES.get(GENERAL_FUND_RECORD.slug),
         summary: GENERAL_FUND_RECORD.summary,
         title: GENERAL_FUND_RECORD.title,
-        titleViewTransitionName: `project-title-${GENERAL_FUND_RECORD.slug}`,
       };
 
 const STANDING_PROJECT_CARDS: readonly DirectoryCardItem[] =
@@ -84,11 +85,12 @@ const STANDING_PROJECT_CARDS: readonly DirectoryCardItem[] =
             : {
                 alt: project.photo.alt,
                 height: project.photo.height,
+                heroAvif: project.photo.heroAvif,
                 objectPosition: project.photo.objectPosition,
                 src: project.photo.src,
                 width: project.photo.width,
               },
-        prefetchDetail: true,
+        prefetchDetail: "intent",
         region: project.region,
         subtitle:
           project.photo === null
@@ -103,74 +105,64 @@ const STANDING_PROJECT_CARDS: readonly DirectoryCardItem[] =
     ];
   });
 
-const ProjectsDirectoryContent = ({
-  donorAppReady,
-}: {
-  readonly donorAppReady: boolean;
-}) => (
-  <div className="flex flex-col gap-10">
-    <FeaturedGeneralFundCard sourceCode="card-project-general-fund" />
-    <DirectoryFilter
-      categories={STANDING_PROJECT_CATEGORIES}
-      emptyMessage="Try clearing your search or choosing All to browse every active ministry project."
-      items={STANDING_PROJECT_CARDS}
-      nounPlural="ministry projects"
-      nounSingular="ministry project"
-      searchableFeaturedItem={GENERAL_FUND_SEARCH_CARD}
-      searchLabel="Search ministry projects"
-      searchPlaceholder="Search projects or regions..."
-    />
-    <ViewTransition default="none" update="vt-card-move">
-      <div className="flex flex-col gap-2">
-        <DonorDashboardNote donorAppReady={donorAppReady} />
-        <p className="text-muted-foreground text-xs leading-relaxed">
-          Chiang Mai Field Office photo:{" "}
-          <a
-            className="text-primary underline underline-offset-4 hover:opacity-80"
-            href={GF_PHOTOS.hospitalityTea.sourceUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {GF_PHOTOS.hospitalityTea.sourceTitle}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>{" "}
-          by James Creegan ·{" "}
-          <a
-            className="text-primary underline underline-offset-4 hover:opacity-80"
-            href={GF_PHOTOS.hospitalityTea.licenseUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            License: {GF_PHOTOS.hospitalityTea.licenseLabel}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        </p>
-      </div>
-    </ViewTransition>
-  </div>
-);
-
-const RuntimeProjectsDirectoryContent = async () => {
+const RuntimeDonorDashboardNote = async () => {
   await connection();
 
-  return (
-    <ProjectsDirectoryContent donorAppReady={getDonorAppBaseUrl() !== null} />
-  );
+  return <DonorDashboardNote donorAppReady={getDonorAppBaseUrl() !== null} />;
 };
 
 /**
- * Standalone `/projects` directory used when `CMS_BASE_URL` is unset. Evaluates
- * `DONOR_APP_BASE_URL` at request time inside a `<Suspense>` boundary whose
- * fallback renders the complete honest offline directory natively inside
- * `<main>` before `<footer>` for JS-disabled clients. Whenever Core CMS is
- * connected, `src/proxy.ts` rewrites `/projects` internally to `/projects/live`
- * so standing catalog data never leaks into HTML.
+ * Standalone `/projects` directory used when `CMS_BASE_URL` is unset. Keeps
+ * `FeaturedGeneralFundCard` and `DirectoryFilter` in the prerendered static
+ * shell so `nav-back` shared-element morphs form immediately, while evaluating
+ * `DONOR_APP_BASE_URL` at request time inside a narrow footer-note `<Suspense>`
+ * boundary. Whenever Core CMS is connected, `src/proxy.ts` rewrites `/projects`
+ * internally to `/projects/live`.
  */
 const ProjectsIndexPage = () => (
   <ProjectsDirectoryShell>
-    <Suspense fallback={<ProjectsDirectoryContent donorAppReady={false} />}>
-      <RuntimeProjectsDirectoryContent />
-    </Suspense>
+    <div className="flex flex-col gap-10">
+      <FeaturedGeneralFundCard sourceCode="card-project-general-fund" />
+      <DirectoryFilter
+        categories={STANDING_PROJECT_CATEGORIES}
+        emptyMessage="Try clearing your search or choosing All to browse every active ministry project."
+        items={STANDING_PROJECT_CARDS}
+        nounPlural="ministry projects"
+        nounSingular="ministry project"
+        searchableFeaturedItem={GENERAL_FUND_SEARCH_CARD}
+        searchLabel="Search ministry projects"
+        searchPlaceholder="Search projects or regions..."
+      />
+      <ViewTransition default="none" update="vt-card-move">
+        <div className="flex flex-col gap-2">
+          <Suspense fallback={<DonorDashboardNote donorAppReady={false} />}>
+            <RuntimeDonorDashboardNote />
+          </Suspense>
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            Chiang Mai Field Office photo:{" "}
+            <a
+              className="text-primary underline underline-offset-4 hover:opacity-80"
+              href={GF_PHOTOS.hospitalityTea.sourceUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {GF_PHOTOS.hospitalityTea.sourceTitle}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            by James Creegan ·{" "}
+            <a
+              className="text-primary underline underline-offset-4 hover:opacity-80"
+              href={GF_PHOTOS.hospitalityTea.licenseUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              License: {GF_PHOTOS.hospitalityTea.licenseLabel}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
+        </div>
+      </ViewTransition>
+    </div>
   </ProjectsDirectoryShell>
 );
 

@@ -2,6 +2,7 @@ import {
   STANDALONE_BRAND_FONTS_CSS,
   STANDALONE_MARK_SVG,
 } from "@/lib/http/standalone-notice-html";
+import { THEME_COLORS, THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const escapeHtml = (value: string): string =>
   value
@@ -27,11 +28,15 @@ export const renderNoJsCheckoutHandoffHtml = (
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="${THEME_COLORS.light}" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="${THEME_COLORS.dark}" media="(prefers-color-scheme: dark)" />
   <meta name="robots" content="noindex, nofollow" />
   <meta http-equiv="refresh" content="0;url=${safeHref}" />
   <title>Continuing to Global Fellowship Checkout</title>
   <link rel="icon" href="/brand/gf-mark-favicon-16.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
   <link rel="icon" href="/brand/gf-mark-favicon-16-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+  <script data-gf-theme-init>${THEME_INIT_SCRIPT}</script>
   <style>${STANDALONE_BRAND_FONTS_CSS}
     :root {
       color-scheme: light dark;
@@ -47,8 +52,25 @@ export const renderNoJsCheckoutHandoffHtml = (
       --mark-frame: #122a3b;
       --mark-arc: #b28b61;
     }
+    @media screen {
+      :root.light { color-scheme: light; }
+      :root.dark {
+        color-scheme: dark;
+        --bg: #0a1822;
+        --card: #122a3b;
+        --fg: #f0e7db;
+        --muted: #cbc3b7;
+        --border: #2b485b;
+        --primary: #e8d5b7;
+        --primary-fg: #122a3b;
+        --kicker: #d5b082;
+        --gold: #b28b61;
+        --mark-frame: #f0e7db;
+        --mark-arc: #d5b082;
+      }
+    }
     @media screen and (prefers-color-scheme: dark) {
-      :root {
+      :root:not(.light) {
         --bg: #0a1822;
         --card: #122a3b;
         --fg: #f0e7db;
@@ -208,10 +230,14 @@ export const renderCheckoutAmountCorrectionHtml = (input: {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="${THEME_COLORS.light}" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="${THEME_COLORS.dark}" media="(prefers-color-scheme: dark)" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Check Your Gift Amount | Global Fellowship</title>
   <link rel="icon" href="/brand/gf-mark-favicon-16.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
   <link rel="icon" href="/brand/gf-mark-favicon-16-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+  <script data-gf-theme-init>${THEME_INIT_SCRIPT}</script>
   <style>${STANDALONE_BRAND_FONTS_CSS}
     :root {
       color-scheme: light dark;
@@ -230,8 +256,28 @@ export const renderCheckoutAmountCorrectionHtml = (input: {
       --mark-frame: #122a3b;
       --mark-arc: #b28b61;
     }
+    @media screen {
+      :root.light { color-scheme: light; }
+      :root.dark {
+        color-scheme: dark;
+        --bg: #0a1822;
+        --card: #122a3b;
+        --fg: #f0e7db;
+        --muted: #cbc3b7;
+        --border: #2b485b;
+        --input: #8fa3b1;
+        --primary: #e8d5b7;
+        --primary-fg: #122a3b;
+        --error: #f3a68d;
+        --error-bg: #2a1916;
+        --gold: #b28b61;
+        --kicker: #d5b082;
+        --mark-frame: #f0e7db;
+        --mark-arc: #d5b082;
+      }
+    }
     @media screen and (prefers-color-scheme: dark) {
-      :root {
+      :root:not(.light) {
         --bg: #0a1822;
         --card: #122a3b;
         --fg: #f0e7db;
@@ -404,6 +450,26 @@ export const renderCheckoutAmountCorrectionHtml = (input: {
       font-size: 0.8125rem;
     }
     footer a { font-weight: 500; }
+    @media print {
+      :root, :root.light, :root.dark, :root:not(.light) {
+        color-scheme: light !important;
+        --bg: #ffffff;
+        --card: #ffffff;
+        --fg: #000000;
+        --muted: #1a1a1a;
+        --border: #000000;
+        --input: #000000;
+        --primary: #000000;
+        --primary-fg: #ffffff;
+        --error: #000000;
+        --error-bg: #ffffff;
+        --gold: #000000;
+        --kicker: #000000;
+        --mark-frame: #000000;
+        --mark-arc: #000000;
+      }
+      .skip-link { display: none !important; }
+    }
   </style>
 </head>
 <body>

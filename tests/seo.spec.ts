@@ -136,6 +136,19 @@ test.describe("Technical SEO route checks @seo", () => {
 
     expect(sitemapResponse.status()).toBe(200);
     expect(await sitemapResponse.text()).not.toContain("<loc>");
+
+    const llmsResponse = await request.get("/llms.txt");
+
+    expect(llmsResponse.status()).toBe(200);
+    expect(llmsResponse.headers()["content-type"] ?? "").toContain(
+      "text/markdown"
+    );
+
+    const llmsBody = await llmsResponse.text();
+
+    expect(llmsBody).toMatch(/^# Global Fellowship\n/u);
+    expect(llmsBody).toContain("[Give to Global Fellowship](/give)");
+    expect(llmsBody).not.toContain("/eula");
   });
 
   test("returns real HTTP 404 with single H1 and recovery link for missing routes @seo", async ({

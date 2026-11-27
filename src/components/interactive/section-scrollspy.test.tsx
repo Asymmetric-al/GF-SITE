@@ -62,4 +62,32 @@ describe(SectionScrollspy, () => {
     expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(trigger).toHaveFocus();
   });
+
+  it("moves focus to the destination section heading and updates location hash on selection", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <div>
+        <SectionScrollspy
+          ariaLabel="Jump to section"
+          sections={[
+            { id: "overview", label: "Overview" },
+            { id: "governance", label: "Governance" },
+          ]}
+        />
+        <section id="governance">
+          <h2>Board governance</h2>
+        </section>
+      </div>
+    );
+
+    const governanceLink = screen.getByRole("link", { name: "Governance" });
+
+    await user.click(governanceLink);
+
+    expect(window.location.hash).toBe("#governance");
+    expect(
+      screen.getByRole("heading", { name: "Board governance" })
+    ).toHaveFocus();
+  });
 });

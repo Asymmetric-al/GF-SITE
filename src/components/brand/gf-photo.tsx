@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { ViewTransition } from "react";
 
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
 import type { GfPhoto } from "@/lib/brand/gf-photos";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,6 @@ interface GfPhotoFrameProps {
 
 export const GfPhotoFrame = ({
   photo,
-  sizes,
   aspect = "3/2",
   objectPositionClass,
   preload = false,
@@ -40,6 +39,11 @@ export const GfPhotoFrame = ({
 }: GfPhotoFrameProps) => {
   const resolvedCaption = caption ?? (showCaption ? photo.caption : undefined);
 
+  const imageClassName = cn(
+    "h-full w-full object-cover",
+    objectPositionClass ?? photo.objectPosition ?? "object-center"
+  );
+
   const frameBox = (
     <div
       className={cn(
@@ -47,19 +51,13 @@ export const GfPhotoFrame = ({
         ASPECT_CLASSES[aspect]
       )}
     >
-      <Image
+      <StaticHeroAvifPicture
         alt={photo.alt}
-        className={cn(
-          "h-full w-full object-cover",
-          objectPositionClass ?? photo.objectPosition ?? "object-center"
-        )}
-        decoding={preload ? "sync" : "async"}
-        fetchPriority={preload ? "high" : undefined}
+        className={imageClassName}
+        fallbackSrc={photo.src}
         height={photo.height}
+        heroAvif={photo.heroAvif}
         preload={preload}
-        quality={75}
-        sizes={sizes}
-        src={photo.src}
         width={photo.width}
       />
     </div>

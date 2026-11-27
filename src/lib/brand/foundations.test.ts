@@ -457,10 +457,16 @@ describe("Global Fellowship protected foundations and editorial hygiene", () => 
           !fs.existsSync(path.join(REPO_ROOT, "public", cutoutSrc.slice(1)))
       );
 
-    const missingHeroAvifs = [
-      "public/photos/gf/hero/home-himalayan-640.avif",
-      "public/photos/gf/hero/home-himalayan-1200.avif",
-    ].filter((relPath) => !fs.existsSync(path.join(REPO_ROOT, relPath)));
+    const missingHeroAvifs = photos
+      .flatMap((photo) =>
+        "heroAvif" in photo && photo.heroAvif !== undefined
+          ? [photo.heroAvif.mobileSrc, photo.heroAvif.desktopSrc]
+          : []
+      )
+      .filter(
+        (avifSrc) =>
+          !fs.existsSync(path.join(REPO_ROOT, "public", avifSrc.slice(1)))
+      );
 
     expect({
       activeCount: photos.length,

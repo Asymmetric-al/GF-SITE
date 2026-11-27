@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { CrossInOvalLockup } from "@/components/brand/cross-in-oval-mark";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { MobileNavDrawer } from "@/components/interactive/mobile-nav-drawer";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -55,14 +56,15 @@ const StaticPrimaryNavFallback = () => (
 export const SiteHeader = () => (
   <header className="gf-site-header border-border/55 bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
     <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-8">
-      <Link
+      <TransitionLink
         className="focus-visible:outline-ring shrink-0 rounded-full py-1 focus-visible:outline-2 focus-visible:outline-offset-2"
+        direction="lateral"
         href="/"
-        prefetch={false}
+        prefetchMode="intent-shell"
       >
         <CrossInOvalLockup />
         <span className="sr-only"> home</span>
-      </Link>
+      </TransitionLink>
 
       <Suspense fallback={<StaticPrimaryNavFallback />}>
         <PrimaryNavLinks />

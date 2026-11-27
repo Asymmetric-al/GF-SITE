@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineDescription,
-  TimelineItem,
-  TimelineMarker,
-  TimelineTime,
-  TimelineTitle,
-} from "@ui-sdk/react/timeline";
-import { useEffect, useRef } from "react";
+import type { ComponentType, KeyboardEvent } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cx } from "@/lib/cx";
+import { prefersReducedMotion } from "@/lib/smooth-scroll";
+import { useCoordinatedScroll } from "@/lib/use-coordinated-scroll";
+
+import type { EditorialTimelineLiveProps } from "./editorial-timeline-live";
 
 export interface EditorialTimelineMilestone {
   readonly id: string;
@@ -23,7 +19,45 @@ export interface EditorialTimelineMilestone {
   readonly status?: "complete" | "current" | "upcoming";
 }
 
-const TimelineItemLabel = ({
+type LiveTimelineComponent = ComponentType<EditorialTimelineLiveProps>;
+
+let cachedTimeline: LiveTimelineComponent | null = null;
+let timelinePromise: Promise<LiveTimelineComponent> | null = null;
+
+const loadLiveTimeline = async (): Promise<LiveTimelineComponent> => {
+  if (cachedTimeline !== null) {
+    return cachedTimeline;
+  }
+
+  timelinePromise ??= (async () => {
+    try {
+      const mod = await import("./editorial-timeline-live");
+
+      cachedTimeline = mod.EditorialTimelineLive;
+
+      return cachedTimeline;
+    } catch (error) {
+      timelinePromise = null;
+      throw error;
+    }
+  })();
+
+  return await timelinePromise;
+};
+
+const resolveDefaultFocusIndex = (
+  items: readonly EditorialTimelineMilestone[]
+): number => {
+  const currentIndex = items.findIndex((item) => item.status === "current");
+
+  if (currentIndex !== -1) {
+    return currentIndex;
+  }
+
+  return 0;
+};
+
+const StaticTimelineLabel = ({
   dateTime,
   label,
 }: {
@@ -39,9 +73,9 @@ const TimelineItemLabel = ({
   }
 
   return (
-    <TimelineTime className="gf-eyebrow text-clay" dateTime={dateTime}>
+    <time className="gf-eyebrow text-clay" dateTime={dateTime}>
       {label}
-    </TimelineTime>
+    </time>
   );
 };
 
@@ -52,13 +86,11 @@ interface EditorialTimelineProps {
 }
 
 /**
- * Scroll-drawn architectural timeline synthesized from Shadcn UI Kit
- * `timeline-block14`, ShadBlocks `timeline4`, React Bits Pro `timeline-1`, and
- * ReUI `timeline`, powered by `@ui-sdk/react/timeline` (native roving keyboard
- * navigation and WAI-ARIA list semantics, zero Radix). Uses compositor-only
- * `scaleY` progress directly on the leaf spine element gated via
- * `IntersectionObserver` (zero mount-time forced reflow, zero CSS variable
- * inheritance) and stays fully drawn on SSR, reduced motion, no-JS, and print.
+ * Scroll-drawn architectural timeline powered by `@ui-sdk/react/timeline`
+ * (native roving keyboard navigation and WAI-ARIA list semantics, zero Radix).
+ * Renders an exact-geometry keyboard-navigable semantic list on initial load
+ * while demand-loading `@ui-sdk/react/timeline` as the timeline nears the
+ * viewport, staying fully drawn on SSR, reduced motion, no-JS, and print.
  */
 export const EditorialTimeline = ({
   ariaLabel,
@@ -67,52 +99,96 @@ export const EditorialTimeline = ({
 }: EditorialTimelineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const spineFillRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const isNearViewportRef = useRef(false);
+  const reducedMotionRef = useRef(false);
+  const mountedRef = useRef(true);
+
+  const [focusedIndex, setFocusedIndex] = useState<number>(() =>
+    resolveDefaultFocusIndex(items)
+  );
+
+  const [liveTimeline, setLiveTimeline] =
+    useState<LiveTimelineComponent | null>(() => cachedTimeline);
+
+  const activateLiveTimeline = useCallback(() => {
+    if (cachedTimeline !== null) {
+      setLiveTimeline(() => cachedTimeline);
+
+      return;
+    }
+
+    const resolveTimeline = async () => {
+      try {
+        const resolved = await loadLiveTimeline();
+
+        if (mountedRef.current) {
+          setLiveTimeline(() => resolved);
+        }
+      } catch {
+        // Keep interactive roving-tabindex shell usable if chunk load fails.
+      }
+    };
+
+    void resolveTimeline();
+  }, []);
+
+  const updateProgress = useCallback(() => {
+    const node = containerRef.current;
+    const spineFill = spineFillRef.current;
+
+    if (
+      node === null ||
+      spineFill === null ||
+      reducedMotionRef.current ||
+      !isNearViewportRef.current
+    ) {
+      return;
+    }
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = Math.max(1, window.innerHeight);
+    const startLine = viewportHeight * 0.72;
+    const traveled = startLine - rect.top;
+    const totalSpan = Math.max(1, rect.height);
+    const progress = Math.min(1, Math.max(0.12, traveled / totalSpan));
+
+    spineFill.style.transform = `scaleY(${progress.toFixed(3)})`;
+  }, []);
+
+  useCoordinatedScroll(() => {
+    updateProgress();
+  });
 
   useEffect(() => {
+    mountedRef.current = true;
     const node = containerRef.current;
     const spineFill = spineFillRef.current;
 
     if (node === null || spineFill === null) {
       return () => {
-        // Unmounted before observer setup.
+        mountedRef.current = false;
       };
     }
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reduced = prefersReducedMotion();
 
-    if (reducedMotion) {
+    reducedMotionRef.current = reduced;
+
+    if (reduced) {
       spineFill.style.transform = "scaleY(1)";
-
-      return () => {
-        // Reduced motion keeps full spine static.
-      };
     }
 
     let rafId = 0;
-    let isNearViewport = !("IntersectionObserver" in window);
 
-    const updateProgress = () => {
-      rafId = 0;
+    isNearViewportRef.current = !("IntersectionObserver" in window);
 
-      if (!isNearViewport) {
-        return;
-      }
-
-      const rect = node.getBoundingClientRect();
-      const viewportHeight = Math.max(1, window.innerHeight);
-      const startLine = viewportHeight * 0.72;
-      const traveled = startLine - rect.top;
-      const totalSpan = Math.max(1, rect.height);
-      const progress = Math.min(1, Math.max(0.12, traveled / totalSpan));
-
-      spineFill.style.transform = `scaleY(${progress.toFixed(3)})`;
-    };
-
-    const schedule = () => {
-      if (isNearViewport && rafId === 0) {
-        rafId = window.requestAnimationFrame(updateProgress);
+    const scheduleResizeUpdate = () => {
+      if (!reduced && isNearViewportRef.current && rafId === 0) {
+        rafId = window.requestAnimationFrame(() => {
+          rafId = 0;
+          updateProgress();
+        });
       }
     };
 
@@ -121,10 +197,19 @@ export const EditorialTimeline = ({
     if ("IntersectionObserver" in window) {
       observer = new IntersectionObserver(
         (entries) => {
-          isNearViewport = entries.some((entry) => entry.isIntersecting);
+          const intersecting = entries.some((entry) => entry.isIntersecting);
 
-          if (isNearViewport) {
-            schedule();
+          isNearViewportRef.current = intersecting;
+
+          if (intersecting) {
+            scheduleResizeUpdate();
+
+            if (
+              !node.contains(document.activeElement) &&
+              cachedTimeline === null
+            ) {
+              activateLiveTimeline();
+            }
           }
         },
         { rootMargin: "160px 0px" }
@@ -132,23 +217,55 @@ export const EditorialTimeline = ({
       observer.observe(node);
     }
 
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("resize", scheduleResizeUpdate, { passive: true });
 
     return () => {
+      mountedRef.current = false;
       observer?.disconnect();
 
       if (rafId !== 0) {
         window.cancelAnimationFrame(rafId);
       }
 
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", scheduleResizeUpdate);
     };
-  }, []);
+  }, [activateLiveTimeline, updateProgress]);
+
+  const handleItemKeyDown =
+    (index: number) => (event: KeyboardEvent<HTMLLIElement>) => {
+      if (items.length === 0) {
+        return;
+      }
+
+      let nextIndex: number | null = null;
+
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        nextIndex = Math.min(items.length - 1, index + 1);
+      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        nextIndex = Math.max(0, index - 1);
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = items.length - 1;
+      }
+
+      if (nextIndex !== null) {
+        event.preventDefault();
+        setFocusedIndex(nextIndex);
+        itemRefs.current[nextIndex]?.focus();
+      }
+    };
+
+  const LiveTimeline = liveTimeline;
 
   return (
-    <div className={cx("relative", className)} ref={containerRef}>
+    <div
+      className={cx("relative", className)}
+      onPointerEnter={() => {
+        void loadLiveTimeline();
+      }}
+      ref={containerRef}
+    >
       <div
         aria-hidden="true"
         className="bg-border pointer-events-none absolute top-4 bottom-4 left-[1.0625rem] w-px print:hidden"
@@ -159,46 +276,64 @@ export const EditorialTimeline = ({
         />
       </div>
 
-      <Timeline
-        aria-label={ariaLabel}
-        className="relative flex flex-col gap-0"
-        loop={false}
-      >
-        {items.map((item, index) => (
-          <TimelineItem
-            className="gf-print-avoid-break group focus-visible:outline-ring relative grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4 rounded-2xl py-5 first:pt-1 last:pb-1 focus-visible:outline-2 focus-visible:outline-offset-2 sm:gap-x-6"
-            key={item.id}
-            status={item.status}
-            value={item.id}
-          >
-            <div className="relative flex flex-col items-center">
-              <TimelineMarker className="bg-card border-border group-focus-visible:border-primary data-current:bg-primary data-current:text-primary-foreground data-current:border-primary gf-tabular text-clay relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full border text-xs font-bold shadow-2xs transition-colors">
-                {item.marker}
-              </TimelineMarker>
-              {index < items.length - 1 ? (
-                <TimelineConnector className="sr-only" />
-              ) : null}
-            </div>
+      {LiveTimeline === null ? (
+        <ol aria-label={ariaLabel} className="relative flex flex-col gap-0">
+          {items.map((item, index) => {
+            const isCurrent = item.status === "current";
+            const isTabbable = index === focusedIndex;
 
-            <div
-              className={cx(
-                "border-border flex flex-col gap-1.5 border-b pb-6 group-last:border-b-0 group-last:pb-0",
-                item.label === undefined && "pt-1"
-              )}
-            >
-              <TimelineItemLabel dateTime={item.dateTime} label={item.label} />
-              <TimelineTitle className="text-foreground font-sans text-lg font-semibold tracking-tight sm:text-xl">
-                <h3 className="m-0 font-sans text-lg font-semibold tracking-tight sm:text-xl">
-                  {item.title}
-                </h3>
-              </TimelineTitle>
-              <TimelineDescription className="text-muted-foreground gf-measure text-sm leading-relaxed sm:text-base">
-                {item.description}
-              </TimelineDescription>
-            </div>
-          </TimelineItem>
-        ))}
-      </Timeline>
+            return (
+              // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Mirrors @ui-sdk/react TimelineItem roving keyboard navigation before viewport upgrade.
+              <li
+                aria-current={isCurrent ? "step" : undefined}
+                className="gf-print-avoid-break group focus-visible:outline-ring relative grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4 rounded-2xl py-5 first:pt-1 last:pb-1 focus-visible:outline-2 focus-visible:outline-offset-2 sm:gap-x-6"
+                data-current={isCurrent ? "" : undefined}
+                key={item.id}
+                onFocus={() => {
+                  setFocusedIndex(index);
+                }}
+                onKeyDown={handleItemKeyDown(index)}
+                ref={(node) => {
+                  itemRefs.current[index] = node;
+                }}
+                // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Mirrors @ui-sdk/react TimelineItem roving tabindex before viewport upgrade.
+                tabIndex={isTabbable ? 0 : -1}
+              >
+                <div className="relative flex flex-col items-center">
+                  <div
+                    className="bg-card border-border group-focus-visible:border-primary data-current:bg-primary data-current:text-primary-foreground data-current:border-primary gf-tabular text-clay relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full border text-xs font-bold shadow-2xs transition-colors"
+                    data-current={isCurrent ? "" : undefined}
+                  >
+                    {item.marker}
+                  </div>
+                </div>
+
+                <div
+                  className={cx(
+                    "border-border flex flex-col gap-1.5 border-b pb-6 group-last:border-b-0 group-last:pb-0",
+                    item.label === undefined && "pt-1"
+                  )}
+                >
+                  <StaticTimelineLabel
+                    dateTime={item.dateTime}
+                    label={item.label}
+                  />
+                  <div className="text-foreground font-sans text-lg font-semibold tracking-tight sm:text-xl">
+                    <h3 className="m-0 font-sans text-lg font-semibold tracking-tight sm:text-xl">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="text-muted-foreground gf-measure text-sm leading-relaxed sm:text-base">
+                    {item.description}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <LiveTimeline ariaLabel={ariaLabel} items={items} />
+      )}
     </div>
   );
 };

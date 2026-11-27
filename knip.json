@@ -18,7 +18,6 @@
     "@tiptap/react",
     "@tiptap/starter-kit",
     "@tiptap/static-renderer",
-    "lighthouse",
     "tsrs",
     "tw-animate-css"
   ]

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense, ViewTransition } from "react";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
 import { PageTransition } from "@/components/brand/page-transition";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { GivingHandoffWidget } from "@/components/interactive/giving-handoff-widget";
 import { PrintButton } from "@/components/interactive/print-button";
 import { getContactDesk } from "@/lib/brand/contact";
@@ -15,39 +15,6 @@ import {
 } from "@/lib/content/public-missionaries";
 import { isOnlineCheckoutEligible } from "@/lib/giving/checkout-handoff";
 import { buildPageMetadata } from "@/lib/site";
-
-const RuntimeMissionaryGivingWidget = async ({
-  missionaryId,
-  recipientName,
-  workerId,
-}: {
-  readonly missionaryId: string;
-  readonly recipientName: string;
-  readonly workerId: string;
-}) => {
-  await connection();
-
-  return (
-    <GivingHandoffWidget
-      generalFundOnlineEligible={isOnlineCheckoutEligible({
-        fundId: "general-fund",
-        kind: "fund",
-      })}
-      onlineCheckoutEligible={isOnlineCheckoutEligible({
-        kind: "missionary",
-        missionaryId,
-        workerId,
-      })}
-      recipientName={recipientName}
-      sourceCode={`missionary-${workerId}`}
-      target={{
-        kind: "missionary",
-        missionaryId,
-        workerId,
-      }}
-    />
-  );
-};
 
 export const generateStaticParams = (): { id: string }[] =>
   PUBLIC_LEADERSHIP_MISSIONARIES.map((worker) => ({ id: worker.id }));
@@ -69,6 +36,39 @@ export const generateMetadata = async ({
   });
 };
 
+const RuntimeMissionaryGivingWidget = async ({
+  missionaryId,
+  name,
+  workerId,
+}: {
+  readonly missionaryId: string;
+  readonly name: string;
+  readonly workerId: string;
+}) => {
+  await connection();
+
+  return (
+    <GivingHandoffWidget
+      generalFundOnlineEligible={isOnlineCheckoutEligible({
+        fundId: "general-fund",
+        kind: "fund",
+      })}
+      onlineCheckoutEligible={isOnlineCheckoutEligible({
+        kind: "missionary",
+        missionaryId,
+        workerId,
+      })}
+      recipientName={name}
+      sourceCode={`missionary-${workerId}`}
+      target={{
+        kind: "missionary",
+        missionaryId,
+        workerId,
+      }}
+    />
+  );
+};
+
 const MissionaryDetailPage = async ({
   params,
 }: PageProps<"/missionaries/[id]">) => {
@@ -85,22 +85,23 @@ const MissionaryDetailPage = async ({
     <PageTransition>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 lg:py-16">
         <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
-          <Link
+          <TransitionLink
             className="hover:text-primary underline underline-offset-4 transition-colors"
+            direction="back"
             href="/"
-            transitionTypes={["nav-back"]}
+            prefetchMode="intent-shell"
           >
             Global Fellowship
-          </Link>{" "}
+          </TransitionLink>{" "}
           /{" "}
-          <Link
+          <TransitionLink
             className="hover:text-primary underline underline-offset-4 transition-colors"
+            direction="back"
             href="/missionaries"
-            prefetch
-            transitionTypes={["nav-back"]}
+            prefetchMode="intent"
           >
             Missionaries
-          </Link>{" "}
+          </TransitionLink>{" "}
           / <span className="text-foreground">{worker.name}</span>
         </nav>
 
@@ -198,7 +199,7 @@ const MissionaryDetailPage = async ({
             >
               <RuntimeMissionaryGivingWidget
                 missionaryId={worker.missionaryId}
-                recipientName={worker.name}
+                name={worker.name}
                 workerId={worker.id}
               />
             </Suspense>

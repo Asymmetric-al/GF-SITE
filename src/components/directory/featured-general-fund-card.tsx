@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { ViewTransition } from "react";
 
 import { LivingArcMotif } from "@/components/brand/living-arc";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { QuickGiveInput } from "@/components/interactive/quick-give-input";
 import { SpotlightSurface } from "@/components/interactive/spotlight-surface";
@@ -57,9 +58,15 @@ export const FeaturedGeneralFundCard = ({
 
         <div className="flex flex-col justify-between gap-5 p-6 sm:p-8 lg:col-span-7">
           <div className="flex flex-col gap-2.5">
-            <h3 className="gf-ease text-foreground [@media(hover:hover)_and_(pointer:fine)]:group-hover/card:text-primary font-serif text-2xl leading-snug font-normal tracking-tight transition-colors duration-150 sm:text-3xl">
-              {GENERAL_FUND.title}
-            </h3>
+            <ViewTransition
+              default="none"
+              name="project-title-general-fund"
+              share="vt-text-morph"
+            >
+              <h3 className="gf-ease text-foreground [@media(hover:hover)_and_(pointer:fine)]:group-hover/card:text-primary font-serif text-2xl leading-snug font-normal tracking-tight transition-colors duration-150 sm:text-3xl">
+                {GENERAL_FUND.title}
+              </h3>
+            </ViewTransition>
             <p className="text-sm leading-snug font-medium">
               <span className="text-clay">Global Funds</span>
               <span
@@ -76,19 +83,19 @@ export const FeaturedGeneralFundCard = ({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Link
+            <TransitionLink
               className="text-primary focus-visible:outline-ring inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-semibold underline-offset-4 after:absolute after:inset-0 after:z-0 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
               data-card-primary-link=""
+              direction="forward"
               href="/projects/general-fund"
-              prefetch={false}
-              transitionTypes={["nav-forward"]}
+              prefetchMode="intent"
             >
               <span>
                 Learn more
                 <span className="sr-only"> about {GENERAL_FUND.title}</span>
               </span>
               <ArrowRightIcon hoverGroup="card" />
-            </Link>
+            </TransitionLink>
 
             <div className="relative z-10 w-full sm:max-w-xs">
               <QuickGiveInput

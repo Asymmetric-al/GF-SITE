@@ -22,6 +22,11 @@ import {
 import { buttonVariants } from "@/components/ui/button-variants";
 import { CLIENT_SUPPORT_CONTACT } from "@/lib/brand/client-contact";
 import { cx } from "@/lib/cx";
+import { getActiveLenis } from "@/lib/lenis-runtime";
+import { stopActiveSmoothScroll } from "@/lib/smooth-scroll";
+import { NAV_TRANSITION_TYPES } from "@/lib/view-transitions";
+
+const LATERAL_TRANSITION_TYPES = [NAV_TRANSITION_TYPES.navLateral];
 
 const QUICK_SUBLINKS = [
   { href: "/how-we-work", label: "How We Work" },
@@ -63,6 +68,23 @@ export const MobileNavDrawerSheet = ({
   const pathname = usePathname();
   const skipTriggerFocusRef = useRef(false);
 
+  useEffect(() => {
+    const lenis = getActiveLenis();
+
+    if (!open || lenis === undefined) {
+      return () => {
+        // Closed drawer leaves document scrolling active.
+      };
+    }
+
+    stopActiveSmoothScroll(lenis, false);
+    lenis.stop();
+
+    return () => {
+      lenis.start();
+    };
+  }, [open]);
+
   const handleNavigateClose = useCallback(() => {
     skipTriggerFocusRef.current = true;
     onNavigate();
@@ -101,7 +123,7 @@ export const MobileNavDrawerSheet = ({
         className="gf-drawer-panel bg-background text-foreground border-border z-60 flex h-full w-full max-w-sm flex-col border-l shadow-xl"
         finalFocus={resolveFinalFocus}
       >
-        <div className="border-border flex items-center justify-between border-b px-6 py-4">
+        <div className="border-border flex shrink-0 items-center justify-between border-b px-6 py-4">
           <div className="flex flex-col gap-1">
             <DrawerTitle className="flex items-center">
               <CrossInOvalLockup
@@ -133,17 +155,19 @@ export const MobileNavDrawerSheet = ({
         <nav
           aria-label="Mobile site navigation"
           className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-4 py-5"
+          data-lenis-prevent
         >
           <Link
             aria-current={pathname === "/" ? "page" : undefined}
             className={cx(
-              "hover:bg-linen focus-visible:outline-ring flex min-h-11 items-center rounded-xl px-3.5 py-2.5 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+              "hover:bg-linen focus-visible:outline-ring flex min-h-11 shrink-0 items-center rounded-xl px-3.5 py-2.5 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
               pathname === "/"
                 ? "bg-linen text-primary font-semibold"
                 : "text-foreground"
             )}
             href="/"
             onClick={handleNavigateClose}
+            transitionTypes={LATERAL_TRANSITION_TYPES}
           >
             Home
           </Link>
@@ -155,12 +179,13 @@ export const MobileNavDrawerSheet = ({
               <Link
                 aria-current={getNavAriaCurrent(pathname, item)}
                 className={cx(
-                  "hover:bg-linen focus-visible:outline-ring flex min-h-11 flex-col gap-0.5 rounded-xl px-3.5 py-2.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+                  "hover:bg-linen focus-visible:outline-ring flex min-h-11 shrink-0 flex-col gap-0.5 rounded-xl px-3.5 py-2.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
                   isActive && "bg-linen"
                 )}
                 href={item.href}
                 key={item.href}
                 onClick={handleNavigateClose}
+                transitionTypes={LATERAL_TRANSITION_TYPES}
               >
                 <span
                   className={cx(
@@ -177,7 +202,7 @@ export const MobileNavDrawerSheet = ({
             );
           })}
 
-          <div className="px-3 pt-3 pb-2">
+          <div className="shrink-0 px-3 pt-3 pb-2">
             <Link
               aria-current={getNavAriaCurrent(pathname, HEADER_ACTION_ITEM)}
               className={cx(
@@ -186,12 +211,13 @@ export const MobileNavDrawerSheet = ({
               )}
               href={HEADER_ACTION_ITEM.href}
               onClick={handleNavigateClose}
+              transitionTypes={LATERAL_TRANSITION_TYPES}
             >
               Give to Global Fellowship
             </Link>
           </div>
 
-          <div className="border-border mt-3 border-t pt-4">
+          <div className="border-border mt-3 shrink-0 border-t pt-4">
             <p className="gf-eyebrow text-clay px-3.5 pb-2">Key pages</p>
             <ul className="grid grid-cols-1 gap-0.5">
               {QUICK_SUBLINKS.map((link) => (
@@ -206,6 +232,7 @@ export const MobileNavDrawerSheet = ({
                     )}
                     href={link.href}
                     onClick={handleNavigateClose}
+                    transitionTypes={LATERAL_TRANSITION_TYPES}
                   >
                     {link.label}
                   </Link>
@@ -215,7 +242,7 @@ export const MobileNavDrawerSheet = ({
           </div>
         </nav>
 
-        <div className="border-border bg-linen border-t px-6 py-4 text-xs leading-relaxed">
+        <div className="border-border bg-linen shrink-0 border-t px-6 py-4 text-xs leading-relaxed">
           <p className="text-foreground font-semibold">Talk with our team</p>
           <p className="text-muted-foreground mt-1">
             <a
