@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { BrandWordmarkSprite } from "@/components/brand/cross-in-oval-mark";
+import { LenisRoot } from "@/components/interactive/lenis-root";
 import { SiteToaster } from "@/components/interactive/site-toaster";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -74,6 +76,7 @@ const SiteLayout = ({ children }: { readonly children: ReactNode }) => {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <BrandWordmarkSprite />
       <script
         // Verified static JSON-LD with `<` escaped to `\u003c` per Next.js structured-data guidance.
         // oxlint-disable-next-line react/no-danger -- JSON-LD structured data script requires raw JSON text.
@@ -89,6 +92,7 @@ const SiteLayout = ({ children }: { readonly children: ReactNode }) => {
         {children}
       </main>
       <SiteFooter />
+      <LenisRoot />
       <SiteToaster />
     </div>
   );

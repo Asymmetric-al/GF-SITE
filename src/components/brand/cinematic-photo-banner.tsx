@@ -1,6 +1,6 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
 import type { GfPhoto } from "@/lib/brand/gf-photos";
 import { cn } from "@/lib/utils";
 
@@ -32,31 +32,29 @@ const BannerImage = ({
   objectPositionClass,
   photo,
   preload,
-  quality,
-  sizes,
 }: {
   readonly objectPositionClass?: string;
   readonly photo: GfPhoto;
   readonly preload: boolean;
-  readonly quality: 72 | 75;
-  readonly sizes: string;
-}) => (
-  <Image
-    alt={photo.alt}
-    className={cn(
-      "gf-cinema-photo absolute inset-0 h-full w-full object-cover",
-      objectPositionClass ?? photo.objectPosition ?? "object-center"
-    )}
-    decoding={preload ? "sync" : "async"}
-    fetchPriority={preload ? "high" : undefined}
-    height={photo.height}
-    preload={preload}
-    quality={quality}
-    sizes={sizes}
-    src={photo.src}
-    width={photo.width}
-  />
-);
+}) => {
+  const imageClassName = cn(
+    "gf-cinema-photo h-full w-full object-cover",
+    objectPositionClass ?? photo.objectPosition ?? "object-center"
+  );
+
+  return (
+    <StaticHeroAvifPicture
+      alt={photo.alt}
+      className={imageClassName}
+      fallbackSrc={photo.src}
+      height={photo.height}
+      heroAvif={photo.heroAvif}
+      pictureClassName="pointer-events-none absolute inset-0 block h-full w-full"
+      preload={preload}
+      width={photo.width}
+    />
+  );
+};
 
 const BannerCaption = ({ photo }: { readonly photo: GfPhoto }) => (
   <figcaption className="text-muted-foreground px-1 text-sm leading-relaxed">
@@ -144,8 +142,6 @@ export const CinematicPhotoBanner = ({
   objectPositionClass,
   mobileStacked = false,
   preload = false,
-  quality = 75,
-  sizes = "(max-width: 1280px) calc(100vw - 2rem), 1180px",
   showCaption = false,
   className,
   headingId,
@@ -168,8 +164,6 @@ export const CinematicPhotoBanner = ({
             objectPositionClass={objectPositionClass}
             photo={photo}
             preload={preload}
-            quality={quality}
-            sizes={sizes}
           />
         </div>
       ) : (
@@ -177,8 +171,6 @@ export const CinematicPhotoBanner = ({
           objectPositionClass={objectPositionClass}
           photo={photo}
           preload={preload}
-          quality={quality}
-          sizes={sizes}
         />
       )}
 

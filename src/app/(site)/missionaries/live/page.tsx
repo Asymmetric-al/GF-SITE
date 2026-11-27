@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense, ViewTransition } from "react";
 
+import {
+  SuspenseContentTransition,
+  SuspenseFallbackTransition,
+} from "@/components/brand/page-transition";
 import type {
   DirectoryCardItem,
   DirectoryCardMedia,
@@ -274,17 +278,23 @@ const MissionariesDirectoryFeed = async () => {
  */
 const LiveMissionariesDirectoryPage = () => (
   <MissionariesDirectoryShell mode="live">
-    <Suspense
-      fallback={
-        <div className="bg-linen border-border rounded-3xl border px-6 py-8 sm:px-9">
-          <p className="text-muted-foreground text-sm">
-            Loading published missionary directory...
-          </p>
-        </div>
-      }
-    >
-      <MissionariesDirectoryFeed />
-    </Suspense>
+    <div>
+      <Suspense
+        fallback={
+          <SuspenseFallbackTransition>
+            <div className="bg-linen border-border rounded-3xl border px-6 py-8 sm:px-9">
+              <p className="text-muted-foreground text-sm">
+                Loading published missionary directory...
+              </p>
+            </div>
+          </SuspenseFallbackTransition>
+        }
+      >
+        <SuspenseContentTransition>
+          <MissionariesDirectoryFeed />
+        </SuspenseContentTransition>
+      </Suspense>
+    </div>
   </MissionariesDirectoryShell>
 );
 

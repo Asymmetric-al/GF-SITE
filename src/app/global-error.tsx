@@ -1,9 +1,16 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { buttonVariants } from "@/components/ui/button-variants";
 import { CLIENT_SUPPORT_CONTACT } from "@/lib/brand/client-contact";
 import type { CaughtRouteValue } from "@/lib/error-digest";
 import { extractErrorDigest } from "@/lib/error-digest";
+import {
+  applyThemeToDocument,
+  readThemePreference,
+  THEME_COLORS,
+} from "@/lib/theme";
 
 import "./globals.css";
 
@@ -15,8 +22,25 @@ interface GlobalErrorPageProps {
 const GlobalErrorPage = ({ error, retry }: GlobalErrorPageProps) => {
   const digest = extractErrorDigest(error);
 
+  useEffect(() => {
+    applyThemeToDocument(readThemePreference());
+  }, []);
+
   return (
-    <html className="h-full antialiased" lang="en">
+    <html className="h-full antialiased" lang="en" suppressHydrationWarning>
+      <head>
+        <meta content="light dark" name="color-scheme" />
+        <meta
+          content={THEME_COLORS.light}
+          media="(prefers-color-scheme: light)"
+          name="theme-color"
+        />
+        <meta
+          content={THEME_COLORS.dark}
+          media="(prefers-color-scheme: dark)"
+          name="theme-color"
+        />
+      </head>
       <body className="bg-background text-foreground flex min-h-full flex-col font-sans">
         <title>Temporary Interruption | Global Fellowship</title>
         <main

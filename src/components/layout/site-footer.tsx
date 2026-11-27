@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { connection } from "next/server";
-import { Suspense } from "react";
 
 import { CrossInOvalLockup } from "@/components/brand/cross-in-oval-mark";
+import { FooterThemeSwitcher } from "@/components/interactive/footer-theme-switcher";
 import {
   MESSAGE_HIERARCHY,
   VERIFIED_ORGANIZATION,
 } from "@/lib/brand/foundations";
 import {
-  getDonorAppBaseUrl,
   LOCAL_DONOR_ROUTES,
+  normalizeDonorAppBaseUrl,
 } from "@/lib/giving/checkout-handoff";
 
 import {
@@ -18,10 +17,11 @@ import {
   FOOTER_GO_LINKS,
 } from "./site-navigation";
 
-const RuntimeDonorDashboardFooterItem = async () => {
-  await connection();
-
-  if (getDonorAppBaseUrl() === null) {
+const DonorDashboardFooterItem = () => {
+  if (
+    normalizeDonorAppBaseUrl(process.env.NEXT_PUBLIC_DONOR_APP_BASE_URL) ===
+    null
+  ) {
     return null;
   }
 
@@ -118,9 +118,7 @@ export const SiteFooter = () => (
                   </Link>
                 </li>
               ))}
-              <Suspense fallback={null}>
-                <RuntimeDonorDashboardFooterItem />
-              </Suspense>
+              <DonorDashboardFooterItem />
             </ul>
           </nav>
 
@@ -191,6 +189,7 @@ export const SiteFooter = () => (
             >
               Credits
             </Link>
+            <FooterThemeSwitcher />
           </div>
         </div>
       </div>

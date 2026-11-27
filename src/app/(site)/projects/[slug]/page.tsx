@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense, ViewTransition } from "react";
+import type { ComponentProps } from "react";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
 import { PageTransition } from "@/components/brand/page-transition";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { GivingHandoffWidget } from "@/components/interactive/giving-handoff-widget";
 import { getContactDesk } from "@/lib/brand/contact";
 import {
@@ -14,40 +16,6 @@ import {
 } from "@/lib/content/standing-projects";
 import { isOnlineCheckoutEligible } from "@/lib/giving/checkout-handoff";
 import { buildPageMetadata } from "@/lib/site";
-
-const RuntimeProjectGivingWidget = async ({
-  fundId,
-  presets,
-  recipientName,
-  slug,
-}: {
-  readonly fundId: string;
-  readonly presets?: readonly {
-    readonly amount: number;
-    readonly label?: string;
-  }[];
-  readonly recipientName: string;
-  readonly slug: string;
-}) => {
-  await connection();
-
-  return (
-    <GivingHandoffWidget
-      generalFundOnlineEligible={isOnlineCheckoutEligible({
-        fundId: "general-fund",
-        kind: "fund",
-      })}
-      onlineCheckoutEligible={isOnlineCheckoutEligible({
-        fundId,
-        kind: "fund",
-      })}
-      presets={presets}
-      recipientName={recipientName}
-      sourceCode={`project-${slug}`}
-      target={{ fundId, kind: "fund" }}
-    />
-  );
-};
 
 export const generateStaticParams = (): { slug: string }[] =>
   STANDING_PROJECTS.map((project) => ({ slug: project.slug }));
@@ -69,6 +37,37 @@ export const generateMetadata = async ({
   });
 };
 
+const RuntimeProjectGivingWidget = async ({
+  fundId,
+  presets,
+  slug,
+  title,
+}: {
+  readonly fundId: string;
+  readonly presets: ComponentProps<typeof GivingHandoffWidget>["presets"];
+  readonly slug: string;
+  readonly title: string;
+}) => {
+  await connection();
+
+  return (
+    <GivingHandoffWidget
+      generalFundOnlineEligible={isOnlineCheckoutEligible({
+        fundId: "general-fund",
+        kind: "fund",
+      })}
+      onlineCheckoutEligible={isOnlineCheckoutEligible({
+        fundId,
+        kind: "fund",
+      })}
+      presets={presets}
+      recipientName={title}
+      sourceCode={`project-${slug}`}
+      target={{ fundId, kind: "fund" }}
+    />
+  );
+};
+
 const ProjectDetailPage = async ({ params }: PageProps<"/projects/[slug]">) => {
   const { slug } = await params;
   const project = findStandingProject(slug);
@@ -83,22 +82,23 @@ const ProjectDetailPage = async ({ params }: PageProps<"/projects/[slug]">) => {
     <PageTransition>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 lg:py-16">
         <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
-          <Link
+          <TransitionLink
             className="hover:text-primary underline underline-offset-4 transition-colors"
+            direction="back"
             href="/"
-            transitionTypes={["nav-back"]}
+            prefetchMode="intent-shell"
           >
             Global Fellowship
-          </Link>{" "}
+          </TransitionLink>{" "}
           /{" "}
-          <Link
+          <TransitionLink
             className="hover:text-primary underline underline-offset-4 transition-colors"
+            direction="back"
             href="/projects"
-            prefetch
-            transitionTypes={["nav-back"]}
+            prefetchMode="intent"
           >
             Ministry Projects
-          </Link>{" "}
+          </TransitionLink>{" "}
           / <span className="text-foreground">{project.title}</span>
         </nav>
 
@@ -181,8 +181,8 @@ const ProjectDetailPage = async ({ params }: PageProps<"/projects/[slug]">) => {
               <RuntimeProjectGivingWidget
                 fundId={project.fundId}
                 presets={project.givingTiers}
-                recipientName={project.title}
                 slug={project.slug}
+                title={project.title}
               />
             </Suspense>
             <p className="text-muted-foreground px-1 text-sm leading-relaxed">

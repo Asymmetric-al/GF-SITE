@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
+import { PageTransition } from "@/components/brand/page-transition";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
+import { ReadingProgressBar } from "@/components/interactive/reading-progress-bar";
 import { SectionScrollspy } from "@/components/interactive/section-scrollspy";
 import type { ScrollspySection } from "@/components/interactive/section-scrollspy";
 import { SectionSubnav } from "@/components/layout/section-subnav";
@@ -487,200 +490,213 @@ const ChurchesPage = () => {
 
   return (
     <div className="flex flex-col">
+      <ReadingProgressBar />
       <SectionSubnav
         currentHref="/churches"
         items={OPPORTUNITIES_SUBNAV_ITEMS}
         label="Opportunities and church partnerships"
       />
 
-      {/* Wide Editorial Masthead above Full-Width Board Portrait */}
-      <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-10 pb-6 sm:px-8 lg:gap-10 lg:pt-14">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <div className="flex flex-col gap-4 lg:col-span-7">
-            <div aria-hidden="true" className="gf-gold-rule" />
-            <h1
-              className="gf-display-hero text-foreground"
-              id="churches-hero-heading"
-            >
-              Church to church, as partners.
-            </h1>
-          </div>
+      <PageTransition>
+        <div className="flex flex-col">
+          {/* Wide Editorial Masthead above Full-Width Board Portrait */}
+          <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-10 pb-6 sm:px-8 lg:gap-10 lg:pt-14">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
+              <div className="flex flex-col gap-4 lg:col-span-7">
+                <div aria-hidden="true" className="gf-gold-rule" />
+                <h1
+                  className="gf-display-hero text-foreground"
+                  id="churches-hero-heading"
+                >
+                  Church to church, as partners.
+                </h1>
+              </div>
 
-          <div className="flex flex-col gap-5 lg:col-span-5">
-            <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-              Before your church commends a worker, sends a short-term team, or
-              adds us to your missions budget, your elders deserve clear
-              doctrine, annual financial statements, practical Sunday safety
-              rules, and a direct conversation with our leaders.
-            </p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
-              <Link
-                className={buttonVariants({ size: "lg", variant: "default" })}
-                href="/statement-of-faith"
-              >
-                Read our Statement of Faith
-              </Link>
-              <Link
-                className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-                href="/financials"
-              >
-                <span>Financials</span>
-                <ArrowRightIcon />
-              </Link>
+              <div className="flex flex-col gap-5 lg:col-span-5">
+                <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+                  Before your church commends a worker, sends a short-term team,
+                  or adds us to your missions budget, your elders deserve clear
+                  doctrine, annual financial statements, practical Sunday safety
+                  rules, and a direct conversation with our leaders.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+                  <TransitionLink
+                    className={buttonVariants({
+                      size: "lg",
+                      variant: "default",
+                    })}
+                    direction="lateral"
+                    href="/statement-of-faith"
+                    prefetchMode="intent-shell"
+                  >
+                    Read our Statement of Faith
+                  </TransitionLink>
+                  <TransitionLink
+                    className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                    direction="lateral"
+                    href="/financials"
+                    prefetchMode="intent-shell"
+                  >
+                    <span>Financials</span>
+                    <ArrowRightIcon />
+                  </TransitionLink>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <SectionScrollspy
-          ariaLabel="Sections on this page"
-          sections={JUMP_SECTIONS}
-        />
+            <SectionScrollspy
+              ariaLabel="Sections on this page"
+              sections={JUMP_SECTIONS}
+            />
 
-        <GfPhotoFrame
-          aspect="16/10"
-          objectPositionClass="object-[50%_26%]"
-          photo={GF_PHOTOS.boardGroup}
-          preload
-          sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
-        />
-      </header>
+            <GfPhotoFrame
+              aspect="16/10"
+              objectPositionClass="object-[50%_26%]"
+              photo={GF_PHOTOS.boardGroup}
+              preload
+              sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
+            />
+          </header>
 
-      {/* Sending Churches: Four Vetting Steps + Sunday Safety Standard */}
-      <section
-        aria-labelledby="vetting-heading"
-        className="mx-auto flex w-full max-w-6xl scroll-mt-24 flex-col gap-8 px-5 py-6 sm:px-8"
-        id="sending-churches"
-      >
-        <div className="flex flex-col gap-6">
-          <h2
-            className="gf-display-section text-foreground"
-            id="vetting-heading"
+          {/* Sending Churches: Four Vetting Steps + Sunday Safety Standard */}
+          <section
+            aria-labelledby="vetting-heading"
+            className="mx-auto flex w-full max-w-6xl scroll-mt-24 flex-col gap-8 px-5 py-6 sm:px-8"
+            id="sending-churches"
           >
-            Four steps an elder board usually takes first.
-          </h2>
-          <ol className="divide-border border-border divide-y border-y">
-            <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
-              <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
-                Step 1: Doctrine
-              </span>
-              <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
-                Review all eight public articles of our{" "}
-                <Link
-                  className="text-primary font-medium underline underline-offset-4"
-                  href="/statement-of-faith"
-                >
-                  Statement of Faith
-                </Link>
-                . We hold historic evangelical convictions firmly while pursuing
-                humility across denominational traditions on secondary matters.
-              </p>
-            </li>
-            <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
-              <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
-                Step 2: Finances
-              </span>
-              <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
-                Review our annual Statement of Activity and Statement of
-                Financial Position on our{" "}
-                <Link
-                  className="text-primary font-medium underline underline-offset-4"
-                  href="/financials"
-                >
-                  Financials page
-                </Link>
-                , or look us up on Candid (ID {VERIFIED_ORGANIZATION.candidId}).
-                Our Finance team will answer your treasurer&apos;s questions
-                directly.
-              </p>
-            </li>
-            <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
-              <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
-                Step 3: Care &amp; safety
-              </span>
-              <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
-                Read how our regionally led{" "}
-                <Link
-                  className="text-primary font-medium underline underline-offset-4"
-                  href="/how-we-work#member-care"
-                >
-                  Health Above Results member care
-                </Link>{" "}
-                guards singles, couples, and children, and review our two Sunday
-                livestream safety rules below.
-              </p>
-            </li>
-            <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
-              <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
-                Step 4: Conversation
-              </span>
-              <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
-                Schedule a direct vetting call with Co-Executive Directors{" "}
-                {VERIFIED_ORGANIZATION.leadership.coExecutiveDirectors} via{" "}
-                <a
-                  className="text-primary font-medium underline underline-offset-4"
-                  href={`mailto:${directorsDesk.email}?subject=Church%20Elder%20Vetting%20Conversation`}
-                >
-                  {directorsDesk.email}
-                </a>
-                . An initial conversation carries no financial or sending
-                commitment.
-              </p>
-            </li>
-          </ol>
-        </div>
-
-        <div className="gf-print-avoid-break bg-linen border-border flex flex-col gap-5 rounded-3xl border px-6 py-8 sm:px-10 sm:py-10">
-          <div className="flex flex-col gap-1.5">
-            <h3
-              className="text-foreground font-sans text-xl font-semibold tracking-tight sm:text-2xl"
-              id="sunday-safety-heading"
-            >
-              Two rules when a church planter visits on Sunday
-            </h3>
-            <p className="text-muted-foreground text-base leading-relaxed">
-              Please share these guidelines with your A/V and bulletin teams
-              before Sunday morning.
-            </p>
-          </div>
-          <div className="border-border grid grid-cols-1 gap-6 border-t pt-5 md:grid-cols-2">
-            <div className="flex flex-col gap-2">
-              <h4 className="text-foreground text-base font-semibold">
-                1. Pause public livestreams by default
-              </h4>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                Keep public YouTube, Facebook, and website livestreams off
-                during a visiting worker&apos;s update unless the update is
-                cleared for public sharing and the worker has given written
-                permission specifically for livestreaming. Before making any
-                private offline recording, confirm with Global Fellowship that
-                the worker is eligible and get separate written permission; some
-                workers are never recorded.
-              </p>
+            <div className="flex flex-col gap-6">
+              <h2
+                className="gf-display-section text-foreground"
+                id="vetting-heading"
+              >
+                Four steps an elder board usually takes first.
+              </h2>
+              <ol className="divide-border border-border divide-y border-y">
+                <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
+                  <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
+                    Step 1: Doctrine
+                  </span>
+                  <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
+                    Review all eight public articles of our{" "}
+                    <Link
+                      className="text-primary font-medium underline underline-offset-4"
+                      href="/statement-of-faith"
+                    >
+                      Statement of Faith
+                    </Link>
+                    . We hold historic evangelical convictions firmly while
+                    pursuing humility across denominational traditions on
+                    secondary matters.
+                  </p>
+                </li>
+                <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
+                  <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
+                    Step 2: Finances
+                  </span>
+                  <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
+                    Review our annual Statement of Activity and Statement of
+                    Financial Position on our{" "}
+                    <Link
+                      className="text-primary font-medium underline underline-offset-4"
+                      href="/financials"
+                    >
+                      Financials page
+                    </Link>
+                    , or look us up on Candid (ID{" "}
+                    {VERIFIED_ORGANIZATION.candidId}). Our Finance team will
+                    answer your treasurer&apos;s questions directly.
+                  </p>
+                </li>
+                <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
+                  <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
+                    Step 3: Care &amp; safety
+                  </span>
+                  <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
+                    Read how our regionally led{" "}
+                    <Link
+                      className="text-primary font-medium underline underline-offset-4"
+                      href="/how-we-work#member-care"
+                    >
+                      Health Above Results member care
+                    </Link>{" "}
+                    guards singles, couples, and children, and review our two
+                    Sunday livestream safety rules below.
+                  </p>
+                </li>
+                <li className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:items-baseline sm:gap-6">
+                  <span className="gf-tabular text-clay text-sm font-semibold sm:col-span-3">
+                    Step 4: Conversation
+                  </span>
+                  <p className="text-muted-foreground text-base leading-relaxed sm:col-span-9">
+                    Schedule a direct vetting call with Co-Executive Directors{" "}
+                    {VERIFIED_ORGANIZATION.leadership.coExecutiveDirectors} via{" "}
+                    <a
+                      className="text-primary font-medium underline underline-offset-4"
+                      href={`mailto:${directorsDesk.email}?subject=Church%20Elder%20Vetting%20Conversation`}
+                    >
+                      {directorsDesk.email}
+                    </a>
+                    . An initial conversation carries no financial or sending
+                    commitment.
+                  </p>
+                </li>
+              </ol>
             </div>
-            <div className="border-border flex flex-col gap-2 border-t pt-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
-              <h4 className="text-foreground text-base font-semibold">
-                2. Keep recordings, slides, and bulletins clear
-              </h4>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                Never archive identifiable names, faces, cities, or field
-                details in public sermon videos or online bulletins. If a
-                recording or photo ever needs removal later, use our{" "}
-                <Link
-                  className="text-primary font-medium underline underline-offset-4"
-                  href="/contact#safeguarding"
-                >
-                  Safeguarding &amp; Story Removal page
-                </Link>{" "}
-                immediately.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <ExposureTripsSection />
-      <ChurchTrainingSection />
-      <FaithOnTheFrontlinesSection />
+            <div className="gf-print-avoid-break bg-linen border-border flex flex-col gap-5 rounded-3xl border px-6 py-8 sm:px-10 sm:py-10">
+              <div className="flex flex-col gap-1.5">
+                <h3
+                  className="text-foreground font-sans text-xl font-semibold tracking-tight sm:text-2xl"
+                  id="sunday-safety-heading"
+                >
+                  Two rules when a church planter visits on Sunday
+                </h3>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  Please share these guidelines with your A/V and bulletin teams
+                  before Sunday morning.
+                </p>
+              </div>
+              <div className="border-border grid grid-cols-1 gap-6 border-t pt-5 md:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <h4 className="text-foreground text-base font-semibold">
+                    1. Pause public livestreams by default
+                  </h4>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Keep public YouTube, Facebook, and website livestreams off
+                    during a visiting worker&apos;s update unless the update is
+                    cleared for public sharing and the worker has given written
+                    permission specifically for livestreaming. Before making any
+                    private offline recording, confirm with Global Fellowship
+                    that the worker is eligible and get separate written
+                    permission; some workers are never recorded.
+                  </p>
+                </div>
+                <div className="border-border flex flex-col gap-2 border-t pt-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+                  <h4 className="text-foreground text-base font-semibold">
+                    2. Keep recordings, slides, and bulletins clear
+                  </h4>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Never archive identifiable names, faces, cities, or field
+                    details in public sermon videos or online bulletins. If a
+                    recording or photo ever needs removal later, use our{" "}
+                    <Link
+                      className="text-primary font-medium underline underline-offset-4"
+                      href="/contact#safeguarding"
+                    >
+                      Safeguarding &amp; Story Removal page
+                    </Link>{" "}
+                    immediately.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <ExposureTripsSection />
+          <ChurchTrainingSection />
+          <FaithOnTheFrontlinesSection />
+        </div>
+      </PageTransition>
     </div>
   );
 };

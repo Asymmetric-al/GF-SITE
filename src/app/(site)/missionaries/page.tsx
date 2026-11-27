@@ -43,12 +43,13 @@ const PUBLIC_LEADERSHIP_CARDS: readonly DirectoryCardItem[] =
           : {
               alt: worker.photo.alt,
               height: worker.photo.height,
+              heroAvif: worker.photo.heroAvif,
               objectPosition: worker.photo.objectPosition,
               src: worker.photo.src,
               width: worker.photo.width,
             },
       monogram: worker.monogram,
-      prefetchDetail: true,
+      prefetchDetail: "intent",
       region: worker.region,
       subtitle: worker.role,
       summary: worker.summary,
@@ -59,50 +60,44 @@ const PUBLIC_LEADERSHIP_CARDS: readonly DirectoryCardItem[] =
     };
   });
 
-const MissionariesDirectoryContent = ({
-  donorAppReady,
-}: {
-  readonly donorAppReady: boolean;
-}) => (
-  <div className="flex flex-col gap-8">
-    <DirectoryFilter
-      categories={["Leadership"]}
-      emptyMessage="If you are looking for a specific field worker from a letter, contact Finance below to confirm their designation safely."
-      items={PUBLIC_LEADERSHIP_CARDS}
-      nounPlural="public leadership profiles"
-      nounSingular="public leadership profile"
-      searchLabel="Search missionaries"
-      searchPlaceholder="Search by name or ministry..."
-    />
-    <ViewTransition default="none" update="vt-card-move">
-      <MissionariesDashboardNote donorAppReady={donorAppReady} />
-    </ViewTransition>
-  </div>
-);
-
-const RuntimeMissionariesDirectoryContent = async () => {
+const RuntimeMissionariesDashboardNote = async () => {
   await connection();
 
   return (
-    <MissionariesDirectoryContent
-      donorAppReady={getDonorAppBaseUrl() !== null}
-    />
+    <MissionariesDashboardNote donorAppReady={getDonorAppBaseUrl() !== null} />
   );
 };
 
 /**
  * Standalone `/missionaries` directory used when `CMS_BASE_URL` is unset.
- * Evaluates `DONOR_APP_BASE_URL` at request time inside a `<Suspense>` boundary
- * whose fallback renders all four public leadership profiles natively inside
- * `<main>` before `<footer>` for JS-off clients. Whenever Core CMS is
- * connected, `src/proxy.ts` rewrites `/missionaries` internally to
+ * Keeps `DirectoryFilter` inside the prerendered static shell so shared-element
+ * `viewTransitionName`s form immediately, while evaluating `DONOR_APP_BASE_URL`
+ * at request time inside a narrow footer-note `<Suspense>` boundary. Whenever
+ * Core CMS is connected, `src/proxy.ts` rewrites `/missionaries` internally to
  * `/missionaries/live`.
  */
 const MissionariesPage = () => (
   <MissionariesDirectoryShell>
-    <Suspense fallback={<MissionariesDirectoryContent donorAppReady={false} />}>
-      <RuntimeMissionariesDirectoryContent />
-    </Suspense>
+    <div className="flex flex-col gap-8">
+      <DirectoryFilter
+        categories={["Leadership"]}
+        emptyMessage="If you are looking for a specific field worker from a letter, contact Finance below to confirm their designation safely."
+        items={PUBLIC_LEADERSHIP_CARDS}
+        nounPlural="public leadership profiles"
+        nounSingular="public leadership profile"
+        searchLabel="Search missionaries"
+        searchPlaceholder="Search by name or ministry..."
+      />
+      <ViewTransition default="none" update="vt-card-move">
+        <div>
+          <Suspense
+            fallback={<MissionariesDashboardNote donorAppReady={false} />}
+          >
+            <RuntimeMissionariesDashboardNote />
+          </Suspense>
+        </div>
+      </ViewTransition>
+    </div>
   </MissionariesDirectoryShell>
 );
 

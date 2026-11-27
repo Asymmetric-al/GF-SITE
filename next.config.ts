@@ -71,7 +71,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    deviceSizes: [640, 750, 828, 1080, 1200, 1600],
+    deviceSizes: [480, 640, 750, 828, 1080, 1200, 1280, 1600],
     formats: ["image/avif", "image/webp"],
     qualities: [72, 75],
     // Keep /_next/image strictly local so remote CMS media is never cached by

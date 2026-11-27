@@ -1,18 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { cx } from "@/lib/cx";
+import { prefersReducedMotion } from "@/lib/smooth-scroll";
+import { useCoordinatedScroll } from "@/lib/use-coordinated-scroll";
 
 const MAX_INSET_PERCENT = 2.6;
 
 /**
- * Zero-dependency scroll-driven architectural frame expansion adapted from
- * React Bits ScrollExpand (`@react-bits/ScrollExpand-TS-TW`) for below-the-fold
- * documentary interludes. Gates geometry reads behind `IntersectionObserver`
- * and writes direct compositor-only `clip-path` (zero inherited CSS variables,
- * zero mount-time forced reflows). Defaults to unclipped on SSR, print,
+ * Scroll-driven architectural frame expansion for below-the-fold documentary
+ * interludes. Coordinated onto the single root Lenis scroll stream, gated
+ * behind `IntersectionObserver`, and writes direct compositor-only `clip-path`
+ * (zero mount-time forced reflows). Defaults to unclipped on SSR, print,
  * JS-disabled browsers, and `prefers-reduced-motion: reduce`.
  */
 export const ScrollExpandFrame = ({
@@ -23,6 +24,37 @@ export const ScrollExpandFrame = ({
   readonly className?: string;
 }) => {
   const frameRef = useRef<HTMLDivElement>(null);
+  const isNearViewportRef = useRef(false);
+  const reducedMotionRef = useRef(false);
+
+  const updateInset = useCallback(() => {
+    const node = frameRef.current;
+
+    if (
+      node === null ||
+      reducedMotionRef.current ||
+      !isNearViewportRef.current
+    ) {
+      return;
+    }
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = Math.max(1, window.innerHeight);
+
+    // Smoothly expand from 2.6% inset as the frame travels from bottom edge to upper-middle reading zone
+    const progress = Math.min(
+      1,
+      Math.max(0, (viewportHeight - rect.top) / (viewportHeight * 0.62))
+    );
+
+    const inset = ((1 - progress) * MAX_INSET_PERCENT).toFixed(2);
+
+    node.style.clipPath = `inset(0% ${inset}% round 1.5rem)`;
+  }, []);
+
+  useCoordinatedScroll(() => {
+    updateInset();
+  });
 
   useEffect(() => {
     const node = frameRef.current;
@@ -33,45 +65,28 @@ export const ScrollExpandFrame = ({
       };
     }
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reduced = prefersReducedMotion();
 
-    if (reducedMotion) {
+    reducedMotionRef.current = reduced;
+
+    if (reduced) {
       node.style.clipPath = "none";
 
       return () => {
-        // Reduced motion disables scroll listener registration.
+        // Reduced motion disables scroll observer registration.
       };
     }
 
     let rafId = 0;
-    let isNearViewport = !("IntersectionObserver" in window);
 
-    const updateInset = () => {
-      rafId = 0;
+    isNearViewportRef.current = !("IntersectionObserver" in window);
 
-      if (!isNearViewport) {
-        return;
-      }
-
-      const rect = node.getBoundingClientRect();
-      const viewportHeight = Math.max(1, window.innerHeight);
-
-      // Smoothly expand from 2.6% inset as the frame travels from bottom edge to upper-middle reading zone
-      const progress = Math.min(
-        1,
-        Math.max(0, (viewportHeight - rect.top) / (viewportHeight * 0.62))
-      );
-
-      const inset = ((1 - progress) * MAX_INSET_PERCENT).toFixed(2);
-
-      node.style.clipPath = `inset(0% ${inset}% round 1.5rem)`;
-    };
-
-    const scheduleUpdate = () => {
-      if (isNearViewport && rafId === 0) {
-        rafId = window.requestAnimationFrame(updateInset);
+    const scheduleResizeUpdate = () => {
+      if (isNearViewportRef.current && rafId === 0) {
+        rafId = window.requestAnimationFrame(() => {
+          rafId = 0;
+          updateInset();
+        });
       }
     };
 
@@ -80,10 +95,12 @@ export const ScrollExpandFrame = ({
     if ("IntersectionObserver" in window) {
       observer = new IntersectionObserver(
         (entries) => {
-          isNearViewport = entries.some((entry) => entry.isIntersecting);
+          isNearViewportRef.current = entries.some(
+            (entry) => entry.isIntersecting
+          );
 
-          if (isNearViewport) {
-            scheduleUpdate();
+          if (isNearViewportRef.current) {
+            scheduleResizeUpdate();
           }
         },
         { rootMargin: "160px 0px" }
@@ -91,8 +108,7 @@ export const ScrollExpandFrame = ({
       observer.observe(node);
     }
 
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleResizeUpdate, { passive: true });
 
     return () => {
       observer?.disconnect();
@@ -101,10 +117,9 @@ export const ScrollExpandFrame = ({
         window.cancelAnimationFrame(rafId);
       }
 
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("resize", scheduleResizeUpdate);
     };
-  }, []);
+  }, [updateInset]);
 
   return (
     <div className={cx("gf-scroll-expand", className)} ref={frameRef}>

@@ -930,6 +930,161 @@ test.describe("Global Fellowship smoke and functional checks", () => {
     await expect(page).toHaveURL(/\/missionaries$/u);
     await expect(cards).toHaveCount(4);
   });
+
+  test("executes client-side View Transitions cleanly across primary nav, subnav, hierarchical drill-downs, and same-route sibling switches", async ({
+    page,
+  }) => {
+    const consoleErrors: string[] = [];
+    const pageErrors: string[] = [];
+
+    page.on("console", (message) => {
+      if (message.type() === "error") {
+        consoleErrors.push(message.text());
+      }
+    });
+
+    page.on("pageerror", (error) => {
+      pageErrors.push(error.message);
+    });
+
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    // Track real native `document.startViewTransition` invocations during navigation
+    await page.evaluate(() => {
+      document.documentElement.dataset.gfVtCount = "0";
+
+      const original = document.startViewTransition.bind(document);
+
+      document.startViewTransition = (...args) => {
+        const current = Number(
+          document.documentElement.dataset.gfVtCount ?? "0"
+        );
+
+        document.documentElement.dataset.gfVtCount = String(current + 1);
+
+        return original(...args);
+      };
+    });
+
+    // Primary nav lateral transition: Home -> Missionaries -> Projects -> About Us
+    const primaryNav = page.getByRole("navigation", {
+      name: "Primary navigation",
+    });
+
+    await primaryNav.getByRole("link", { name: "Missionaries" }).hover();
+    await primaryNav.getByRole("link", { name: "Missionaries" }).click();
+    await expect(page).toHaveURL(/\/missionaries$/u);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Give to a missionary or team.",
+      })
+    ).toBeVisible();
+
+    // Hierarchical forward + back with shared photo/title morph on Missionaries
+    const oatesCardLink = page.getByRole("link", {
+      name: /Learn more about Don & Kathy Oates/u,
+    });
+
+    await oatesCardLink.hover();
+    await oatesCardLink.click();
+    await expect(page).toHaveURL(/\/missionaries\/oates$/u);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Don & Kathy Oates" })
+    ).toBeVisible();
+
+    await page
+      .getByRole("navigation", { name: "Breadcrumb" })
+      .getByRole("link", { name: "Missionaries" })
+      .click();
+    await expect(page).toHaveURL(/\/missionaries$/u);
+
+    // Projects search for General Fund must not duplicate project-title-general-fund
+    await primaryNav.getByRole("link", { name: "Projects" }).click();
+    await expect(page).toHaveURL(/\/projects$/u);
+
+    const projectSearch = page.getByRole("searchbox", {
+      name: "Search ministry projects",
+    });
+
+    await projectSearch.fill("General Fund");
+    await expect(page.getByText(/1 ministry project matching/u)).toBeVisible();
+    await page
+      .getByRole("link", {
+        name: "Learn more about The Global Fellowship General Fund",
+      })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/projects\/general-fund$/u);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "The Global Fellowship General Fund",
+      })
+    ).toBeVisible();
+
+    // About Us subnav lateral gliding underline: Mission & Values -> Stories -> Where We Serve
+    await primaryNav
+      .getByRole("link", { exact: true, name: "About Us" })
+      .click();
+    await expect(page).toHaveURL(/\/mission-and-values$/u);
+
+    const aboutSubnav = page.getByRole("navigation", {
+      name: "About Global Fellowship",
+    });
+
+    await aboutSubnav.getByRole("link", { name: "Stories" }).hover();
+    await aboutSubnav.getByRole("link", { name: "Stories" }).click();
+    await expect(page).toHaveURL(/\/stories$/u);
+
+    // Stories forward + back
+    await page.getByRole("link", { name: /You Can Land/u }).click();
+    await expect(page).toHaveURL(
+      /\/stories\/you-can-land-but-taking-off-is-gods-work$/u
+    );
+    await page
+      .getByRole("navigation", { name: "Breadcrumb" })
+      .getByRole("link", { name: "Stories" })
+      .click();
+    await expect(page).toHaveURL(/\/stories$/u);
+
+    // Where We Serve forward -> same-route region switch -> back
+    await aboutSubnav.getByRole("link", { name: "Where We Serve" }).click();
+    await expect(page).toHaveURL(/\/where-we-serve$/u);
+    await page.getByRole("link", { name: /Central Asia/u }).click();
+    await expect(page).toHaveURL(/\/where-we-serve\/central-asia$/u);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Central Asia" })
+    ).toBeVisible();
+
+    await page.getByRole("link", { exact: true, name: "East Asia" }).click();
+    await expect(page).toHaveURL(/\/where-we-serve\/east-asia$/u);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "East Asia" })
+    ).toBeVisible();
+
+    // Opportunities forward + back
+    await primaryNav.getByRole("link", { name: "Opportunities" }).click();
+    await expect(page).toHaveURL(/\/opportunities$/u);
+    await page
+      .getByRole("link", { name: /Church Planter in Slovenia/u })
+      .click();
+    await expect(page).toHaveURL(/\/opportunities\/slovenia-church-planter$/u);
+    await page
+      .getByRole("navigation", { name: "Breadcrumb" })
+      .getByRole("link", { name: "Opportunities" })
+      .click();
+    await expect(page).toHaveURL(/\/opportunities$/u);
+
+    const viewTransitionCount = await page.evaluate(() =>
+      Number(document.documentElement.dataset.gfVtCount ?? "0")
+    );
+
+    expect(viewTransitionCount).toBeGreaterThanOrEqual(8);
+    expect(consoleErrors).toEqual([]);
+    expect(pageErrors).toEqual([]);
+  });
 });
 
 test.describe("Progressive enhancement with JavaScript disabled", () => {
@@ -1147,5 +1302,332 @@ test.describe("Progressive enhancement with JavaScript disabled", () => {
 
     await page.goto("/how-we-work");
     await expect(page.getByText("Transfer to Local Elders")).toBeVisible();
+  });
+});
+
+test.describe("Programmatic smooth scrolling & reading progress @smoke", () => {
+  test("unifies On this page, hero jump links, cross-page hashes, header back-to-top, and main-content reading progress", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.emulateMedia({
+      colorScheme: "light",
+      reducedMotion: "no-preference",
+    });
+
+    // 1. /mission-and-values: On this page smooth glide + header divider state + header back-to-top
+    await page.goto("/mission-and-values", { waitUntil: "networkidle" });
+
+    const siteHeader = page.locator("header.gf-site-header");
+
+    await expect(siteHeader).not.toHaveAttribute("data-scrolled", "true");
+
+    const scrollspyNav = page.getByRole("navigation", {
+      name: "Sections on this page",
+    });
+
+    await scrollspyNav.getByRole("link", { name: "Core values" }).click();
+
+    await expect(page).toHaveURL(/\/mission-and-values#values$/u);
+    await expect(
+      scrollspyNav.getByRole("link", { name: "Core values" })
+    ).toHaveAttribute("aria-current", "location");
+    await expect(siteHeader).toHaveAttribute("data-scrolled", "true");
+
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => {
+            const headerHeight =
+              document
+                .querySelector<HTMLElement>(".gf-site-header")
+                ?.getBoundingClientRect().height ?? 68;
+
+            const targetTop =
+              document.querySelector("#values")?.getBoundingClientRect().top ??
+              999;
+
+            return {
+              aligned: Math.abs(targetTop - (headerHeight + 24)) <= 24,
+              focusedInTarget:
+                document.activeElement instanceof Element &&
+                document.activeElement.closest("#values") !== null,
+              scrolled: window.scrollY > 200,
+            };
+          })
+      )
+      .toStrictEqual({
+        aligned: true,
+        focusedInTarget: true,
+        scrolled: true,
+      });
+
+    // Clicking the active About Us link in SiteHeader glides back to top cleanly
+    await siteHeader.getByRole("link", { name: "About Us" }).click();
+    await expect
+      .poll(async () => await page.evaluate(() => window.scrollY))
+      .toBeLessThanOrEqual(4);
+    await expect(siteHeader).not.toHaveAttribute("data-scrolled", "true");
+
+    // 2. Hero jump link on /our-people (#board)
+    await page.goto("/our-people", { waitUntil: "networkidle" });
+    await page
+      .locator("main#main-content")
+      .getByRole("link", { name: "Board of Directors" })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/our-people#board$/u);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => {
+            const targetTop =
+              document.querySelector("#board")?.getBoundingClientRect().top ??
+              999;
+
+            return targetTop >= 50 && targetTop <= 150;
+          })
+      )
+      .toBe(true);
+
+    // 3. Extended ReadingProgressBar on /churches, /serve-across-cultures, /local-leaders
+    await page.goto("/churches", { waitUntil: "networkidle" });
+    await expect(page.locator(".gf-reading-progress-fill")).toHaveCount(1);
+
+    await page.goto("/serve-across-cultures", { waitUntil: "networkidle" });
+    await expect(page.locator(".gf-reading-progress-fill")).toHaveCount(1);
+
+    await page.goto("/local-leaders", { waitUntil: "networkidle" });
+    await expect(page.locator(".gf-reading-progress-fill")).toHaveCount(1);
+
+    // Verify reading progress reaches 100% at the end of #main-content before the footer
+    const footerExtraPx = await page.evaluate(() => {
+      const main = document.querySelector<HTMLElement>("#main-content");
+
+      if (main === null) {
+        return 0;
+      }
+
+      const mainEndScroll =
+        main.offsetTop + main.offsetHeight - window.innerHeight;
+
+      const fullDocScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      window.scrollTo({ behavior: "instant", top: mainEndScroll });
+
+      return fullDocScroll - mainEndScroll;
+    });
+
+    expect(footerExtraPx).toBeGreaterThan(200);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => {
+            const fill = document.querySelector<HTMLElement>(
+              ".gf-reading-progress-fill"
+            );
+
+            const transform = fill?.style.transform ?? "";
+            const match = /scaleX\((?<scale>[\d.]+)\)/u.exec(transform);
+
+            return match?.groups?.scale === undefined
+              ? 0
+              : Number(match.groups.scale);
+          })
+      )
+      .toBeGreaterThanOrEqual(0.99);
+
+    // 4. Cross-page section link (/contact#safeguarding from SiteFooter)
+    await page
+      .locator("footer#site-directory")
+      .getByRole("link", { name: "Safeguarding & Story Removal" })
+      .click();
+    await expect(page).toHaveURL(/\/contact#safeguarding$/u);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => {
+            const top =
+              document.querySelector("#safeguarding")?.getBoundingClientRect()
+                .top ?? 999;
+
+            return top >= 50 && top <= 150;
+          })
+      )
+      .toBe(true);
+  });
+
+  test("honors prefers-reduced-motion with immediate anchor jumps and inert reading progress", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+    await page.goto("/financials", { waitUntil: "networkidle" });
+
+    const scrollspyNav = page.getByRole("navigation", {
+      name: "Jump to financial section",
+    });
+
+    await scrollspyNav.getByRole("link", { name: "Governance" }).click();
+    await expect(page).toHaveURL(/\/financials#governance$/u);
+
+    const metrics = await page.evaluate(() => {
+      const track = document.querySelector(".gf-reading-progress-track");
+
+      return {
+        progressTrackDisplay:
+          track === null ? "" : getComputedStyle(track).display,
+        scrollY: window.scrollY,
+      };
+    });
+
+    expect(metrics.scrollY).toBeGreaterThan(400);
+    expect(metrics.progressTrackDisplay).toBe("none");
+  });
+
+  test("switches light, dark, and system themes from the subtle footer control, persists across reloads, and keeps print pure B&W", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 900, width: 1280 });
+    await page.emulateMedia({ colorScheme: "light", media: "screen" });
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    const themeGroup = page
+      .locator("footer#site-directory")
+      .getByRole("radiogroup", { name: "Color theme" });
+
+    await expect(themeGroup).toBeVisible();
+    await expect(
+      themeGroup.getByRole("radio", { name: "System theme" })
+    ).toHaveAttribute("aria-checked", "true");
+
+    // System mode declares native light/dark color-scheme and media theme-color metadata
+    const systemMeta = await page.evaluate(() => ({
+      colorScheme: getComputedStyle(document.documentElement).colorScheme,
+      themeColors: [
+        ...document.querySelectorAll('meta[name="theme-color"]'),
+      ].map((meta) => ({
+        content: meta.getAttribute("content"),
+        media: meta.getAttribute("media"),
+      })),
+    }));
+
+    expect(systemMeta).toStrictEqual({
+      colorScheme: "light dark",
+      themeColors: [
+        { content: "#fcfaf6", media: "(prefers-color-scheme: light)" },
+        { content: "#0a1822", media: "(prefers-color-scheme: dark)" },
+      ],
+    });
+
+    // Explicit Dark override on a Light OS applies Deep Navy tokens, color-scheme, & theme-color override
+    await themeGroup.getByRole("radio", { name: "Dark theme" }).click();
+    await expect(page.locator("html")).toHaveClass(/\bdark\b/u);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => ({
+            background: getComputedStyle(document.documentElement)
+              .backgroundColor,
+            colorScheme: getComputedStyle(document.documentElement).colorScheme,
+            overrideMeta:
+              document.head
+                .querySelector('meta[name="theme-color"]')
+                ?.getAttribute("content") ?? null,
+          }))
+      )
+      .toStrictEqual({
+        background: "rgb(10, 24, 34)",
+        colorScheme: "dark",
+        overrideMeta: "#0a1822",
+      });
+
+    await page.reload({ waitUntil: "networkidle" });
+    await expect(page.locator("html")).toHaveClass(/\bdark\b/u);
+    await expect(
+      themeGroup.getByRole("radio", { name: "Dark theme" })
+    ).toHaveAttribute("aria-checked", "true");
+
+    // Standalone checkout correction HTML honors explicit Dark override without white flash
+    await page.goto("/checkout?fund=general&amount=abc&via=form", {
+      waitUntil: "networkidle",
+    });
+
+    const standaloneDark = await page.evaluate(() => ({
+      background: getComputedStyle(document.body).backgroundColor,
+      colorScheme: getComputedStyle(document.documentElement).colorScheme,
+    }));
+
+    expect(standaloneDark).toStrictEqual({
+      background: "rgb(10, 24, 34)",
+      colorScheme: "dark",
+    });
+
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    // Print stylesheet must still force pure white background, black ink, and light color-scheme
+    await page.emulateMedia({ media: "print" });
+
+    const printColors = await page.evaluate(() => {
+      const style = getComputedStyle(document.documentElement);
+
+      return {
+        background: style.backgroundColor,
+        color: style.color,
+        colorScheme: style.colorScheme,
+      };
+    });
+
+    expect(printColors).toStrictEqual({
+      background: "rgb(255, 255, 255)",
+      color: "rgb(0, 0, 0)",
+      colorScheme: "light",
+    });
+
+    // Explicit Light override on a Dark OS restores Alabaster Ivory canvas & theme-color override
+    await page.emulateMedia({ colorScheme: "dark", media: "screen" });
+    await themeGroup.getByRole("radio", { name: "Light theme" }).click();
+    await expect(page.locator("html")).toHaveClass(/\blight\b/u);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => ({
+            background: getComputedStyle(document.documentElement)
+              .backgroundColor,
+            colorScheme: getComputedStyle(document.documentElement).colorScheme,
+            overrideMeta:
+              document.head
+                .querySelector('meta[name="theme-color"]')
+                ?.getAttribute("content") ?? null,
+          }))
+      )
+      .toStrictEqual({
+        background: "rgb(252, 250, 246)",
+        colorScheme: "light",
+        overrideMeta: "#fcfaf6",
+      });
+
+    // Returning to System clears explicit class, removes override meta, & resumes following Dark OS
+    await themeGroup.getByRole("radio", { name: "System theme" }).click();
+    await expect(page.locator("html")).not.toHaveClass(/\b(?:light|dark)\b/u);
+    await expect
+      .poll(
+        async () =>
+          await page.evaluate(() => ({
+            background: getComputedStyle(document.documentElement)
+              .backgroundColor,
+            colorScheme: getComputedStyle(document.documentElement).colorScheme,
+            overrideExists:
+              document.head.querySelector(
+                'meta[name="theme-color"][data-gf-theme-color="override"]'
+              ) !== null,
+          }))
+      )
+      .toStrictEqual({
+        background: "rgb(10, 24, 34)",
+        colorScheme: "light dark",
+        overrideExists: false,
+      });
   });
 });

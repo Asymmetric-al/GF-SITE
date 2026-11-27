@@ -7,6 +7,8 @@ import {
   LockedFoundation,
   PillarTriad,
 } from "@/components/brand/locked-foundation";
+import { PageTransition } from "@/components/brand/page-transition";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { ReadingProgressBar } from "@/components/interactive/reading-progress-bar";
 import { SectionScrollspy } from "@/components/interactive/section-scrollspy";
@@ -341,61 +343,70 @@ const MissionAndValuesPage = () => (
       label="About Global Fellowship"
     />
 
-    <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-8 pb-8 sm:px-8 lg:gap-10 lg:pt-12">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
-        <div className="flex flex-col gap-4 lg:col-span-7">
-          <div aria-hidden="true" className="gf-gold-rule" />
-          <h1
-            className="gf-display-hero text-foreground"
-            id="mission-values-hero-heading"
-          >
-            Our Mission &amp; Values
-          </h1>
-        </div>
+    <PageTransition>
+      <div className="flex flex-col">
+        <header className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-8 pb-8 sm:px-8 lg:gap-10 lg:pt-12">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="flex flex-col gap-4 lg:col-span-7">
+              <div aria-hidden="true" className="gf-gold-rule" />
+              <h1
+                className="gf-display-hero text-foreground"
+                id="mission-values-hero-heading"
+              >
+                Our Mission &amp; Values
+              </h1>
+            </div>
 
-        <div className="flex flex-col gap-5 lg:col-span-5">
-          <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-            Everything Global Fellowship does grows from one Gospel mission, one
-            prayerful vision, three inseparable pillars, and seven core values
-            that guide how we serve local churches and care for workers.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
-            <Link
-              className={buttonVariants({ size: "lg", variant: "default" })}
-              href="/how-we-work"
-            >
-              See how we work
-            </Link>
-            <Link
-              className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-              href="/statement-of-faith"
-            >
-              <span>Statement of Faith</span>
-              <ArrowRightIcon />
-            </Link>
+            <div className="flex flex-col gap-5 lg:col-span-5">
+              <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+                Everything Global Fellowship does grows from one Gospel mission,
+                one prayerful vision, three inseparable pillars, and seven core
+                values that guide how we serve local churches and care for
+                workers.
+              </p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+                <TransitionLink
+                  className={buttonVariants({ size: "lg", variant: "default" })}
+                  direction="lateral"
+                  href="/how-we-work"
+                  prefetchMode="intent-shell"
+                >
+                  See how we work
+                </TransitionLink>
+                <TransitionLink
+                  className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                  direction="lateral"
+                  href="/statement-of-faith"
+                  prefetchMode="intent-shell"
+                >
+                  <span>Statement of Faith</span>
+                  <ArrowRightIcon />
+                </TransitionLink>
+              </div>
+            </div>
           </div>
-        </div>
+
+          <SectionScrollspy
+            ariaLabel="Sections on this page"
+            sections={JUMP_SECTIONS}
+          />
+
+          <GfPhotoFrame
+            aspect="16/10"
+            objectPositionClass="object-[50%_42%]"
+            photo={GF_PHOTOS.communityGathering}
+            preload
+            sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
+          />
+        </header>
+
+        <MissionSection />
+        <VisionSection />
+        <ThreePillarsSection />
+        <CoreValuesSection />
+        <DoctrinalClosingSection />
       </div>
-
-      <SectionScrollspy
-        ariaLabel="Sections on this page"
-        sections={JUMP_SECTIONS}
-      />
-
-      <GfPhotoFrame
-        aspect="16/10"
-        objectPositionClass="object-[50%_42%]"
-        photo={GF_PHOTOS.communityGathering}
-        preload
-        sizes="(max-width: 1152px) calc(100vw - 2.5rem), 1104px"
-      />
-    </header>
-
-    <MissionSection />
-    <VisionSection />
-    <ThreePillarsSection />
-    <CoreValuesSection />
-    <DoctrinalClosingSection />
+    </PageTransition>
   </div>
 );
 

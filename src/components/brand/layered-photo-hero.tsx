@@ -1,7 +1,7 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
-import type { GfPhoto } from "@/lib/brand/gf-photos";
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
+import type { GfPhoto, StaticHeroAvif } from "@/lib/brand/gf-photos";
 import { cn } from "@/lib/utils";
 
 type VeilTone = "twilight" | "sky-deep" | "water" | "canopy" | "portrait-top";
@@ -153,20 +153,24 @@ const LayeredForegroundCutout = ({
   }
 
   return (
-    <picture className="contents print:hidden">
+    <picture
+      className={cn(
+        "pointer-events-none absolute inset-0 z-30 block h-full w-full print:hidden",
+        hideOnMobile && "hidden sm:block"
+      )}
+    >
       {mobileSource}
       {/* oxlint-disable-next-line nextjs/no-img-element, react-doctor/nextjs-no-img-element -- responsive <picture> transparent WebP foreground cutout bypassing /_next/image re-encoding */}
       <img
         alt=""
         aria-hidden="true"
         className={cn(
-          "pointer-events-none absolute inset-0 z-30 h-full w-full object-cover select-none print:hidden",
-          hideOnMobile && "hidden sm:block",
+          "h-full w-full object-cover select-none",
           objectPositionClass
         )}
         data-gf-cutout="true"
         decoding="async"
-        fetchPriority={eager ? "low" : undefined}
+        fetchPriority="low"
         height={height}
         loading={eager ? "eager" : "lazy"}
         src={cutoutSrc}
@@ -176,70 +180,35 @@ const LayeredForegroundCutout = ({
   );
 };
 
-interface StaticHeroMedia {
-  readonly mobileSrc: string;
-  readonly desktopSrc: string;
-}
-
 const HeroBasePhoto = ({
   photo,
   staticHeroAvif,
   objectPositionClass,
   preload,
-  quality,
-  sizes,
 }: {
   readonly photo: GfPhoto;
-  readonly staticHeroAvif: StaticHeroMedia | undefined;
+  readonly staticHeroAvif: StaticHeroAvif | undefined;
   readonly objectPositionClass: string;
   readonly preload: boolean;
-  readonly quality: 72 | 75;
-  readonly sizes: string;
 }) => {
   const imageClassName = cn(
-    "gf-cinema-photo absolute inset-0 z-0 h-full w-full object-cover",
+    "gf-cinema-photo h-full w-full object-cover",
     objectPositionClass
   );
 
-  const fetchPriority = preload ? "high" : undefined;
-
-  if (staticHeroAvif === undefined) {
-    return (
-      <Image
-        alt={photo.alt}
-        className={imageClassName}
-        decoding={preload ? "sync" : "async"}
-        fetchPriority={fetchPriority}
-        height={photo.height}
-        preload={preload}
-        quality={quality}
-        sizes={sizes}
-        src={photo.src}
-        width={photo.width}
-      />
-    );
-  }
+  const resolvedHeroAvif = staticHeroAvif ?? photo.heroAvif;
 
   return (
-    <picture className="contents">
-      <source
-        media="(max-width: 639px)"
-        srcSet={staticHeroAvif.mobileSrc}
-        type="image/avif"
-      />
-      <source srcSet={staticHeroAvif.desktopSrc} type="image/avif" />
-      {/* oxlint-disable-next-line nextjs/no-img-element, react-doctor/nextjs-no-img-element -- pre-encoded static hero bypassing cold /_next/image transcoding for instant mobile and desktop LCP */}
-      <img
-        alt={photo.alt}
-        className={imageClassName}
-        decoding="sync"
-        fetchPriority={fetchPriority}
-        height={photo.height}
-        loading="eager"
-        src={photo.src}
-        width={photo.width}
-      />
-    </picture>
+    <StaticHeroAvifPicture
+      alt={photo.alt}
+      className={imageClassName}
+      fallbackSrc={photo.src}
+      height={photo.height}
+      heroAvif={resolvedHeroAvif}
+      pictureClassName="pointer-events-none absolute inset-0 z-0 block h-full w-full"
+      preload={preload}
+      width={photo.width}
+    />
   );
 };
 
@@ -272,7 +241,6 @@ export const LayeredPhotoHero = ({
   hideCutoutOnMobile = false,
   staticHeroAvif,
   preload = false,
-  quality = 75,
   showCaption = false,
   captionNote,
   headingId,
@@ -286,10 +254,6 @@ export const LayeredPhotoHero = ({
   const effectiveObjectPos =
     objectPositionClass ?? photo.objectPosition ?? "object-center";
 
-  const sizes = fullBleed
-    ? "100vw"
-    : "(max-width: 1280px) calc(100vw - 2.5rem), 1152px";
-
   const frame = (
     <div
       className={cn(
@@ -301,13 +265,11 @@ export const LayeredPhotoHero = ({
       )}
       data-gf-layered-hero={photo.id}
     >
-      {/* Layer 0: Full authentic photograph (optional pre-encoded static media bypasses cold /_next/image Sharp transcoding) */}
+      {/* Layer 0: Full authentic photograph via pre-encoded static AVIF */}
       <HeroBasePhoto
         objectPositionClass={effectiveObjectPos}
         photo={photo}
         preload={preload}
-        quality={quality}
-        sizes={sizes}
         staticHeroAvif={staticHeroAvif}
       />
 

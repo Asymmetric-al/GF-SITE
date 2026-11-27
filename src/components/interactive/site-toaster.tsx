@@ -1,31 +1,80 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
+import type { ComponentType, Dispatch, RefObject, SetStateAction } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { subscribeToToastBus } from "./toast-bus";
 import type { SiteToastMessage } from "./toast-bus";
 
-const LazyToasterRegion = dynamic(
-  async () => {
-    const mod = await import("./site-toaster-region");
+interface ToasterRegionProps {
+  readonly initialMessages: readonly SiteToastMessage[];
+  readonly onFlushed: () => void;
+}
 
-    return mod.SiteToasterRegion;
-  },
-  { ssr: false }
-);
+type ToasterRegionComponent = ComponentType<ToasterRegionProps>;
+
+let cachedRegion: ToasterRegionComponent | null = null;
+let regionPromise: Promise<ToasterRegionComponent> | null = null;
+
+const loadToasterRegion = async (): Promise<ToasterRegionComponent> => {
+  if (cachedRegion !== null) {
+    return cachedRegion;
+  }
+
+  regionPromise ??= (async () => {
+    try {
+      const mod = await import("./site-toaster-region");
+
+      cachedRegion = mod.SiteToasterRegion;
+
+      return cachedRegion;
+    } catch (error) {
+      regionPromise = null;
+      throw error;
+    }
+  })();
+
+  return await regionPromise;
+};
+
+const resolveAndMountRegion = async (
+  mountedRef: RefObject<boolean>,
+  setRegionComponent: Dispatch<SetStateAction<ToasterRegionComponent | null>>
+): Promise<void> => {
+  try {
+    const resolved = await loadToasterRegion();
+
+    if (mountedRef.current) {
+      setRegionComponent(() => resolved);
+    }
+  } catch {
+    // Keep shell quiet if chunk load fails offline.
+  }
+};
 
 /**
  * Global lightweight client shell mounted once in `SiteLayout`:
- * 1. Demand-loads `@ui-sdk/react/toast` only when a visitor triggers an action,
+ * 1. Demand-loads `@ui-sdk/react/toast` via native `import()` only when a
+ *    visitor triggers an action (zero `next/dynamic` layout chunk overhead),
  *    relying solely on `@ui-sdk/react/toast`'s built-in shared live region so
- *    screen readers announce every notification once (never duplicated).
+ *    screen readers announce every notification once.
  * 2. Registers global `beforeprint` / `afterprint` expansion for all
  *    `details.gf-disclosure` elements across every route.
  */
 export const SiteToaster = () => {
-  const [activated, setActivated] = useState(false);
+  const [regionComponent, setRegionComponent] =
+    useState<ToasterRegionComponent | null>(() => cachedRegion);
+
   const [queued, setQueued] = useState<readonly SiteToastMessage[]>([]);
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    mountedRef.current = true;
+
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   const handleFlushed = useCallback(() => {
     setQueued([]);
@@ -34,8 +83,15 @@ export const SiteToaster = () => {
   useEffect(
     () =>
       subscribeToToastBus((message) => {
-        setActivated(true);
         setQueued((current) => [...current, message]);
+
+        if (cachedRegion !== null) {
+          setRegionComponent(() => cachedRegion);
+
+          return;
+        }
+
+        void resolveAndMountRegion(mountedRef, setRegionComponent);
       }),
     []
   );
@@ -86,11 +142,11 @@ export const SiteToaster = () => {
     };
   }, []);
 
-  if (!activated) {
+  const RegionComponent = regionComponent;
+
+  if (RegionComponent === null) {
     return null;
   }
 
-  return (
-    <LazyToasterRegion initialMessages={queued} onFlushed={handleFlushed} />
-  );
+  return <RegionComponent initialMessages={queued} onFlushed={handleFlushed} />;
 };

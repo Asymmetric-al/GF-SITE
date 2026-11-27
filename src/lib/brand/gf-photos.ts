@@ -18,9 +18,15 @@ type GfPhotoProvenance =
   | "gf-website-licensed"
   | "brand-kit-street";
 
+export interface StaticHeroAvif {
+  readonly mobileSrc: string;
+  readonly desktopSrc: string;
+}
+
 export interface GfPhoto {
   readonly id: string;
   readonly src: string;
+  readonly heroAvif: StaticHeroAvif;
   readonly foregroundCutout?: string;
   readonly foregroundCutoutMobile?: string;
   readonly width: number;
@@ -41,6 +47,10 @@ export const GF_PHOTOS = {
     foregroundCutout: "/photos/gf/cutouts/baptism-fg.webp",
     foregroundCutoutMobile: "/photos/gf/cutouts/mobile/baptism-fg.webp",
     height: 505,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/baptism-1200.avif",
+      mobileSrc: "/photos/gf/hero/baptism-640.avif",
+    },
     id: "GF-LIVE-01",
     objectPosition: "object-center",
     provenance: "gf-original",
@@ -50,6 +60,10 @@ export const GF_PHOTOS = {
   bibleStudy: {
     alt: "Six men sitting together outdoors with open Bibles, reading and studying Scripture together",
     height: 1599,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/bible-study-1200.avif",
+      mobileSrc: "/photos/gf/hero/bible-study-640.avif",
+    },
     id: "GF-LIVE-02",
     objectPosition: "object-center",
     provenance: "gf-original",
@@ -59,6 +73,10 @@ export const GF_PHOTOS = {
   boardGroup: {
     alt: "Global Fellowship Board of Directors seated warmly together on a sofa during a fellowship meeting",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/board-group-1200.avif",
+      mobileSrc: "/photos/gf/hero/board-group-640.avif",
+    },
     id: "GF-LIVE-03",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -68,6 +86,10 @@ export const GF_PHOTOS = {
   communityGathering: {
     alt: "Church planters and teammates gathered around tables in a fellowship hall hung with flags of the nations",
     height: 1578,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/community-gathering-1200.avif",
+      mobileSrc: "/photos/gf/hero/community-gathering-640.avif",
+    },
     id: "GF-LIVE-05",
     objectPosition: "object-center",
     provenance: "gf-original",
@@ -77,6 +99,10 @@ export const GF_PHOTOS = {
   fallFellowship: {
     alt: "Global Fellowship Home Office staff and families smiling together outdoors in California",
     height: 800,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/fall-fellowship-1200.avif",
+      mobileSrc: "/photos/gf/hero/fall-fellowship-640.avif",
+    },
     id: "GF-LIVE-07",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -84,8 +110,12 @@ export const GF_PHOTOS = {
     width: 1200,
   },
   globalFamily: {
-    alt: "Global Fellowship missionaries, local leaders, staff, and families gathered together on a sunlit lawn beneath tropical palm trees",
+    alt: "Global Fellowship missionaries, local leaders, staff, and families gathered together on a sunlit lawn beneath tropical palm trees, softly blurred to protect field privacy",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/global-family-1200.avif",
+      mobileSrc: "/photos/gf/hero/global-family-640.avif",
+    },
     id: "GF-LIVE-27",
     objectPosition: "object-[50%_76%]",
     provenance: "gf-original",
@@ -96,6 +126,10 @@ export const GF_PHOTOS = {
     alt: "Two hands pouring warm tea from a clay pot into ceramic cups across a wooden tray in natural window light (illustrative contextual street photography)",
     caption: "Photo: James Creegan",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/hospitality-tea-1200.avif",
+      mobileSrc: "/photos/gf/hero/hospitality-tea-640.avif",
+    },
     id: "GF-PHO-01",
     licenseLabel: "CC BY 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
@@ -110,6 +144,10 @@ export const GF_PHOTOS = {
   leaderBeaumontFamily: {
     alt: "Jeremy and Anne Beaumont smiling outdoors with their three children in wooded foothills",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/leader-beaumont-family-1200.avif",
+      mobileSrc: "/photos/gf/hero/leader-beaumont-family-640.avif",
+    },
     id: "GF-LIVE-08",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -119,6 +157,10 @@ export const GF_PHOTOS = {
   leaderDonKathyOates: {
     alt: "Don and Kathy Oates, Founders of Global Fellowship, smiling warmly together outdoors",
     height: 400,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/leader-don-kathy-oates-600.avif",
+      mobileSrc: "/photos/gf/hero/leader-don-kathy-oates-600.avif",
+    },
     id: "GF-LIVE-09",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -128,6 +170,10 @@ export const GF_PHOTOS = {
   leaderEricBergen: {
     alt: "Portrait of Eric Bergen, Chair of the Global Fellowship Board of Directors",
     height: 579,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/leader-eric-bergen-1200.avif",
+      mobileSrc: "/photos/gf/hero/leader-eric-bergen-640.avif",
+    },
     id: "GF-LIVE-10",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -137,6 +183,10 @@ export const GF_PHOTOS = {
   leaderJimWells: {
     alt: "Jim Wells and his wife Allison smiling together outdoors with foothills behind them",
     height: 476,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/leader-jim-wells-1200.avif",
+      mobileSrc: "/photos/gf/hero/leader-jim-wells-640.avif",
+    },
     id: "GF-LIVE-11",
     objectPosition: "object-top",
     provenance: "gf-original",
@@ -146,6 +196,10 @@ export const GF_PHOTOS = {
   neighborhoodDusk: {
     alt: "Warm late-afternoon sunlight grazing ordinary plastered neighborhood buildings along a quiet cobblestone lane (illustrative contextual street photography)",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/neighborhood-dusk-1200.avif",
+      mobileSrc: "/photos/gf/hero/neighborhood-dusk-640.avif",
+    },
     id: "GF-PHO-04",
     licenseLabel: "CC0 1.0",
     licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -157,6 +211,10 @@ export const GF_PHOTOS = {
   oppBangladesh: {
     alt: "Cycle-rickshaw drivers traveling along a tree-lined street in Bangladesh (illustrative regional scene)",
     height: 1200,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/opp-bangladesh-1200.avif",
+      mobileSrc: "/photos/gf/hero/opp-bangladesh-640.avif",
+    },
     id: "GF-LIVE-13",
     objectPosition: "object-center",
     provenance: "gf-website-licensed",
@@ -166,6 +224,10 @@ export const GF_PHOTOS = {
   oppSerbia: {
     alt: "Vendors at an outdoor produce and nut market stall in Serbia (illustrative regional scene)",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/opp-serbia-1200.avif",
+      mobileSrc: "/photos/gf/hero/opp-serbia-640.avif",
+    },
     id: "GF-LIVE-14",
     objectPosition: "object-center",
     provenance: "gf-website-licensed",
@@ -175,6 +237,10 @@ export const GF_PHOTOS = {
   projectCentralAsia: {
     alt: "Rural Central Asian hillside village with small brick homes overlooking open plains",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/project-central-asia-1200.avif",
+      mobileSrc: "/photos/gf/hero/project-central-asia-640.avif",
+    },
     id: "GF-LIVE-17",
     objectPosition: "object-center",
     provenance: "gf-original",
@@ -187,6 +253,10 @@ export const GF_PHOTOS = {
     foregroundCutoutMobile:
       "/photos/gf/cutouts/mobile/himalayan-village-fg.webp",
     height: 745,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/home-himalayan-1200.avif",
+      mobileSrc: "/photos/gf/hero/home-himalayan-640.avif",
+    },
     id: "GF-LIVE-20",
     objectPosition: "object-center",
     provenance: "gf-original",
@@ -196,6 +266,10 @@ export const GF_PHOTOS = {
   sharedBread: {
     alt: "Warm baked loaf of bread resting on folded white linen over a dark wooden table beside butter in quiet window light (illustrative contextual street photography)",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/shared-bread-1200.avif",
+      mobileSrc: "/photos/gf/hero/shared-bread-640.avif",
+    },
     id: "GF-PHO-02",
     licenseLabel: "CC0 1.0",
     licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -209,6 +283,10 @@ export const GF_PHOTOS = {
     foregroundCutout: "/photos/gf/cutouts/tea-harvest-fg.webp",
     foregroundCutoutMobile: "/photos/gf/cutouts/mobile/tea-harvest-fg.webp",
     height: 506,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/tea-harvest-1200.avif",
+      mobileSrc: "/photos/gf/hero/tea-harvest-640.avif",
+    },
     id: "GF-LIVE-26",
     objectPosition: "object-center",
     provenance: "gf-website-licensed",
@@ -218,6 +296,10 @@ export const GF_PHOTOS = {
   urbanBalconies: {
     alt: "Contemporary multi-story urban apartment balconies catching warm afternoon light against a clear sky (illustrative contextual street photography)",
     height: 1067,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/urban-balconies-1200.avif",
+      mobileSrc: "/photos/gf/hero/urban-balconies-640.avif",
+    },
     id: "GF-PHO-05",
     licenseLabel: "CC0 1.0",
     licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -229,6 +311,10 @@ export const GF_PHOTOS = {
   whyFamily: {
     alt: "Three South Asian women in vibrant saris seated warmly together in sunlight (illustrative scene)",
     height: 1000,
+    heroAvif: {
+      desktopSrc: "/photos/gf/hero/why-family-1200.avif",
+      mobileSrc: "/photos/gf/hero/why-family-640.avif",
+    },
     id: "GF-LIVE-23",
     objectPosition: "object-top",
     provenance: "gf-website-licensed",

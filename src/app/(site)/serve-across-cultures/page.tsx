@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
+import { PageTransition } from "@/components/brand/page-transition";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { EditorialTimeline } from "@/components/interactive/editorial-timeline";
 import type { EditorialTimelineMilestone } from "@/components/interactive/editorial-timeline";
+import { ReadingProgressBar } from "@/components/interactive/reading-progress-bar";
 import { SearchableFaq } from "@/components/interactive/searchable-faq";
 import type { SearchableFaqItem } from "@/components/interactive/searchable-faq";
 import { SectionScrollspy } from "@/components/interactive/section-scrollspy";
@@ -284,144 +286,149 @@ const ServeAcrossCulturesPage = () => {
 
   return (
     <div className="flex flex-col">
+      <ReadingProgressBar />
       <SectionSubnav
         currentHref="/serve-across-cultures"
         items={OPPORTUNITIES_SUBNAV_ITEMS}
         label="Opportunities and church partnerships"
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 pt-10 pb-16 sm:px-8 lg:gap-14 lg:pt-14">
-        <header className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <div className="flex flex-col gap-4 lg:col-span-7">
-            <div aria-hidden="true" className="gf-gold-rule" />
-            <h1
-              className="gf-display-hero text-foreground"
-              id="serve-across-cultures-heading"
-            >
-              Serve across cultures under local leaders.
-            </h1>
-          </div>
-
-          <div className="flex flex-col gap-5 lg:col-span-5">
-            <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-              Since 2012, Global Fellowship has sent cross-cultural missionaries
-              to learn language deeply and serve alongside local church planters
-              by invitation. Here is how discernment, onboarding, and pre-field
-              training work.
-            </p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link
-                className={buttonVariants({ size: "lg", variant: "default" })}
-                href="/opportunities"
+      <PageTransition>
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 pt-10 pb-16 sm:px-8 lg:gap-14 lg:pt-14">
+          <header className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="flex flex-col gap-4 lg:col-span-7">
+              <div aria-hidden="true" className="gf-gold-rule" />
+              <h1
+                className="gf-display-hero text-foreground"
+                id="serve-across-cultures-heading"
               >
-                Browse open roles
-              </Link>
-              <a
-                className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-                href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
-              >
-                <span>Start a conversation</span>
-                <ArrowRightIcon />
-              </a>
+                Serve across cultures under local leaders.
+              </h1>
             </div>
-          </div>
-        </header>
 
-        <SectionScrollspy
-          ariaLabel="Sections on this page"
-          className="-mt-4"
-          sections={JUMP_SECTIONS}
-        />
+            <div className="flex flex-col gap-5 lg:col-span-5">
+              <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+                Since 2012, Global Fellowship has sent cross-cultural
+                missionaries to learn language deeply and serve alongside local
+                church planters by invitation. Here is how discernment,
+                onboarding, and pre-field training work.
+              </p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Link
+                  className={buttonVariants({ size: "lg", variant: "default" })}
+                  href="/opportunities"
+                  prefetch={false}
+                >
+                  Browse open roles
+                </Link>
+                <a
+                  className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                  href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
+                >
+                  <span>Start a conversation</span>
+                  <ArrowRightIcon />
+                </a>
+              </div>
+            </div>
+          </header>
 
-        <ServeHonestQuestionsSection />
+          <SectionScrollspy
+            ariaLabel="Sections on this page"
+            className="-mt-4"
+            sections={JUMP_SECTIONS}
+          />
 
-        <section
-          aria-labelledby="process-heading"
-          className="bg-linen border-border grid scroll-mt-24 grid-cols-1 gap-8 rounded-3xl border px-6 py-9 sm:px-10 sm:py-12 lg:grid-cols-12 lg:items-start lg:gap-12"
-          id="process"
-        >
-          <div className="flex flex-col gap-3 lg:sticky lg:top-24 lg:col-span-5">
-            <div aria-hidden="true" className="gf-gold-rule" />
+          <ServeHonestQuestionsSection />
+
+          <section
+            aria-labelledby="process-heading"
+            className="bg-linen border-border grid scroll-mt-24 grid-cols-1 gap-8 rounded-3xl border px-6 py-9 sm:px-10 sm:py-12 lg:grid-cols-12 lg:items-start lg:gap-12"
+            id="process"
+          >
+            <div className="flex flex-col gap-3 lg:sticky lg:top-24 lg:col-span-5">
+              <div aria-hidden="true" className="gf-gold-rule" />
+              <h2
+                className="gf-display-section text-foreground"
+                id="process-heading"
+              >
+                Nine steps from first conversation to the field.
+              </h2>
+              <p className="text-muted-foreground gf-measure text-base leading-relaxed">
+                We guide you and your sending church at a personal, realistic
+                pace so you arrive prepared spiritually, relationally, and
+                financially.
+              </p>
+              <div className="pt-2">
+                <a
+                  className={buttonVariants({
+                    size: "default",
+                    variant: "outline",
+                  })}
+                  href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
+                >
+                  Start a conversation
+                </a>
+              </div>
+            </div>
+
+            <EditorialTimeline
+              ariaLabel="Nine-step missionary application and onboarding process"
+              className="lg:col-span-7"
+              items={ONBOARDING_MILESTONES}
+            />
+          </section>
+
+          <ServeTrainingSection />
+          <ServeWhyUsSection />
+
+          <section
+            aria-labelledby="candidate-faqs-heading"
+            className="border-border flex scroll-mt-24 flex-col gap-6 border-t pt-10"
+            id="faqs"
+          >
             <h2
               className="gf-display-section text-foreground"
-              id="process-heading"
+              id="candidate-faqs-heading"
             >
-              Nine steps from first conversation to the field.
+              Practical candidate FAQs
             </h2>
-            <p className="text-muted-foreground gf-measure text-base leading-relaxed">
-              We guide you and your sending church at a personal, realistic pace
-              so you arrive prepared spiritually, relationally, and financially.
-            </p>
-            <div className="pt-2">
-              <a
-                className={buttonVariants({
-                  size: "default",
-                  variant: "outline",
-                })}
-                href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
-              >
-                Start a conversation
-              </a>
+            <SearchableFaq
+              defaultOpenId="candidate-faq-1"
+              emptyContactEmail={infoDesk.email}
+              emptyContactLabel="Write Mobilization"
+              emptyContactSubject="Candidate Question"
+              items={CANDIDATE_FAQ_ITEMS}
+              searchLabel="Search candidate questions"
+              searchPlaceholder="Search support raising, seminary, singles, children..."
+            />
+          </section>
+
+          <div className="bg-linen border-border flex flex-col justify-between gap-5 rounded-3xl border px-6 py-8 sm:px-9 lg:flex-row lg:items-center">
+            <div className="flex flex-col gap-1.5">
+              <h2 className="text-foreground font-sans text-xl font-semibold tracking-tight">
+                Ready to explore current roles or talk with our team?
+              </h2>
+              <p className="text-muted-foreground gf-measure text-base leading-relaxed">
+                Browse open roles in Europe, South Asia, and Northern
+                California, or write{" "}
+                <a
+                  className="text-primary font-medium underline underline-offset-4"
+                  href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
+                >
+                  {infoDesk.email}
+                </a>{" "}
+                with your story and questions.
+              </p>
             </div>
+            <Link
+              className={`${buttonVariants({ size: "lg", variant: "default" })} shrink-0`}
+              href="/opportunities"
+            >
+              View open roles
+            </Link>
           </div>
-
-          <EditorialTimeline
-            ariaLabel="Nine-step missionary application and onboarding process"
-            className="lg:col-span-7"
-            items={ONBOARDING_MILESTONES}
-          />
-        </section>
-
-        <ServeTrainingSection />
-        <ServeWhyUsSection />
-
-        <section
-          aria-labelledby="candidate-faqs-heading"
-          className="border-border flex scroll-mt-24 flex-col gap-6 border-t pt-10"
-          id="faqs"
-        >
-          <h2
-            className="gf-display-section text-foreground"
-            id="candidate-faqs-heading"
-          >
-            Practical candidate FAQs
-          </h2>
-          <SearchableFaq
-            defaultOpenId="candidate-faq-1"
-            emptyContactEmail={infoDesk.email}
-            emptyContactLabel="Write Mobilization"
-            emptyContactSubject="Candidate Question"
-            items={CANDIDATE_FAQ_ITEMS}
-            searchLabel="Search candidate questions"
-            searchPlaceholder="Search support raising, seminary, singles, children..."
-          />
-        </section>
-
-        <div className="bg-linen border-border flex flex-col justify-between gap-5 rounded-3xl border px-6 py-8 sm:px-9 lg:flex-row lg:items-center">
-          <div className="flex flex-col gap-1.5">
-            <h2 className="text-foreground font-sans text-xl font-semibold tracking-tight">
-              Ready to explore current roles or talk with our team?
-            </h2>
-            <p className="text-muted-foreground gf-measure text-base leading-relaxed">
-              Browse open roles in Europe, South Asia, and Northern California,
-              or write{" "}
-              <a
-                className="text-primary font-medium underline underline-offset-4"
-                href={`mailto:${infoDesk.email}?subject=Serving%20Opportunity%20Conversation`}
-              >
-                {infoDesk.email}
-              </a>{" "}
-              with your story and questions.
-            </p>
-          </div>
-          <Link
-            className={`${buttonVariants({ size: "lg", variant: "default" })} shrink-0`}
-            href="/opportunities"
-          >
-            View open roles
-          </Link>
         </div>
-      </div>
+      </PageTransition>
     </div>
   );
 };

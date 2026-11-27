@@ -8,7 +8,8 @@
           "performance",
           "accessibility",
           "best-practices",
-          "seo"
+          "seo",
+          "agentic-browsing"
         ],
         "preset": "desktop"
       },
@@ -24,29 +25,41 @@
     },
     "assert": {
       "assertions": {
+        "agent-accessibility-tree": [
+          "error",
+          { "aggregationMethod": "pessimistic", "minScore": 1 }
+        ],
         "categories:accessibility": [
           "error",
-          { "aggregationMethod": "median", "minScore": 0.9 }
+          { "aggregationMethod": "pessimistic", "minScore": 1 }
         ],
         "categories:best-practices": [
-          "warn",
-          { "aggregationMethod": "median", "minScore": 0.9 }
+          "error",
+          { "aggregationMethod": "pessimistic", "minScore": 1 }
         ],
         "categories:performance": [
-          "warn",
-          { "aggregationMethod": "median", "minScore": 0.9 }
+          "error",
+          { "aggregationMethod": "median", "minScore": 0.95 }
+        ],
+        "categories:seo": [
+          "error",
+          { "aggregationMethod": "pessimistic", "minScore": 1 }
         ],
         "cumulative-layout-shift": [
           "error",
-          { "aggregationMethod": "median", "maxNumericValue": 0.1 }
+          { "aggregationMethod": "pessimistic", "maxNumericValue": 0.1 }
         ],
         "largest-contentful-paint": [
-          "warn",
-          { "aggregationMethod": "median", "maxNumericValue": 2500 }
+          "error",
+          { "aggregationMethod": "median", "maxNumericValue": 1200 }
+        ],
+        "llms-txt": [
+          "error",
+          { "aggregationMethod": "pessimistic", "minScore": 1 }
         ],
         "total-blocking-time": [
-          "warn",
-          { "aggregationMethod": "median", "maxNumericValue": 200 }
+          "error",
+          { "aggregationMethod": "median", "maxNumericValue": 100 }
         ]
       }
     },

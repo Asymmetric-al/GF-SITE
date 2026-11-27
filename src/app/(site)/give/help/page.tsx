@@ -3,6 +3,7 @@ import Link from "next/link";
 import { connection } from "next/server";
 import { Suspense } from "react";
 
+import { PageTransition } from "@/components/brand/page-transition";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { CopyNoteButton } from "@/components/interactive/copy-note-button";
 import { SearchableFaq } from "@/components/interactive/searchable-faq";
@@ -379,97 +380,99 @@ const DonorHelpPage = () => {
         label="Giving and directories"
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
-        <header className="border-border flex flex-col gap-5 border-b pb-9">
-          <div aria-hidden="true" className="gf-gold-rule" />
-          <h1 className="gf-display-hero text-foreground">
-            Help with your giving.
-          </h1>
-          <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
-            Receipts, recurring gifts, checks, stock transfers, and finding
-            someone who is not listed online. If you would rather talk it
-            through, call or email our Meadow Vista Finance team directly.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
-            <a
-              className={buttonVariants({ size: "lg", variant: "default" })}
-              href={`mailto:${financeDesk.email}?subject=Donor%20Care%20Request`}
-            >
-              Email {financeDesk.email}
-            </a>
-            <a
-              className="text-primary inline-flex min-h-11 items-center text-sm font-semibold whitespace-nowrap underline-offset-4 hover:underline"
-              href={VERIFIED_ORGANIZATION.phoneHref}
-            >
-              Call {VERIFIED_ORGANIZATION.phoneDisplay}
-            </a>
-            <Link
-              className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-              href="/contact"
-            >
-              <span>All contact desks</span>
-              <ArrowRightIcon />
-            </Link>
-          </div>
-        </header>
+      <PageTransition>
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-10 sm:px-8 lg:py-16">
+          <header className="border-border flex flex-col gap-5 border-b pb-9">
+            <div aria-hidden="true" className="gf-gold-rule" />
+            <h1 className="gf-display-hero text-foreground">
+              Help with your giving.
+            </h1>
+            <p className="text-muted-foreground gf-measure-lead text-base leading-relaxed sm:text-lg">
+              Receipts, recurring gifts, checks, stock transfers, and finding
+              someone who is not listed online. If you would rather talk it
+              through, call or email our Meadow Vista Finance team directly.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+              <a
+                className={buttonVariants({ size: "lg", variant: "default" })}
+                href={`mailto:${financeDesk.email}?subject=Donor%20Care%20Request`}
+              >
+                Email {financeDesk.email}
+              </a>
+              <a
+                className="text-primary inline-flex min-h-11 items-center text-sm font-semibold whitespace-nowrap underline-offset-4 hover:underline"
+                href={VERIFIED_ORGANIZATION.phoneHref}
+              >
+                Call {VERIFIED_ORGANIZATION.phoneDisplay}
+              </a>
+              <Link
+                className="group text-primary inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                href="/contact"
+              >
+                <span>All contact desks</span>
+                <ArrowRightIcon />
+              </Link>
+            </div>
+          </header>
 
-        <section
-          aria-labelledby="specific-worker-heading"
-          className="bg-linen border-border flex flex-col gap-4 rounded-3xl border px-6 py-8 sm:px-9 sm:py-10"
-          id="specific-worker"
-        >
-          <h2
-            className="text-foreground font-sans text-xl font-semibold tracking-tight sm:text-2xl"
-            id="specific-worker-heading"
+          <section
+            aria-labelledby="specific-worker-heading"
+            className="bg-linen border-border flex flex-col gap-4 rounded-3xl border px-6 py-8 sm:px-9 sm:py-10"
+            id="specific-worker"
           >
-            Can&apos;t find someone you support?
-          </h2>
-          <p className="text-muted-foreground gf-measure text-base leading-relaxed">
-            You can browse public profiles in our{" "}
-            <Link
-              className="text-primary font-medium underline underline-offset-4"
-              href="/missionaries"
+            <h2
+              className="text-foreground font-sans text-xl font-semibold tracking-tight sm:text-2xl"
+              id="specific-worker-heading"
             >
-              Missionaries
-            </Link>{" "}
-            and{" "}
-            <Link
-              className="text-primary font-medium underline underline-offset-4"
-              href="/projects"
-            >
-              Ministry Projects
-            </Link>{" "}
-            directories. Because many local church planters serve in sensitive
-            settings without a public listing, share only a first name or
-            general reference with{" "}
-            <a
-              className="text-primary font-medium underline underline-offset-4"
-              href={`mailto:${financeDesk.email}?subject=Worker%20or%20Project%20Designation%20Confirmation`}
-            >
-              {financeDesk.email}
-            </a>{" "}
-            or call{" "}
-            <a
-              className="text-primary font-medium whitespace-nowrap underline underline-offset-4"
-              href={VERIFIED_ORGANIZATION.phoneHref}
-            >
-              {VERIFIED_ORGANIZATION.phoneDisplay}
-            </a>{" "}
-            ({VERIFIED_ORGANIZATION.phoneHours}). Please leave sensitive
-            locations and card numbers out of email.
-          </p>
-        </section>
+              Can&apos;t find someone you support?
+            </h2>
+            <p className="text-muted-foreground gf-measure text-base leading-relaxed">
+              You can browse public profiles in our{" "}
+              <Link
+                className="text-primary font-medium underline underline-offset-4"
+                href="/missionaries"
+              >
+                Missionaries
+              </Link>{" "}
+              and{" "}
+              <Link
+                className="text-primary font-medium underline underline-offset-4"
+                href="/projects"
+              >
+                Ministry Projects
+              </Link>{" "}
+              directories. Because many local church planters serve in sensitive
+              settings without a public listing, share only a first name or
+              general reference with{" "}
+              <a
+                className="text-primary font-medium underline underline-offset-4"
+                href={`mailto:${financeDesk.email}?subject=Worker%20or%20Project%20Designation%20Confirmation`}
+              >
+                {financeDesk.email}
+              </a>{" "}
+              or call{" "}
+              <a
+                className="text-primary font-medium whitespace-nowrap underline underline-offset-4"
+                href={VERIFIED_ORGANIZATION.phoneHref}
+              >
+                {VERIFIED_ORGANIZATION.phoneDisplay}
+              </a>{" "}
+              ({VERIFIED_ORGANIZATION.phoneHours}). Please leave sensitive
+              locations and card numbers out of email.
+            </p>
+          </section>
 
-        <Suspense fallback={null}>
-          <RuntimeDonorDashboardBand />
-        </Suspense>
+          <Suspense fallback={null}>
+            <RuntimeDonorDashboardBand />
+          </Suspense>
 
-        <Suspense fallback={<GivingGuidesSection donorAppReady={false} />}>
-          <RuntimeGivingGuidesSection />
-        </Suspense>
+          <Suspense fallback={<GivingGuidesSection donorAppReady={false} />}>
+            <RuntimeGivingGuidesSection />
+          </Suspense>
 
-        <PlannedGivingAndFaqsSection />
-      </div>
+          <PlannedGivingAndFaqsSection />
+        </div>
+      </PageTransition>
     </div>
   );
 };

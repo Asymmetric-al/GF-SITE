@@ -66,7 +66,7 @@ export const SiteToasterRegion = ({
     <ToastRegion
       align="end"
       aria-label="Site notifications"
-      className="gf-no-print fixed inset-x-4 bottom-4 z-50 flex flex-col gap-2 outline-none sm:right-4 sm:left-auto sm:w-full sm:max-w-sm"
+      className="gf-site-toast-region gf-no-print fixed inset-x-4 bottom-4 z-50 flex flex-col gap-2 outline-none sm:right-4 sm:left-auto sm:w-full sm:max-w-sm"
       maxVisible={3}
       side="bottom"
     >

@@ -1,10 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
 import { ViewTransition } from "react";
 
 import { LivingArcMotif } from "@/components/brand/living-arc";
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
+import { TransitionLink } from "@/components/brand/transition-link";
+import type { TransitionPrefetchMode } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { QuickGiveInput } from "@/components/interactive/quick-give-input";
+import type { StaticHeroAvif } from "@/lib/brand/gf-photos";
 import { toInternalUrlObject } from "@/lib/content/url-object";
 import { cx } from "@/lib/cx";
 import type { CheckoutTarget } from "@/lib/giving/checkout-handoff";
@@ -15,6 +17,7 @@ export interface DirectoryCardMedia {
   readonly width: number;
   readonly height: number;
   readonly objectPosition?: string;
+  readonly heroAvif?: StaticHeroAvif;
 }
 
 interface DirectoryCardGivingConfig {
@@ -34,7 +37,7 @@ export interface DirectoryCardItem {
   readonly ctaLabel: string;
   readonly media: DirectoryCardMedia | null;
   readonly giving?: DirectoryCardGivingConfig;
-  readonly prefetchDetail?: boolean;
+  readonly prefetchDetail?: TransitionPrefetchMode;
   readonly searchTerms?: string;
   readonly titleViewTransitionName?: string;
   readonly viewTransitionName?: string;
@@ -274,9 +277,6 @@ const getPhotoFreeSurfaceTone = (category: string): string => {
   return "gf-night gf-sanctuary-glow";
 };
 
-const isRemoteUrl = (url: string): boolean =>
-  url.startsWith("http://") || url.startsWith("https://");
-
 const CardMediaHeader = ({
   item,
   preload,
@@ -285,23 +285,39 @@ const CardMediaHeader = ({
   readonly preload: boolean;
 }) => {
   if (item.media !== null) {
+    const imageClassName = cx(
+      "gf-ease h-full w-full object-cover transition-transform duration-300 motion-reduce:transition-none motion-reduce:group-hover/card:scale-100 [@media(hover:hover)_and_(pointer:fine)]:group-hover/card:scale-[1.03]",
+      item.media.objectPosition ?? "object-center"
+    );
+
     const mediaBox = (
       <div className="gf-surface-top-media bg-linen dark:border-border/60 relative aspect-3/2 w-full overflow-hidden dark:border-b">
-        <Image
-          alt={item.media.alt}
-          className={cx(
-            "gf-ease h-full w-full object-cover transition-transform duration-300 motion-reduce:transition-none motion-reduce:group-hover/card:scale-100 [@media(hover:hover)_and_(pointer:fine)]:group-hover/card:scale-[1.03]",
-            item.media.objectPosition ?? "object-center"
-          )}
-          decoding={preload ? "sync" : "async"}
-          height={item.media.height}
-          preload={preload}
-          quality={75}
-          sizes="(max-width: 640px) calc(100vw - 2.5rem), (max-width: 1024px) 46vw, 360px"
-          src={item.media.src}
-          unoptimized={isRemoteUrl(item.media.src)}
-          width={item.media.width}
-        />
+        {item.media.heroAvif === undefined ? (
+          // oxlint-disable-next-line nextjs/no-img-element, react-doctor/nextjs-no-img-element -- unoptimized remote CMS or local fallback card image without next/image client runtime
+          <img
+            alt={item.media.alt}
+            className={imageClassName}
+            decoding="async"
+            fetchPriority={preload ? "high" : "low"}
+            height={item.media.height}
+            loading={preload ? "eager" : "lazy"}
+            src={item.media.src}
+            width={item.media.width}
+          />
+        ) : (
+          <StaticHeroAvifPicture
+            alt={item.media.alt}
+            className={imageClassName}
+            fallbackSrc={item.media.src}
+            height={item.media.height}
+            heroAvif={{
+              desktopSrc: item.media.heroAvif.mobileSrc,
+              mobileSrc: item.media.heroAvif.mobileSrc,
+            }}
+            preload={preload}
+            width={item.media.width}
+          />
+        )}
       </div>
     );
 
@@ -458,19 +474,19 @@ export const DirectoryCard = ({
         <div className="flex flex-1 flex-col justify-between gap-4 p-5 pb-3 sm:p-6 sm:pb-3.5">
           <CardBodyText item={item} />
 
-          <Link
+          <TransitionLink
             className="text-primary focus-visible:outline-ring inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-semibold underline-offset-4 after:absolute after:inset-0 after:z-0 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
             data-card-primary-link=""
+            direction="forward"
             href={toInternalUrlObject(item.href)}
-            prefetch={item.prefetchDetail}
-            transitionTypes={["nav-forward"]}
+            prefetchMode={item.prefetchDetail ?? "never"}
           >
             <span>
               Learn more
               <span className="sr-only"> about {item.title}</span>
             </span>
             <ArrowRightIcon hoverGroup="card" />
-          </Link>
+          </TransitionLink>
         </div>
 
         <div className="relative z-10 flex flex-col gap-1.5 px-5 pt-1 pb-5 sm:px-6 sm:pb-6">
@@ -489,12 +505,12 @@ export const DirectoryCard = ({
       className="gf-surface-interactive group/card flex h-full flex-col"
       data-slot="directory-card"
     >
-      <Link
+      <TransitionLink
         className="focus-visible:outline-ring flex h-full flex-col rounded-2xl focus-visible:outline-2 focus-visible:-outline-offset-2"
         data-card-primary-link=""
+        direction="forward"
         href={toInternalUrlObject(item.href)}
-        prefetch={item.prefetchDetail}
-        transitionTypes={["nav-forward"]}
+        prefetchMode={item.prefetchDetail ?? "never"}
       >
         <CardMediaHeader item={item} preload={preload} />
         <div className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-6">
@@ -504,7 +520,7 @@ export const DirectoryCard = ({
             <ArrowRightIcon hoverGroup="card" />
           </span>
         </div>
-      </Link>
+      </TransitionLink>
     </article>
   );
 };

@@ -10,6 +10,7 @@ const LegalLayout = ({ children }: { readonly children: ReactNode }) => (
       <Link
         className="text-primary text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-80"
         href="/"
+        prefetch={false}
       >
         Global Fellowship Public Website
       </Link>

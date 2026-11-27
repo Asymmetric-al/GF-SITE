@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 
 import { GfPhotoFrame } from "@/components/brand/gf-photo";
 import { LayeredPhotoHero } from "@/components/brand/layered-photo-hero";
@@ -9,6 +9,8 @@ import {
   PillarTriad,
 } from "@/components/brand/locked-foundation";
 import { PhotoMaskedWord } from "@/components/brand/photo-masked-word";
+import { StaticHeroAvifPicture } from "@/components/brand/static-hero-avif-picture";
+import { TransitionLink } from "@/components/brand/transition-link";
 import { ArrowRightIcon } from "@/components/brand/ui-arrow";
 import { DirectoryCard } from "@/components/directory/directory-card";
 import type { DirectoryCardItem } from "@/components/directory/directory-card";
@@ -58,10 +60,12 @@ const SECONDARY_HOME_PROJECTS: readonly DirectoryCardItem[] =
             : {
                 alt: project.photo.alt,
                 height: project.photo.height,
+                heroAvif: project.photo.heroAvif,
                 objectPosition: project.photo.objectPosition,
                 src: project.photo.src,
                 width: project.photo.width,
               },
+        prefetchDetail: "intent",
         region: project.region,
         summary: project.summary,
         title: project.title,
@@ -112,22 +116,24 @@ export const HomeOriginSection = () => (
           teammates learn the language and serve at their invitation.
         </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
-          <Link
+          <TransitionLink
             className="group text-primary inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline-offset-4 transition-opacity hover:underline"
+            direction="forward"
             href="/stories/you-can-land-but-taking-off-is-gods-work"
-            prefetch={false}
+            prefetchMode="intent"
           >
             <span>Read Don&apos;s Liberia story</span>
             <ArrowRightIcon />
-          </Link>
-          <Link
+          </TransitionLink>
+          <TransitionLink
             className="group text-primary inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline-offset-4 transition-opacity hover:underline"
+            direction="lateral"
             href="/how-we-work"
-            prefetch={false}
+            prefetchMode="intent-shell"
           >
             <span>See how we work</span>
             <ArrowRightIcon />
-          </Link>
+          </TransitionLink>
         </div>
       </div>
 
@@ -291,13 +297,13 @@ export const HomeOpportunitiesAndPeopleSection = () => (
     {/* Unobstructed 12-col editorial split so every staff and family face stays clear at every width */}
     <div className="border-border grid grid-cols-1 overflow-hidden rounded-3xl border lg:grid-cols-12">
       <div className="bg-linen relative aspect-3/2 w-full overflow-hidden lg:col-span-7 lg:aspect-auto lg:min-h-[380px]">
-        <Image
+        <StaticHeroAvifPicture
           alt={GF_PHOTOS.fallFellowship.alt}
           className="h-full w-full object-cover object-top"
+          fallbackSrc={GF_PHOTOS.fallFellowship.src}
           height={GF_PHOTOS.fallFellowship.height}
-          quality={75}
-          sizes="(max-width: 1024px) calc(100vw - 2.5rem), 680px"
-          src={GF_PHOTOS.fallFellowship.src}
+          heroAvif={GF_PHOTOS.fallFellowship.heroAvif}
+          preload={false}
           width={GF_PHOTOS.fallFellowship.width}
         />
       </div>
@@ -341,21 +347,28 @@ export const HomeOpportunitiesAndPeopleSection = () => (
     <ul className="border-border divide-border grid grid-cols-1 divide-y border-y md:grid-cols-3 md:divide-x md:divide-y-0">
       {FEATURED_HOME_ROLES.map((role) => (
         <li className="md:first:[&>a]:pl-0 md:last:[&>a]:pr-0" key={role.slug}>
-          <Link
+          <TransitionLink
             className="group hover:bg-linen/70 focus-visible:outline-ring flex h-full items-center justify-between gap-4 px-2 py-5 transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 md:px-6"
+            direction="forward"
             href={`/opportunities/${role.slug}`}
-            prefetch={false}
+            prefetchMode="intent"
           >
             <div className="flex flex-col gap-0.5">
-              <span className="text-foreground group-hover:text-primary text-base font-semibold transition-colors">
-                {role.title}
-              </span>
+              <ViewTransition
+                default="none"
+                name={`opportunity-title-${role.slug}`}
+                share="vt-text-morph"
+              >
+                <span className="text-foreground group-hover:text-primary text-base font-semibold transition-colors">
+                  {role.title}
+                </span>
+              </ViewTransition>
               <span className="text-muted-foreground text-sm">
                 {role.location}
               </span>
             </div>
             <ArrowRightIcon className="text-primary shrink-0" />
-          </Link>
+          </TransitionLink>
         </li>
       ))}
     </ul>
